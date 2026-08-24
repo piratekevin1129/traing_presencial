@@ -11,12 +11,6 @@ $menu = array(
                 'name'=>'Lista de usuarios',
                 'icon'=>"",
                 'link'=>'usuarios.php'
-            ),
-            array(
-                'id'=>2,
-                'name'=>'Registro de usuarios',
-                'icon'=>"",
-                'link'=>'#'
             )
         )
     ),
@@ -31,12 +25,6 @@ $menu = array(
                 'name'=>'Lista de sedes',
                 'icon'=>"",
                 'link'=>'sedes.php'
-            ),
-            array(
-                'id'=>2,
-                'name'=>'Registro de sedes',
-                'icon'=>"",
-                'link'=>'#'
             )
         )
     )

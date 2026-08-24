@@ -1,5 +1,6 @@
 <?php $menu_active = [1,1];?>
 <?php require('./data/users.php');?>
+<?php require('./data/courses.php');?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -11,6 +12,7 @@
     <link href="./public/assets/css/menu.css" rel="stylesheet" type="text/css" />
     <link href="./public/assets/css/dashboard.css" rel="stylesheet" type="text/css" />
     <link href="./public/assets/css/tabla.css" rel="stylesheet" type="text/css" />
+    <link href="./public/assets/css/modal.css" rel="stylesheet" type="text/css" />
     
     <title>Traing Presencial - Usuarios</title>
 </head>
@@ -28,7 +30,7 @@
                             <button class="boton-principal">
                                 Registro individual
                             </button>
-                            <button class="boton-upload">
+                            <button class="boton-upload" onclick="openModal('modal-registro-usuarios-masivo')">
                                 <img src="./public/assets/images/button-upload-icon.svg" />
                                 <span>Cargar usuarios masivamente</span>
                             </button>
@@ -113,7 +115,12 @@
             </div>
         </div>
     </div>
-    
+
+    <?php include './components/registrar-usuarios.php'; ?>
+
     <script src="./public/assets/scripts/menu.js"></script>
+    <script src="./public/assets/scripts/modal.js"></script>
+    <script src="./public/assets/scripts/registrar-masivamente.js"></script>
+    <script src="./data/usuarios-demo.js"></script>    
 </body>
 </html>

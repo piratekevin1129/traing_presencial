@@ -56,11 +56,12 @@
 }
 .boton-principal,
 .boton-upload,
+.boton-download,
 .boton-normal{
     width: auto;
     height: 35px;
     border-radius: 4px;
-    box-shadow: -1px 1px 2px 0px rgba(0,0,0,0.3);
+    box-shadow: -1px 1px 3px 0px rgba(0,0,0,0.4);
     font-family: 'Quicksand-Medium';
     font-size: 1rem;
 }
@@ -69,13 +70,22 @@
     color: var(--blanco);
     padding: 0px 25px;
 }
-.boton-upload{
+
+.boton-download{
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+}
+
+.boton-upload,
+.boton-download{
     gap: 15px;
     background-color: var(--whiteblue);
     color: var(--negro);
     padding: 0px 20px;
 }
-.boton-upload img{
+.boton-upload img,
+.boton-download img{
     width: 22px;
     height: 22px;
 }

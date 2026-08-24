@@ -48,10 +48,10 @@ header{
     background-position: center;
 }
 .menu-btn-opened{
-    background-image: url(../images/menu-icon-close.svg);
+    background-image: url(../images/menu/menu-icon-close.svg);
 }
 .menu-btn-closed{
-    background-image: url(../images/menu-icon-open.svg);
+    background-image: url(../images/menu/menu-icon-open.svg);
 }
 
 .cerrar-sesion-container{

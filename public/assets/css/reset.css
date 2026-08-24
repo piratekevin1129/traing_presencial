@@ -4,11 +4,13 @@
     --azul: #204595;
     --azulclaro: #2BA2DB;
     --morado: #1B76B9;
+    --amarilloclaro: #D0E9A7;
     --gris: #909090;
     --grisclaro: #B1B1B1;
     --blanco: #FFFFFF;
     --negro: #000000;
     --text: #333333;
+    --azulblanco: #CBD5E5;
 
     --whiteblue: #DFF9FF;
     --cleargray: #E5E5E5;
@@ -51,7 +53,7 @@ button{
     border: none;
     cursor: pointer;
 }
-input{
+input,select{
     outline: none;
     outline-width: 0;
 }

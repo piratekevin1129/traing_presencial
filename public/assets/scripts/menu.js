@@ -4,12 +4,12 @@ function clickSideMenu(btn){
     if(clase.indexOf('menu-btn-opened')==-1){
         //abrir
         btn.className = 'menu-btn-opened'
-        document.getElementById('menu-container').className = 'menu-contaniner-opened'
-        document.getElementById('app').className = 'app-opened'
+        getE('menu-container').className = 'menu-contaniner-opened'
+        getE('app').className = 'app-opened'
     }else{
         //cerrar
         btn.className = 'menu-btn-closed'
-        document.getElementById('menu-container').className = 'menu-contaniner-closed'
-        document.getElementById('app').className = 'app-closed'
+        getE('menu-container').className = 'menu-contaniner-closed'
+        getE('app').className = 'app-closed'
     }
 }
