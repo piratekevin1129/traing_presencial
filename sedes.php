@@ -1,5 +1,5 @@
-<?php $menu_active = [1,1];?>
-<?php require('./data/users.php');?>
+<?php $menu_active = [2,1];?>
+<?php require('./data/headquarters.php');?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -12,7 +12,7 @@
     <link href="./public/assets/css/dashboard.css" rel="stylesheet" type="text/css" />
     <link href="./public/assets/css/tabla.css" rel="stylesheet" type="text/css" />
     
-    <title>Traing Presencial - Usuarios</title>
+    <title>Traing Presencial - Sedes</title>
 </head>
 <body>
     <div class="main-container">
@@ -21,7 +21,7 @@
             <?php include './layouts/menu.php' ?>
             <div id="app" class="app-opened">
                 <!--contenido aqui ↓↓↓-->
-                <h1 class="main-title">Todos los usuarios</h1>
+                <h1 class="main-title">Todas las sedes</h1>
                 <div class="app-container">
                     <div class="botones-container">
                         <div class="botones-container-row">
@@ -30,7 +30,7 @@
                             </button>
                             <button class="boton-upload">
                                 <img src="./public/assets/images/button-upload-icon.svg" />
-                                <span>Cargar usuarios masivamente</span>
+                                <span>Cargar sedes masivamente</span>
                             </button>
                         </div>
                         <div class="botones-container-row">
@@ -46,62 +46,47 @@
                         <table class="traing-tabla">
                             <thead>
                                 <tr>
-                                    <th style="width: 3%;">
+                                    <th style="width: 5%;">
                                         <!--input radio-->
                                     </th>
-                                    <th style="width: 12%;">
-                                        <span>Tipo trabajador</span>
-                                        <button></button>
-                                    </th>
-                                    <th style="width: 12%;">
-                                        <span>Nombres</span>
-                                        <button></button>
-                                    </th>
-                                    <th style="width: 12%;">
-                                        <span>Apellido</span>
-                                        <button></button>
-                                    </th>
-                                    <th style="width: 12%;">
-                                        <span>Documento</span>
-                                        <button></button>
-                                    </th>
-                                    <th style="width: 14%;">
-                                        <span>Ciudad</span>
-                                        <button></button>
-                                    </th>
-                                    <th style="width: 12%;">
-                                        <span>Empresa</span>
+                                    <th style="width: 18%;">
+                                        <span>Nombre sede</span>
                                         <button></button>
                                     </th>
                                     <th style="width: 18%;">
-                                        <span>Correo electrónico</span>
+                                        <span>Departamento</span>
                                         <button></button>
                                     </th>
-                                    <th style="width: 5%;">
-                                        <span>Ver</span>
+                                    <th style="width: 18%;">
+                                        <span>Ciudad / Municipio</span>
+                                        <button></button>
+                                    </th>
+                                    <th style="width: 21%;">
+                                        <span>Dirección</span>
+                                        <button></button>
+                                    </th>
+                                    <th style="width: 20%;">
+                                        <span>Ubicación en el mapa</span>
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach($users as $user){?>
+                                <?php foreach($headquarters as $headquarter){?>
                                 <tr>
                                     <td class="td-checkbox">
                                         <label class="traing-check">
-                                            <input type="radio" name="traing-check" value="<?php echo $user[0]?>" />
+                                            <input type="radio" name="traing-check" value="<?php echo $headquarter[0]?>" />
                                             <span class="traing-check-box"></span>
                                             <span class="traing-check-name"></span>
                                         </label>
                                     </td>
-                                    <td><?php echo $user[1]?></td>
-                                    <td><?php echo $user[2]?></td>
-                                    <td><?php echo $user[3]?></td>
-                                    <td><?php echo $user[4]?></td>
-                                    <td><?php echo $user[5]?></td>
-                                    <td><?php echo $user[6]?></td>
-                                    <td><?php echo $user[7]?></td>
+                                    <td><?php echo $headquarter[1]?></td>
+                                    <td><?php echo $headquarter[2]?></td>
+                                    <td><?php echo $headquarter[3]?></td>
+                                    <td><?php echo $headquarter[4]?></td>
                                     <td class="td-boton">
                                         <button>
-                                            <img src="./public/assets/images/button-ver-icon.svg" />
+                                            <img src="./public/assets/images/button-mapa-icon.svg" />
                                         </button>
                                     </td>
                                 </tr>

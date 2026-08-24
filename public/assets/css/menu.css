@@ -75,13 +75,6 @@
     transition: background-color 0.15s;
 }
 
-.submenu-item::after{
-    opacity: 0;
-}
-.submenu-item-active::after{
-    opacity: 1;
-}
-
 .submenu-item > a{
     display: block;
     font-family: 'Quicksand-Regular';
@@ -96,6 +89,16 @@
 }
 .submenu-item:hover{
     background-color: var(--menugray);
+}
+
+.submenu-item::after{
+    opacity: 0;
+}
+.submenu-item-active > a{
+    color: var(--azulclaro);
+}
+.submenu-item-active::after{
+    opacity: 1;
 }
 
 /******************/

@@ -78,15 +78,16 @@
                             <div class="login-row-form-input">
                                 <input type="password" placeholder="Contraseña *" maxlength="20" autocomplete="off" />
                             </div>
-                            <button class="login-row-form-btn1" type="button">
+
+                            <a href="usuarios.php" class="login-row-form-btn1" type="button">
                                 Ingresar
-                            </button>
+                            </a>
                             
                             <a class="login-row-form-link">¿Olvidaste tu contraseña?</a>
                             
-                            <button class="login-row-form-btn2" type="button">
+                            <a href="#" class="login-row-form-btn2" type="button">
                                 Recuperar contraseña
-                            </button>
+                            </a>
                         </div>
                         <div class="login-row-form-foot">
                             <p>Al ingresar manifiesto que he leido y acepto, la política de tratamiento de datos personales <a>(ver aqui)</a></p>

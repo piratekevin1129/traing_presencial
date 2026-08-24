@@ -10,7 +10,7 @@ $menu = array(
                 'id'=>1,
                 'name'=>'Lista de usuarios',
                 'icon'=>"",
-                'link'=>'#'
+                'link'=>'usuarios.php'
             ),
             array(
                 'id'=>2,
@@ -30,7 +30,7 @@ $menu = array(
                 'id'=>1,
                 'name'=>'Lista de sedes',
                 'icon'=>"",
-                'link'=>'#'
+                'link'=>'sedes.php'
             ),
             array(
                 'id'=>2,

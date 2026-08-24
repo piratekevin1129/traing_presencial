@@ -146,9 +146,13 @@
 
 .login-row-form-btn1,
 .login-row-form-btn2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
     border-radius: 25px;
     
-    width: auto;
+    width: fit-content;
     height: 35px;
     align-items: center;
 
