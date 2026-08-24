@@ -1,0 +1,208 @@
+.body-container-login{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: url(../images/login-background.png);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-col{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 15px;
+}
+.login-row{
+    width: auto;
+    height: auto;
+}
+.login-row-container{
+    width: 450px;
+    height: 100%;
+    border-radius: 12px;
+    background-color: rgba(255,255,255,0.8);
+    padding: 15px 25px;
+}
+
+.login-row-container-col,
+.login-row-container-col2{
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.login-row-container-col > div:first-child,
+.login-row-container-col2 > div:first-child{
+    width: 70px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login-row-container-col > div img{
+    width: 100%;
+    height: auto;
+}
+.login-row-container-col > div:last-child,
+.login-row-container-col2 > div:last-child{
+    flex: 1;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.login-row-container-col > div h1{
+    font-family: 'Lato-Regular';
+    font-size: 1.2rem;
+    color: var(--gris);
+    text-transform: uppercase;
+}
+.login-row-container-col > div h2{
+    font-family: 'Lato-Black';
+    font-size: 1.2rem;
+    color: var(--azul);
+    text-transform: uppercase;
+}
+
+.login-row-container-col2{
+    margin: 15px 0px;
+}
+
+.login-row-container-col2 > div:first-child{
+    height: 70px;
+    border-radius: 50%;
+    background-color: var(--whiteblue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login-row-container-col2 > div img{
+    width: 45px;
+    height: 45px;
+}
+.login-row-container-col2 > div h4{
+    font-family: 'Lato-Bold';
+    font-size: 1rem;
+    color: var(--azul);
+}
+.login-row-container-col2 > div p{
+    font-family: 'Quicksand-Regular';
+    font-size: 1rem;
+    color: var(--text);
+}
+
+/*******************************************/
+
+.login-row-form{
+    width: 300px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.login-row-form-head{
+    border-radius: 12px 12px 0px 0px;
+    background-color: var(--verde);
+}
+.login-row-form-head p{
+    width: 100%;
+    font-family: 'Lato-Bold';
+    font-size: 1.1rem;
+    color: var(--blanco);
+    padding: 18px 0px;
+    text-align: center;
+}
+
+.login-row-form-body{
+    height: auto;
+    flex: 1;
+    background-color: var(--blanco);
+    padding: 20px;
+}
+
+.login-row-form-input{
+    margin-bottom: 20px;
+}
+.login-row-form-input input{
+    width: 100%;
+    border: none;
+    background-color: var(--blanco);
+    font-family: 'Quicksand-Regular';
+    font-size: 0.9rem;
+    color: var(--text);
+    padding: 5px 2px;
+    border-bottom: var(--gris) solid 1px;
+}
+.login-row-form-input input:focus{
+    border-bottom: var(--azul) solid 1px;
+}
+
+.login-row-form-btn1,
+.login-row-form-btn2{
+    border-radius: 25px;
+    
+    width: auto;
+    height: 35px;
+    align-items: center;
+
+    font-family: 'Quicksand-Bold';
+    font-size: 1rem;
+    margin: 15px auto;
+    padding: 0px 25px;
+}
+
+.login-row-form-btn1{
+    background-color: var(--morado);
+    color: var(--blanco);
+    text-transform: uppercase;
+}
+.login-row-form-btn2{
+    background-color: var(--blanco);
+    color: var(--morado);
+    border: var(--morado) solid 1px;
+}
+
+.login-row-form-link{
+    display: block;
+    width: 100%;
+    font-family: 'Quicksand-Medium';
+    font-size: 0.85rem;
+    color: var(--gris);
+    text-align: center;
+    text-decoration: none;
+    text-align: center;
+}
+.login-row-form-link:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.login-row-form-foot{
+    height: auto;
+    border-radius: 0px 0px 12px 12px;
+    background-color: rgba(255,255,255,0.8);
+    padding: 20px
+}
+
+.login-row-form-foot p{
+    font-family: 'Quicksand-Regular';
+    color: var(--text);
+    font-size: 0.9rem;
+    text-align: center;
+}
+.login-row-form-foot p a{
+    color: var(--morado);
+    font-family: 'Quicksand-Medium';
+}
+.login-row-form-foot p img{
+    width: 18px;
+    height: auto;
+    margin-left: 5px;
+}    

@@ -1,0 +1,123 @@
+/**********TABLA************/
+.tabla-container{
+    border-bottom: var(--morado) solid 2px;
+}
+.traing-tabla{
+    table-layout: fixed;
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 8px 8px 0px 0px;
+    overflow: hidden;
+}
+.traing-tabla thead{
+    background-color: var(--azul);
+}
+.traing-tabla thead th{
+    padding: 10px;
+    margin: 0px;
+    position: relative;
+    text-align: left;
+}
+.traing-tabla thead th span{
+    font-family: 'Quicksand-Bold';
+    font-size: 0.85rem;
+    color: var(--blanco);
+}
+
+.traing-tabla thead th button{
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    top: 50%;
+    top: calc(50% - 7.5px);
+    right: 5px;
+    background-color: rgba(0,0,0,0);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../images/button-sort-icon.svg);
+}
+
+/******checkbox******/
+
+.traing-check{
+    display: block;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+.traing-check input {
+  position: absolute;
+  opacity: 0;
+}
+.traing-check-box{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    top: 0px;
+    left: 0px;
+    background-color: var(--grisclaro);
+    border: var(--grisclaro) solid 1px;
+    box-sizing: border-box;
+
+    transition: background-color 0.15s, border 0.15s;
+}
+.traing-check:hover input ~ .traing-check-box {
+    background-color: var(--verde);
+    border: var(--verde) solid 1px;
+}
+.traing-check input:checked ~ .traing-check-box {
+    border: var(--verde) solid 5px;
+    background-color: var(--blanco);
+}
+
+/******/
+
+.traing-tabla tbody tr:nth-child(even){
+    background-color: var(--blanco);
+}
+.traing-tabla tbody tr:nth-child(odd){
+    background-color: var(--appgray);
+}
+
+.traing-tabla tbody td{
+    padding: 5px 10px;
+    margin: 0px;
+
+    font-family: 'Quicksand-Regular';
+    font-size: 0.9rem;
+    color: var(--negro);
+    text-align: left;
+    word-break: break-all;
+    border-right: var(--grisclaro) solid 1px;
+}
+
+.traing-tabla tbody td button{
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: var(--azul);
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.traing-tabla tbody td button img{
+    width: 22px;
+    height: auto;
+}
+
+.traing-tabla tbody tr td:first-child{
+    padding: 5px 0px;
+}
+.traing-tabla tbody tr td:last-child{
+    padding: 5px 0px;
+    border-right: none;
+}

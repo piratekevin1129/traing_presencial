@@ -1,0 +1,88 @@
+.body-container-dashboard{
+        
+}
+
+#app{
+    height: auto;
+    min-height: 100vh;
+    padding: 15px;
+    background-color: var(--appgray);
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    transition: width 0.5s, left 0.5s;
+}
+
+.app-opened{
+    width: 100%;
+    width: calc(100% - 250px);
+    left: 250px;
+}
+.app-closed{
+    width: 100%;
+    left: 0px;
+}
+
+/*******************/
+
+.main-title{
+    font-family: 'Quicksand-Medium';
+    font-size: 1.2rem;
+    color: var(--traing);
+    margin-bottom: 15px;
+}
+
+.app-container{
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    border: var(--cleargray) solid 1px;
+    background-color: var(--blanco);
+    padding: 22px;
+}
+
+.botones-container{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.botones-container-row{
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    width: auto;
+}
+.boton-principal,
+.boton-upload,
+.boton-normal{
+    width: auto;
+    height: 35px;
+    border-radius: 4px;
+    box-shadow: -1px 1px 2px 0px rgba(0,0,0,0.3);
+    font-family: 'Quicksand-Medium';
+    font-size: 1rem;
+}
+.boton-principal{
+    background-color: var(--azulclaro);
+    color: var(--blanco);
+    padding: 0px 25px;
+}
+.boton-upload{
+    gap: 15px;
+    background-color: var(--whiteblue);
+    color: var(--negro);
+    padding: 0px 20px;
+}
+.boton-upload img{
+    width: 22px;
+    height: 22px;
+}
+                                
+.boton-normal{
+    background-color: var(--menugray);
+    color: var(--azul);
+    padding: 0px 20px;
+}
+                                

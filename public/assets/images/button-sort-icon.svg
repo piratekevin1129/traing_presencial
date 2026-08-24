@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 18 18" style="enable-background:new 0 0 18 18;" xml:space="preserve">
+<style type="text/css">
+	.st0{opacity:0.3;enable-background:new    ;}
+	.st1{clip-path:url(#SVGID_1_);fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+	.st2{fill:#FFFFFF;}
+	.st3{clip-path:url(#SVGID_2_);fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+</style>
+<g>
+	<g class="st0">
+		<g>
+			<defs>
+				<rect id="SVGID_5_" x="13" y="4" width="2" height="11.9"/>
+			</defs>
+			<clipPath id="SVGID_1_">
+				<use xlink:href="#SVGID_5_"  style="overflow:visible;"/>
+			</clipPath>
+			<path class="st1" d="M14,4L14,4c0.5,0,1,0.4,1,1V15c0,0.5-0.4,1-1,1c-0.5,0-1-0.4-1-1V5C13,4.5,13.5,4,14,4"/>
+		</g>
+	</g>
+	<path class="st2" d="M11.8,6.7c-0.4,0.4-1,0.4-1.4,0c-0.4-0.4-0.4-1,0-1.4l3-3c0.4-0.4,1-0.4,1.4,0l3,3c0.4,0.4,0.4,1,0,1.4
+		c-0.4,0.4-1,0.4-1.4,0L14,4.4L11.8,6.7z"/>
+	<g class="st0">
+		<g>
+			<defs>
+				<rect id="SVGID_7_" x="3" y="2.1" width="2" height="11.9"/>
+			</defs>
+			<clipPath id="SVGID_2_">
+				<use xlink:href="#SVGID_7_"  style="overflow:visible;"/>
+			</clipPath>
+			<path class="st3" d="M4,14L4,14c0.5,0,1-0.4,1-1V3c0-0.5-0.4-1-1-1S3,2.5,3,3V13C3,13.5,3.4,14,4,14"/>
+		</g>
+	</g>
+	<path class="st2" d="M1.7,11.3c-0.4-0.4-1-0.4-1.4,0c-0.4,0.4-0.4,1,0,1.4l3,3c0.4,0.4,1,0.4,1.4,0l3-3c0.4-0.4,0.4-1,0-1.4
+		c-0.4-0.4-1-0.4-1.4,0L4,13.6L1.7,11.3z"/>
+</g>
+</svg>
