@@ -1,10 +1,10 @@
 .body-container-dashboard{
-        
+    height: calc(100vh - 60px);
+    overflow-y: auto;
 }
 
 #app{
     height: auto;
-    min-height: 100vh;
     padding: 15px;
     background-color: var(--appgray);
     overflow-y: auto;

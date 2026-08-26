@@ -76,8 +76,7 @@ $menu = array(
 <script>
     function clickItemMenu(head_item){
         var item_parent = head_item.parentNode
-        var clase = item_parent.className
-        if(clase.indexOf('opened')==-1){
+        if(item_parent.className.indexOf('opened')==-1){
             //abrir
             item_parent.className = 'menu-item-opened'
         }else{

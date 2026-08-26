@@ -6,4 +6,3 @@
         return document.getElementById(idname)
     }
 </script>
-<script src="./public/assets/scripts/menu.js"></script>

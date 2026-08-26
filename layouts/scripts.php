@@ -1,0 +1,1 @@
+<script src="./public/assets/scripts/menu.js"></script>

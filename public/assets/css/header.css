@@ -16,6 +16,10 @@ header{
     height: 60px;
     justify-content: flex-start;
 }
+.header-user{
+    height: 60px;
+    justify-content: flex-start;
+}
 
 .logo{
     width: fit-content;
@@ -34,6 +38,10 @@ header{
     height: 40px;
     margin: 0;
     margin-left: 20px;
+}
+.header-user .logo{
+    height: 40px;
+    margin: 0;
 }
 
 .menu-btn-container{

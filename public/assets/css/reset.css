@@ -77,6 +77,5 @@ input:focus,select:focus{
 }
 
 .body-container{
-    flex: 1;
     height: auto;
 }
