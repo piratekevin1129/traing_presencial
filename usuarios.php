@@ -119,8 +119,8 @@
         </div>
     </div>
 
-    <?php include './components/registrar-usuarios.php'; ?>
-    <?php include './components/form-usuario.php'; ?>
+    <?php include './components/modals/registrar-usuarios.php'; ?>
+    <?php include './components/modals/form-usuario.php'; ?>
 
     <script src="./public/assets/scripts/modal.js"></script>
     <script src="./public/assets/scripts/form.js"></script>

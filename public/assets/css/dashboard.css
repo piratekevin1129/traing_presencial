@@ -5,6 +5,7 @@
 
 #app{
     height: auto;
+    min-height: 100%;
     padding: 15px;
     background-color: var(--appgray);
     overflow-y: auto;

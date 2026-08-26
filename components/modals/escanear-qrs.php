@@ -7,13 +7,15 @@
             </button>
         </div>
         <div class="modal-body">
-            <p class="modal-label2">Nombre del curso</p>
-            <p class="modal-text" id="modal-curso-nombre-txt">...</p>
+            
             <div class="modal-curso-col">
                 <div class="modal-curso-row">
                     <img id="modal-curso-image-txt" src="" />
-                </div>
-                <div class="modal-curso-row">
+
+                    <div class="modal-curso-formgroup">
+                        <h4>Nombre del curso</h4>
+                        <p id="modal-curso-nombre-txt">...</p>
+                    </div>
                     <div class="modal-curso-formgroup">
                         <h4>Fecha y hora</h4>
                         <p id="modal-curso-fecha-txt">...</p>

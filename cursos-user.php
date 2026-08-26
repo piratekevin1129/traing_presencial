@@ -90,7 +90,7 @@
     </div>
 
     <!--modales-->
-    <?php include './components/escanear-qrs.php'; ?>
+    <?php include './components/modals/escanear-qrs.php'; ?>
 
     <script src="./public/assets/scripts/accordion.js"></script>
     <script src="./public/assets/scripts/modal.js"></script>

@@ -18,7 +18,7 @@ $menu = array(
         'id'=>2,
         'name'=>'Sedes',
         'icon'=>'sedes-icon.svg',
-        'link'=>'sedes.php',
+        'link'=>'',
         'items'=>array(
             array(
                 'id'=>1,
@@ -32,13 +32,27 @@ $menu = array(
         'id'=>3,
         'name'=>'Aulas',
         'icon'=>'aulas-icon.svg',
-        'link'=>'aulas.php',
+        'link'=>'',
         'items'=>array(
             array(
                 'id'=>1,
                 'name'=>'Lista de aulas',
                 'icon'=>"",
                 'link'=>'aulas.php'
+            )
+        )
+    ),
+    array(
+        'id'=>4,
+        'name'=>'Reportes',
+        'icon'=>'reportes-icon.svg',
+        'link'=>'',
+        'items'=>array(
+            array(
+                'id'=>1,
+                'name'=>'Lista de reportes',
+                'icon'=>"",
+                'link'=>'reportes.php'
             )
         )
     )
