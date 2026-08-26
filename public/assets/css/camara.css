@@ -1,0 +1,29 @@
+#modal-camara{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background-color: var(--blanco);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#camara{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    background-color: var(--negro);
+    margin: 0px;
+    padding: 0px;
+    border: var(--blanco) solid 2px;
+    margin-bottom: 20px;
+}
+
+.modal-camara-off{
+    display: none;
+}
+.modal-camara-on{
+    display: flex;
+}

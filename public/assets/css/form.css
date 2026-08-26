@@ -1,8 +1,20 @@
-.modal-label{
+.modal-label,
+.modal-label2{
     font-family: 'Quicksand-Medium';
     font-size: 0.85rem;
-    color: var(--traing);
     margin-bottom: 3px;
+}
+.modal-label{
+    color: var(--traing);
+}
+.modal-label2{
+    color: var(--azulclaro);
+}
+.modal-text{
+    font-family: 'Quicksand-Regular';
+    font-size: 1rem;
+    color: var(--traing);
+    margin-bottom: 10px;
 }
 
 /*********botones*********/
@@ -10,7 +22,8 @@
 .boton-principal,
 .boton-upload,
 .boton-download,
-.boton-normal{
+.boton-normal,
+.boton-cancelar{
     width: auto;
     height: 35px;
     border-radius: 4px;
@@ -43,11 +56,13 @@
     height: 22px;
 }
                                 
-.boton-normal{
+.boton-normal,
+.boton-cancelar{
     background-color: var(--menugray);
     color: var(--azul);
     padding: 0px 20px;
 }
+
 
 /**********select and input text**********/
 

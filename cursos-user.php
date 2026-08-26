@@ -10,6 +10,9 @@
     
     <link href="./public/assets/css/dashboard.css" rel="stylesheet" type="text/css" />
     <link href="./public/assets/css/accordion.css" rel="stylesheet" type="text/css" />
+    <link href="./public/assets/css/form.css" rel="stylesheet" type="text/css" />
+    <link href="./public/assets/css/modal.css" rel="stylesheet" type="text/css" />
+    <link href="./public/assets/css/camara.css" rel="stylesheet" type="text/css" />
     
     <title>Traing Presencial - Usuarios</title>
 </head>
@@ -61,7 +64,7 @@
                                             </div>
                                         </div>
                                         <div class="accordion-content-col2">
-                                            <button type="button" class="accordion-ingreso-btn unlocked">
+                                            <button type="button" class="accordion-ingreso-btn unlocked" onclick="clickConfirmarIngreso(<?php echo $course['id']?>)">
                                                 <span>Confirmar Ingreso</span>
                                                 <img src="./public/assets/images/accordion/accordion-check-icon.svg" />
                                             </button>
@@ -90,6 +93,8 @@
     <?php include './components/escanear-qrs.php'; ?>
 
     <script src="./public/assets/scripts/accordion.js"></script>
+    <script src="./public/assets/scripts/modal.js"></script>
+    <script src="./public/assets/scripts/usuarios-user.js"></script>
 
     <script>
         var cursos_data = []
@@ -97,9 +102,23 @@
         cursos_data.push({
             id:<?php echo $course['id']?>,
             nombre:"<?php echo $course['nombre']?>",
+            fecha:"<?php echo $course['fecha']?>",
+            sede:"<?php echo $course['sede']?>",
+            ubicacion:"<?php echo $course['ubicacion']?>",
+            facilitador:"<?php echo $course['facilitador']?>",
             img:"<?php echo $course['img']?>"
         })
         <?php } ?>
+
+        function findCourse(id){
+            var ind = -1
+            for(var i = 0;i<cursos_data.length;i++){
+                if(cursos_data[i].id==id){
+                    ind = i
+                }
+            }
+            return ind
+        }
 
     </script>
 </body>
