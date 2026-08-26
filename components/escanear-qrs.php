@@ -2,7 +2,7 @@
     <div class="modal-box">
         <div class="modal-header">
             <h1>...</h1>
-            <button onclick="closeModalIndividual()">
+            <button onclick="closeModal()">
                 <img src="./public/assets/images/modal/close-modal-icon.svg" />
             </button>
         </div>
