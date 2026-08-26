@@ -40,19 +40,36 @@ function clickEscanearQr(){
         return;
       }
 
+      // Configuración para solicitar la cámara trasera
+      var opciones = {
+        video: {
+          facingMode: { exact: "environment" } // Usar "environment" sin exact si quieres un fallback automático
+        },
+        audio: false
+      };
+
       // Si es la API moderna basada en Promesas
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+        navigator.mediaDevices.getUserMedia(opciones)
           .then(function(stream) {
             streamLocal = stream;
             camara.srcObject = stream;
           })
           .catch(function(err) {
             console.error('Error al acceder a la cámara:', err);
+
+            // Si falla con 'exact', se intenta de forma flexible
+            if (err.name === 'OverconstrainedError' || err.name === 'ConstraintNotSatisfiedError') {
+              opciones.video.facingMode = "environment";
+              navigator.mediaDevices.getUserMedia(opciones).then(function(stream) {
+                streamLocal = stream;
+                camara.srcObject = stream;
+              });
+            }
           });
       } else {
         // Callback tradicional para navegadores muy viejos
-        getMedia.call(navigator, { video: true, audio: false }, 
+        getMedia.call(navigator, opciones, 
           function(stream) {
             streamLocal = stream;
             if ('srcObject' in camara) {
