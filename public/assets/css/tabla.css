@@ -26,10 +26,10 @@
 
 .traing-tabla thead th button{
     position: absolute;
-    width: 15px;
-    height: 15px;
+    width: 12px;
+    height: 12px;
     top: 50%;
-    top: calc(50% - 7.5px);
+    top: calc(50% - 6px);
     right: 5px;
     background-color: rgba(0,0,0,0);
     background-size: contain;
@@ -101,7 +101,7 @@
     color: var(--negro);
     text-align: left;
     word-break: break-all;
-    border-right: var(--grisclaro) solid 1px;
+    border-right: var(--cleargray) solid 1px;
 }
 
 .traing-tabla tbody td button{

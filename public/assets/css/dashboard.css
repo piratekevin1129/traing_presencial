@@ -14,7 +14,6 @@
 }
 
 .app-opened{
-    width: 100%;
     width: calc(100% - 250px);
     left: 250px;
 }
@@ -33,7 +32,6 @@
 }
 
 .app-container{
-    width: 100%;
     height: auto;
     border-radius: 4px;
     border: var(--cleargray) solid 1px;
@@ -54,45 +52,4 @@
     gap: 10px;
     width: auto;
 }
-.boton-principal,
-.boton-upload,
-.boton-download,
-.boton-normal{
-    width: auto;
-    height: 35px;
-    border-radius: 4px;
-    box-shadow: -1px 1px 3px 0px rgba(0,0,0,0.4);
-    font-family: 'Quicksand-Medium';
-    font-size: 1rem;
-}
-.boton-principal{
-    background-color: var(--azulclaro);
-    color: var(--blanco);
-    padding: 0px 25px;
-}
-
-.boton-download{
-    display: flex;
-    text-decoration: none;
-    align-items: center;
-}
-
-.boton-upload,
-.boton-download{
-    gap: 15px;
-    background-color: var(--whiteblue);
-    color: var(--negro);
-    padding: 0px 20px;
-}
-.boton-upload img,
-.boton-download img{
-    width: 22px;
-    height: 22px;
-}
-                                
-.boton-normal{
-    background-color: var(--menugray);
-    color: var(--azul);
-    padding: 0px 20px;
-}
-                                
+ 

@@ -1,43 +1,36 @@
 <div id="modal-registro-usuarios-masivo" class="modal modal-off">
     <div class="modal-box">
         <div class="modal-header">
-            <h1>Registro masivo</h1>
+            <h1>...</h1>
             <button onclick="closeModal()">
                 <img src="./public/assets/images/modal/close-modal-icon.svg" />
             </button>
         </div>
         <div class="modal-body">
-            <div class="modal-select-container">
-                <select onchange="updateCursoPreview(this)">
-                    <?php foreach($courses as $c=>$course){?>
-                        <?php if($c==0){?>
-                            <option data-img="<?php echo $course['img']?>" selected value="<?php echo $course['id']?>"><?php echo $course['nombre']?></option>
-                        <?php }else{ ?>
-                            <option data-img="<?php echo $course['img']?>" value="<?php echo $course['id']?>"><?php echo $course['nombre']?></option>
+            <p class="modal-subtitle">Cursos disponibles</p>
+
+            <div class="modal-dropdown-container">
+                <button class="modal-dropdown modal-dropdown-collapsed" onfocus="toggleDropdown(this,'on')" onblur="toggleDropdown(this,'off')">
+                    <span>Agrega cursos</span>
+                    <div class="modal-dropdown-box">
+                        <?php foreach($courses as $c=>$course){?>                            
+                            <div onclick="dropdownClickItem(this,<?php echo $c; ?>,2) "class="" data-img="<?php echo $course['img']?>" data-value="<?php echo $course['id']?>">
+                                <div></div>
+                                <p><?php echo $course['nombre']?></p>
+                            </div>
                         <?php } ?>
-                    <?php } ?>
-                </select>
-            </div>
-            <div class="modal-curso-preview">
-                <div class="modal-curso-preview-img">
-                    <img id="modal-curso-img" src="./public/assets/images/cursos/<?php echo $courses[0]['img']?>" />
-                </div>
-                <div class="modal-curso-preview-info">
-                    <p id="modal-curso-name-txt"><?php echo $courses[0]['nombre']?></p>
-                    <div>
-                        <button>
-                            <img src="./public/assets/images/modal/time-modal-icon.svg" />
-                        </button>
-                        <button>
-                            <img src="./public/assets/images/modal/fecha-modal-icon.svg" />
-                        </button>
                     </div>
-                </div>
+                </button>
             </div>
+
+            <div id="modal-cursos-preview-2" class="modal-cursos-preview">
+                <!--<div class="modal-curso-preview"></div>-->
+            </div>
+            
             <div class="modal-input-container">
                 <div class="modal-input">
                     <input type="file" name="archivo" onchange="updateCursoFile(this)" accept=".xlsx"  />
-                    <p id="modal-input-file-txt">Subir archivo excel</p>
+                    <p>Subir archivo excel</p>
                     <img src="./public/assets/images/button-upload-icon.svg" />
                 </div>
             </div>
@@ -69,11 +62,19 @@
                             </tr>
                             <tr>
                                 <td>Contratista</td>
-                                <td>Jefferson Gutierritos</td>
-                                <td>123456789</td>
-                                <td>Neiva</td>
+                                <td>Alvin Yakitori</td>
+                                <td>987654321</td>
+                                <td>Ibagué</td>
                                 <td>Isagen</td>
-                                <td>jeffersongutierritos@gmail.com</td>
+                                <td>alvinyakitori@gmail.com</td>
+                            </tr>
+                            <tr>
+                                <td>Estudiante</td>
+                                <td>Drake Bell</td>
+                                <td>111234567</td>
+                                <td>Cartagena</td>
+                                <td>Isagen</td>
+                                <td>drakebell@gmail.com</td>
                             </tr>
                         </tbody>
                     </table>

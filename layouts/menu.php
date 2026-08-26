@@ -27,6 +27,20 @@ $menu = array(
                 'link'=>'sedes.php'
             )
         )
+    ),
+    array(
+        'id'=>3,
+        'name'=>'Aulas',
+        'icon'=>'aulas-icon.svg',
+        'link'=>'aulas.php',
+        'items'=>array(
+            array(
+                'id'=>1,
+                'name'=>'Lista de aulas',
+                'icon'=>"",
+                'link'=>'aulas.php'
+            )
+        )
     )
 );
 ?>

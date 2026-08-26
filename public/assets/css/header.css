@@ -4,21 +4,21 @@ header{
     box-sizing: border-box;
     margin: 0px;
     border-bottom: var(--verde) solid 2px;
-    height: 80px;
     padding: 0px 25px;
     display: flex;
     align-items: center;
 }
 .header-login{
+    height: 80px;
     justify-content: center;
 }
 .header-dashboard{
+    height: 60px;
     justify-content: flex-start;
 }
 
 .logo{
     width: fit-content;
-    height: 60px;
     display: block;
 }
 .logo img{
@@ -27,11 +27,13 @@ header{
 }
 
 .header-login .logo{
+    height: 60px;
     margin: 0 auto;
 }
 .header-dashboard .logo{
+    height: 40px;
     margin: 0;
-    margin-left: 50px;
+    margin-left: 20px;
 }
 
 .menu-btn-container{
@@ -40,8 +42,8 @@ header{
 }
 
 #menu-btn{
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     background-color: var(--blanco);
     background-repeat: no-repeat;
     background-size: contain;

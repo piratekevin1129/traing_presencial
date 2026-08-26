@@ -13,6 +13,8 @@
     <link href="./public/assets/css/dashboard.css" rel="stylesheet" type="text/css" />
     <link href="./public/assets/css/tabla.css" rel="stylesheet" type="text/css" />
     <link href="./public/assets/css/modal.css" rel="stylesheet" type="text/css" />
+    <link href="./public/assets/css/form.css" rel="stylesheet" type="text/css" />
+    <link href="./public/assets/css/dropdown.css" rel="stylesheet" type="text/css" />
     
     <title>Traing Presencial - Usuarios</title>
 </head>
@@ -27,20 +29,20 @@
                 <div class="app-container">
                     <div class="botones-container">
                         <div class="botones-container-row">
-                            <button class="boton-principal">
-                                Registro individual
+                            <button class="boton-principal" onclick="openModal(this,'modal-formulario-usuario')">
+                                <span>Registro individual</span>
                             </button>
-                            <button class="boton-upload" onclick="openModal('modal-registro-usuarios-masivo')">
+                            <button class="boton-upload" onclick="openModal(this,'modal-registro-usuarios-masivo')">
                                 <img src="./public/assets/images/button-upload-icon.svg" />
                                 <span>Cargar usuarios masivamente</span>
                             </button>
                         </div>
                         <div class="botones-container-row">
                             <button class="boton-normal">
-                                Editar
+                                <span>Editar</span>
                             </button>
                             <button class="boton-normal">
-                                Eliminar
+                                <span>Eliminar</span>
                             </button>
                         </div>
                     </div>
@@ -117,10 +119,24 @@
     </div>
 
     <?php include './components/registrar-usuarios.php'; ?>
+    <?php include './components/form-usuario.php'; ?>
 
     <script src="./public/assets/scripts/menu.js"></script>
     <script src="./public/assets/scripts/modal.js"></script>
+    <script src="./public/assets/scripts/form.js"></script>
+    <script src="./public/assets/scripts/dropdown.js"></script>
     <script src="./public/assets/scripts/registrar-masivamente.js"></script>
-    <script src="./data/usuarios-demo.js"></script>    
+    <script src="./data/usuarios-demo.js"></script>
+
+    <script>
+        var cursos_data = []
+        <?php foreach($courses as $course){ ?>
+        cursos_data.push({
+            id:<?php echo $course['id']?>,
+            nombre:"<?php echo $course['nombre']?>",
+            img:"<?php echo $course['img']?>"
+        })
+        <?php } ?>
+    </script>
 </body>
 </html>

@@ -11,10 +11,11 @@
     --negro: #000000;
     --text: #333333;
     --azulblanco: #CBD5E5;
+    --blancoazul: #ECF1F8;
 
     --whiteblue: #DFF9FF;
     --cleargray: #E5E5E5;
-
+    
     --menugray: #F6F6F7;
     --appgray: #F4F6F9;
 }
@@ -52,10 +53,20 @@ button{
     align-items: center;
     border: none;
     cursor: pointer;
+    box-sizing: border-box;
+    padding: 0px;
 }
 input,select{
     outline: none;
     outline-width: 0;
+    transition: border 0.15s;
+}
+select{
+    cursor: pointer;
+}
+
+input:focus,select:focus{
+    border: var(--azulclaro) solid 1px;
 }
 
 .main-container{

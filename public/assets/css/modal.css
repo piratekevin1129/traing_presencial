@@ -1,4 +1,4 @@
-#modal-registro-usuarios-masivo{
+.modal{
     position: fixed;
     width: 100%;
     height: 100%;
@@ -19,15 +19,23 @@
 }
 
 .modal-box{
-    width: 1024px;
     height: auto;
+    max-height: 100%;
     border-radius: 8px;
     background-color: var(--blanco);
     box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.3);
 }
 
+#modal-registro-usuarios-masivo .modal-box{
+    width: 1024px;
+}
+#modal-formulario-usuario .modal-box{
+    width: 720px;
+}
+
 .modal-header{
-    padding: 10px 15px;
+    height: 50px;
+    padding: 0px 15px;
     border-bottom: var(--azulblanco) solid 1px;
     display: flex;
     align-items: center;
@@ -45,29 +53,27 @@
     justify-content: center;
 }
 .modal-header button img{
-    width: 25px;
+    width: 20px;
     height: auto;
 }
         
 .modal-body{
     padding: 15px;
+    height: auto;
+    max-height: 100%;
+    max-height: calc(100vh - 100px);
+    overflow-x: hidden;
+    overflow-y: auto;
 }
-.modal-select-container{
+.modal-select-container,
+.modal-dropdown-container{
     margin-bottom: 10px;
 }
-.modal-select-container select{
-    width: 100%;
-    height: 35px;
-    border-radius: 4px;
-    border: var(--azulblanco) solid 1px;
-    font-family: 'Quicksand-Regular';
-    font-size: 1rem;
-    font-weight: normal;
-    color: var(--traing);
-    cursor: pointer;
-    padding: 5px;
+
+.modal-cursos-preview{
+    margin-bottom: 10px;
 }
-            
+
 .modal-curso-preview{
     background-color: var(--cleargray);
     border: var(--azulblanco) solid 1px;
@@ -76,7 +82,10 @@
     flex-wrap: wrap;
     align-items: stretch;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+}
+.modal-cursos-preview .modal-curso-preview:last-child{
+    margin-bottom: 0px;
 }
 
 .modal-curso-preview-img{
@@ -87,10 +96,27 @@
     align-items: center;
     margin-right: 20px;
 }
+.modal-curso-preview-close{
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    margin-left: 20px;
+}
 .modal-curso-preview-img img{
     border-radius: 4px;
-    width: auto;
+    width: 110px;
     height: 80px;
+    object-fit: cover;
+}
+.modal-curso-preview-close button{
+    width: 20px;
+    height: 20px;
+    background-color: rgba(0,0,0,0);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-image: url(../images/modal/remove-icon.svg);
 }
 .modal-curso-preview-info{
     width: auto;
@@ -126,33 +152,6 @@
 
 .modal-input-container{
     margin-bottom: 10px;
-}
-.modal-input{
-    display: flex;
-    height: 35px;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 4px;
-    border: var(--azulblanco) solid 1px;
-    padding: 0px 10px;
-    cursor: pointer;
-}
-.modal-input input{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0px;
-    left: 0px;
-    opacity: 0;
-}
-.modal-input p{
-    font-family: 'Quicksand-Regular';
-    font-size: 1rem;
-    color: var(--azul);
-}
-.modal-input img{
-    width: 25px;
-    height: 25px;
 }
 
 .modal-preview-tabla{
@@ -199,6 +198,35 @@
     word-wrap: break-word;
 }
 
+/***********form***********/
+
+.modal-switch-container{
+    margin-bottom: 10px;
+}
+
+.modal-form-row2,
+.modal-form-row1{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.modal-form-row2 .modal-form-col{
+    width: 50%;
+    width: calc(50% - 6px);
+}
+
+.modal-form-col{
+    height: auto;
+}
+
+.modal-subtitle{
+    font-family: 'Quicksand-SemiBold';
+    font-size: 1.1rem;
+    color: var(--azulclaro);
+    margin-bottom: 10px;
+}
+
 .modal-preview-tabla-on{
     display: block;
 }
@@ -207,9 +235,11 @@
 }
 
 .modal-footer{
+    height: 50px;
     border-top: var(--azulblanco) solid 1px;
-    padding: 10px 25px;
+    padding: 0px 25px;
     display: flex;
+    align-items: center;
     justify-content: flex-end;
     gap: 10px;
 }

@@ -31,7 +31,6 @@
 
 .login-row-container-col,
 .login-row-container-col2{
-    width: 100%;
     display: flex;
     align-items: stretch;
     flex-wrap: wrap;

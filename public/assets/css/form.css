@@ -1,0 +1,134 @@
+.modal-label{
+    font-family: 'Quicksand-Medium';
+    font-size: 0.85rem;
+    color: var(--traing);
+    margin-bottom: 3px;
+}
+
+/*********botones*********/
+
+.boton-principal,
+.boton-upload,
+.boton-download,
+.boton-normal{
+    width: auto;
+    height: 35px;
+    border-radius: 4px;
+    box-shadow: -1px 1px 3px 0px rgba(0,0,0,0.4);
+    font-family: 'Quicksand-Medium';
+    font-size: 1rem;
+}
+.boton-principal{
+    background-color: var(--azulclaro);
+    color: var(--blanco);
+    padding: 0px 25px;
+}
+
+.boton-download{
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+}
+
+.boton-upload,
+.boton-download{
+    gap: 15px;
+    background-color: var(--whiteblue);
+    color: var(--negro);
+    padding: 0px 20px;
+}
+.boton-upload img,
+.boton-download img{
+    width: 22px;
+    height: 22px;
+}
+                                
+.boton-normal{
+    background-color: var(--menugray);
+    color: var(--azul);
+    padding: 0px 20px;
+}
+
+/**********select and input text**********/
+
+.modal-select-container select,
+.modal-form-col select,
+.modal-form-col input{
+    width: 100%;
+    height: 35px;
+    border-radius: 4px;
+    border: var(--azulblanco) solid 1px;
+    font-family: 'Quicksand-Regular';
+    font-size: 1rem;
+    font-weight: normal;
+    color: var(--traing);
+    padding: 0px 10px;
+    box-sizing: border-box;
+}
+
+/*********input file*********/
+
+.modal-input{
+    display: flex;
+    height: 35px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 4px;
+    border: var(--azulblanco) solid 1px;
+    padding: 0px 10px;
+    cursor: pointer;
+}
+.modal-input input{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    opacity: 0;
+}
+.modal-input p{
+    font-family: 'Quicksand-Regular';
+    font-size: 1rem;
+    color: var(--azul);
+}
+.modal-input img{
+    width: 25px;
+    height: 25px;
+}
+
+/*********switch*********/
+
+.modal-switch-buttons{
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+    border: var(--azulblanco) solid 1px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.modal-switch-option{
+    width: 50%;
+    height: auto;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--blancoazul);
+    cursor: pointer;
+
+    transition: background-color 0.15s;
+}
+.modal-switch-option span{
+    font-family: 'Quicksand-Regular';
+    font-size: 1rem;
+    color: var(--traing);
+
+    transition: color 0.15s;
+}
+
+.modal-switch-buttons .selected{
+    background-color: var(--azulclaro);   
+}
+.modal-switch-buttons .selected span{
+    color: var(--blanco);
+}
