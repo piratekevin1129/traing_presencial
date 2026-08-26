@@ -2,7 +2,7 @@
     <div class="modal-box">
         <div class="modal-header">
             <h1>...</h1>
-            <button onclick="closeModal()">
+            <button onclick="closeModalMasivo()">
                 <img src="./public/assets/images/modal/close-modal-icon.svg" />
             </button>
         </div>
@@ -10,11 +10,11 @@
             <p class="modal-subtitle">Cursos disponibles</p>
 
             <div class="modal-dropdown-container">
-                <button class="modal-dropdown modal-dropdown-collapsed" onfocus="toggleDropdown(this,'on')" onblur="toggleDropdown(this,'off')">
+                <button id="cursos-dropdown-2" class="modal-dropdown modal-dropdown-collapsed" onfocus="toggleDropdown(this,'on')" onblur="toggleDropdown(this,'off')">
                     <span>Agrega cursos</span>
                     <div class="modal-dropdown-box">
                         <?php foreach($courses as $c=>$course){?>                            
-                            <div onclick="dropdownClickItem(this,<?php echo $c; ?>,2) "class="" data-img="<?php echo $course['img']?>" data-value="<?php echo $course['id']?>">
+                            <div onclick="dropdownClickItem(this,<?php echo $c; ?>,2)" class="" data-img="<?php echo $course['img']?>" data-value="<?php echo $course['id']?>">
                                 <div></div>
                                 <p><?php echo $course['nombre']?></p>
                             </div>
@@ -29,7 +29,9 @@
             
             <div class="modal-input-container">
                 <div class="modal-input">
-                    <input type="file" name="archivo" onchange="updateCursoFile(this)" accept=".xlsx"  />
+                    <form>
+                        <input id="lista-usuarios-txt" type="file" name="archivo" onchange="updateCursoFile(this)" accept=".xlsx"  />
+                    </form>
                     <p>Subir archivo excel</p>
                     <img src="./public/assets/images/button-upload-icon.svg" />
                 </div>
@@ -86,7 +88,7 @@
                 <img src="./public/assets/images/button-download-icon.svg" />
                 <span>Descarga de archivo guía en excel</span>
             </a>
-            <button class="boton-principal" onclick="closeModal()">
+            <button class="boton-principal" onclick="closeModalMasivo()">
                 Registrar usuarios
             </button>
         </div>

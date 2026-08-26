@@ -78,7 +78,9 @@
     padding: 0px 10px;
     cursor: pointer;
 }
-.modal-input input{
+
+.modal-input input,
+.modal-input form{
     position: absolute;
     width: 100%;
     height: 100%;

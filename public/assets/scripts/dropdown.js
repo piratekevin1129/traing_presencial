@@ -24,5 +24,13 @@ function dropdownClickItem(obj,ind,list){
     dropdown.blur()
 }
 
+function cleanDropdown(id_dropdown){
+    console.log(id_dropdown)
+    var dropdown_box = getE(id_dropdown).getElementsByClassName('modal-dropdown-box')[0]
+    var dropdown_items = dropdown_box.getElementsByTagName('div')
+    for(var i = 0;i<dropdown_items.length;i++){
+        dropdown_items[i].removeAttribute('class')
+    }
+}
 
 

@@ -11,6 +11,7 @@
     <link href="./public/assets/css/menu.css" rel="stylesheet" type="text/css" />
     <link href="./public/assets/css/dashboard.css" rel="stylesheet" type="text/css" />
     <link href="./public/assets/css/tabla.css" rel="stylesheet" type="text/css" />
+    <link href="./public/assets/css/form.css" rel="stylesheet" type="text/css" />
     
     <title>Traing Presencial - Sedes</title>
 </head>
@@ -26,7 +27,7 @@
                     <div class="botones-container">
                         <div class="botones-container-row">
                             <button class="boton-principal">
-                                Registro individual
+                                <span>Registro individual</span>
                             </button>
                             <button class="boton-upload">
                                 <img src="./public/assets/images/button-upload-icon.svg" />
@@ -34,12 +35,12 @@
                             </button>
                         </div>
                         <div class="botones-container-row">
-                            <button class="boton-normal">
-                                Editar
+                            <!--<button class="boton-normal">
+                                <span>Editar</span>
                             </button>
                             <button class="boton-normal">
-                                Eliminar
-                            </button>
+                                <span>Eliminar</span>
+                            </button>-->
                         </div>
                     </div>
                     <div class="tabla-container">
@@ -98,7 +99,6 @@
             </div>
         </div>
     </div>
-    
-    <script src="./public/assets/scripts/menu.js"></script>
+
 </body>
 </html>

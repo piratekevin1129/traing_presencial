@@ -38,16 +38,16 @@
                             </button>
                         </div>
                         <div class="botones-container-row">
-                            <button class="boton-normal">
+                            <button class="boton-normal" onclick="editarUsuario()">
                                 <span>Editar</span>
                             </button>
-                            <button class="boton-normal">
+                            <button class="boton-normal" onclick="eliminarUsuario()">
                                 <span>Eliminar</span>
                             </button>
                         </div>
                     </div>
                     <div class="tabla-container">
-                        <table class="traing-tabla">
+                        <table id="tabla-usuarios" class="traing-tabla">
                             <thead>
                                 <tr>
                                     <th style="width: 3%;">
@@ -88,21 +88,21 @@
                             </thead>
                             <tbody>
                                 <?php foreach($users as $user){?>
-                                <tr>
+                                <tr id="tabla-usuario-row-<?php echo $user[0]?>">
                                     <td class="td-checkbox">
                                         <label class="traing-check">
-                                            <input type="radio" name="traing-check" value="<?php echo $user[0]?>" />
+                                            <input type="radio" name="usuario" value="<?php echo $user[0]?>" autocomplete="off" />
                                             <span class="traing-check-box"></span>
                                             <span class="traing-check-name"></span>
                                         </label>
                                     </td>
-                                    <td><?php echo $user[1]?></td>
+                                    <td><?php echo $tipos_trabajador[$user[1]]?></td>
                                     <td><?php echo $user[2]?></td>
                                     <td><?php echo $user[3]?></td>
-                                    <td><?php echo $user[4]?></td>
                                     <td><?php echo $user[5]?></td>
                                     <td><?php echo $user[6]?></td>
                                     <td><?php echo $user[7]?></td>
+                                    <td><?php echo $user[8]?></td>
                                     <td class="td-boton">
                                         <button>
                                             <img src="./public/assets/images/button-ver-icon.svg" />
@@ -121,12 +121,10 @@
     <?php include './components/registrar-usuarios.php'; ?>
     <?php include './components/form-usuario.php'; ?>
 
-    <script src="./public/assets/scripts/menu.js"></script>
     <script src="./public/assets/scripts/modal.js"></script>
     <script src="./public/assets/scripts/form.js"></script>
     <script src="./public/assets/scripts/dropdown.js"></script>
-    <script src="./public/assets/scripts/registrar-masivamente.js"></script>
-    <script src="./data/usuarios-demo.js"></script>
+    <script src="./public/assets/scripts/usuarios.js"></script>
 
     <script>
         var cursos_data = []
@@ -137,6 +135,46 @@
             img:"<?php echo $course['img']?>"
         })
         <?php } ?>
+
+        var usuarios_data = []
+        <?php foreach($users as $user){?>
+        usuarios_data.push({
+            id:<?php echo $user[0]?>,
+            tipo:"<?php echo $user[1]?>",
+            nombres:"<?php echo $user[2]?>",
+            apellidos:"<?php echo $user[3]?>",
+            tipodoc:"<?php echo $user[4]?>",
+            documento:<?php echo $user[5]?>,
+            ciudad:"<?php echo $user[6]?>",
+            empresa:"<?php echo $user[7]?>",
+            correo:"<?php echo $user[8]?>",
+        })
+        <?php } ?>
+
+        function findUser(id){
+            var ind = -1
+            for(var i = 0;i<usuarios_data.length;i++){
+                if(usuarios_data[i].id==id){
+                    ind = i
+                }
+            }
+            return ind
+        }
+
+        function getRadioChecked(form,name){
+            var id_selected = 0
+            var radios = getE(form).getElementsByClassName('traing-check')
+            for(var i = 0;i<radios.length;i++){
+                var input = radios[i].getElementsByTagName('input')[0]
+                if(input.name==name){
+                    if(input.checked){
+                        id_selected = input.value
+                    }
+                }
+            }
+            return id_selected
+        }
+
     </script>
 </body>
 </html>

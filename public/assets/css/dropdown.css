@@ -77,7 +77,6 @@
     font-family: 'Quicksand-Regular';
     font-size: 1rem;
     color: var(--traing);
-    text-align: left;
 }
 .modal-dropdown-box .selected > div{
     background-color: var(--azulclaro);
