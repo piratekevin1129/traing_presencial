@@ -41,9 +41,9 @@
             </div>
 
             <div class="modal-qr-container">
-                <div class="modal-qr-header">
+                <!--<div class="modal-qr-header">
                     <p id="modal-qr-title-txt">...</p>
-                </div>
+                </div>-->
                 <div class="modal-qr-body">
                     <div class="modal-qr-body-col1">
                         <div class="modal-camera" onclick="clickEscanearQr()">
@@ -63,7 +63,7 @@
                             <p id="modal-usuario-documento-txt">123456789</p>
                         </div>
                         <div class="modal-curso-formgroup">
-                            <h4>Hora de ingreso</h4>
+                            <h4>Hora de <span id="modal-usuario-hora-title"></span></h4>
                             <p id="modal-usuario-hora-txt">...</p>
                         </div>
                     </div>

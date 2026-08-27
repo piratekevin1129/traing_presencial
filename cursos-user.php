@@ -69,15 +69,15 @@
                                                 <img src="./public/assets/images/accordion/accordion-check-icon.svg" />
                                             </button>
     
-                                            <button id="confirmar-salida-btn-<?php echo $course['id'] ?>" type="button" class="accordion-salida-btn locked">
+                                            <button id="confirmar-salida-btn-<?php echo $course['id'] ?>" type="button" class="accordion-salida-btn locked" onclick="clickConfirmarSalida(<?php echo $course['id']?>)" disabled>
                                                 <span>Confirmar Salida</span>
                                                 <img src="./public/assets/images/accordion/accordion-check-icon.svg" />
                                             </button>
     
-                                            <button type="button" class="accordion-certificado-btn locked">
+                                            <a id="confirmar-certificado-btn-<?php echo $course['id'] ?>" class="accordion-certificado-btn locked" href="#">
                                                 <span>Descargar certificado</span>
                                                 <img src="./public/assets/images/accordion/accordion-check-icon.svg" />
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

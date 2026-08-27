@@ -109,7 +109,7 @@ qrcode.callback = (respuesta) => {
     console.log(respuesta)
 
     clickCerrarQr()
-    confirmarAsistencia()
+    confirmarQr()
   }
 };
 
@@ -119,6 +119,7 @@ function clickCerrarQr() {
   video_camara.load()
   video_camara.onloadedmetadata = null
   video_camara = null
+  camara_ctx.clearRect(0,0,camara.width,camara.height)
 
   cancelAnimationFrame(render_camara)
   render_camara = null;
