@@ -120,6 +120,7 @@
     padding: 7px 10px;
     border-radius: 2px;
     box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.4);
+    gap: 10px;
     
     justify-content: center;
     transition: box-shadow 0.2s;
@@ -127,6 +128,10 @@
 .accordion-content-col2 > button span{
     font-family: 'Quicksand-Medium';
     font-size: 1rem;
+}
+.accordion-content-col2 > button img{
+    width: 15px;
+    height: 15px;
 }
 .accordion-content-col2 .unlocked{
     background-color: var(--cleargray);

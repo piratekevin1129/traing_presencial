@@ -64,12 +64,12 @@
                                             </div>
                                         </div>
                                         <div class="accordion-content-col2">
-                                            <button type="button" class="accordion-ingreso-btn unlocked" onclick="clickConfirmarIngreso(<?php echo $course['id']?>)">
+                                            <button id="confirmar-ingreso-btn-<?php echo $course['id'] ?>" type="button" class="accordion-ingreso-btn unlocked" onclick="clickConfirmarIngreso(<?php echo $course['id']?>)">
                                                 <span>Confirmar Ingreso</span>
                                                 <img src="./public/assets/images/accordion/accordion-check-icon.svg" />
                                             </button>
     
-                                            <button type="button" class="accordion-salida-btn locked">
+                                            <button id="confirmar-salida-btn-<?php echo $course['id'] ?>" type="button" class="accordion-salida-btn locked">
                                                 <span>Confirmar Salida</span>
                                                 <img src="./public/assets/images/accordion/accordion-check-icon.svg" />
                                             </button>
@@ -94,7 +94,9 @@
 
     <script src="./public/assets/scripts/accordion.js"></script>
     <script src="./public/assets/scripts/modal.js"></script>
-    <script src="./public/assets/scripts/usuarios-user.js"></script>
+    <script src="./public/assets/qr/qrCode.min.js"></script>
+    <script src="./public/assets/scripts/qr.js"></script>
+    <script src="./public/assets/scripts/cursos-user.js"></script>
 
     <script>
         var cursos_data = []

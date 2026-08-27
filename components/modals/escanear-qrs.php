@@ -79,7 +79,7 @@
 </div>
 
 <div id="modal-camara" class="modal-camara-off">
-    <video id="camara" autoplay playsinline width="300" height="300"></video>
+    <canvas id="qr-canvas" width="300" height="300"></canvas>
     <button class="boton-cancelar" onclick="clickCerrarQr()">
         <span>Cancelar</span>
     </button>
