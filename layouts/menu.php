@@ -10,7 +10,7 @@ $menu = array(
                 'id'=>1,
                 'name'=>'Lista de usuarios',
                 'icon'=>"",
-                'link'=>'usuarios.php'
+                'link'=>'./usuarios.php'
             )
         )
     ),
@@ -24,7 +24,7 @@ $menu = array(
                 'id'=>1,
                 'name'=>'Lista de sedes',
                 'icon'=>"",
-                'link'=>'sedes.php'
+                'link'=>'./sedes.php'
             )
         )
     ),
@@ -38,7 +38,7 @@ $menu = array(
                 'id'=>1,
                 'name'=>'Lista de aulas',
                 'icon'=>"",
-                'link'=>'aulas.php'
+                'link'=>'./aulas.php'
             )
         )
     ),
@@ -52,7 +52,7 @@ $menu = array(
                 'id'=>1,
                 'name'=>'Lista de reportes',
                 'icon'=>"",
-                'link'=>'reportes.php'
+                'link'=>'./reportes-cursos.php'
             )
         )
     )

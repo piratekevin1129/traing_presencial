@@ -162,20 +162,6 @@
             return ind
         }
 
-        function getRadioChecked(form,name){
-            var id_selected = 0
-            var radios = getE(form).getElementsByClassName('traing-check')
-            for(var i = 0;i<radios.length;i++){
-                var input = radios[i].getElementsByTagName('input')[0]
-                if(input.name==name){
-                    if(input.checked){
-                        id_selected = input.value
-                    }
-                }
-            }
-            return id_selected
-        }
-
     </script>
 </body>
 </html>
