@@ -1,4 +1,4 @@
-<?php $menu_active = [2,1];?>
+<?php $menu_active = [3,1];?>
 <?php require('./data/headquarters.php');?>
 
 <!DOCTYPE html>
@@ -67,7 +67,7 @@
                                         <span>Dirección</span>
                                         <button></button>
                                     </th>
-                                    <th style="width: 20%;">
+                                    <th style="width: 20%;" class="text-center">
                                         <span>Ubicación en el mapa</span>
                                     </th>
                                 </tr>

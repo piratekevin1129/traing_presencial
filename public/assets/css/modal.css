@@ -29,10 +29,14 @@
 #modal-registro-usuarios-masivo .modal-box{
     width: 1024px;
 }
+#modal-ver-asistencias .modal-box{
+    width: 1024px;
+}
 #modal-formulario-usuario .modal-box{
     width: 720px;
 }
-#modal-codigos-qr .modal-box{
+#modal-codigos-qr .modal-box,
+#modal-codigos-qr2 .modal-box{
     width: 650px;
     max-width: 100%;
     max-width: calc(100% - 20px);
@@ -381,6 +385,76 @@
     width: auto;
     flex: 1;
 }
+
+/********************************/
+
+.modal-qr-col{
+    display: flex;
+    flex-wrap: wrap;
+}
+.modal-qr-row{
+    width: 50%;
+    height: auto;
+    padding: 20px;
+}
+.modal-qr-row > p{
+    font-family: 'Quicksand-SemiBold';
+    font-size: 1rem;
+    color: var(--azul);
+    text-align: center;
+}
+.modal-qr-row > div{
+    width: fit-content;
+    height: auto;
+    margin: 20px auto;
+    padding: 10px;
+}
+.modal-qr-row > div::after,
+.modal-qr-row > div::before{
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 50px;
+}
+.modal-qr-row > div::after{
+    top: 0px;
+    left: 0px;
+    border-top: var(--negro) solid 3px;
+    border-left: var(--negro) solid 3px;
+}
+.modal-qr-row > div::before{
+    bottom: 0px;
+    right: 0px;
+    border-bottom: var(--negro) solid 3px;
+    border-right: var(--negro) solid 3px;
+}
+.modal-qr-row > div img{
+    width: auto;
+    height: 150px;
+}
+.modal-qr-row > a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    width: fit-content;
+    height: 40px;
+    padding: 0px 25px;
+    margin: 0px auto;
+    gap: 10px;
+    background-color: var(--verde);
+    border-radius: 4px;
+    box-shadow: -1px 1px 2px 0px rgba(0,0,0,0.2);
+}
+.modal-qr-row > a img{
+    width: 20px;
+}
+.modal-qr-row > a span{
+    font-family: 'Quicksand-Medium';
+    font-size: 1rem;
+    color: var(--blanco);
+}
+
+/*************footer*************/
 
 .modal-footer{
     height: 50px;

@@ -16,6 +16,20 @@ $menu = array(
     ),
     array(
         'id'=>2,
+        'name'=>'Cursos',
+        'icon'=>'cursos-icon.svg',
+        'link'=>'',
+        'items'=>array(
+            array(
+                'id'=>1,
+                'name'=>'Lista de cursos',
+                'icon'=>"",
+                'link'=>'./cursos.php'
+            )
+        )
+    ),
+    array(
+        'id'=>3,
         'name'=>'Sedes',
         'icon'=>'sedes-icon.svg',
         'link'=>'',
@@ -29,7 +43,7 @@ $menu = array(
         )
     ),
     array(
-        'id'=>3,
+        'id'=>4,
         'name'=>'Aulas',
         'icon'=>'aulas-icon.svg',
         'link'=>'',
@@ -43,7 +57,7 @@ $menu = array(
         )
     ),
     array(
-        'id'=>4,
+        'id'=>5,
         'name'=>'Reportes',
         'icon'=>'reportes-icon.svg',
         'link'=>'',

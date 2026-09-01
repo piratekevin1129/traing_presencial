@@ -14,7 +14,7 @@
     <link href="./public/assets/css/modal.css" rel="stylesheet" type="text/css" />
     <link href="./public/assets/css/camara.css" rel="stylesheet" type="text/css" />
     
-    <title>Traing Presencial - Usuarios</title>
+    <title>Traing Presencial - Cursos</title>
 </head>
 <body>
     <div class="main-container">
@@ -66,17 +66,17 @@
                                         <div class="accordion-content-col2">
                                             <button id="confirmar-ingreso-btn-<?php echo $course['id'] ?>" type="button" class="accordion-ingreso-btn unlocked" onclick="clickConfirmarIngreso(<?php echo $course['id']?>)">
                                                 <span>Confirmar Ingreso</span>
-                                                <img src="./public/assets/images/accordion/accordion-check-icon.svg" />
+                                                <img src="./public/assets/images/check-icon.svg" />
                                             </button>
     
                                             <button id="confirmar-salida-btn-<?php echo $course['id'] ?>" type="button" class="accordion-salida-btn locked" onclick="clickConfirmarSalida(<?php echo $course['id']?>)" disabled>
                                                 <span>Confirmar Salida</span>
-                                                <img src="./public/assets/images/accordion/accordion-check-icon.svg" />
+                                                <img src="./public/assets/images/check-icon.svg" />
                                             </button>
     
                                             <a id="confirmar-certificado-btn-<?php echo $course['id'] ?>" class="accordion-certificado-btn locked" href="#">
                                                 <span>Descargar certificado</span>
-                                                <img src="./public/assets/images/accordion/accordion-check-icon.svg" />
+                                                <img src="./public/assets/images/check-icon.svg" />
                                             </a>
                                         </div>
                                     </div>

@@ -1,4 +1,4 @@
-<?php $menu_active = [4,1];?>
+<?php $menu_active = [5,1];?>
 <?php require('./data/courses.php');?>
 
 <!DOCTYPE html>
@@ -77,7 +77,7 @@
                                                 <span>Usuarios inactivos</span>
                                                 <button></button>
                                             </th>
-                                            <th style="width: 10%;">
+                                            <th style="width: 10%;" class="text-center">
                                                 <span>Detalles</span>
                                             </th>
                                         </tr>

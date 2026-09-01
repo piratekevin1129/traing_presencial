@@ -38,10 +38,6 @@
     background-image: url(../images/button-sort-icon.svg);
 }
 
-.traing-tabla thead tr th:last-child{
-    text-align: center;
-}
-
 /******checkbox******/
 
 .traing-check{
@@ -114,8 +110,16 @@
     margin-right: auto;
 }
 .traing-tabla tbody td button img{
-    width: 22px;
+    width: 18px;
     height: auto;
+}
+
+.traing-tabla tbody td .button-qr{
+    background-color: var(--blanco);
+    box-shadow: -1px 1px 3px 1px rgba(0,0,0,0.3);
+}
+.traing-tabla tbody td .button-qr img{
+    width: 25px;
 }
 
 .td-checkbox{
@@ -124,4 +128,56 @@
 .td-boton{
     padding: 5px 0px;
     border-right: none;
+}
+.text-center{
+    text-align: center !important;
+}
+
+.table-tag{
+    width: 120px;
+    display: flex;
+    height: auto;
+    border-radius: 4px;
+    padding: 5px 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.table-tag img{
+    width: 15px;
+    height: 15px;
+}
+.table-tag p{
+    width: auto;
+    font-family: 'Quicksand-Regular';
+    font-size: 0.85rem;
+}
+
+/**************/
+
+.table-tag-verde{
+    background-color: var(--verde);
+}
+.table-tag-gris{
+    background-color: var(--cleargray);
+}
+.table-tag-gris img{
+    animation: animacion-loading 1s infinite linear;
+}
+@keyframes animacion-loading {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.table-tag-verde p{
+    color: var(--blanco);
+}
+.table-tag-gris p{
+    color: var(--text);
 }

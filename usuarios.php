@@ -82,7 +82,7 @@
                                         <span>Correo electrónico</span>
                                         <button></button>
                                     </th>
-                                    <th style="width: 5%;">
+                                    <th style="width: 5%;" class="text-center">
                                         <span>Ver</span>
                                     </th>
                                 </tr>

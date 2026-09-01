@@ -1,4 +1,4 @@
-<?php $menu_active = [3,1];?>
+<?php $menu_active = [4,1];?>
 <?php require('./data/rooms.php');?>
 
 <!DOCTYPE html>

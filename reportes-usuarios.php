@@ -1,4 +1,4 @@
-<?php $menu_active = [4,1];?>
+<?php $menu_active = [5,1];?>
 <?php require('./data/users.php');?>
 
 <!DOCTYPE html>
@@ -81,7 +81,7 @@
                                                 <span>Empresa</span>
                                                 <button></button>
                                             </th>
-                                            <th style="width: 10%;">
+                                            <th style="width: 10%;" class="text-center">
                                                 <span>Detalles</span>
                                                 <button></button>
                                             </th>
