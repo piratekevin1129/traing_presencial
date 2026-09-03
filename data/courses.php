@@ -36,5 +36,16 @@ $courses = array(
         'certificados'=>18,
         'inactivos'=>2
     )
-)
+);
+
+function findCourse($id){
+    global $courses;
+    $ind = 0;
+    foreach($courses as $c=>$course){
+        if($course['id']==$id){
+            $ind = $c;
+        }
+    }
+    return $ind;
+}
 ?>

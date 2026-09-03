@@ -26,7 +26,7 @@
                                 <input type="text" placeholder="Cédula *" maxlength="20" autocomplete="off" />
                             </div>
 
-                            <a href="cursos-user.php" class="login-row-form-btn1" type="button">
+                            <a href="curso-user.php" class="login-row-form-btn1" type="button">
                                 Ingresar
                             </a>
                             

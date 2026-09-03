@@ -60,6 +60,9 @@ function clickEscanearQr() {
             renderCamara()
 
             detectarQR()
+          })
+          .catch(function (err){
+            alert("No tienes una cámara instalada");
           });
         }
       });

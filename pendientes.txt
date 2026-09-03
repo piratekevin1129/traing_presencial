@@ -1,6 +1,4 @@
 mandar un correo con el formato actual al profesor
 terminar excel del reporte extendido
-cambiar el orden de escanear qr y luego colocar cédula
-
 
 lista de recomendaciones para el profesor
