@@ -47,7 +47,7 @@
                         <div class="card-container-header">
                             <p>Usuarios registrados <span id="cursos-creados-txt">3</span></p>
                             <div>
-                                <a class="boton-reporte" href="./public/docs/reporte-curso-1.xlsx">
+                                <a class="boton-reporte" href="./public/docs/reporte-usuario-1.xlsx">
                                     <img src="./public/assets/images/button-excel-icon.svg" />
                                     <span>Exportar reporte</span>
                                 </a>

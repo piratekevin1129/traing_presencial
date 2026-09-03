@@ -56,27 +56,27 @@
                         <tbody>
                             <tr>
                                 <td>Contratista</td>
-                                <td>Jefferson Gutierritos</td>
+                                <td>Jefferson Gutierrez</td>
                                 <td>123456789</td>
                                 <td>Neiva</td>
                                 <td>Isagen</td>
-                                <td>jeffersongutierritos@gmail.com</td>
+                                <td>jeffersongutierres@gmail.com</td>
                             </tr>
                             <tr>
                                 <td>Contratista</td>
-                                <td>Alvin Yakitori</td>
+                                <td>Angie Yepes</td>
                                 <td>987654321</td>
                                 <td>Ibagué</td>
                                 <td>Isagen</td>
-                                <td>alvinyakitori@gmail.com</td>
+                                <td>angieyepes@gmail.com</td>
                             </tr>
                             <tr>
                                 <td>Estudiante</td>
-                                <td>Drake Bell</td>
+                                <td>Diego Benitez</td>
                                 <td>111234567</td>
                                 <td>Cartagena</td>
                                 <td>Isagen</td>
-                                <td>drakebell@gmail.com</td>
+                                <td>diegobenitez@gmail.com</td>
                             </tr>
                         </tbody>
                     </table>
