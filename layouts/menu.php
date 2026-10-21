@@ -25,6 +25,12 @@ $menu = array(
                 'name'=>'Lista de cursos',
                 'icon'=>"",
                 'link'=>'./cursos.php'
+            ),
+            array(
+                'id'=>2,
+                'name'=>'Crear curso',
+                'icon'=>"",
+                'link'=>'./cursos-crear.php'
             )
         )
     ),

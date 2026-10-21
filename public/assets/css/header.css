@@ -71,7 +71,7 @@ header{
 }
 
 #cerrar-sesion-btn{
-    font-family: 'Quicksand-Medium';
+    font-family: var(--fontmedium);
     font-size: 1rem;
     color: var(--traing);
     text-decoration: none;

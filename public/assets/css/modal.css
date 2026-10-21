@@ -51,7 +51,7 @@
     justify-content: space-between;
 }
 .modal-header h1{
-    font-family: 'Quicksand-SemiBold';
+    font-family: var(--fontsemibold);
     font-size: 1rem;
     color: var(--azul);
 }
@@ -136,7 +136,7 @@
     justify-content: center;
 }
 .modal-curso-preview-info p{
-    font-family: 'Quicksand-Regular';
+    font-family: var(--fontregular);
     font-size: 1rem;
     color: var(--traing);
     margin-bottom: 8px;
@@ -171,7 +171,7 @@
     padding: 10px;
 }
 .modal-preview-tabla-header p{
-    font-family: 'Quicksand-SemiBold';
+    font-family: var(--fontsemibold);
     font-size: 1rem;
     color: var(--traing);
 }
@@ -188,7 +188,7 @@
 .modal-preview-table thead th{
     padding: 10px 10px;
     background-color: var(--amarilloclaro);
-    font-family: 'Quicksand-Medium';
+    font-family: var(--fontmedium);
     font-size: 0.9rem;
     color: var(--traing);
     text-align: left;
@@ -200,7 +200,7 @@
     background-color: var(--menugray);
 }
 .modal-preview-table tbody td{
-    font-family: 'Quicksand-Regular';
+    font-family: var(--fontregular);
     font-size: 0.9rem;
     color: var(--traing);
     padding: 5px 10px;
@@ -230,7 +230,7 @@
 }
 
 .modal-subtitle{
-    font-family: 'Quicksand-SemiBold';
+    font-family: var(--fontsemibold);
     font-size: 1.1rem;
     color: var(--azulclaro);
     margin-bottom: 10px;
@@ -274,14 +274,14 @@
 }
 
 .modal-curso-formgroup h4{
-    font-family: 'Quicksand-Medium';
+    font-family: var(--fontmedium);
     font-size: 0.85rem;
     color: var(--azulclaro);
     margin-bottom: 2px;
 }
 .modal-curso-formgroup p,
 .modal-curso-formgroup div span{
-    font-family: 'Quicksand-Regular';
+    font-family: var(--fontregular);
     font-size: 1rem;
     color: var(--traing);
 }
@@ -319,7 +319,7 @@
     border-bottom: var(--azulblanco) solid 1px;
 }
 .modal-qr-header p{
-    font-family: 'Quicksand-Medium';
+    font-family: var(--fontmedium);
     font-size: 1rem;
     color: var(--azulclaro);
 }
@@ -337,7 +337,7 @@
     align-items: center;
 }
 .modal-qr-body-col1 p{
-    font-family: 'Quicksand-Medium';
+    font-family: var(--fontmedium);
     font-size: 0.85rem;
     color: var(--text);
     margin-top: 10px;
@@ -398,7 +398,7 @@
     padding: 20px;
 }
 .modal-qr-row > p{
-    font-family: 'Quicksand-SemiBold';
+    font-family: var(--fontsemibold);
     font-size: 1rem;
     color: var(--azul);
     text-align: center;
@@ -449,7 +449,7 @@
     width: 20px;
 }
 .modal-qr-row > a span{
-    font-family: 'Quicksand-Medium';
+    font-family: var(--fontmedium);
     font-size: 1rem;
     color: var(--blanco);
 }

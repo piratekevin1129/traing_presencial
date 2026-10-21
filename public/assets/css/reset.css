@@ -5,6 +5,8 @@
     --azulclaro: #2BA2DB;
     --morado: #1B76B9;
     --amarilloclaro: #D0E9A7;
+    --naranja: #F69E06;
+
     --gris: #909090;
     --grisclaro: #B1B1B1;
     --blanco: #FFFFFF;
@@ -18,6 +20,17 @@
     
     --menugray: #F6F6F7;
     --appgray: #F4F6F9;
+
+    --fontbold: 'Quicksand-Bold';
+    --fontlight: 'Quicksand-Light';
+    --fontmedium: 'Quicksand-Medium';
+    --fontregular: 'Quicksand-Regular';
+    --fontsemibold: 'Quicksand-SemiBold';
+
+    --font2bold: 'Lato-Bold';
+    --font2light: 'Lato-Light';
+    --font2black: 'Lato-Black';
+    --font2regular: 'Lato-Regular';
 }
 
 html,body{
@@ -56,17 +69,21 @@ button{
     box-sizing: border-box;
     padding: 0px;
 }
-input,select{
+input,select,textarea{
     outline: none;
     outline-width: 0;
-    transition: border 0.15s;
+    box-sizing: border-box;
+    border-radius: 4px;
+    transition: border 0.15s, box-shadow 0.15s;
 }
+
 select{
     cursor: pointer;
 }
 
-input:focus,select:focus{
-    border: var(--azulclaro) solid 1px;
+input:focus,select:focus,textarea:focus{
+    border: var(--azul) solid 1px !important;
+    box-shadow: 0px 0px 5px 0px rgba(43,162,219,0.5);
 }
 
 .main-container{

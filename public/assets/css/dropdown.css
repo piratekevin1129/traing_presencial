@@ -18,7 +18,7 @@
     padding: 5px;
     padding-right: 32px;
 
-    font-family: 'Quicksand-Regular';
+    font-family: var(--fontregular);
     font-size: 1rem;
     color: var(--traing);
 }
@@ -74,7 +74,7 @@
 .modal-dropdown-box > div > p{
     width: auto;
     flex: 1;
-    font-family: 'Quicksand-Regular';
+    font-family: var(--fontregular);
     font-size: 1rem;
     color: var(--traing);
 }

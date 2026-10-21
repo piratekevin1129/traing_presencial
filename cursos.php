@@ -85,8 +85,6 @@
     
     
     <script src="./public/assets/scripts/modal.js"></script>
-    
-    
     <script src="./public/assets/scripts/cursos.js"></script>
 
     <script>

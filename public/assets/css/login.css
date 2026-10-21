@@ -59,13 +59,13 @@
     justify-content: center;
 }
 .login-row-container-col > div h1{
-    font-family: 'Lato-Regular';
+    font-family: var(--font2regular);
     font-size: 1.2rem;
     color: var(--gris);
     text-transform: uppercase;
 }
 .login-row-container-col > div h2{
-    font-family: 'Lato-Black';
+    font-family: var(--font2black);
     font-size: 1.2rem;
     color: var(--azul);
     text-transform: uppercase;
@@ -88,12 +88,12 @@
     height: 45px;
 }
 .login-row-container-col2 > div h4{
-    font-family: 'Lato-Bold';
+    font-family: var(--font2bold);
     font-size: 1rem;
     color: var(--azul);
 }
 .login-row-container-col2 > div p{
-    font-family: 'Quicksand-Regular';
+    font-family: var(--fontregular);
     font-size: 1rem;
     color: var(--text);
 }
@@ -113,7 +113,7 @@
 }
 .login-row-form-head p{
     width: 100%;
-    font-family: 'Lato-Bold';
+    font-family: var(--font2bold);
     font-size: 1.1rem;
     color: var(--blanco);
     padding: 18px 0px;
@@ -134,7 +134,7 @@
     width: 100%;
     border: none;
     background-color: var(--blanco);
-    font-family: 'Quicksand-Regular';
+    font-family: var(--fontregular);
     font-size: 0.9rem;
     color: var(--text);
     padding: 5px 2px;
@@ -156,7 +156,7 @@
     height: 35px;
     align-items: center;
 
-    font-family: 'Quicksand-Bold';
+    font-family: var(--fontbold);
     font-size: 1rem;
     margin: 15px auto;
     padding: 0px 25px;
@@ -176,7 +176,7 @@
 .login-row-form-link{
     display: block;
     width: 100%;
-    font-family: 'Quicksand-Medium';
+    font-family: var(--fontmedium);
     font-size: 0.85rem;
     color: var(--gris);
     text-align: center;
@@ -196,14 +196,14 @@
 }
 
 .login-row-form-foot p{
-    font-family: 'Quicksand-Regular';
+    font-family: var(--fontregular);
     color: var(--text);
     font-size: 0.9rem;
     text-align: center;
 }
 .login-row-form-foot p a{
     color: var(--morado);
-    font-family: 'Quicksand-Medium';
+    font-family: var(--fontmedium);
 }
 .login-row-form-foot p img{
     width: 18px;

@@ -18,7 +18,7 @@
             padding: 0px 30px;
             border-radius: 2px;
             background-color: var(--menugray);
-            font-family: 'Quicksand-Medium';
+            font-family: var(--fontmedium);
             font-size: 1rem;
             color: var(--azul);
             margin: 200px auto;

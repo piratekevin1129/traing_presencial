@@ -26,7 +26,7 @@
 /*******************/
 
 .main-title{
-    font-family: 'Quicksand-Medium';
+    font-family: var(--fontmedium);
     font-size: 1.2rem;
     color: var(--traing);
     margin-bottom: 15px;
@@ -74,12 +74,12 @@
     align-items: center;
 }
 .card-container-header > p{
-    font-family: 'Quicksand-SemiBold';
+    font-family: var(--fontsemibold);
     color: var(--azul);
     font-size: 1rem;
 }
 .card-container-header > p span{
-    font-family: 'Quicksand-Bold';
+    font-family: var(--fontbold);
 }
 .card-container-header > div{
     display: flex;

@@ -1,0 +1,14 @@
+#curso-presencial-opciones{
+    height: auto;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: var(--whiteblue);
+}
+.content-visible{
+    display: block;
+    margin-top: 20px;
+}
+.content-hidden{
+    display: none;
+}
+

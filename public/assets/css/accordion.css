@@ -21,7 +21,7 @@
 .accordion-header p{
     width: auto;
     flex: 1;
-    font-family: 'Quicksand-SemiBold';
+    font-family: var(--fontsemibold);
     font-size: 1rem;
     color: var(--blanco);
 }
@@ -81,7 +81,7 @@
     margin: 5px 0;
 }
 .accordion-content-info-col h4{
-    font-family: 'Quicksand-SemiBold';
+    font-family: var(--fontsemibold);
     font-size: 0.9rem;
     color: var(--azul);
     text-align: center;
@@ -89,7 +89,7 @@
 }
 .accordion-content-info-col p,
 .accordion-content-info-col div span{
-    font-family: 'Quicksand-Regular';
+    font-family: var(--fontregular);
     font-size: 0.9rem;
     color: var(--text);
     text-align: center;
@@ -135,7 +135,7 @@
 
 .accordion-content-col2 > button span,
 .accordion-content-col2 > a span{
-    font-family: 'Quicksand-Medium';
+    font-family: var(--fontmedium);
     font-size: 1rem;
 }
 .accordion-content-col2 > button img,
