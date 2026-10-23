@@ -1,0 +1,73 @@
+.calendario{
+    width: 300px;
+    height: auto;
+    background-color: var(--blanco);
+    border: var(--cleargray) solid 1px;
+    border-radius: 4px;
+    padding: 10px;
+}
+.mes-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mes-container{
+    font-family: var(--fontsemibold);
+    font-size: 1.2rem;
+    color: var(--azul);
+}
+
+.dias-semana-container,
+.dias-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.dias-semana-container{
+    height: auto;
+    align-items: stretch;
+    margin: 10px 0px;
+}
+
+.dias-semana-container > div,
+.dias-container > div{
+    width: auto;
+    width: calc(100% / 7);
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dias-semana-container > div > div,
+.dias-container > div > div{
+    height: 100%;
+    height: calc(100% - 2px);
+    width: 100%;
+    width: calc(100% - 2px);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dias-semana-container > div > div{
+    background-color: var(--cleargray);
+}
+.dias-container > div > div{
+    background-color: var(--blanco);
+}
+.dia-escogido{
+    cursor: pointer;
+    background-color: var(--naranja);
+    color: var(--blanco);
+}
+
+.dias-semana-container > div > div span{
+    font-family: var(--fontbold);
+    font-size: 0.8rem;
+    color: var(--traing);
+}
+.dias-container > div > div span{
+    font-family: var(--fontregular);
+    font-size: 1rem;
+    color: var(--grisoscuro);
+}

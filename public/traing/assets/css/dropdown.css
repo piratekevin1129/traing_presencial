@@ -1,0 +1,182 @@
+.dropdown{
+    height: 38px;
+    cursor: pointer;
+}
+.dropdown::after{
+    content: "";
+    position: absolute;
+    box-sizing: content-box;
+    width: 0px;
+    height: 0px;
+    border-left: rgba(255,255,255,0) solid 10px;
+    border-right: rgba(255,255,255,0) solid 10px;
+    border-top: var(--blanco) solid 15px;
+    top: 0px;
+    left: 10px;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: visibility 0.15s, opacity 0.15s, top 0.15s;
+}
+.dropdown-box{
+    height: 100%;
+    border: var(--cleargray) solid 1px;
+    background-color: var(--blanco);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 0px 10px;
+
+    transition: border 0.15s, box-shadow 0.15s;
+}
+.dropdown-arrow{
+    width: 15px;
+    height: 15px;
+    border-radius: 0px 0px 0px 4px;
+    border-left: var(--azulclaro) solid 2px;
+    border-bottom: var(--azulclaro) solid 2px;
+    transform: translate(0%,-25%) rotate(-45deg);
+
+    transition: transform 0.15s;
+}
+.dropdown-text{
+    width: auto;
+    flex: 1;
+    height: auto;
+    font-family: var(--fontregular);
+    color: var(--traing);
+    font-size: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dropdown-list{
+    position: absolute;
+    width: 100%;
+    height: auto;
+    max-height: 150px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gris) var(--blanco); /* thumb color and track color */
+    border-radius: 4px;
+    border: var(--cleargray) solid 1px;
+
+    left: 0px;
+    top: 0px;
+    transform: translateY(-100%);
+    box-shadow: 0px 0px 5px -2px rgba(0,0,0,0.5);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: visibility 0.15s, opacity 0.15s, top 0.15s;
+}
+
+.dropdown-open .dropdown-list{
+    visibility: visible;
+    top: -20px;
+    opacity: 1;
+    pointer-events: inherit;
+
+    transition: visibility 0s, opacity 0.15s, top 0.15s;
+}
+.dropdown-open .dropdown-box{
+    border: var(--azul) solid 1px;
+    box-shadow: 0px 0px 5px 0px rgba(43,162,219,0.5);
+}
+.dropdown-open::after{
+    opacity: 1;
+    visibility: visible;
+    top: -21px;
+    filter: drop-shadow(0px 4px 1px rgba(0,0,0,0.2));
+
+    transition: visibility 0s, opacity 0.15s, top 0.15s;
+}
+
+.dropdown-list::-webkit-scrollbar{
+    width: 10px;
+}
+.dropdown-list::-webkit-scrollbar-track{
+    background-color: var(--blanco);
+}
+.dropdown-list::-webkit-scrollbar-thumb {
+    background: var(--gris);
+}
+.dropdown-list-item{
+    cursor: pointer;
+    height: auto;
+    padding: 7px;
+    background-color: var(--blanco);
+    transition: background-color 0.15s;
+}
+.dropdown-list-item:hover{
+    background-color: var(--whiteblue);
+}
+.dropdown-list-item:hover span{
+    background-color: var(--blanco);
+}
+
+.dropdown-list-radio{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 10px;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.dropdown-list-radio p{
+    font-family: var(--fontregular);
+    font-size: 0.95rem;
+    color: var(--traing);
+    width: auto;
+    flex: 1;
+}
+.dropdown-list-radio input{
+    position: absolute;
+    opacity: 0;
+    top: 0px;
+    left: 0px;
+}
+.dropdown-list-radio span{
+    height: 20px;
+    width: 20px;
+    box-sizing: border-box;
+    background-color: var(--cleargray);
+    border: var(--grisclaro) solid 1px;
+    border-radius: 2px;
+    background-size: 80% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    transition: background-color 0.15s, border 0.15s;
+}
+.dropdown-list-radio input:checked ~ span {
+    background-color: var(--azulclaro);
+    border: var(--azulclaro) solid 1px;
+    background-image: url(../images/input-radio-check.svg);
+}
+
+.dropdown .disabled{
+    cursor: not-allowed;
+    background-color: var(--menugray);
+}
+.dropdown .disabled input,
+.dropdown .disabled span{
+    visibility: hidden;
+    pointer-events: none;
+}
+.dropdown .disabled p{
+    color: var(--grisclaro);
+}

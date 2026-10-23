@@ -12,3 +12,28 @@
     display: none;
 }
 
+.calendario-row{
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 25px;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.calendario-data{
+    width: auto;
+    height: auto;
+    flex: 1;
+    border: var(--cleargray) solid 1px;
+    padding: 20px;
+}
+
+.col-flex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 15px;
+}
+.col-hora{
+    width: 100px;
+}

@@ -5,3 +5,4 @@ incluir tiempo de duración de cada curso en el admin
 
 demo de replicar charla en traing normal
 correo y agenda para el facilitador
+agregar lista de profesores
