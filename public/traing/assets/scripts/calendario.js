@@ -75,13 +75,12 @@ function setCalendario(idname){
         dia1.id = 'calendario-date-'+i
         var h = ''
         h+='<div id="calendario-date-'+i+'-obj"><span>'+i+'</span></div>'
-        console.log(current_date.getDate(),i)
         if(i<current_date.getDate()){
             dia1.className = 'dia-bloqueado'
         }else{
             dia1.className = 'dia-normal'
             h+='<button class="calendario-date-btn1" type="button" onclick="addCharla('+i+')"><img src="./public/traing/assets/images/add-icon.svg" /></button>'
-            h+='<button class="calendario-date-btn2" type="button" onclick="verCharla('+i+')"><img src="./public/traing/assets/images/ver-icon.svg" /></button>'
+            h+='<button class="calendario-date-btn2" type="button"><img src="./public/traing/assets/images/ver-icon.svg" /></button>'
         }
         dia1.innerHTML = h
         dias.appendChild(dia1)
@@ -109,10 +108,11 @@ function createCharlas(){
         id:1,
         ano:2026,
         mes:9,
-        fecha:25,
+        fecha:26,
         dia:0,
         hora:15,
         minutos:0,
+        horario:1,
         facilitador:1,
         sede:1,
         aula:1,
@@ -120,6 +120,8 @@ function createCharlas(){
     })
     for(i = 0;i<charlas_data.length;i++){
         getE('calendario-date-'+charlas_data[i].fecha).className = 'dia-escogido'
+        getE('calendario-date-'+charlas_data[i].fecha).getElementsByClassName('calendario-date-btn2')[0].setAttribute('onclick','verCharla('+charlas_data[i].id+')')
+        
     }
 }
 
@@ -127,12 +129,25 @@ var current_date_selected = 0
 var current_date_status = ''
 
 function addCharla(dd){
+    getE('calendario-data-form').reset()
+
     activateCharla(dd,'normal')
     getE('calendario-data-options').className = 'calendario-data-option-guardar'
 }
 
-function verCharla(dd){
-    activateCharla(dd,'escogido')
+function verCharla(id){
+    var ind = getCharlaId(id)
+    console.log(ind)
+    if(ind!=-1){
+        getE('minutos-inp').value = charlas_data[ind].minutos
+        getE('hora-inp').value = charlas_data[ind].hora
+        getE('horario-sel').value = charlas_data[ind].horario
+        getE('facilitador-sel').value = charlas_data[ind].facilitador
+        getE('sede-sel').value = charlas_data[ind].sede
+        getE('aula-txt').value = charlas_data[ind].aula
+    }
+
+    activateCharla(charlas_data[ind].fecha,'escogido')
     getE('calendario-data-options').className = 'calendario-data-option-eliminar'
 }
 
@@ -149,11 +164,13 @@ function activateCharla(dd,status){
 
 function eliminarCharla(){
     var ind = getCharlaId(current_date_selected)
+    getE('calendario-date-'+current_date_selected).getElementsByClassName('calendario-date-btn2')[0].removeAttribute('onclick')
     getE('calendario-date-'+current_date_selected).className = 'dia-normal'
     if(ind!=-1){
         charlas_data.splice(ind,1)
     }
     getE('calendario-data').className = 'calendario-data-off'
+    getE('calendario-data-form').reset()
     current_date_selected = 0
     current_date_status = ''
 }
@@ -171,13 +188,17 @@ function guardarCharla(){
         dia:dia_semana,
         hora:15,
         minutos:0,
+        horario:1,
         facilitador:1,
         sede:1,
         aula:1,
         estudiantes:[]
     })
+    getE('calendario-date-'+current_date_selected).getElementsByClassName('calendario-date-btn2')[0].setAttribute('onclick','verCharla('+id+')')
+
     getE('calendario-date-'+current_date_selected).className = 'dia-escogido'
     getE('calendario-data').className = 'calendario-data-off'
+    getE('calendario-data-form').reset()
     current_date_selected = 0
     current_date_status = ''
 }

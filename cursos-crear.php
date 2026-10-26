@@ -13,6 +13,7 @@
     <?php include './layouts/scripts.php'; ?>
     <link href="./public/assets/css/menu.css" rel="stylesheet" type="text/css" />
     <link href="./public/assets/css/dashboard.css" rel="stylesheet" type="text/css" />
+    <link href="./public/assets/css/form.css" rel="stylesheet" type="text/css" />
     <link href="./public/traing/assets/css/main.css" rel="stylesheet" type="text/css" />
     <link href="./public/traing/assets/css/presencial.css" rel="stylesheet" type="text/css" />
     <link href="./public/traing/assets/css/dropdown.css" rel="stylesheet" type="text/css" />
@@ -293,85 +294,87 @@
                                     </div>
                                     
                                     <div class="calendario-data-off" id="calendario-data">
-                                        <p class="text-label">Horario del curso</p>
-                                        <div class="col-flex">
-                                            <div class="col-hora">
-                                                <div class="input">
-                                                    <input placeholder="2" type="text" maxlength="2" autocomplete="off" name="hora" />
-                                                    <label>Hora (1-12)</label>
+                                        <form id="calendario-data-form">
+                                            <p class="text-label">Horario del curso</p>
+                                            <div class="col-flex">
+                                                <div class="col-hora">
+                                                    <div class="input">
+                                                        <input id="hora-inp" placeholder="2" type="text" maxlength="2" autocomplete="off" name="hora" />
+                                                        <label>Hora (1-12)</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-hora">
+                                                    <div class="input">
+                                                        <input id="minutos-inp" placeholder="00" type="text" maxlength="2" autocomplete="off" name="minutos" />
+                                                        <label>Minutos (0-59)</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-hora">
+                                                    <div class="select">
+                                                        <select name="horario" id="horario-sel">
+                                                            <option value="0">Selecciona</option>
+                                                            <option value="1">A.M</option>
+                                                            <option value="2">P.M</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-hora">
-                                                <div class="input">
-                                                    <input placeholder="00" type="text" maxlength="2" autocomplete="off" name="minutos" />
-                                                    <label>Hora (00-59)</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-hora">
+    
+                                            <div class="br"></div>
+    
+                                            <!---->
+                                            <p class="text-label">Asigna un facilitador</p>
+                                            <div class="col-mid">
                                                 <div class="select">
-                                                    <select name="horario">
+                                                    <select name="facilitador" id="facilitador-sel">
                                                         <option value="0">Selecciona</option>
-                                                        <option value="am">A.M</option>
-                                                        <option value="pm">P.M</option>
+                                                        <option value="1">Armando Mendoza</option>
+                                                        <option value="2">Marcela Valencia</option>
+                                                        <option value="3">Beatriz Pinzón</option>
                                                     </select>
                                                 </div>
                                             </div>
-                                        </div>
-
-                                        <div class="br"></div>
-
-                                        <!---->
-                                        <p class="text-label">Asigna un facilitador</p>
-                                        <div class="col-mid">
-                                            <div class="select">
-                                                <select name="facilitador">
-                                                    <option value="0">Selecciona</option>
-                                                    <option value="1">Armando Mendoza</option>
-                                                    <option value="2">Marcela Valencia</option>
-                                                    <option value="3">Beatriz Pinzón</option>
-                                                </select>
+    
+                                            <div class="br"></div>
+    
+                                            <!---->
+                                            <p class="text-label">Selecciona una Sede</p>
+                                            <div class="col-mid">
+                                                <div class="select">
+                                                    <select name="sede" id="sede-sel">
+                                                        <option value="0">Selecciona</option>
+                                                        <option value="1">Sede 1</option>
+                                                        <option value="2">Sede 2</option>
+                                                        <option value="3">Sede 3</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
-
-                                        <div class="br"></div>
-
-                                        <!---->
-                                        <p class="text-label">Selecciona una Sede</p>
-                                        <div class="col-mid">
-                                            <div class="select">
-                                                <select name="sede">
-                                                    <option value="0">Selecciona</option>
-                                                    <option value="1">Sede 1</option>
-                                                    <option value="2">Sede 2</option>
-                                                    <option value="3">Sede 3</option>
-                                                </select>
+    
+                                            <div class="br"></div>
+    
+                                            <!---->
+                                            <p class="text-label">Selecciona una Aula</p>
+                                            <div class="col-mid">
+                                                <div class="select">
+                                                    <select name="aula" id="aula-txt">
+                                                        <option value="0">Selecciona</option>
+                                                        <option value="1">Aula 1</option>
+                                                        <option value="2">Aula 2</option>
+                                                        <option value="3">Aula 3</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
-
-                                        <div class="br"></div>
-
-                                        <!---->
-                                        <p class="text-label">Selecciona una Aula</p>
-                                        <div class="col-mid">
-                                            <div class="select">
-                                                <select name="aula">
-                                                    <option value="0">Selecciona</option>
-                                                    <option value="1">Aula 1</option>
-                                                    <option value="2">Aula 2</option>
-                                                    <option value="3">Aula 3</option>
-                                                </select>
+    
+                                            <div id="calendario-data-options" class="calendario-data-option-eliminar">
+                                                <button class="calendario-eliminar-btn" type="button" onclick="eliminarCharla()">
+                                                    <img src="./public/traing/assets/images/delete-icon.svg" />
+                                                    <span>Eliminar</span>
+                                                </button>
+                                                <button class="calendario-guardar-btn" type="button" onclick="guardarCharla()">
+                                                    <span>Guardar</span>
+                                                </button>
                                             </div>
-                                        </div>
-
-                                        <div id="calendario-data-options" class="calendario-data-option-eliminar">
-                                            <button class="calendario-eliminar-btn" type="button" onclick="eliminarCharla()">
-                                                <img src="./public/traing/assets/images/delete-icon.svg" />
-                                                <span>Eliminar</span>
-                                            </button>
-                                            <button class="calendario-guardar-btn" type="button" onclick="guardarCharla()">
-                                                <span>Guardar</span>
-                                            </button>
-                                        </div>
+                                        </form>
                                     </div>
 
                                 </div>
@@ -424,7 +427,7 @@
                                     <tr id="tabla-usuario-row-<?php echo $user[0]?>">
                                         <td class="td-checkbox">
                                             <label class="traing-check">
-                                                <input type="radio" name="usuario" value="<?php echo $user[0]?>" autocomplete="off" />
+                                                <input type="checkbox" name="usuario" value="<?php echo $user[0]?>" autocomplete="off" />
                                                 <span class="traing-check-box"></span>
                                                 <span class="traing-check-name"></span>
                                             </label>
@@ -442,7 +445,13 @@
                             </table>
                         </div>
 
+                        <div class="hr"></div>
 
+                        <div class="col-right">
+                            <button class="boton-principal" onclick="guardarCurso()">
+                                <span>Guardar</span>
+                            </button>
+                        </div>
                         <!--end-->
                     </div>
                 </div>
@@ -500,6 +509,10 @@
         }
 
         function toggleRepetirO1(inpu){
+
+        }
+
+        function guardarCurso(){
 
         }
         

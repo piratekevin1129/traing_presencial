@@ -1,4 +1,4 @@
-<?php $menu_active = [5,1];?>
+<?php $menu_active = [6,1];?>
 <?php require('./data/users.php');?>
 
 <!DOCTYPE html>

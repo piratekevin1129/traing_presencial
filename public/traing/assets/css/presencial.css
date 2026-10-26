@@ -51,6 +51,12 @@
     visibility: hidden;
     pointer-events: none;
 }
+#calendario-data-form{
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin: 0px;
+}
 
 .calendario-eliminar-btn,
 .calendario-guardar-btn{
@@ -103,7 +109,8 @@
     width: 100px;
 }
 
-#calendario-data-options{
+#calendario-data-options,
+.col-right{
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;

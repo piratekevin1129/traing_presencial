@@ -64,6 +64,20 @@ $menu = array(
     ),
     array(
         'id'=>5,
+        'name'=>'Facilitadores',
+        'icon'=>'usuarios-icon.svg',
+        'link'=>'',
+        'items'=>array(
+            array(
+                'id'=>1,
+                'name'=>'Lista de facilitadores',
+                'icon'=>"",
+                'link'=>'./facilitadores.php'
+            )
+        )
+    ),
+    array(
+        'id'=>6,
         'name'=>'Reportes',
         'icon'=>'reportes-icon.svg',
         'link'=>'',
