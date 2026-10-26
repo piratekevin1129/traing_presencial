@@ -19,13 +19,78 @@
     justify-content: space-between;
     align-items: flex-start;
 }
+.calendario-col{
+    width: auto;
+}
+.calendario-info-container{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5px;
+    margin-top: 15px;
+}
+.calendario-info-container > div{
+    width: 20px;
+    height: 12px;
+    border-radius: 4px;
+}
+.calendario-info-container > p{
+    font-family: var(--fontregular);
+    font-size: 1rem;
+    color: var(--traing);
+}
 
-.calendario-data{
+#calendario-data{
     width: auto;
     height: auto;
     flex: 1;
     border: var(--cleargray) solid 1px;
     padding: 20px;
+}
+.calendario-data-off{
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.calendario-eliminar-btn,
+.calendario-guardar-btn{
+    width: auto;
+    height: 35px;
+    border-radius: 4px;
+    box-shadow: -1px 1px 2px 0px rgba(0, 0, 0, 0.2);
+    font-family: var(--fontmedium);
+    font-size: 1rem;
+    gap: 15px;
+
+    padding: 0px 20px;
+}
+.calendario-eliminar-btn{
+    background-color: var(--rojo);
+}
+.calendario-guardar-btn{
+    background-color: var(--azulclaro);
+}
+.calendario-eliminar-btn span,
+.calendario-guardar-btn span{
+    font-family: var(--fontsemibold);
+    font-size: 1rem;
+    color: var(--blanco);
+}
+.calendario-eliminar-btn img,
+.calendario-guardar-btn img{
+    width: 18px;
+    height: 18px;
+}
+.calendario-eliminar-btn:hover,
+.calendario-guardar-btn:hover{
+    box-shadow: -1px 1px 3px 0px rgba(0,0,0,0.4);
+}
+
+.calendario-data-option-guardar .calendario-eliminar-btn{
+    display: none;
+}
+.calendario-data-option-eliminar .calendario-guardar-btn{
+    display: none;
 }
 
 .col-flex{
@@ -36,4 +101,10 @@
 }
 .col-hora{
     width: 100px;
+}
+
+#calendario-data-options{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
 }

@@ -37,6 +37,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 4px;
 }
 .dias-semana-container > div > div,
 .dias-container > div > div{
@@ -44,7 +45,6 @@
     height: calc(100% - 2px);
     width: 100%;
     width: calc(100% - 2px);
-    border-radius: 2px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -52,13 +52,22 @@
 .dias-semana-container > div > div{
     background-color: var(--cleargray);
 }
-.dias-container > div > div{
+
+/****************/
+
+.dia-normal > div{
+    cursor: pointer;
+    background-color: var(--blanco);
+}
+.dia-bloqueado > div{
+    cursor: not-allowed;
     background-color: var(--blanco);
 }
 .dia-escogido{
-    cursor: pointer;
     background-color: var(--naranja);
-    color: var(--blanco);
+}
+.dia-seleccionado{
+    background-color: var(--azulclaro);
 }
 
 .dias-semana-container > div > div span{
@@ -70,4 +79,69 @@
     font-family: var(--fontregular);
     font-size: 1rem;
     color: var(--grisoscuro);
+}
+
+.dia-bloqueado > div span{
+    font-family: var(--fontlight) !important;
+    color: var(--grisclaro) !important;
+}
+.dia-escogido > div span,
+.dia-seleccionado > div span{
+    color: var(--blanco) !important;
+}
+
+/**********************/
+
+.dias-container > div > button{
+    cursor: pointer;
+    position: absolute;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    top: 0px;
+    left: 0px;
+    box-shadow: 0px 0px 10px -2px rgba(0,0,0,0.5);
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+
+    transition: visibility 0.15s, opacity 0.15s;
+}
+/*.dias-container > div > button::after{
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    transform: translate(-50%,-50%) rotate(45deg);
+    top: 100%;
+    left: 50%;
+}*/
+.dias-container > div > button img{
+    display: block;
+    width: 18px;
+    height: 18px;
+}
+
+.dia-normal > button{
+    background-color: var(--azulclaro);
+}
+.dia-escogido > button{
+    background-color: var(--rojo);
+}
+
+.dia-normal .calendario-date-btn1{
+    display: flex !important;
+}
+.dia-normal .calendario-date-btn2{
+    display: none !important;
+}
+
+.dia-normal:hover > button,
+.dia-escogido:hover > button{
+    pointer-events: initial;
+    opacity: 1;
+    visibility: visible;
+
+    transition: visibility 0s, opacity 0.15s;
 }

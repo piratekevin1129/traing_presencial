@@ -29,7 +29,7 @@ function updateModalCurso(c,estado_qr,estado_qr2){
         getE('modal-usuario-hora-title').innerHTML = estado_qr2
                 
         var current_date = new Date()
-        getE('modal-usuario-hora-txt').innerHTML = String(current_date.getUTCHours()+':'+current_date.getUTCMinutes())
+        getE('modal-usuario-hora-txt').innerHTML = String(current_date.getHours()+':'+current_date.getMinutes())
     
         openModal(null,'modal-codigos-qr','Confirmar '+estado_qr2)
     }else{

@@ -19,7 +19,9 @@
     <link href="./public/traing/assets/css/switch.css" rel="stylesheet" type="text/css" />
     <link href="./public/traing/assets/css/calendario.css" rel="stylesheet" type="text/css" />
 
-    <title>Demo</title>
+    <link href="./public/assets/css/tabla.css" rel="stylesheet" type="text/css" />
+
+    <title>Traing Presencial - Crear curso</title>
 </head>
 <body>
     <div class="main-container">
@@ -220,70 +222,77 @@
                             <div id="curso-presencial-opciones-repetir-o3" class="content-hidden">
                                 <!--al seleccionar una vez a la semana-->
                                 <div class="col-mid">
-                                    <div class="dropdown" id="dropdown-dias-semana-o3" data-limit="1">
-                                        <div class="dropdown-list">
-                                            <div class="dropdown-list-item">
-                                                <label class="dropdown-list-radio">
-                                                    <p>Domingo</p>
-                                                    <input value="0" type="checkbox" name="dias-semana-o3" />
-                                                    <span></span>
-                                                </label>
-                                            </div>
-                                            <div class="dropdown-list-item">
-                                                <label class="dropdown-list-radio">
-                                                    <p>Lunes</p>
-                                                    <input value="1" type="checkbox" name="dias-semana-o3" />
-                                                    <span></span>
-                                                </label>
-                                            </div>
-                                            <div class="dropdown-list-item">
-                                                <label class="dropdown-list-radio">
-                                                    <p>Martes</p>
-                                                    <input value="2" type="checkbox" name="dias-semana-o3" />
-                                                    <span></span>
-                                                </label>
-                                            </div>
-                                            <div class="dropdown-list-item">
-                                                <label class="dropdown-list-radio">
-                                                    <p>Miércoles</p>
-                                                    <input value="3" type="checkbox" name="dias-semana-o3" />
-                                                    <span></span>
-                                                </label>
-                                            </div>
-                                            <div class="dropdown-list-item">
-                                                <label class="dropdown-list-radio">
-                                                    <p>Jueves</p>
-                                                    <input value="4" type="checkbox" name="dias-semana-o3" />
-                                                    <span></span>
-                                                </label>
-                                            </div>
-                                            <div class="dropdown-list-item">
-                                                <label class="dropdown-list-radio">
-                                                    <p>Viernes</p>
-                                                    <input value="5" type="checkbox" name="dias-semana-o3" />
-                                                    <span></span>
-                                                </label>
-                                            </div>
-                                            <div class="dropdown-list-item">
-                                                <label class="dropdown-list-radio">
-                                                    <p>Sábado</p>
-                                                    <input value="6" type="checkbox" name="dias-semana-o3" />
-                                                    <span></span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="dropdown-box">
-                                            <div class="dropdown-text">Selecciona el días</div>
-                                            <div class="dropdown-arrow"></div>
-                                        </div>
+                                    <div class="select">
+                                        <select name="periodo-o3"><!--onchange="selectRepetirOpcion3(this)"-->
+                                            <option value="0">Selecciona una opción</option>
+                                            <option value="1">Domingo</option>
+                                            <option value="2">Lunes</option>
+                                            <option value="3">Martes</option>
+                                            <option value="4">Miércoles</option>
+                                            <option value="5">Jueves</option>
+                                            <option value="6">Viernes</option>
+                                            <option value="7">Sábado</option>
+                                        </select>
+                                        <label>Selecciona el día de la semana</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="curso-presencial-opciones-repetir-o4" class="content-hidden">
+                                <!--al seleccionar cada 8 dias-->
+                                <div class="col-mid">
+                                    <div class="select">
+                                        <select name="periodo-o4"><!--onchange="selectRepetirOpcion4(this)"-->
+                                            <option value="0">Selecciona una opción</option>
+                                            <option value="1">Domingo</option>
+                                            <option value="2 selected">Lunes</option>
+                                            <option value="3">Martes</option>
+                                            <option value="4">Miércoles</option>
+                                            <option value="5">Jueves</option>
+                                            <option value="6">Viernes</option>
+                                            <option value="7">Sábado</option>
+                                        </select>
+                                        <label>Comenzar desde el dia Lunes</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="curso-presencial-opciones-repetir-o5" class="content-hidden">
+                                <!--al seleccionar cada 15 dias-->
+                                <div class="col-mid">
+                                    <div class="select">
+                                        <select name="periodo-o5"><!--onchange="selectRepetirOpcion5(this)"-->
+                                            <option value="0">Selecciona una opción</option>
+                                            <option value="1">Domingo</option>
+                                            <option value="2 selected">Lunes</option>
+                                            <option value="3">Martes</option>
+                                            <option value="4">Miércoles</option>
+                                            <option value="5">Jueves</option>
+                                            <option value="6">Viernes</option>
+                                            <option value="7">Sábado</option>
+                                        </select>
+                                        <label>Comenzar desde el dia Lunes</label>
                                     </div>
                                 </div>
                             </div>
 
                             <div id="curso-presencial-opciones-periodo" class="content-visible">
                                 <div class="calendario-row">
-                                    <div class="calendario" id="curso-presencial-calendario"></div>
-                                    <div class="calendario-data" id="calendario-data-off">
+                                    <div class="calendario-col">
+                                        <div class="calendario" id="curso-presencial-calendario"></div>
+
+                                        <div class="br"></div>
+                                        <div class="calendario-info-container">
+                                            <div style="background-color: var(--naranja);"></div>
+                                            <p>Días con curso agendado</p>
+                                        </div>
+                                        <div class="calendario-info-container">
+                                            <div style="background-color: var(--azulclaro);"></div>
+                                            <p>Día seleccionado</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="calendario-data-off" id="calendario-data">
                                         <p class="text-label">Horario del curso</p>
                                         <div class="col-flex">
                                             <div class="col-hora">
@@ -354,16 +363,86 @@
                                             </div>
                                         </div>
 
-                                        <div class="br"></div>
-
-                                        <p class="text-label">Estudiantes para esta charla</p>
-
+                                        <div id="calendario-data-options" class="calendario-data-option-eliminar">
+                                            <button class="calendario-eliminar-btn" type="button" onclick="eliminarCharla()">
+                                                <img src="./public/traing/assets/images/delete-icon.svg" />
+                                                <span>Eliminar</span>
+                                            </button>
+                                            <button class="calendario-guardar-btn" type="button" onclick="guardarCharla()">
+                                                <span>Guardar</span>
+                                            </button>
+                                        </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
 
+                        <div class="br"></div>
+                        <p class="text">Estudiantes para esta charla</p>
+                        <p class="sublabel">Selecciona los estudiantes para esta charla</p>
                         
+                        <div class="tabla-container">
+                            <table id="tabla-usuarios" class="traing-tabla">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 3%;">
+                                            <!--input radio-->
+                                        </th>
+                                        <th style="width: 12%;">
+                                            <span>Tipo trabajador</span>
+                                            <button></button>
+                                        </th>
+                                        <th style="width: 12%;">
+                                            <span>Nombres</span>
+                                            <button></button>
+                                        </th>
+                                        <th style="width: 12%;">
+                                            <span>Apellido</span>
+                                            <button></button>
+                                        </th>
+                                        <th style="width: 12%;">
+                                            <span>Documento</span>
+                                            <button></button>
+                                        </th>
+                                        <th style="width: 14%;">
+                                            <span>Ciudad</span>
+                                            <button></button>
+                                        </th>
+                                        <th style="width: 12%;">
+                                            <span>Empresa</span>
+                                            <button></button>
+                                        </th>
+                                        <th style="width: 23%;">
+                                            <span>Correo electrónico</span>
+                                            <button></button>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach($users as $user){?>
+                                    <tr id="tabla-usuario-row-<?php echo $user[0]?>">
+                                        <td class="td-checkbox">
+                                            <label class="traing-check">
+                                                <input type="radio" name="usuario" value="<?php echo $user[0]?>" autocomplete="off" />
+                                                <span class="traing-check-box"></span>
+                                                <span class="traing-check-name"></span>
+                                            </label>
+                                        </td>
+                                        <td><?php echo $tipos_trabajador[$user[1]]?></td>
+                                        <td><?php echo $user[2]?></td>
+                                        <td><?php echo $user[3]?></td>
+                                        <td><?php echo $user[5]?></td>
+                                        <td><?php echo $user[6]?></td>
+                                        <td><?php echo $user[7]?></td>
+                                        <td><?php echo $user[8]?></td>
+                                    </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
+
+
                         <!--end-->
                     </div>
                 </div>
@@ -376,12 +455,28 @@
     <script src="./public/traing/assets/scripts/dropdown.js"></script>
     <script src="./public/traing/assets/scripts/calendario.js"></script>
     <script>
+        var usuarios_data = []
+        <?php foreach($users as $user){?>
+        usuarios_data.push({
+            id:<?php echo $user[0]?>,
+            tipo:"<?php echo $user[1]?>",
+            nombres:"<?php echo $user[2]?>",
+            apellidos:"<?php echo $user[3]?>",
+            tipodoc:"<?php echo $user[4]?>",
+            documento:<?php echo $user[5]?>,
+            ciudad:"<?php echo $user[6]?>",
+            empresa:"<?php echo $user[7]?>",
+            correo:"<?php echo $user[8]?>",
+        })
+        <?php } ?>
+
         window.onload = function(){
             setDropdown()
             setCalendario('curso-presencial-calendario')
+            createCharlas()
         }
 
-        var current_mes = new Date().getUTCMonth()
+        var current_mes = new Date().getMonth()
         getE('current-mes-txt').innerHTML = meses[current_mes].m
 
         function toggleRepetir(inpu){
@@ -398,6 +493,8 @@
             getE('curso-presencial-opciones-repetir-o1').className = 'content-hidden'
             getE('curso-presencial-opciones-repetir-o2').className = 'content-hidden'
             getE('curso-presencial-opciones-repetir-o3').className = 'content-hidden'
+            getE('curso-presencial-opciones-repetir-o4').className = 'content-hidden'
+            getE('curso-presencial-opciones-repetir-o5').className = 'content-hidden'
             
             getE('curso-presencial-opciones-repetir-o'+selected_value).className = 'content-visible'
         }

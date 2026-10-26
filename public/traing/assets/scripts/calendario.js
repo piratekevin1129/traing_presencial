@@ -61,7 +61,7 @@ function setCalendario(idname){
 
     var current_date = new Date()
     var custom_date = new Date(
-        String(current_date.getUTCFullYear()+'-'+meses[current_mes].f+'-1')
+        String(current_date.getFullYear()+'-'+meses[current_mes].f+'-1')
     )
     var first_day = custom_date.getDay()
     
@@ -72,7 +72,18 @@ function setCalendario(idname){
     }
     for(i = 1;i<=meses[current_mes].n;i++){
         var dia1 = document.createElement('div')
-        dia1.innerHTML = '<div><span>'+i+'</span></div>'
+        dia1.id = 'calendario-date-'+i
+        var h = ''
+        h+='<div id="calendario-date-'+i+'-obj"><span>'+i+'</span></div>'
+        console.log(current_date.getDate(),i)
+        if(i<current_date.getDate()){
+            dia1.className = 'dia-bloqueado'
+        }else{
+            dia1.className = 'dia-normal'
+            h+='<button class="calendario-date-btn1" type="button" onclick="addCharla('+i+')"><img src="./public/traing/assets/images/add-icon.svg" /></button>'
+            h+='<button class="calendario-date-btn2" type="button" onclick="verCharla('+i+')"><img src="./public/traing/assets/images/ver-icon.svg" /></button>'
+        }
+        dia1.innerHTML = h
         dias.appendChild(dia1)
     }
 
@@ -81,3 +92,92 @@ function setCalendario(idname){
     getE(idname).appendChild(dias)
 }
 
+var charlas_data = []
+
+function getCharlaId(id){
+    var ind = -1
+    for(var c = 0;c<charlas_data.length;c++){
+        if(charlas_data[c].id==id){
+            ind = c
+        }
+    }
+    return ind
+}
+
+function createCharlas(){
+    charlas_data.push({
+        id:1,
+        ano:2026,
+        mes:9,
+        fecha:25,
+        dia:0,
+        hora:15,
+        minutos:0,
+        facilitador:1,
+        sede:1,
+        aula:1,
+        estudiantes:[]
+    })
+    for(i = 0;i<charlas_data.length;i++){
+        getE('calendario-date-'+charlas_data[i].fecha).className = 'dia-escogido'
+    }
+}
+
+var current_date_selected = 0
+var current_date_status = ''
+
+function addCharla(dd){
+    activateCharla(dd,'normal')
+    getE('calendario-data-options').className = 'calendario-data-option-guardar'
+}
+
+function verCharla(dd){
+    activateCharla(dd,'escogido')
+    getE('calendario-data-options').className = 'calendario-data-option-eliminar'
+}
+
+function activateCharla(dd,status){
+    //mirar si hay uno activo
+    if(current_date_selected!=0){
+        getE('calendario-date-'+current_date_selected).className = 'dia-'+current_date_status
+    }
+    getE('calendario-data').className = 'calendario-data-on'
+    current_date_selected = dd
+    current_date_status = status
+    getE('calendario-date-'+dd).className = 'dia-seleccionado'
+}
+
+function eliminarCharla(){
+    var ind = getCharlaId(current_date_selected)
+    getE('calendario-date-'+current_date_selected).className = 'dia-normal'
+    if(ind!=-1){
+        charlas_data.splice(ind,1)
+    }
+    getE('calendario-data').className = 'calendario-data-off'
+    current_date_selected = 0
+    current_date_status = ''
+}
+
+function guardarCharla(){
+    var id = (charlas_data.length+1)
+    var dia_semana = new Date(
+        String('2026-'+meses[current_mes].f+'-'+current_date_selected)
+    ).getDate()
+    charlas_data.push({
+        id:id,
+        ano:2026,
+        mes:9,
+        fecha:current_date_selected,
+        dia:dia_semana,
+        hora:15,
+        minutos:0,
+        facilitador:1,
+        sede:1,
+        aula:1,
+        estudiantes:[]
+    })
+    getE('calendario-date-'+current_date_selected).className = 'dia-escogido'
+    getE('calendario-data').className = 'calendario-data-off'
+    current_date_selected = 0
+    current_date_status = ''
+}
