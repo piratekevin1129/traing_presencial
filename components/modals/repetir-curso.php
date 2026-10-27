@@ -6,7 +6,7 @@
                 <img src="./public/assets/images/modal/close-modal-icon.svg" />
             </button>
         </div>
-        <div class="modal-body col-height">
+        <div class="modal-body">
             <div class="col-full">
                 <div class="select">
                     <select name="periodo" onchange="selectRepetirPeriodo(this)">
@@ -152,7 +152,78 @@
                     </div>
                 </div>
             </div>
+
+            <br>
             
+            <p class="text-label">Horario del curso</p>
+            <div class="col-flex">
+                <div class="col-hora">
+                    <div class="input">
+                        <input id="hora-modal-inp" placeholder="2" type="text" maxlength="2" autocomplete="off" name="hora" />
+                        <label>Hora (1-12)</label>
+                    </div>
+                </div>
+                <div class="col-hora">
+                    <div class="input">
+                        <input id="minutos-modal-inp" placeholder="00" type="text" maxlength="2" autocomplete="off" name="minutos" />
+                        <label>Minutos (0-59)</label>
+                    </div>
+                </div>
+                <div class="col-hora">
+                    <div class="select">
+                        <select name="horario" id="horario-modal-sel">
+                            <option value="0">Selecciona</option>
+                            <option value="1">A.M</option>
+                            <option value="2">P.M</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <!---->
+            <p class="text-label">Asigna un facilitador</p>
+            <div class="col-mid">
+                <div class="select">
+                    <select name="facilitador" id="facilitador-modal-sel">
+                        <option value="0">Selecciona</option>
+                        <option value="1">Armando Mendoza</option>
+                        <option value="2">Marcela Valencia</option>
+                        <option value="3">Beatriz Pinzón</option>
+                    </select>
+                </div>
+            </div>
+
+            <br>
+
+            <!---->
+            <p class="text-label">Selecciona una Sede</p>
+            <div class="col-mid">
+                <div class="select">
+                    <select name="sede" id="sede-modal-sel">
+                        <option value="0">Selecciona</option>
+                        <option value="1">Sede 1</option>
+                        <option value="2">Sede 2</option>
+                        <option value="3">Sede 3</option>
+                    </select>
+                </div>
+            </div>
+
+            <br>
+
+            <!---->
+            <p class="text-label">Selecciona una Aula</p>
+            <div class="col-mid">
+                <div class="select">
+                    <select name="aula" id="aula-modal-txt">
+                        <option value="0">Selecciona</option>
+                        <option value="1">Aula 1</option>
+                        <option value="2">Aula 2</option>
+                        <option value="3">Aula 3</option>
+                    </select>
+                </div>
+            </div>
         </div>
         <div class="modal-footer">
             <button class="boton-cancelar" onclick="closeModal()">

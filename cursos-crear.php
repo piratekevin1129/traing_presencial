@@ -137,7 +137,8 @@
                                     <div class="calendario-col">
                                         <div class="calendario" id="curso-presencial-calendario"></div>
 
-                                        <div class="br"></div>
+                                        <br>
+
                                         <div class="calendario-info-container">
                                             <div style="background-color: var(--naranja);"></div>
                                             <p>Días con curso agendado</p>
@@ -180,7 +181,7 @@
                                                 </div>
                                             </div>
     
-                                            <div class="br"></div>
+                                            <br>
     
                                             <!---->
                                             <p class="text-label">Asigna un facilitador</p>
@@ -195,7 +196,7 @@
                                                 </div>
                                             </div>
     
-                                            <div class="br"></div>
+                                            <br>
     
                                             <!---->
                                             <p class="text-label">Selecciona una Sede</p>
@@ -210,7 +211,7 @@
                                                 </div>
                                             </div>
     
-                                            <div class="br"></div>
+                                            <br>
     
                                             <!---->
                                             <p class="text-label">Selecciona una Aula</p>
@@ -231,7 +232,8 @@
                                                     <span>Eliminar</span>
                                                 </button>
                                                 <button class="calendario-guardar-btn" type="button" onclick="guardarCharla()">
-                                                    <span>Guardar</span>
+                                                    <img src="./public/traing/assets/images/add-icon.svg" />
+                                                    <span>Agregar</span>
                                                 </button>
                                             </div>
                                         </form>
@@ -361,7 +363,7 @@
 
         function aplicarRepetir(){
             getE('curso-presencial-opciones-repetir').className = 'content-visible'
-            closeModalMasivo()
+            closeModal()
         }
 
         function selectRepetirPeriodo(inpu){

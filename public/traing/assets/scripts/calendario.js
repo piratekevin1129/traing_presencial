@@ -137,7 +137,7 @@ function addCharla(dd){
 
 function verCharla(id){
     var ind = getCharlaId(id)
-    console.log(ind)
+    //console.log(ind)
     if(ind!=-1){
         getE('minutos-inp').value = charlas_data[ind].minutos
         getE('hora-inp').value = charlas_data[ind].hora
@@ -204,6 +204,16 @@ function guardarCharla(){
 }
 
 function eliminarTodo(){
-    //eliminar
+    //eliminar todo
+    for(i = 0;i<charlas_data.length;i++){
+        getE('calendario-date-'+charlas_data[i].fecha).className = 'dia-normal'
+        getE('calendario-date-'+charlas_data[i].fecha).getElementsByClassName('calendario-date-btn2')[0].removeAttribute('onclick')
+    }
 
+    getE('calendario-data').className = 'calendario-data-off'
+    getE('calendario-data-form').reset()
+    current_date_selected = 0
+    current_date_status = ''
+    charlas_data.length = 0
+    charlas_data = []
 }
