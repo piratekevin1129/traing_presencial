@@ -147,8 +147,7 @@
 }
 
 .table-tag img{
-    width: 15px;
-    height: 15px;
+    
 }
 .table-tag p{
     width: auto;
@@ -161,10 +160,16 @@
 .table-tag-verde{
     background-color: var(--verde);
 }
+.table-tag-verde img{
+    width: 12px;
+    height: 12px;
+}
 .table-tag-gris{
     background-color: var(--cleargray);
 }
 .table-tag-gris img{
+    width: 15px;
+    height: 15px;
     animation: animacion-loading 1s infinite linear;
 }
 @keyframes animacion-loading {

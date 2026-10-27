@@ -59,7 +59,8 @@
 }
 
 .calendario-eliminar-btn,
-.calendario-guardar-btn{
+.calendario-guardar-btn,
+.calendario-limpiar-btn{
     width: auto;
     height: 35px;
     border-radius: 4px;
@@ -76,19 +77,29 @@
 .calendario-guardar-btn{
     background-color: var(--azulclaro);
 }
+.calendario-limpiar-btn{
+    background-color: var(--cleargray);
+    margin-top: 20px;
+}
 .calendario-eliminar-btn span,
-.calendario-guardar-btn span{
+.calendario-guardar-btn span,
+.calendario-limpiar-btn span{
     font-family: var(--fontsemibold);
     font-size: 1rem;
     color: var(--blanco);
 }
+.calendario-limpiar-btn span{
+    color: var(--traing);
+}
 .calendario-eliminar-btn img,
-.calendario-guardar-btn img{
+.calendario-guardar-btn img,
+.calendario-limpiar-btn img{
     width: 18px;
     height: 18px;
 }
 .calendario-eliminar-btn:hover,
-.calendario-guardar-btn:hover{
+.calendario-guardar-btn:hover,
+.calendario-limpiar-btn:hover{
     box-shadow: -1px 1px 3px 0px rgba(0,0,0,0.4);
 }
 

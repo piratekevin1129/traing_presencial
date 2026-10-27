@@ -98,6 +98,9 @@
 
     transition: visibility 0s, opacity 0.15s, top 0.15s;
 }
+.dropdown-open .dropdown-arrow{
+    transform: translate(0%,25%) rotate(135deg);
+}
 
 .dropdown-list::-webkit-scrollbar{
     width: 10px;

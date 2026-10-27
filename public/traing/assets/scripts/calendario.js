@@ -108,7 +108,7 @@ function createCharlas(){
         id:1,
         ano:2026,
         mes:9,
-        fecha:26,
+        fecha:27,
         dia:0,
         hora:15,
         minutos:0,
@@ -201,4 +201,9 @@ function guardarCharla(){
     getE('calendario-data-form').reset()
     current_date_selected = 0
     current_date_status = ''
+}
+
+function eliminarTodo(){
+    //eliminar
+
 }

@@ -20,6 +20,12 @@
 .col-mid{
     width: 50%;
 }
+.col-full{
+    width: 100%;
+}
+.col-height{
+    padding: 110px 15px 15px 15px !important;
+}
 
 .input{
     

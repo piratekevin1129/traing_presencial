@@ -55,7 +55,7 @@
                                 <?php foreach($courses as $course){?>
                                 <tr>
                                     <td><?php echo $course['nombre']?></td>
-                                    <td class="text-center">
+                                    <td>
                                         <?php echo $course['fecha'].'<br>'.$course['sede'].'<br>'.$course['ubicacion'] ?>
                                     </td>
                                     <td class="text-center"><?php echo $course['registrados']?></td>
