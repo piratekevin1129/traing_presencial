@@ -1,0 +1,148 @@
+#sweetalert{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.3);
+}
+#modal-dialog{
+    width: 400px;
+    max-width: 100%;
+    max-width: calc(100% - 20px);
+    height: auto;
+    padding: 30px;
+    max-height: 100%;
+    border-radius: 8px;
+    background-color: var(--blanco);
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.3);
+}
+.modal-icon{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 0px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-icon div{
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+
+    mask-size: 100% 100%;
+    mask-position: center;
+}
+#sweetalert .success .modal-icon{
+    border: var(--verde) solid 2px;
+}
+#sweetalert .success .modal-icon > div{
+    background-color: var(--verde);
+    mask-image: url(../images/alert/success-icon.svg);
+}
+#sweetalert .warning .modal-icon{
+    border: var(--naranja) solid 2px;
+}
+#sweetalert .warning .modal-icon > div{
+    background-color: var(--naranja);
+    mask-image: url(../images/alert/warning-icon.svg);
+}
+
+/****************************/
+
+#modal-alert-title{
+    font-family: var(--fontbold);
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 20px 0px;
+}
+#sweetalert .success h1{
+    color: var(--verde);
+}
+#sweetalert .warning h1{
+    color: var(--naranja);
+}
+
+#modal-alert-text{
+    font-family: var(--fontregular);
+    font-size: 1rem;
+    color: var(--traing);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#modal-alert-btn{
+    cursor: pointer;
+    justify-content: center;
+    width: fit-content;
+    padding: 7px 20px;
+    margin: 0px auto;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0px 2px 7px -2px rgba(0,0,0,0.5);
+}
+#modal-alert-btn span{
+    font-family: var(--fontmedium);
+    font-size: 1rem;
+    color: var(--blanco);
+}
+
+#sweetalert .success button{
+    background-color: var(--verde);
+}
+#sweetalert .warning button{
+    background-color: var(--naranja);
+}
+
+/**************************/
+
+.sweetalert-off{
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: visibility 0.45s;
+}
+.sweetalert-on{
+    visibility: visible;
+}
+
+.sweetalert-on #modal-dialog{
+    animation: animacion-alert-on 0.45s 1 forwards;
+}
+@keyframes animacion-alert-on{
+    0%{
+        opacity: 0;
+        transform: scale(0.7);
+        animation-timing-function: ease-in;
+    }
+    50%{
+        opacity: 1;
+        transform: scale(1.1);
+        animation-timing-function: ease-out;
+    }
+    75%{
+        transform: scale(0.9);
+        animation-timing-function: ease-in;
+    }
+    87%{
+        transform: scale(1.05);
+        animation-timing-function: ease-out;
+    }
+    93%{
+        transform: scale(0.95);
+        animation-timing-function: ease-in;
+    }
+    96%,100%{
+        transform: scale(1);
+    }
+}
+
+.sweetalert-off #modal-dialog{
+    animation: animacion-alert-on 0.45s 1 reverse forwards;
+}

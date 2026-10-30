@@ -21,6 +21,7 @@
     <link href="./public/traing/assets/css/calendario.css" rel="stylesheet" type="text/css" />
 
     <link href="./public/assets/css/modal.css" rel="stylesheet" type="text/css" />
+    <link href="./public/assets/css/sweetalert.css" rel="stylesheet" type="text/css" />
     <link href="./public/assets/css/tabla.css" rel="stylesheet" type="text/css" />
 
     <title>Traing Presencial - Crear curso</title>
@@ -323,9 +324,11 @@
     </div>
 
     <!--modales-->
-    <?php include './components/modals/repetir-curso.php'; ?>    
+    <?php include './components/modals/repetir-curso.php'; ?>
+    <?php include './components/modals/sweetalert.php'; ?>
     
     <script src="./public/assets/scripts/modal.js"></script>
+    <script src="./public/assets/scripts/sweetalert.js"></script>
     <script src="./public/traing/assets/scripts/dropdown.js"></script>
     <script src="./public/traing/assets/scripts/calendario.js"></script>
     <script>
@@ -387,7 +390,7 @@
         }
 
         function guardarCurso(){
-
+            openModalAlert({status:'success',title:'Curso creado con éxito!',text:'Ya puedes ir a la sección de curso y descargar los códigos QR para la asistencia y finalización'})
         }
         
     </script>

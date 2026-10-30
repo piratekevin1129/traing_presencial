@@ -108,7 +108,7 @@ function createCharlas(){
         id:1,
         ano:2026,
         mes:9,
-        fecha:27,
+        fecha:30,
         dia:0,
         hora:15,
         minutos:0,
