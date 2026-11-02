@@ -17,6 +17,7 @@
     <link href="./public/assets/css/form.css" rel="stylesheet" type="text/css" />
     <link href="./public/assets/css/dropdown.css" rel="stylesheet" type="text/css" />
     
+    <link href="./public/assets/css/sweetalert.css" rel="stylesheet" type="text/css" />
     <title>Traing Presencial - Usuarios</title>
 </head>
 <body>
@@ -78,37 +79,37 @@
                                         <span>Empresa</span>
                                         <button></button>
                                     </th>
-                                    <th style="width: 18%;">
+                                    <th style="width: 23%;">
                                         <span>Correo electrónico</span>
                                         <button></button>
                                     </th>
-                                    <th style="width: 5%;" class="text-center">
+                                    <!--<th style="width: 5%;" class="text-center">
                                         <span>Ver</span>
-                                    </th>
+                                    </th>-->
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach($users as $user){?>
-                                <tr id="tabla-usuario-row-<?php echo $user[0]?>">
+                                <tr id="tabla-usuario-row-<?php echo $user['id']?>">
                                     <td class="td-checkbox">
                                         <label class="traing-check">
-                                            <input type="radio" name="usuario" value="<?php echo $user[0]?>" autocomplete="off" />
+                                            <input type="radio" name="usuario" value="<?php echo $user['id']?>" autocomplete="off" />
                                             <span class="traing-check-box"></span>
                                             <span class="traing-check-name"></span>
                                         </label>
                                     </td>
-                                    <td><?php echo $tipos_trabajador[$user[1]]?></td>
-                                    <td><?php echo $user[2]?></td>
-                                    <td><?php echo $user[3]?></td>
-                                    <td><?php echo $user[5]?></td>
-                                    <td><?php echo $user[6]?></td>
-                                    <td><?php echo $user[7]?></td>
-                                    <td><?php echo $user[8]?></td>
-                                    <td class="td-boton">
+                                    <td><?php echo $user['tipou']?></td>
+                                    <td><?php echo $user['nombre']?></td>
+                                    <td><?php echo $user['apellido']?></td>
+                                    <td><?php echo $user['documento']?></td>
+                                    <td><?php echo $user['ciudad']?></td>
+                                    <td><?php echo $user['empresa']?></td>
+                                    <td><?php echo $user['correo']?></td>
+                                    <!--<td class="td-boton">
                                         <button>
                                             <img src="./public/assets/images/button-ver-icon.svg" />
                                         </button>
-                                    </td>
+                                    </td>-->
                                 </tr>
                                 <?php } ?>
                             </tbody>
@@ -121,8 +122,10 @@
 
     <?php include './components/modals/registrar-usuarios.php'; ?>
     <?php include './components/modals/form-usuario.php'; ?>
+    <?php include './components/modals/sweetalert.php'; ?>
 
     <script src="./public/assets/scripts/modal.js"></script>
+    <script src="./public/assets/scripts/sweetalert.js"></script>
     <script src="./public/assets/scripts/form.js"></script>
     <script src="./public/assets/scripts/dropdown.js"></script>
     <script src="./public/assets/scripts/usuarios.js"></script>
@@ -140,15 +143,15 @@
         var usuarios_data = []
         <?php foreach($users as $user){?>
         usuarios_data.push({
-            id:<?php echo $user[0]?>,
-            tipo:"<?php echo $user[1]?>",
-            nombres:"<?php echo $user[2]?>",
-            apellidos:"<?php echo $user[3]?>",
-            tipodoc:"<?php echo $user[4]?>",
-            documento:<?php echo $user[5]?>,
-            ciudad:"<?php echo $user[6]?>",
-            empresa:"<?php echo $user[7]?>",
-            correo:"<?php echo $user[8]?>",
+            id:<?php echo $user['id']?>,
+            tipou:"<?php echo $user['tipou']?>",
+            nombre:"<?php echo $user['nombre']?>",
+            apellido:"<?php echo $user['apellido']?>",
+            tipod:"<?php echo $user['tipod']?>",
+            documento:<?php echo $user['documento']?>,
+            ciudad:"<?php echo $user['ciudad']?>",
+            empresa:"<?php echo $user['empresa']?>",
+            correo:"<?php echo $user['correo']?>",
         })
         <?php } ?>
 

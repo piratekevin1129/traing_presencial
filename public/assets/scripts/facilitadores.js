@@ -7,7 +7,11 @@ function updateCursoFile(inpu){
 function editarUsuario(){
     var item_selected = getRadioChecked('tabla-usuarios','usuario')
     if(item_selected==0){
-        alert("Debes seleccionar un facilitador de la tabla")
+        openModalAlert({
+            status:'warning',
+            title:'¡Aún no!',
+            text:"Debes seleccionar un facilitador de la tabla"
+        })
     }else{
         var user_data_ind = findUser(item_selected)
         var user_data = null
@@ -25,7 +29,11 @@ function editarUsuario(){
 
             openModal(null,'modal-formulario-usuario','Editar Facilitador')
         }else{
-            alert("No se encontró información del facilitador")
+            openModalAlert({
+                status:'warning',
+                title:'¡Aún no!',
+                text:"No se encontró información del facilitador"
+            })
         }
     }
 }
@@ -33,7 +41,11 @@ function editarUsuario(){
 function eliminarUsuario(){
     var item_selected = getRadioChecked('tabla-usuarios','usuario')
     if(item_selected==0){
-        alert("Debes seleccionar un facilitador de la tabla")
+        openModalAlert({
+            status:'warning',
+            title:'¡Aún no!',
+            text:"Debes seleccionar un facilitador de la tabla"
+        })
     }else{
         if(confirm('¿Realmente desea eliminar este usuario?')){
             var tbdoy_container = getE('tabla-usuarios').getElementsByTagName('tbody')[0]

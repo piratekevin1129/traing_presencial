@@ -9,10 +9,23 @@ $tipos_documento = array(
     'ce'=>'Cédula extranjera'
 );
 
-$users = array(
-    array(1,'e','María','Castro','cc','1039469185','Cali','Isagen','mariafernanda@isagen.com.co',0),
-    array(2,'c','Gustavo','Perez','cc','123456789','Bogotá','Isagen','gustavop@isagen.com.co',1),
-    array(3,'e','Alvaro','Usuga','ce','987654321','Medellín','Isagen','alvarou@isagen.com.co',1),
-    array(4,'e','Ivan','Díaz','cc','666111000','Medellín','Isagen','ivand@isagen.com.co',0)
-);
+$users_file = file_get_contents((__DIR__).'/db/users.json');
+$users_file_data = json_decode($users_file,true);
+
+$users = array();
+
+foreach($users_file_data as $ud){
+    array_push($users,array(
+        'id'=>$ud['id'],
+        'tipou'=>$tipos_trabajador[$ud['tipou']],
+        'nombre'=>$ud['nombre'],
+        'apellido'=>$ud['apellido'],
+        'tipod'=>$tipos_documento[$ud['tipod']],
+        'documento'=>$ud['documento'],
+        'ciudad'=>$ud['ciudad'],
+        'empresa'=>$ud['correo'],
+        'correo'=>$ud['correo']
+    ));
+}
+
 ?>

@@ -15,6 +15,8 @@
     <link href="./public/assets/css/modal.css" rel="stylesheet" type="text/css" />
     <link href="./public/assets/css/form.css" rel="stylesheet" type="text/css" />
     <link href="./public/assets/css/dropdown.css" rel="stylesheet" type="text/css" />
+
+    <link href="./public/assets/css/sweetalert.css" rel="stylesheet" type="text/css" />
     
     <title>Traing Presencial - Facilitadores</title>
 </head>
@@ -115,8 +117,10 @@
 
     <?php include './components/modals/registrar-facilitadores.php'; ?>
     <?php include './components/modals/form-facilitador.php'; ?>
+    <?php include './components/modals/sweetalert.php'; ?>
 
     <script src="./public/assets/scripts/modal.js"></script>
+    <script src="./public/assets/scripts/sweetalert.js"></script>
     <script src="./public/assets/scripts/form.js"></script>
     <script src="./public/assets/scripts/dropdown.js"></script>
     <script src="./public/assets/scripts/facilitadores.js"></script>
