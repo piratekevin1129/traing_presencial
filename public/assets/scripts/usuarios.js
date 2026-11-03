@@ -31,6 +31,54 @@ function removeCursoList(ind,list){
     getE('modal-cursos-preview-'+list).removeChild(item)
 }
 
+function registrarUsuario(){
+    var action = ''
+    if(editing_usuario){
+        action = './api/users.php?action=saveUser';
+    }else{
+        action = './api/users.php?action=updateUser';
+    }
+    $.ajax({
+        url: action,
+        method: 'POST',
+        data:{
+            tipou:getValueSwitch('tipo-trabajador-txt'),
+            nombre:String(getE('nombres-txt').value),
+            apellido:String(getE('apellidos-txt').value),
+            tipod:String(getE('tipo-documento-txt').value),
+            documento:String(getE('numero-documento-txt').value),
+            ciudad:String(getE('ciudad-txt').value),
+            empresa:String(getE('empresa-txt').value),
+            correo:String(getE('correo-txt').value)
+        },
+        success: function(response){
+            var response_data = JSON.parse(response)
+            if(response_data.status=='success'){
+                openModalAlert({
+                    status:'success',
+                    title:'¡Éxito!',
+                    text:"El usuario se ha guardado correctamente",
+                    action:'reloadPage'
+                });
+                
+            }else{
+                console.log(response)
+                openModalAlert({
+                    status:'warning',
+                    title:'¡Algo salió mal!',
+                    text:"No se pudo guardar el usuario"
+                });
+            }
+        },
+        error: function(xhr, status, error) {
+            console.log("Error de servidor");
+            console.log(xhr);
+        }
+    })
+}
+
+var editing_usuario = false;
+
 function editarUsuario(){
     var item_selected = getRadioChecked('tabla-usuarios','usuario')
     if(item_selected==0){
@@ -43,14 +91,16 @@ function editarUsuario(){
         var user_data_ind = findUser(item_selected)
         var user_data = null
         if(user_data_ind!=-1){
+            editing_usuario = true;
             user_data = usuarios_data[user_data_ind]
+            console.log(user_data)
             
-            setValueSWitch('tipo-trabajador-txt',user_data.tipo)
-            getE('tipo-documento-txt').value = user_data.tipodoc
+            setValueSWitch('tipo-trabajador-txt',user_data.tipou)
+            getE('tipo-documento-txt').value = user_data.tipod
 
             getE('numero-documento-txt').value = user_data.documento
-            getE('nombres-txt').value = user_data.nombres
-            getE('apellidos-txt').value = user_data.apellidos
+            getE('nombres-txt').value = user_data.nombre
+            getE('apellidos-txt').value = user_data.apellido
             getE('correo-txt').value = user_data.correo
             getE('ciudad-txt').value = user_data.ciudad
             getE('empresa-txt').value = user_data.empresa
@@ -76,8 +126,38 @@ function eliminarUsuario(){
         })
     }else{
         if(confirm('¿Realmente desea eliminar este usuario?')){
-            var tbdoy_container = getE('tabla-usuarios').getElementsByTagName('tbody')[0]
-            tbdoy_container.removeChild(getE('tabla-usuario-row-'+item_selected))
+            //var tbdoy_container = getE('tabla-usuarios').getElementsByTagName('tbody')[0]
+            //tbdoy_container.removeChild(getE('tabla-usuario-row-'+item_selected))
+            $.ajax({
+                url: './api/users.php?action=deleteUser',
+                method: 'POST',
+                data:{
+                    id:item_selected
+                },
+                success: function(response){
+                    var response_data = JSON.parse(response)
+                    if(response_data.status=='success'){
+                        openModalAlert({
+                            status:'success',
+                            title:'¡Éxito!',
+                            text:"El usuario se ha eliminado correctamente",
+                            action:'reloadPage'
+                        });
+                        
+                    }else{
+                        console.log(response)
+                        openModalAlert({
+                            status:'warning',
+                            title:'¡Algo salió mal!',
+                            text:"No se pudo eliminar el usuario"
+                        });
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.log("Error de servidor");
+                    console.log(xhr);
+                }
+            })
         }
     }
     

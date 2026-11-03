@@ -6,7 +6,7 @@
         <h1 id="modal-alert-title"></h1>
         <div id="modal-alert-text"></div>
         <button id="modal-alert-btn" onclick="closeModalAlert()">
-            <span>OK!</span>
+            <span>Aceptar</span>
         </button>
     </div>
 </div>

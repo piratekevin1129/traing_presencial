@@ -18,6 +18,7 @@
     <link href="./public/assets/css/dropdown.css" rel="stylesheet" type="text/css" />
     
     <link href="./public/assets/css/sweetalert.css" rel="stylesheet" type="text/css" />
+    <script src="./public/assets/scripts/jquery-4.0.0.min.js"></script>
     <title>Traing Presencial - Usuarios</title>
 </head>
 <body>
@@ -98,7 +99,7 @@
                                             <span class="traing-check-name"></span>
                                         </label>
                                     </td>
-                                    <td><?php echo $user['tipou']?></td>
+                                    <td><?php echo $tipos_trabajador[$user['tipou']]?></td>
                                     <td><?php echo $user['nombre']?></td>
                                     <td><?php echo $user['apellido']?></td>
                                     <td><?php echo $user['documento']?></td>
@@ -122,7 +123,7 @@
 
     <?php include './components/modals/registrar-usuarios.php'; ?>
     <?php include './components/modals/form-usuario.php'; ?>
-    <?php include './components/modals/sweetalert.php'; ?>
+    <?php include './components/sweetalert/sweetalert.php'; ?>
 
     <script src="./public/assets/scripts/modal.js"></script>
     <script src="./public/assets/scripts/sweetalert.js"></script>

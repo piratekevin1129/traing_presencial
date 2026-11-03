@@ -22,8 +22,7 @@
             <div class="modal-form-row2">
                 <div class="modal-form-col">
                     <select id="tipo-documento-txt">
-                        <option value="0">Tipo de documento</option>
-                        <option value="cc">Cédula de ciudadanía</option>
+                        <option value="cc" selected>Cédula de ciudadanía</option>
                         <option value="ce">Cédula extranjera</option>
                     </select>
                 </div>
@@ -74,7 +73,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button class="boton-principal" onclick="closeModalIndividual()">
+            <button class="boton-principal" onclick="registrarUsuario()">
                 Guardar
             </button>
         </div>

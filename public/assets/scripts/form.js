@@ -8,16 +8,28 @@ function toggleSwitch(obj){
 }
 
 function setValueSWitch(container,value){
-    console.log(container)
     var items = getE(container).getElementsByTagName('div')
     for(var i = 0;i<items.length;i++){
         var data_value = items[i].getAttribute('data-value')
+        console.log(data_value,value)
         if(data_value==value){
             items[i].className = 'modal-switch-option selected'
         }else{
             items[i].className = 'modal-switch-option'
         }
     }
+}
+
+function getValueSwitch(container){
+    var items = getE(container).getElementsByTagName('div')
+    var data_value = ''
+    for(var i = 0;i<items.length;i++){
+        var clase = items[i].className
+        if(clase.indexOf('selected')!=-1){
+            data_value = items[i].getAttribute('data-value')
+        }
+    }
+    return data_value
 }
 
 function updateFileInput(inpu){

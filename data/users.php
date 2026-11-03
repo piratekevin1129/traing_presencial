@@ -17,13 +17,13 @@ $users = array();
 foreach($users_file_data as $ud){
     array_push($users,array(
         'id'=>$ud['id'],
-        'tipou'=>$tipos_trabajador[$ud['tipou']],
+        'tipou'=>$ud['tipou'],
         'nombre'=>$ud['nombre'],
         'apellido'=>$ud['apellido'],
-        'tipod'=>$tipos_documento[$ud['tipod']],
+        'tipod'=>$ud['tipod'],
         'documento'=>$ud['documento'],
         'ciudad'=>$ud['ciudad'],
-        'empresa'=>$ud['correo'],
+        'empresa'=>$ud['empresa'],
         'correo'=>$ud['correo']
     ));
 }

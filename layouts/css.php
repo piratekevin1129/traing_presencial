@@ -5,4 +5,7 @@
     function getE(idname){
         return document.getElementById(idname)
     }
+    function reloadPage(){
+        window.location.reload()
+    }
 </script>

@@ -117,7 +117,7 @@
 
     <?php include './components/modals/registrar-facilitadores.php'; ?>
     <?php include './components/modals/form-facilitador.php'; ?>
-    <?php include './components/modals/sweetalert.php'; ?>
+    <?php include './components/sweetalert/sweetalert.php'; ?>
 
     <script src="./public/assets/scripts/modal.js"></script>
     <script src="./public/assets/scripts/sweetalert.js"></script>
