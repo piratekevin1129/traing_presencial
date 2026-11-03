@@ -99,6 +99,9 @@
     word-break: break-all;
     border-right: var(--cleargray) solid 1px;
 }
+.traing-tabla tbody td > span{
+    font-family: var(--fontbold);
+}
 
 .traing-tabla tbody td button{
     width: 30px;

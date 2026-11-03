@@ -9,3 +9,7 @@ function verAsistencias(id_curso){
     //validacion para el id
     openModal(null,'modal-ver-asistencias','Ver asistencia de los estudiantes')
 }
+
+function editarCurso(id_curso){
+    window.location.href = './cursos-crear.php'
+}

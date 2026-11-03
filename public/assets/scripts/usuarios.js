@@ -32,16 +32,17 @@ function removeCursoList(ind,list){
 }
 
 function registrarUsuario(){
-    var action = ''
+    var action = './api/users.php?action=saveUser';
+    var id = 0;
     if(editing_usuario){
-        action = './api/users.php?action=saveUser';
-    }else{
         action = './api/users.php?action=updateUser';
+        id = editing_usuario_id;
     }
     $.ajax({
         url: action,
         method: 'POST',
         data:{
+            id:id,
             tipou:getValueSwitch('tipo-trabajador-txt'),
             nombre:String(getE('nombres-txt').value),
             apellido:String(getE('apellidos-txt').value),
@@ -78,6 +79,7 @@ function registrarUsuario(){
 }
 
 var editing_usuario = false;
+var editing_usuario_id = 0;
 
 function editarUsuario(){
     var item_selected = getRadioChecked('tabla-usuarios','usuario')
@@ -92,6 +94,8 @@ function editarUsuario(){
         var user_data = null
         if(user_data_ind!=-1){
             editing_usuario = true;
+            editing_usuario_id = item_selected;
+
             user_data = usuarios_data[user_data_ind]
             console.log(user_data)
             
