@@ -3,7 +3,7 @@
         <div class="modal-header">
             <h1>...</h1>
             <button onclick="closeModal()">
-                <img src="./public/assets/images/modal/close-modal-icon.svg" />
+                <img src="<?php echo $base ?>public/assets/images/modal/close-modal-icon.svg" />
             </button>
         </div>
         <div class="modal-body">
@@ -89,7 +89,7 @@
                             </div>
                         </div>
                         <div class="dropdown-box">
-                            <div class="dropdown-text">Selecciona los días</div>
+                            <div class="dropdown-text">Seleccionar</div>
                             <div class="dropdown-arrow"></div>
                         </div>
                     </div>
@@ -172,9 +172,8 @@
                 <div class="col-hora">
                     <div class="select">
                         <select name="horario" id="horario-modal-sel">
-                            <option value="0">Selecciona</option>
-                            <option value="1">A.M</option>
-                            <option value="2">P.M</option>
+                            <option value="am" selected>A.M</option>
+                            <option value="pm">P.M</option>
                         </select>
                     </div>
                 </div>
@@ -201,11 +200,11 @@
             <p class="text-label">Selecciona una Sede</p>
             <div class="col-mid">
                 <div class="select">
-                    <select name="sede" id="sede-modal-sel">
-                        <option value="0">Selecciona</option>
-                        <option value="1">Sede 1</option>
-                        <option value="2">Sede 2</option>
-                        <option value="3">Sede 3</option>
+                    <select name="sede" id="sede-modal-sel" onchange="updateAulasModal(this)">
+                        <option value="0" selected>Selecciona</option>
+                        <?php foreach($headquarters as $h){?>
+                        <option value="<?php echo $h['id']?>"><?php echo $h['nombre']?></option>
+                        <?php } ?>
                     </select>
                 </div>
             </div>
@@ -216,11 +215,8 @@
             <p class="text-label">Selecciona una Aula</p>
             <div class="col-mid">
                 <div class="select">
-                    <select name="aula" id="aula-modal-txt">
+                    <select name="aula" id="aula-modal-sel">
                         <option value="0">Selecciona</option>
-                        <option value="1">Aula 1</option>
-                        <option value="2">Aula 2</option>
-                        <option value="3">Aula 3</option>
                     </select>
                 </div>
             </div>

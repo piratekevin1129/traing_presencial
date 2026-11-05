@@ -2,6 +2,12 @@
 .tabla-container{
     border-bottom: var(--morado) solid 2px;
 }
+.tabla-form{
+    position: relative;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
 .traing-tabla{
     table-layout: fixed;
     border-collapse: collapse;
@@ -103,7 +109,8 @@
     font-family: var(--fontbold);
 }
 
-.traing-tabla tbody td button{
+.traing-tabla tbody td button,
+.boton-td{
     width: 30px;
     height: 30px;
     border-radius: 4px;
@@ -112,7 +119,12 @@
     margin-left: auto;
     margin-right: auto;
 }
-.traing-tabla tbody td button img{
+.boton-td{
+    display: flex;
+    align-items: center;
+}
+.traing-tabla tbody td button img,
+.boton-td img{
     width: 18px;
     height: auto;
 }
@@ -131,6 +143,18 @@
 .td-boton{
     padding: 5px 0px;
     border-right: none;
+}
+.td-botones-flex{
+    display: flex;
+    height: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.td-botones-flex .boton-td,
+.td-botones-flex button{
+    margin: 0px !important;
 }
 .text-center{
     text-align: center !important;

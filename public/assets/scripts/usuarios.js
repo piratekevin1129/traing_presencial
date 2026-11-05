@@ -9,13 +9,13 @@ function addCursoList(ind,list){
     course_div.id = 'modal-curso-preview-'+cursos_data[ind].id+'_'+list
     var h = ''
     h+='<div class="modal-curso-preview-img">'
-        h+='<img src="./public/assets/images/cursos/'+cursos_data[ind].img+'" />'
+        h+='<img src="'+base+'public/assets/images/cursos/'+cursos_data[ind].img+'" />'
     h+='</div>'
     h+='<div class="modal-curso-preview-info">'
         h+='<p id="modal-curso-name-txt">'+cursos_data[ind].nombre+'</p>'
         h+='<div>'
-            h+='<button><img src="./public/assets/images/modal/time-modal-icon.svg" /></button>'
-            h+='<button><img src="./public/assets/images/modal/fecha-modal-icon.svg" /></button>'
+            h+='<button><img src="'+base+'public/assets/images/modal/time-modal-icon.svg" /></button>'
+            h+='<button><img src="'+base+'public/assets/images/modal/fecha-modal-icon.svg" /></button>'
         h+='</div>'
     h+='</div>'
     //h+='<div class="modal-curso-preview-close">'
@@ -32,10 +32,10 @@ function removeCursoList(ind,list){
 }
 
 function registrarUsuario(){
-    var action = './api/users.php?action=saveUser';
+    var action = base+'api/users.php?action=saveUser';
     var id = 0;
     if(editing_usuario){
-        action = './api/users.php?action=updateUser';
+        action = base+'api/users.php?action=updateUser';
         id = editing_usuario_id;
     }
     $.ajax({
@@ -97,7 +97,6 @@ function editarUsuario(){
             editing_usuario_id = item_selected;
 
             user_data = usuarios_data[user_data_ind]
-            console.log(user_data)
             
             setValueSWitch('tipo-trabajador-txt',user_data.tipou)
             getE('tipo-documento-txt').value = user_data.tipod
@@ -133,7 +132,7 @@ function eliminarUsuario(){
             //var tbdoy_container = getE('tabla-usuarios').getElementsByTagName('tbody')[0]
             //tbdoy_container.removeChild(getE('tabla-usuario-row-'+item_selected))
             $.ajax({
-                url: './api/users.php?action=deleteUser',
+                url: base+'api/users.php?action=deleteUser',
                 method: 'POST',
                 data:{
                     id:item_selected

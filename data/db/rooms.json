@@ -1,0 +1,11 @@
+[{
+    "id":1,
+    "nombre":"Aula 1",
+    "extra":"Primer piso al fondo",
+    "sedeid":1
+},{
+    "id":2,
+    "nombre":"Aula 2",
+    "extra":"Al lado derecho de recepción",
+    "sedeid":1
+}]

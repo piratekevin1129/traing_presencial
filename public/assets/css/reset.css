@@ -70,7 +70,12 @@ button{
     box-sizing: border-box;
     padding: 0px;
 }
-input,select,textarea{
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+select,
+textarea{
     outline: none;
     outline-width: 0;
     box-sizing: border-box;
@@ -82,9 +87,22 @@ select{
     cursor: pointer;
 }
 
-input:focus,select:focus,textarea:focus{
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus{
     border: var(--azul) solid 1px !important;
     box-shadow: 0px 0px 5px 0px rgba(43,162,219,0.5);
+}
+
+input[type="text"]::placeholder,
+input[type="password"]::placeholder,
+input[type="email"]::placeholder,
+input[type="number"]::placeholder,
+textarea{
+    color: var(--grisclaro);
 }
 
 .main-container{

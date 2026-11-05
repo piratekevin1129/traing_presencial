@@ -54,7 +54,10 @@ function clickDropdownItem(d,it,inpu){
             textos.push(dropdown_data[d].selecteditems[l].txt)
         }
     }
-    var texto = textos.join("; ")
+    var texto = 'Seleccionar'
+    if(textos.length>0){
+        texto = textos.join("; ")
+    }
     getE(dropdown_data[d].id).getElementsByClassName('dropdown-text')[0].innerHTML = texto
 
     if(current_limit==dropdown_data[d].limit){

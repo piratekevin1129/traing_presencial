@@ -3,7 +3,7 @@
         <button id="menu-btn" class="menu-btn-opened" onclick="clickSideMenu(this)"></button>
     </div>
     <div class="logo">
-        <img src="./public/assets/images/logo.png" />
+        <img src="<?php echo $base?>public/assets/images/logo.png" />
     </div>
     <div class="cerrar-sesion-container">
         <a id="cerrar-sesion-btn" href="login.php">Cerrar Sesión</a>

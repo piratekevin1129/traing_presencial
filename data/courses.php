@@ -1,6 +1,6 @@
 <?php 
 
-$courses_file = file_get_contents((__DIR__).'/db/courses.json');
+$courses_file = file_get_contents(__DIR__.'/db/courses.json');
 $courses_file_data = json_decode($courses_file,true);
 
 $courses = array();
@@ -12,10 +12,13 @@ foreach($courses_file_data as $cd){
         'img'=>$cd['img'],
         'fecha'=>$cd['fecha'],
         'fechaformat'=>$cd['fechaformat'],
-        'sede'=>$cd['sede'],
-        'aula'=>$cd['aula'],
-        'direccion'=>$cd['direccion'],
-        'facilitador'=>$cd['facilitador'],
+        'sedeid'=>$cd['sedeid'],
+        'sede'=>"",
+        'aulaid'=>$cd['aulaid'],
+        'aula'=>"",
+        'direccion'=>"",
+        'facilitadorid'=>$cd['facilitadorid'],
+        'facilitador'=>"",
         'registrados'=>0,
         'certificados'=>0
     ));

@@ -32,7 +32,9 @@
 #modal-registro-usuarios-masivo .modal-box{
     width: 1024px;
 }
-#modal-ver-asistencias .modal-box{
+#modal-ver-asistencias .modal-box,
+#modal-detalles-usuario .modal-box,
+#modal-detalles-curso .modal-box{
     width: 1024px;
 }
 #modal-formulario-usuario .modal-box{
@@ -76,6 +78,13 @@
     overflow-x: hidden;
     overflow-y: auto;
 }
+.modal-body > p{
+    font-family: var(--fontmedium);
+    font-size: 1rem;
+    color: var(--traing);
+    margin-bottom: 10px;
+}
+
 .modal-select-container,
 .modal-dropdown-container{
     margin-bottom: 10px;

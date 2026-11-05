@@ -3,7 +3,7 @@
         <div class="modal-header">
             <h1>...</h1>
             <button onclick="closeModalIndividual()">
-                <img src="./public/assets/images/modal/close-modal-icon.svg" />
+                <img src="<?php echo $base ?>public/assets/images/modal/close-modal-icon.svg" />
             </button>
         </div>
         <div class="modal-body">

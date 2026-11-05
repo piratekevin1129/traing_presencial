@@ -16,7 +16,17 @@ $users_file_data = json_decode($users_file,true);
 if(isset($_GET['action'])){
     $action = $_GET['action'];
 
-    if($action=='saveUser'){
+    if($action=='getUser'){
+        $users_ids = array_column($users_file_data, 'id');
+        $user_ind = array_search((int)$_POST['userid'], $users_ids);
+
+        if ($user_ind !== false) {
+            exit('{"status":"success","data":'.json_encode($users_file_data[$user_ind]).'}');
+        } else {
+            exit('{"status":"error","data":"No se encontró información del usuario"}');
+        }
+    }
+    else if($action=='saveUser'){
         $current_id = (int)$users_file_data[count($users_file_data)-1]['id'];
         $new_id = ($current_id+1);
         array_push($users_file_data,array(
@@ -87,6 +97,8 @@ if(isset($_GET['action'])){
         }else{
             exit('{"status":"error","data":"error guardando el archivo"}');
         }
+    }else{
+        exit('{"status":"error","data":"action not found"}');    
     }
 }else{
     exit('{"status":"error","data":"action not defined"}');

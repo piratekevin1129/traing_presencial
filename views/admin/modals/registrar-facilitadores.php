@@ -3,7 +3,7 @@
         <div class="modal-header">
             <h1>...</h1>
             <button onclick="closeModalMasivo()">
-                <img src="./public/assets/images/modal/close-modal-icon.svg" />
+                <img src="<?php echo $base ?>public/assets/images/modal/close-modal-icon.svg" />
             </button>
         </div>
         <div class="modal-body">            
@@ -13,7 +13,7 @@
                         <input id="lista-usuarios-txt" type="file" name="archivo" onchange="updateCursoFile(this)" accept=".xlsx"  />
                     </form>
                     <p>Subir archivo excel</p>
-                    <img src="./public/assets/images/button-upload-icon.svg" />
+                    <img src="<?php echo $base ?>public/assets/images/button-upload-icon.svg" />
                 </div>
             </div>
     
@@ -60,8 +60,8 @@
             </div>
         </div>
         <div class="modal-footer">
-            <a class="boton-download" href="./public/docs/facilitadores-prueba.xlsx" target="_blank">
-                <img src="./public/assets/images/button-download-icon.svg" />
+            <a class="boton-download" href="<?php echo $base ?>public/docs/facilitadores-prueba.xlsx" target="_blank">
+                <img src="<?php echo $base ?>public/assets/images/button-download-icon.svg" />
                 <span>Descarga de archivo guía en excel</span>
             </a>
             <button class="boton-principal" onclick="closeModalMasivo()">

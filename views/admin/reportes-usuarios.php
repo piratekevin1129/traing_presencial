@@ -1,5 +1,6 @@
 <?php $menu_active = [6,1];?>
-<?php require('./data/users.php');?>
+<?php require('../../api/env.php');?>
+<?php require('../../data/users.php');?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -7,48 +8,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <?php include './layouts/css.php'; ?>
-    <?php include './layouts/scripts.php'; ?>
-    <link href="./public/assets/css/menu.css" rel="stylesheet" type="text/css" />
-    <link href="./public/assets/css/dashboard.css" rel="stylesheet" type="text/css" />
-    <link href="./public/assets/css/tabla.css" rel="stylesheet" type="text/css" />
-    <link href="./public/assets/css/form.css" rel="stylesheet" type="text/css" />
+    <?php include '../../layouts/css.php'; ?>
+    <?php include '../../layouts/scripts.php'; ?>
+    <link href="<?php echo $base ?>public/assets/css/menu.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>public/assets/css/dashboard.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>public/assets/css/tabla.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>public/assets/css/sweetalert.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>public/assets/css/modal.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>public/assets/css/form.css" rel="stylesheet" type="text/css" />
     
+    <script src="<?php echo $base ?>public/assets/scripts/jquery-4.0.0.min.js"></script>
     <title>Traing Presencial - Reportes</title>
 </head>
 <body>
     <div class="main-container">
-        <?php include './layouts/header.php'; ?>
+        <?php include '../../layouts/header.php'; ?>
         <div class="body-container body-container-dashboard">
-            <?php include './layouts/menu.php' ?>
+            <?php include '../../layouts/menu.php' ?>
             <div id="app" class="app-opened">
                 <!--contenido aqui ↓↓↓-->
                 <h1 class="main-title">Reportes</h1>
                 <div class="app-container">
                     <div class="reportes-botones-container">
                         <a class="reporte-boton" href="./reportes-cursos.php">
-                            <div style="mask: url(./public/assets/images/reportes/cursos-btn-icon.svg);"></div>
+                            <div style="mask: url(<?php echo $base ?>public/assets/images/reportes/cursos-btn-icon.svg);"></div>
                             <span>Cursos creados</span>
                         </a>
                         <a class="reporte-boton reporte-boton-active" href="#">
-                            <div style="mask: url(./public/assets/images/reportes/estudiantes-btn-icon.svg);"></div>
-                            <span>Estudiantes</span>
+                            <div style="mask: url(<?php echo $base ?>public/assets/images/reportes/estudiantes-btn-icon.svg);"></div>
+                            <span>Usuarios</span>
                         </a>
-                        <a class="reporte-boton">
-                            <div style="mask: url(./public/assets/images/reportes/sedes-btn-icon.svg);"></div>
+                        <!--<a class="reporte-boton">
+                            <div style="mask: url(<?php echo $base ?>public/assets/images/reportes/sedes-btn-icon.svg);"></div>
                             <span>Sedes</span>
                         </a>
                         <a class="reporte-boton">
-                            <div style="mask: url(./public/assets/images/reportes/auditoria-btn-icon.svg);"></div>
+                            <div style="mask: url(<?php echo $base ?>public/assets/images/reportes/auditoria-btn-icon.svg);"></div>
                             <span>Auditoría</span>
-                        </a>
+                        </a>-->
                     </div>
                     <div class="card-container">
                         <div class="card-container-header">
-                            <p>Usuarios registrados <span id="cursos-creados-txt">3</span></p>
+                            <p>Usuarios registrados <span><?php echo count($users)?></span></p>
                             <div>
-                                <a class="boton-reporte" href="./public/docs/reporte-usuario-1.xlsx">
-                                    <img src="./public/assets/images/button-excel-icon.svg" />
+                                <a class="boton-reporte" href="<?php echo $base ?>public/docs/reporte-usuario-1.xlsx">
+                                    <img src="<?php echo $base ?>public/assets/images/button-excel-icon.svg" />
                                     <span>Exportar reporte</span>
                                 </a>
                             </div>
@@ -58,9 +62,6 @@
                                 <table id="tabla-cursos" class="traing-tabla">
                                     <thead>
                                         <tr>
-                                            <th style="width: 5%;">
-                                                <!--input radio-->
-                                            </th>
                                             <th style="width: 30%;">
                                                 <span>Nombre completo</span>
                                                 <button></button>
@@ -73,11 +74,11 @@
                                                 <span>correo electrónico</span>
                                                 <button></button>
                                             </th>
-                                            <th style="width: 10%;">
+                                            <th style="width: 13%;">
                                                 <span>Ciudad</span>
                                                 <button></button>
                                             </th>
-                                            <th style="width: 10%;">
+                                            <th style="width: 12%;">
                                                 <span>Empresa</span>
                                                 <button></button>
                                             </th>
@@ -89,22 +90,15 @@
                                     </thead>
                                     <tbody>
                                         <?php foreach($users as $user){?>
-                                        <tr id="tabla-curso-row-<?php echo $user[0]?>">
-                                            <td class="td-checkbox">
-                                                <label class="traing-check">
-                                                    <input type="radio" name="usuario" value="<?php echo $curso[0]?>" autocomplete="off" />
-                                                    <span class="traing-check-box"></span>
-                                                    <span class="traing-check-name"></span>
-                                                </label>
-                                            </td>
-                                            <td><?php echo $user[2].' '.$user[3]?></td>
-                                            <td><?php echo $user[5]?></td>
-                                            <td><?php echo $user[8]?></td>
-                                            <td><?php echo $user[6]?></td>
-                                            <td><?php echo $user[7]?></td>
+                                        <tr>
+                                            <td><?php echo $user['nombre'].' '.$user['apellido']?></td>
+                                            <td><?php echo $user['documento']?></td>
+                                            <td><?php echo $user['correo']?></td>
+                                            <td><?php echo $user['ciudad']?></td>
+                                            <td><?php echo $user['empresa']?></td>
                                             <td class="td-boton">
-                                                <button>
-                                                    <img src="./public/assets/images/button-ver-icon.svg" />
+                                                <button onclick="verDetallesUsuario(<?php echo $user['id']?>)">
+                                                    <img src="<?php echo $base ?>public/assets/images/button-ver-icon.svg" />
                                                 </button>
                                             </td>
                                         </tr>
@@ -120,34 +114,31 @@
     </div>
 
     <!--modales-->
+    <?php include './modals/detalles-usuario.php'; ?>
+    <?php include '../../components/sweetalert/sweetalert.php'; ?>
 
-    <script src="./public/assets/scripts/form.js"></script>
+    <script src="<?php echo $base ?>public/assets/scripts/form.js"></script>
+    <script src="<?php echo $base ?>public/assets/scripts/modal.js"></script>
+    <script src="<?php echo $base ?>public/assets/scripts/sweetalert.js"></script>
+    <script src="<?php echo $base ?>public/assets/scripts/reportes-usuarios.js"></script>
     <script>
-        var usuarios_data = []
-        <?php foreach($users as $user){?>
-        usuarios_data.push({
-            id:<?php echo $user[0]?>,
-            tipo:"<?php echo $user[1]?>",
-            nombres:"<?php echo $user[2]?>",
-            apellidos:"<?php echo $user[3]?>",
-            tipodoc:"<?php echo $user[4]?>",
-            documento:<?php echo $user[5]?>,
-            ciudad:"<?php echo $user[6]?>",
-            empresa:"<?php echo $user[7]?>",
-            correo:"<?php echo $user[8]?>",
-        })
-        <?php } ?>
+        var tipos_trabajador = [{
+            key:'e',value:'Estudiante'
+        },{
+            key:'c',value:'Contratista'
+        }]
 
-        function findUser(id){
-            var ind = -1
-            for(var i = 0;i<usuarios_data.length;i++){
-                if(usuarios_data[i].id==id){
-                    ind = i
+        function getTipoTrabajador(key){
+            var valor = ""
+            for(var i = 0;i<tipos_trabajador.length;i++){
+                if(tipos_trabajador[i].key==key){
+                    valor = tipos_trabajador[i].value
+                    break;
                 }
             }
-            return ind
+            return valor
         }
-
     </script>
+    
 </body>
 </html>

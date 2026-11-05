@@ -3,15 +3,14 @@
         <div class="modal-header">
             <h1>...</h1>
             <button onclick="closeModalIndividual()">
-                <img src="./public/assets/images/modal/close-modal-icon.svg" />
+                <img src="<?php echo $base ?>public/assets/images/modal/close-modal-icon.svg" />
             </button>
         </div>
         <div class="modal-body">
             <div class="modal-form-row2">
                 <div class="modal-form-col">
                     <select id="tipo-documento-txt">
-                        <option value="0">Tipo de documento</option>
-                        <option value="cc">Cédula de ciudadanía</option>
+                        <option value="cc" selected>Cédula de ciudadanía</option>
                         <option value="ce">Cédula extranjera</option>
                     </select>
                 </div>
@@ -42,7 +41,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button class="boton-principal" onclick="closeModalIndividual()">
+            <button class="boton-principal" onclick="registrarFacilitador()">
                 Guardar
             </button>
         </div>

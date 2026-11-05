@@ -1,7 +1,19 @@
 <?php 
-$headquarters = array(
-    array(1,'Sede Amalfi','Antioquia','Amalfi','cra 26 # 57b'),
-    array(2,'Sede Centro','Bogotá','Bogotá','cra 45 # 63a'),
-    array(3,'Sede Cauca','Cauca','Popayan','Calle 7 Cra 8 - 14')
-);
+
+$headquarters_file = file_get_contents(__DIR__.'/db/headquarters.json');
+$headquarters_file_data = json_decode($headquarters_file,true);
+
+$headquarters = array();
+
+foreach($headquarters_file_data as $hd){
+    array_push($headquarters,array(
+        'id'=>$hd['id'],
+        'nombre'=>$hd['nombre'],
+        'departamento'=>$hd['departamento'],
+        'ciudad'=>$hd['ciudad'],
+        'direccion'=>$hd['direccion'],
+        'aulas'=>[]
+    ));
+}
+
 ?>

@@ -1,5 +1,17 @@
 <?php $menu_active = [4,1];?>
-<?php require('./data/rooms.php');?>
+<?php require('../../api/env.php');?>
+<?php require('../../data/rooms.php');?>
+<?php require('../../data/headquarters.php');?>
+
+<?php 
+foreach($rooms as $indx => $r){
+    foreach($headquarters as $h){
+        if($r['sedeid']==$h['id']){
+            $rooms[$indx]['sede'] = $h['nombre'];
+        }
+    }
+}
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -7,20 +19,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <?php include './layouts/css.php'; ?>
-    <?php include './layouts/scripts.php'; ?>
-    <link href="./public/assets/css/menu.css" rel="stylesheet" type="text/css" />
-    <link href="./public/assets/css/dashboard.css" rel="stylesheet" type="text/css" />
-    <link href="./public/assets/css/tabla.css" rel="stylesheet" type="text/css" />
-    <link href="./public/assets/css/form.css" rel="stylesheet" type="text/css" />
+    <?php include '../../layouts/css.php'; ?>
+    <?php include '../../layouts/scripts.php'; ?>
+    <link href="<?php echo $base?>public/assets/css/menu.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base?>public/assets/css/dashboard.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base?>public/assets/css/tabla.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base?>public/assets/css/form.css" rel="stylesheet" type="text/css" />
     
     <title>Traing Presencial - Aulas</title>
 </head>
 <body>
     <div class="main-container">
-        <?php include './layouts/header.php'; ?>
+        <?php include '../../layouts/header.php'; ?>
         <div class="body-container body-container-dashboard">
-            <?php include './layouts/menu.php' ?>
+            <?php include '../../layouts/menu.php' ?>
             <div id="app" class="app-opened">
                 <!--contenido aqui ↓↓↓-->
                 <h1 class="main-title">Todas las aulas</h1>
@@ -31,7 +43,7 @@
                                 <span>Registro individual</span>
                             </button>
                             <button class="boton-upload">
-                                <img src="./public/assets/images/button-upload-icon.svg" />
+                                <img src="<?php echo $base?>public/assets/images/button-upload-icon.svg" />
                                 <span>Cargar aulas masivamente</span>
                             </button>
                         </div>
@@ -70,14 +82,14 @@
                                 <tr>
                                     <td class="td-checkbox">
                                         <label class="traing-check">
-                                            <input type="radio" name="traing-check" value="<?php echo $room[0]?>" />
+                                            <input type="radio" name="traing-check" value="<?php echo $room['id']?>" />
                                             <span class="traing-check-box"></span>
                                             <span class="traing-check-name"></span>
                                         </label>
                                     </td>
-                                    <td><?php echo $room[1]?></td>
-                                    <td><?php echo $room[2]?></td>
-                                    <td><?php echo $room[3]?></td>
+                                    <td><?php echo $room['nombre']?></td>
+                                    <td><?php echo $room['sede']?></td>
+                                    <td><?php echo $room['extra']?></td>
                                 </tr>
                                 <?php } ?>
                             </tbody>

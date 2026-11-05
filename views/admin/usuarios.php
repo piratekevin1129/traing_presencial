@@ -1,6 +1,7 @@
 <?php $menu_active = [1,1];?>
-<?php require('./data/users.php');?>
-<?php require('./data/courses.php');?>
+<?php require('../../api/env.php');?>
+<?php require('../../data/users.php');?>
+<?php require('../../data/courses.php');?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -8,24 +9,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <?php include './layouts/css.php'; ?>
-    <?php include './layouts/scripts.php'; ?>
-    <link href="./public/assets/css/menu.css" rel="stylesheet" type="text/css" />
-    <link href="./public/assets/css/dashboard.css" rel="stylesheet" type="text/css" />
-    <link href="./public/assets/css/tabla.css" rel="stylesheet" type="text/css" />
-    <link href="./public/assets/css/modal.css" rel="stylesheet" type="text/css" />
-    <link href="./public/assets/css/form.css" rel="stylesheet" type="text/css" />
-    <link href="./public/assets/css/dropdown.css" rel="stylesheet" type="text/css" />
+    <?php include '../../layouts/css.php'; ?>
+    <?php include '../../layouts/scripts.php'; ?>
+    <link href="<?php echo $base ?>public/assets/css/menu.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>public/assets/css/dashboard.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>public/assets/css/tabla.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>public/assets/css/modal.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>public/assets/css/form.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>public/assets/css/dropdown.css" rel="stylesheet" type="text/css" />
     
-    <link href="./public/assets/css/sweetalert.css" rel="stylesheet" type="text/css" />
-    <script src="./public/assets/scripts/jquery-4.0.0.min.js"></script>
+    <link href="<?php echo $base ?>public/assets/css/sweetalert.css" rel="stylesheet" type="text/css" />
+    <script src="<?php echo $base ?>public/assets/scripts/jquery-4.0.0.min.js"></script>
     <title>Traing Presencial - Usuarios</title>
 </head>
 <body>
     <div class="main-container">
-        <?php include './layouts/header.php'; ?>
+        <?php include '../../layouts/header.php'; ?>
         <div class="body-container body-container-dashboard">
-            <?php include './layouts/menu.php' ?>
+            <?php include '../../layouts/menu.php' ?>
             <div id="app" class="app-opened">
                 <!--contenido aqui ↓↓↓-->
                 <h1 class="main-title">Todos los usuarios</h1>
@@ -36,7 +37,7 @@
                                 <span>Registro individual</span>
                             </button>
                             <button class="boton-upload" onclick="openModal(this,'modal-registro-usuarios-masivo')">
-                                <img src="./public/assets/images/button-upload-icon.svg" />
+                                <img src="<?php echo $base ?>public/assets/images/button-upload-icon.svg" />
                                 <span>Cargar usuarios masivamente</span>
                             </button>
                         </div>
@@ -108,7 +109,7 @@
                                     <td><?php echo $user['correo']?></td>
                                     <!--<td class="td-boton">
                                         <button>
-                                            <img src="./public/assets/images/button-ver-icon.svg" />
+                                            <img src="<?php echo $base ?>public/assets/images/button-ver-icon.svg" />
                                         </button>
                                     </td>-->
                                 </tr>
@@ -121,15 +122,15 @@
         </div>
     </div>
 
-    <?php include './components/modals/registrar-usuarios.php'; ?>
-    <?php include './components/modals/form-usuario.php'; ?>
-    <?php include './components/sweetalert/sweetalert.php'; ?>
+    <?php include './modals/registrar-usuarios.php'; ?>
+    <?php include './modals/form-usuario.php'; ?>
+    <?php include '../../components/sweetalert/sweetalert.php'; ?>
 
-    <script src="./public/assets/scripts/modal.js"></script>
-    <script src="./public/assets/scripts/sweetalert.js"></script>
-    <script src="./public/assets/scripts/form.js"></script>
-    <script src="./public/assets/scripts/dropdown.js"></script>
-    <script src="./public/assets/scripts/usuarios.js"></script>
+    <script src="<?php echo $base ?>public/assets/scripts/modal.js"></script>
+    <script src="<?php echo $base ?>public/assets/scripts/sweetalert.js"></script>
+    <script src="<?php echo $base ?>public/assets/scripts/form.js"></script>
+    <script src="<?php echo $base ?>public/assets/scripts/dropdown.js"></script>
+    <script src="<?php echo $base ?>public/assets/scripts/usuarios.js"></script>
 
     <script>
         var cursos_data = []

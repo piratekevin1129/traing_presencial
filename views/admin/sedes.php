@@ -1,5 +1,6 @@
 <?php $menu_active = [3,1];?>
-<?php require('./data/headquarters.php');?>
+<?php require('../../api/env.php');?>
+<?php require('../../data/headquarters.php');?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -7,20 +8,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <?php include './layouts/css.php'; ?>
-    <?php include './layouts/scripts.php'; ?>
-    <link href="./public/assets/css/menu.css" rel="stylesheet" type="text/css" />
-    <link href="./public/assets/css/dashboard.css" rel="stylesheet" type="text/css" />
-    <link href="./public/assets/css/tabla.css" rel="stylesheet" type="text/css" />
-    <link href="./public/assets/css/form.css" rel="stylesheet" type="text/css" />
+    <?php include '../../layouts/css.php'; ?>
+    <?php include '../../layouts/scripts.php'; ?>
+    <link href="<?php echo $base ?>public/assets/css/menu.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>public/assets/css/dashboard.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>public/assets/css/tabla.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>public/assets/css/form.css" rel="stylesheet" type="text/css" />
     
     <title>Traing Presencial - Sedes</title>
 </head>
 <body>
     <div class="main-container">
-        <?php include './layouts/header.php'; ?>
+        <?php include '../../layouts/header.php'; ?>
         <div class="body-container body-container-dashboard">
-            <?php include './layouts/menu.php' ?>
+            <?php include '../../layouts/menu.php' ?>
             <div id="app" class="app-opened">
                 <!--contenido aqui ↓↓↓-->
                 <h1 class="main-title">Todas las sedes</h1>
@@ -31,7 +32,7 @@
                                 <span>Registro individual</span>
                             </button>
                             <button class="boton-upload">
-                                <img src="./public/assets/images/button-upload-icon.svg" />
+                                <img src="<?php echo $base ?>public/assets/images/button-upload-icon.svg" />
                                 <span>Cargar sedes masivamente</span>
                             </button>
                         </div>
@@ -51,25 +52,25 @@
                                     <th style="width: 5%;">
                                         <!--input radio-->
                                     </th>
-                                    <th style="width: 18%;">
+                                    <th style="width: 25%;">
                                         <span>Nombre sede</span>
                                         <button></button>
                                     </th>
-                                    <th style="width: 18%;">
+                                    <th style="width: 20%;">
                                         <span>Departamento</span>
                                         <button></button>
                                     </th>
-                                    <th style="width: 18%;">
+                                    <th style="width: 20%;">
                                         <span>Ciudad / Municipio</span>
                                         <button></button>
                                     </th>
-                                    <th style="width: 21%;">
+                                    <th style="width: 30%;">
                                         <span>Dirección</span>
                                         <button></button>
                                     </th>
-                                    <th style="width: 20%;" class="text-center">
+                                    <!--<th style="width: 20%;" class="text-center">
                                         <span>Ubicación en el mapa</span>
-                                    </th>
+                                    </th>-->
                                 </tr>
                             </thead>
                             <tbody>
@@ -77,20 +78,20 @@
                                 <tr>
                                     <td class="td-checkbox">
                                         <label class="traing-check">
-                                            <input type="radio" name="traing-check" value="<?php echo $headquarter[0]?>" />
+                                            <input type="radio" name="traing-check" value="<?php echo $headquarter['id']?>" />
                                             <span class="traing-check-box"></span>
                                             <span class="traing-check-name"></span>
                                         </label>
                                     </td>
-                                    <td><?php echo $headquarter[1]?></td>
-                                    <td><?php echo $headquarter[2]?></td>
-                                    <td><?php echo $headquarter[3]?></td>
-                                    <td><?php echo $headquarter[4]?></td>
-                                    <td class="td-boton">
+                                    <td><?php echo $headquarter['nombre']?></td>
+                                    <td><?php echo $headquarter['departamento']?></td>
+                                    <td><?php echo $headquarter['ciudad']?></td>
+                                    <td><?php echo $headquarter['direccion']?></td>
+                                    <!--<td class="td-boton">
                                         <button>
-                                            <img src="./public/assets/images/button-mapa-icon.svg" />
+                                            <img src="<?php echo $base ?>public/assets/images/button-mapa-icon.svg" />
                                         </button>
-                                    </td>
+                                    </td>-->
                                 </tr>
                                 <?php } ?>
                             </tbody>

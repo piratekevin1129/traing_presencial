@@ -101,7 +101,7 @@ $menu = array(
             <div class="menu-item menu-item-closed">
         <?php } ?>
             <div class="menu-item-head" onclick="clickItemMenu(this)">
-                <img src="./public/assets/images/menu/<?php echo $menu[$i]['icon']?>" />
+                <img src="<?php echo $base?>public/assets/images/menu/<?php echo $menu[$i]['icon']?>" />
                 <p><?php echo $menu[$i]['name']?></p>
                 <div></div>
             </div>

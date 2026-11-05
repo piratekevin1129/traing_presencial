@@ -19,7 +19,7 @@ function updateModalCurso(c,estado_qr,estado_qr2){
 
         course_data = cursos_data[course_data_ind]
         getE('modal-curso-nombre-txt').innerHTML = course_data.nombre
-        getE('modal-curso-image-txt').src = './public/assets/images/cursos/'+course_data.img
+        getE('modal-curso-image-txt').src = base+'public/assets/images/cursos/'+course_data.img
         getE('modal-curso-fecha-txt').innerHTML = course_data.fecha
         getE('modal-curso-sede-txt').innerHTML = course_data.sede
         getE('modal-curso-ubicacion-txt').innerHTML = course_data.ubicacion

@@ -1,1 +1,1 @@
-<script src="./public/assets/scripts/menu.js"></script>
+<script src="<?php echo $base?>public/assets/scripts/menu.js"></script>

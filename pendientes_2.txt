@@ -8,3 +8,5 @@ correo y agenda para el facilitador
 agregar lista de profesores
 
 guardar la charla
+
+ubicacion en el mapa
