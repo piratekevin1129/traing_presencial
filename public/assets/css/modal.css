@@ -211,11 +211,14 @@
     background-color: var(--menugray);
 }
 .modal-preview-table tbody td{
-    font-family: var(--fontregular);
+    font-family: var(--fontmedium);
     font-size: 0.9rem;
     color: var(--traing);
     padding: 5px 10px;
     word-wrap: break-word;
+}
+.modal-preview-table tbody td span{
+    font-family: var(--fontbold);
 }
 
 /***********form***********/

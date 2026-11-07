@@ -3,7 +3,7 @@
         <div class="modal-header">
             <h1>...</h1>
             <button onclick="closeModal()">
-                <img src="./public/assets/images/modal/close-modal-icon.svg" />
+                <img src="<?php echo $base ?>public/assets/images/modal/close-modal-icon.svg" />
             </button>
         </div>
         <div class="modal-body">
@@ -28,7 +28,7 @@
                         <h4>Ubicación</h4>
                         <div>
                             <div>
-                                <img src="./public/assets/images/accordion/accordion-mapa-icon.svg" />
+                                <img src="<?php echo $base ?>public/assets/images/accordion/accordion-mapa-icon.svg" />
                             </div>
                             <span id="modal-curso-ubicacion-txt">...</span>
                         </div>
@@ -48,7 +48,7 @@
                     <div class="modal-qr-body-col1">
                         <div class="modal-camera" onclick="clickEscanearQr()">
                             <div>
-                                <img src="./public/assets/images/modal/camera-icon.svg" />
+                                <img src="<?php echo $base ?>public/assets/images/modal/camera-icon.svg" />
                             </div>
                         </div>
                         <p>Haz click para escanear el código QR</p>

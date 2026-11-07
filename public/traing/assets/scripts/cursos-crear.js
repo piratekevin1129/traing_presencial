@@ -14,8 +14,8 @@ function createCharlas(){
     charlas_data.push({
         id:1,
         ano:2026,
-        mes:10,
-        fecha:4,
+        mes:Number(current_mes),
+        fecha:Number(new Date().getDate()),
         dia:0,
         hora:10,
         minutos:30,

@@ -151,34 +151,10 @@ foreach($courses as $indx => $c){
     
     <script src="<?php echo $base ?>public/assets/scripts/modal.js"></script>
     <script src="<?php echo $base ?>public/assets/scripts/sweetalert.js"></script>
-    <script src="<?php echo $base ?>public/assets/scripts/cursos.js"></script>
+    <script src="<?php echo $base ?>public/assets/scripts/admin/cursos.js"></script>
 
     <script>
-        var cursos_data = []
-        <?php foreach($courses as $course){ ?>
-        cursos_data.push({
-            id:<?php echo $course['id']?>,
-            nombre:"<?php echo $course['nombre']?>",
-            fecha:"<?php echo $course['fecha']?>",
-            sede:"<?php echo $course['sede']?>",
-            aula:"<?php echo $course['aula']?>",
-            direccion:"<?php echo $course['direccion']?>",
-            facilitador:"<?php echo $course['facilitador']?>",
-            img:"<?php echo $course['img']?>",
-            usuarios:[]
-        })
-        <?php } ?>
-
-        function findCourse(id){
-            var ind = -1
-            for(var i = 0;i<cursos_data.length;i++){
-                if(cursos_data[i].id==id){
-                    ind = i
-                }
-            }
-            return ind
-        }
-
+        
     </script>
 </body>
 </html>

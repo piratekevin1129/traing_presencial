@@ -120,7 +120,7 @@
     <script src="<?php echo $base ?>public/assets/scripts/form.js"></script>
     <script src="<?php echo $base ?>public/assets/scripts/modal.js"></script>
     <script src="<?php echo $base ?>public/assets/scripts/sweetalert.js"></script>
-    <script src="<?php echo $base ?>public/assets/scripts/reportes-usuarios.js"></script>
+    <script src="<?php echo $base ?>public/assets/scripts/admin/reportes-usuarios.js"></script>
     <script>
         var tipos_trabajador = [{
             key:'e',value:'Estudiante'

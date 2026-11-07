@@ -36,6 +36,7 @@ foreach($courses as $indx => $c){
     <link href="<?php echo $base ?>public/assets/css/modal.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo $base ?>public/assets/css/form.css" rel="stylesheet" type="text/css" />
     
+    <script src="<?php echo $base ?>public/assets/scripts/jquery-4.0.0.min.js"></script>
     <title>Traing Presencial - Reportes</title>
 </head>
 <body>
@@ -124,35 +125,15 @@ foreach($courses as $indx => $c){
     </div>
 
     <!--modales-->
-    <?php include './modals/detalles-cursos.php'; ?>
+    <?php include './modals/detalles-curso.php'; ?>
     <?php include '../../components/sweetalert/sweetalert.php'; ?>
 
     <script src="<?php echo $base ?>public/assets/scripts/form.js"></script>
     <script src="<?php echo $base ?>public/assets/scripts/modal.js"></script>
     <script src="<?php echo $base ?>public/assets/scripts/sweetalert.js"></script>
+    <script src="<?php echo $base ?>public/assets/scripts/admin/reportes-cursos.js"></script>
     <script>
-        var cursos_data = []
-        <?php foreach($courses as $course){ ?>
-        cursos_data.push({
-            id:<?php echo $course['id']?>,
-            nombre:"<?php echo $course['nombre']?>",
-            fecha:"<?php echo $course['fecha']?>",
-            sede:"<?php echo $course['sede']?>",
-            ubicacion:"<?php echo $course['ubicacion']?>",
-            facilitador:"<?php echo $course['facilitador']?>",
-            img:"<?php echo $course['img']?>"
-        })
-        <?php } ?>
-
-        function findCourse(id){
-            var ind = -1
-            for(var i = 0;i<cursos_data.length;i++){
-                if(cursos_data[i].id==id){
-                    ind = i
-                }
-            }
-            return ind
-        }
+        
 
     </script>
 </body>

@@ -46,10 +46,10 @@ function clickEscanearQr() {
         detectarQR()
       })
       .catch(function (err) {
-        console.error('Error al acceder a la cámara:', err);
+        console.log('Error al acceder a la cámara:', err);
 
         // Si falla con 'exact', se intenta de forma flexible
-        if (err.name === 'OverconstrainedError' || err.name === 'ConstraintNotSatisfiedError') {
+        //if (err.name === 'OverconstrainedError' || err.name === 'ConstraintNotSatisfiedError') {
           opciones.video.facingMode = "environment";
           navigator.mediaDevices.getUserMedia(opciones)
           .then(function (stream) {
@@ -62,9 +62,14 @@ function clickEscanearQr() {
             detectarQR()
           })
           .catch(function (err){
-            alert("No tienes una cámara instalada");
+            //alert("No tienes una cámara instalada");
+            openModalAlert({
+              status:'warning',
+              title:'¡Algo salió mal!',
+              text:"No se detectaron cámaras en tu dispositivo"
+            });
           });
-        }
+        //}
       });
   } else {
     // Callback tradicional para navegadores muy viejos
@@ -82,7 +87,12 @@ function clickEscanearQr() {
         detectarQR()
       },
       function (err) {
-        console.error('Error al acceder a la cámara:', err);
+        console.log('Error al acceder a la cámara en navegadores obsoletos:', err);
+        openModalAlert({
+          status:'warning',
+          title:'¡Algo salió mal!',
+          text:"Error al acceder a la cámara en navegadores obsoletos"
+        });
       }
     );
   }

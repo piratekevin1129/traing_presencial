@@ -1,14 +1,16 @@
+<?php require('../../api/env.php');?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <?php include './layouts/css.php'; ?>
+    <?php include '../../layouts/css.php'; ?>
     
-    <link href="./public/assets/css/modal.css" rel="stylesheet" type="text/css" />
-    <link href="./public/assets/css/form.css" rel="stylesheet" type="text/css" />
-    <link href="./public/assets/css/camara.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>public/assets/css/modal.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>public/assets/css/form.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>public/assets/css/camara.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>public/assets/css/sweetalert.css" rel="stylesheet" type="text/css" />
     
     <title>Traing Presencial - Escanear QR</title>
     <style type="text/css">
@@ -34,11 +36,13 @@
         <span>Escanear código QR</span>
     </button>
     <!--modales-->
-    <?php include './components/modals/escanear-qrs.php'; ?>
+    <?php include './modals/escanear-qrs.php'; ?>
+    <?php include '../../components/sweetalert/sweetalert.php'; ?>
 
-    <script src="./public/assets/scripts/modal.js"></script>
-    <script src="./public/assets/qr/qrCode.min.js"></script>
-    <script src="./public/assets/scripts/qr.js"></script>
+    <script src="<?php echo $base ?>public/assets/scripts/modal.js"></script>
+    <script src="<?php echo $base ?>public/assets/qr/qrCode.min.js"></script>
+    <script src="<?php echo $base ?>public/assets/scripts/student/qr.js"></script>
+    <script src="<?php echo $base ?>public/assets/scripts/sweetalert.js"></script>
 
     <script>
         function confirmarQr(){

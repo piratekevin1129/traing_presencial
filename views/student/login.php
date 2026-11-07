@@ -1,18 +1,19 @@
+<?php require('../../api/env.php');?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <?php include './layouts/css.php'; ?>
-    <link href="./public/assets/css/login.css" rel="stylesheet" type="text/css" />
+    <?php include '../../layouts/css.php'; ?>
+    <link href="<?php echo $base ?>public/assets/css/login.css" rel="stylesheet" type="text/css" />
 
     <title>Traing Presencial - Login</title>
 </head>
 <body>
     <div class="main-container">
         
-        <?php include './layouts/header-login.php'; ?>
+        <?php include '../../layouts/header-login.php'; ?>
         <div class="body-container body-container-login">
             <!--contenido aqui ↓↓↓-->
             <div class="login-col">
@@ -34,7 +35,7 @@
                         <div class="login-row-form-foot">
                             <p>Al ingresar manifiesto que he leido y acepto, la política de tratamiento de datos personales <a>(ver aqui)</a></p>
                             <br>
-                            <p style="display: flex; align-items: center;">Navegador recomendado Chrome <img src="./public/assets/images/google-chrome-icon.svg" /></p>
+                            <p style="display: flex; align-items: center;">Navegador recomendado Chrome <img src="<?php echo $base ?>public/assets/images/google-chrome-icon.svg" /></p>
                         </div>
     
                     </div>

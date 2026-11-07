@@ -7,7 +7,6 @@
             </button>
         </div>
         <div class="modal-body">
-            <p>Información</p>
             <div class="modal-preview-tabla">                
                 <div class="modal-preview-tabla-container">
                     <table class="modal-preview-table">

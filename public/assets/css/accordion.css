@@ -54,15 +54,19 @@
 .accordion-content-col1,
 .accordion-content-col2{
     display: flex;
-    flex-direction: column;
     gap: 15px;
-    align-items: center;
+    flex-wrap: wrap;
 }
+.accordion-content-col1{
+    align-items: flex-start;
+}
+.accordion-content-col2{
+    justify-content: flex-end;
+}
+
 .accordion-content-img{
+    width: auto;
     height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 .accordion-content-img img{
     width: auto;
@@ -74,6 +78,7 @@
 }
 .accordion-content-info{
     display: flex;
+    flex: 1;
     flex-direction: column;
     justify-content: flex-start;
 }
@@ -84,7 +89,6 @@
     font-family: var(--fontsemibold);
     font-size: 0.9rem;
     color: var(--azul);
-    text-align: center;
     margin-bottom: 2px;
 }
 .accordion-content-info-col p,
@@ -92,14 +96,12 @@
     font-family: var(--fontregular);
     font-size: 0.9rem;
     color: var(--text);
-    text-align: center;
 }
 .accordion-content-info-col div{
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
     align-items: center;
-    justify-content: center;
 }
 .accordion-content-info-col div div{
     width: 20px;

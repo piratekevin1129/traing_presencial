@@ -1,5 +1,9 @@
 <?php 
-require('./data/courses.php');
+require('../../api/env.php');
+require('../../data/courses.php');
+require('../../data/headquarters.php');
+require('../../data/rooms.php');
+require('../../data/teachers.php');
 $c = findCourse(1);
 $course = $courses[$c];
 ?>
@@ -10,19 +14,19 @@ $course = $courses[$c];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <?php include './layouts/css.php'; ?>
+    <?php include '../../layouts/css.php'; ?>
     
-    <link href="./public/assets/css/dashboard.css" rel="stylesheet" type="text/css" />
-    <link href="./public/assets/css/accordion.css" rel="stylesheet" type="text/css" />
-    <link href="./public/assets/css/form.css" rel="stylesheet" type="text/css" />
-    <link href="./public/assets/css/modal.css" rel="stylesheet" type="text/css" />
-    <link href="./public/assets/css/camara.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>public/assets/css/dashboard.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>public/assets/css/accordion.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>public/assets/css/form.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>public/assets/css/modal.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>public/assets/css/camara.css" rel="stylesheet" type="text/css" />
     
     <title>Traing Presencial - Cursos</title>
 </head>
 <body>
     <div class="main-container">
-        <?php include './layouts/header-user.php'; ?>
+        <?php include '../../layouts/header-user.php'; ?>
         <div class="body-container body-container-dashboard">
             <div id="app" class="app-closed">
                 <!--contenido aqui ↓↓↓-->
@@ -33,14 +37,14 @@ $course = $courses[$c];
                             <div class="accordion-header" onclick="toggleAccordion(this)">
                                 <p><?php echo $course['nombre']?></p>
                                 <button>
-                                    <img src="./public/assets/images/accordion/accordion-icon.svg" />
+                                    <img src="<?php echo $base ?>public/assets/images/accordion/accordion-icon.svg" />
                                 </button>
                             </div>
                             <div class="accordion-body">
                                 <div class="accordion-content">
                                     <div class="accordion-content-col1">
                                         <div class="accordion-content-img">
-                                            <img src="./public/assets/images/cursos/<?php echo $course['img']?>" />
+                                            <img src="<?php echo $base ?>public/assets/images/cursos/<?php echo $course['img']?>" />
                                         </div>
                                         <div class="accordion-content-info">
                                             <div class="accordion-content-info-col">
@@ -55,9 +59,9 @@ $course = $courses[$c];
                                                 <h4>Ubicación</h4>
                                                 <div>
                                                     <div>
-                                                        <img src="./public/assets/images/accordion/accordion-mapa-icon.svg" />
+                                                        <img src="<?php echo $base ?>public/assets/images/accordion/accordion-mapa-icon.svg" />
                                                     </div>
-                                                    <span><?php echo $course['ubicacion']?></span>
+                                                    <span><?php echo $course['direccion']?></span>
                                                 </div>
                                             </div>
                                             <div class="accordion-content-info-col">
@@ -69,17 +73,17 @@ $course = $courses[$c];
                                     <div class="accordion-content-col2">
                                         <button id="confirmar-ingreso-btn-<?php echo $course['id'] ?>" type="button" class="accordion-ingreso-btn unlocked" onclick="clickConfirmarIngreso(<?php echo $course['id']?>)">
                                             <span>Confirmar Ingreso</span>
-                                            <img src="./public/assets/images/check-icon.svg" />
+                                            <img src="<?php echo $base ?>public/assets/images/check-icon.svg" />
                                         </button>
 
                                         <!--<button id="confirmar-salida-btn-<?php echo $course['id'] ?>" type="button" class="accordion-salida-btn locked" onclick="clickConfirmarSalida(<?php echo $course['id']?>)" disabled>
                                             <span>Confirmar Salida</span>
-                                            <img src="./public/assets/images/check-icon.svg" />
+                                            <img src="<?php echo $base ?>public/assets/images/check-icon.svg" />
                                         </button>
 
                                         <a id="confirmar-certificado-btn-<?php echo $course['id'] ?>" class="accordion-certificado-btn locked" href="#">
                                             <span>Descargar certificado</span>
-                                            <img src="./public/assets/images/check-icon.svg" />
+                                            <img src="<?php echo $base ?>public/assets/images/check-icon.svg" />
                                         </a>-->
                                     </div>
                                 </div>
@@ -91,11 +95,11 @@ $course = $courses[$c];
         </div>
     </div>
 
-    <script src="./public/assets/scripts/accordion.js"></script>
-    <script src="./public/assets/scripts/modal.js"></script>
-    <script src="./public/assets/qr/qrCode.min.js"></script>
-    <script src="./public/assets/scripts/qr.js"></script>
-    <script src="./public/assets/scripts/curso-user.js"></script>
+    <script src="<?php echo $base ?>public/assets/scripts/accordion.js"></script>
+    <script src="<?php echo $base ?>public/assets/scripts/modal.js"></script>
+    <script src="<?php echo $base ?>public/assets/qr/qrCode.min.js"></script>
+    <script src="<?php echo $base ?>public/assets/scripts/qr.js"></script>
+    <script src="<?php echo $base ?>public/assets/scripts/curso-user.js"></script>
 
     <script>
         var cursos_data = []

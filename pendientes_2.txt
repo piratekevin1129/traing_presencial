@@ -1,12 +1,19 @@
-incluir facilitador en el reporte de estudiantes
+incluir facilitador en el reporte de cursos
 incluir columna de fechas por separado para poder filtrar
 incluir fecha y hora de ingreso y salida en columna de estudiantes
+
 incluir tiempo de duración de cada curso en el admin
-
-demo de replicar charla en traing normal
-correo y agenda para el facilitador
-agregar lista de profesores
-
-guardar la charla
-
 ubicacion en el mapa
+activacion de repetir dias
+guardar la charla con datos reales y enviar correo
+login
+editar curso con datos reales
+seccion de contenidos
+editar y eliminar sedes
+editar y eliminar aulas
+cargar listas de excel de facilitadores y usuarios
+exportar reporte real individual de cada curso
+exportar reporte real de todos los cursos
+exportar reporte real de todos los usuarios
+
+mensaje de alerta de que no tiene camara

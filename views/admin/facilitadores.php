@@ -124,10 +124,9 @@
     <script src="<?php echo $base ?>public/assets/scripts/sweetalert.js"></script>
     <script src="<?php echo $base ?>public/assets/scripts/form.js"></script>
     <script src="<?php echo $base ?>public/assets/scripts/dropdown.js"></script>
-    <script src="<?php echo $base ?>public/assets/scripts/facilitadores.js"></script>
+    <script src="<?php echo $base ?>public/assets/scripts/admin/facilitadores.js"></script>
 
     <script>
-        var cursos_data = []
         
         var facilitadores_data = []
         <?php foreach($teachers as $teacher){?>

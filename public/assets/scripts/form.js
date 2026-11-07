@@ -11,7 +11,6 @@ function setValueSWitch(container,value){
     var items = getE(container).getElementsByTagName('div')
     for(var i = 0;i<items.length;i++){
         var data_value = items[i].getAttribute('data-value')
-        console.log(data_value,value)
         if(data_value==value){
             items[i].className = 'modal-switch-option selected'
         }else{

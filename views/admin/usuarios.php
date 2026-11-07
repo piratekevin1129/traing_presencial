@@ -130,7 +130,7 @@
     <script src="<?php echo $base ?>public/assets/scripts/sweetalert.js"></script>
     <script src="<?php echo $base ?>public/assets/scripts/form.js"></script>
     <script src="<?php echo $base ?>public/assets/scripts/dropdown.js"></script>
-    <script src="<?php echo $base ?>public/assets/scripts/usuarios.js"></script>
+    <script src="<?php echo $base ?>public/assets/scripts/admin/usuarios.js"></script>
 
     <script>
         var cursos_data = []
