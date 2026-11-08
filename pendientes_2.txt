@@ -17,3 +17,4 @@ exportar reporte real de todos los cursos
 exportar reporte real de todos los usuarios
 
 mensaje de alerta de que no tiene camara
+validaciones a los textos

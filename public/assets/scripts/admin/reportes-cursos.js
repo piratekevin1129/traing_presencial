@@ -5,7 +5,7 @@ function verDetallesCurso(id_course){
     
     openModal(null,'modal-detalles-curso','Detalles del curso')
     $.ajax({
-        url: base+'api/courses.php?action=getCourse',
+        url: base+'api/controllers/courses.php?action=getCourse',
         method: 'POST',
         data: {
             courseid:id_course

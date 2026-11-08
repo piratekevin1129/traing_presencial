@@ -138,10 +138,15 @@
     font-size: 0.9rem;
     color: var(--text);
     padding: 5px 2px;
+    border-radius: 0%;
     border-bottom: var(--gris) solid 1px;
 }
 .login-row-form-input input:focus{
-    border-bottom: var(--azul) solid 1px;
+    border-right: none !important;
+    border-left: none !important;
+    border-top: none !important;
+    box-shadow: none !important;
+    border-bottom: var(--azul) solid 1px !important;
 }
 
 .login-row-form-btn1,

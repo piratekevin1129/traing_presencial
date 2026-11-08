@@ -1,11 +1,22 @@
 <?php 
 require('../../api/env.php');
-require('../../data/courses.php');
-require('../../data/headquarters.php');
-require('../../data/rooms.php');
-require('../../data/teachers.php');
-$c = findCourse(1);
-$course = $courses[$c];
+require('../../api/session.php');
+
+if(!$valid_session){
+    //exit("sesion invalida ".$_SESSION['document'].'-'.$_SESSION['user_id'].'-'.$_SESSION['name'].'-'.$_SESSION['document'].'-'.$_SESSION['course_id']);
+    exit("sesion invalida");
+}else{
+    require('../../data/courses.php');
+    require('../../data/headquarters.php');
+    require('../../data/rooms.php');
+    require('../../data/teachers.php');
+    $c = findCourse($_SESSION['course_id']);
+
+    if($c<0){
+        exitPage();
+    }else{
+        $course = $courses[$c];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -128,3 +139,5 @@ $course = $courses[$c];
     </script>
 </body>
 </html>
+
+<?php } ?>

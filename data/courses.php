@@ -26,10 +26,11 @@ foreach($courses_file_data as $cd){
 
 function findCourse($id){
     global $courses;
-    $ind = 0;
+    $ind = -1;
     foreach($courses as $c=>$course){
         if($course['id']==$id){
             $ind = $c;
+            break;
         }
     }
     return $ind;

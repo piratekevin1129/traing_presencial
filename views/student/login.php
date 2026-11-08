@@ -1,4 +1,5 @@
 <?php require('../../api/env.php');?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,6 +8,8 @@
 
     <?php include '../../layouts/css.php'; ?>
     <link href="<?php echo $base ?>public/assets/css/login.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>public/assets/css/sweetalert.css" rel="stylesheet" type="text/css" />
+    <script src="<?php echo $base ?>public/assets/scripts/jquery-4.0.0.min.js"></script>
 
     <title>Traing Presencial - Login</title>
 </head>
@@ -24,12 +27,15 @@
                         </div>
                         <div class="login-row-form-body">
                             <div class="login-row-form-input">
-                                <input type="text" placeholder="Cédula *" maxlength="20" autocomplete="off" />
+                                <input type="text" placeholder="Cédula *" maxlength="20" autocomplete="off" id="cedula-txt" />
                             </div>
-
-                            <a href="curso-user.php" class="login-row-form-btn1" type="button">
+                            
+                            <?php if(isset($_GET['courseid'])){ ?>
+                            <input type="hidden" value="<?php echo $_GET['courseid']?>" id="curso-txt" />
+                            <button href="curso-user.php" class="login-row-form-btn1" type="button" onclick="clickIngresar()">
                                 Ingresar
-                            </a>
+                            </button>
+                            <?php } ?>
                             
                         </div>
                         <div class="login-row-form-foot">
@@ -45,5 +51,26 @@
             <!--whatsapp-->
         </div>
     </div>
+
+    <!--modales-->
+    <?php include '../../components/sweetalert/sweetalert.php'; ?>
+
+    <script src="<?php echo $base?>public/assets/scripts/student/login.js"></script>
+    <script src="<?php echo $base?>public/assets/scripts/form.js"></script>
+    <script src="<?php echo $base?>public/assets/scripts/sweetalert.js"></script>
+    <script>
+        <?php if(!isset($_GET['courseid'])){ ?>
+            openModalAlert({
+                status:'warning',
+                title:'¡Link incorrecto!',
+                text:"Debes escanear el código QR al curso que deseas entrar",
+                action: 'cerrarLogin'
+            });
+        <?php } ?>
+
+        function cerrarLogin(){
+            window.location.href = './prelogin.php'
+        }
+    </script>
 </body>
 </html>

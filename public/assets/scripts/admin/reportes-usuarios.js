@@ -5,7 +5,7 @@ function verDetallesUsuario(id_user){
     
     openModal(null,'modal-detalles-usuario','Detalles del usuario')
     $.ajax({
-        url: base+'api/courses_users.php?action=getCoursesByUser',
+        url: base+'api/controllers/courses_users.php?action=getCoursesByUser',
         method: 'POST',
         data: {
             userid:id_user
@@ -48,7 +48,7 @@ function verDetallesUsuario(id_user){
     })
 
     $.ajax({
-        url: base+'api/users.php?action=getUser',
+        url: base+'api/controllers/users.php?action=getUser',
         method: 'POST',
         data: {
             userid:id_user

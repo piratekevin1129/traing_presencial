@@ -4,10 +4,10 @@ function updateCursoFile(inpu){
 }
 
 function registrarFacilitador(){
-    var action = base+'api/teachers.php?action=saveFacilitador';
+    var action = base+'api/controllers/teachers.php?action=saveFacilitador';
     var id = 0;
     if(editing_usuario){
-        action = base+'api/teachers.php?action=updateFacilitador';
+        action = base+'api/controllers/teachers.php?action=updateFacilitador';
         id = editing_usuario_id;
     }
     $.ajax({
@@ -102,7 +102,7 @@ function eliminarUsuario(){
             //var tbdoy_container = getE('tabla-usuarios').getElementsByTagName('tbody')[0]
             //tbdoy_container.removeChild(getE('tabla-usuario-row-'+item_selected))
             $.ajax({
-                url: base+'api/teachers.php?action=deleteFacilitador',
+                url: base+'api/controllers/teachers.php?action=deleteFacilitador',
                 method: 'POST',
                 data:{
                     id:item_selected

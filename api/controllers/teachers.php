@@ -5,7 +5,7 @@ $tipos_documento_t = array(
     'ce'=>'Cédula extranjera'
 );
 
-$teachers_file = file_get_contents('../data/db/teachers.json');
+$teachers_file = file_get_contents('../../data/db/teachers.json');
 $teachers_file_data = json_decode($teachers_file,true);
 
 if(isset($_GET['action'])){

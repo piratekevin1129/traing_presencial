@@ -10,7 +10,7 @@ $tipos_documento = array(
     'ce'=>'Cédula extranjera'
 );
 
-$users_file = file_get_contents('../data/db/users.json');
+$users_file = file_get_contents('../../data/db/users.json');
 $users_file_data = json_decode($users_file,true);
 
 if(isset($_GET['action'])){

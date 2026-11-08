@@ -32,10 +32,10 @@ function removeCursoList(ind,list){
 }
 
 function registrarUsuario(){
-    var action = base+'api/users.php?action=saveUser';
+    var action = base+'api/controllers/users.php?action=saveUser';
     var id = 0;
     if(editing_usuario){
-        action = base+'api/users.php?action=updateUser';
+        action = base+'api/controllers/users.php?action=updateUser';
         id = editing_usuario_id;
     }
     $.ajax({
@@ -132,7 +132,7 @@ function eliminarUsuario(){
             //var tbdoy_container = getE('tabla-usuarios').getElementsByTagName('tbody')[0]
             //tbdoy_container.removeChild(getE('tabla-usuario-row-'+item_selected))
             $.ajax({
-                url: base+'api/users.php?action=deleteUser',
+                url: base+'api/controllers/users.php?action=deleteUser',
                 method: 'POST',
                 data:{
                     id:item_selected

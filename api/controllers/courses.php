@@ -1,15 +1,15 @@
 <?php
 
-$headquarters_file = file_get_contents('../data/db/headquarters.json');
+$headquarters_file = file_get_contents('../../data/db/headquarters.json');
 $headquarters_file_data = json_decode($headquarters_file,true);
 
-$rooms_file = file_get_contents('../data/db/rooms.json');
+$rooms_file = file_get_contents('../../data/db/rooms.json');
 $rooms_file_data = json_decode($rooms_file,true);
 
-$teachers_file = file_get_contents('../data/db/teachers.json');
+$teachers_file = file_get_contents('../../data/db/teachers.json');
 $teachers_file_data = json_decode($teachers_file,true);
 
-$courses_file = file_get_contents('../data/db/courses.json');
+$courses_file = file_get_contents('../../data/db/courses.json');
 $courses_file_data = json_decode($courses_file,true);
 
 

@@ -11,7 +11,7 @@ function verAsistencias(id_curso){
     
     openModal(null,'modal-ver-asistencias','Ver asistencia de los estudiantes')
     $.ajax({
-        url: base+'api/courses_users.php?action=getUsersByCourse',
+        url: base+'api/controllers/courses_users.php?action=getUsersByCourse',
         method: 'POST',
         data: {
             courseid:id_curso

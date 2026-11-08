@@ -10,13 +10,13 @@ $tipos_documento = array(
     'ce'=>'Cédula extranjera'
 );
 
-$users_file = file_get_contents('../data/db/users.json');
+$users_file = file_get_contents('../../data/db/users.json');
 $users_file_data = json_decode($users_file,true);
 
-$courses_file = file_get_contents('../data/db/courses.json');
+$courses_file = file_get_contents('../../data/db/courses.json');
 $courses_file_data = json_decode($courses_file,true);
 
-$courses_users_file = file_get_contents('../data/db/courses_users.json');
+$courses_users_file = file_get_contents('../../data/db/courses_users.json');
 $courses_users_file_data = json_decode($courses_users_file,true);
 
 
