@@ -146,10 +146,10 @@
                     <div class="full">
                         <p class="text">Opciones del curso presencial</p>
         
-                        <div class="switch">
+                        <div class="switch" id="repetir-curso-switch">
                             <label class="switch-radio">
                                 <p>Repetir curso</p>
-                                <input onchange="toggleRepetir(this)" value="0" type="checkbox" name="repetircurso" />
+                                <input id="repetir-curso-check" onchange="toggleRepetir(this)" value="0" type="checkbox" name="repetircurso" />
                                 <span></span>
                             </label>
                         </div>
@@ -381,11 +381,25 @@
             if(inpu.checked){
                 //autodestruir
                 inpu.disabled = true
+                getE('repetir-curso-switch').className = 'switch switch-disabled'
                 openModal(null,'modal-repetir-curso','Opciones para repetir el curso')
             }
         }
 
         function aplicarRepetir(){
+            //rellenar como un pavo de navidad
+            var periodo = getE('periodo-sel').value
+            if(periodo==1){
+                var periodo_o1 = getE('periodo-o1-check').checked
+            }else if(periodo==2){
+                //var periodo_o2 = 
+                getDropdown('dropdown-dias-semana-o2')
+            }else if(periodo==3){
+                var periodo_o3 = getE('periodo-o3-sel')
+            }else if(periodo==4){
+                var periodo_o4 = getE('periodo-o4-sel')
+            }
+
             getE('curso-presencial-opciones-periodo').className = 'content-visible'
             closeModal()
         }
@@ -397,13 +411,8 @@
             getE('curso-presencial-opciones-repetir-o2').className = 'content-hidden'
             getE('curso-presencial-opciones-repetir-o3').className = 'content-hidden'
             getE('curso-presencial-opciones-repetir-o4').className = 'content-hidden'
-            getE('curso-presencial-opciones-repetir-o5').className = 'content-hidden'
             
             getE('curso-presencial-opciones-repetir-o'+selected_value).className = 'content-visible'
-
-            if(selected_value=='1'){
-                
-            }
         }
 
         function guardarCurso(){

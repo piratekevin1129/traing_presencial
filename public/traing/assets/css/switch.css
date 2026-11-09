@@ -1,9 +1,17 @@
 .switch{
     width: auto;
 }
-
-.switch-radio{
+.switch-disabled{
+    opacity: 0.3;
+    filter: grayscale(50%);
+}
+.switch .switch-radio{
     cursor: pointer;
+}
+.switch-disabled .switch-radio{
+    cursor: not-allowed;
+}
+.switch-radio{
     display: flex;
     flex-wrap: nowrap;
     width: fit-content;

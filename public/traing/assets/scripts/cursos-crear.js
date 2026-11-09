@@ -143,6 +143,11 @@ function eliminarTodo(){
     current_charla = -1
     charlas_data.length = 0
     charlas_data = []
+
+    getE('repetir-curso-check').disabled = false
+    getE('repetir-curso-check').checked = false
+    getE('repetir-curso-switch').className = 'switch'
+    getE('reptir-curso-form').reset()
 }
 
 ///////////////////////////////////////

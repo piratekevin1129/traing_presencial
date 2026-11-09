@@ -6,7 +6,6 @@ var dropdown_active = null
 function setDropdown(){
     var dropdown_objs = document.body.getElementsByClassName('dropdown')
     for(i = 0;i<dropdown_objs.length;i++){
-        
         var selected_items = []
         dropdown_objs[i].setAttribute('data-ind',i)
         dropdown_objs[i].getElementsByClassName('dropdown-box')[0].setAttribute('onclick','clickDropdown(this)')
@@ -27,6 +26,12 @@ function setDropdown(){
             limit:Number(dropdown_objs[i].getAttribute('data-limit'))
         })
     }
+}
+
+function getDropdown(idname){
+    var dropdown_obj = getE(idname)
+    var dropdown_ind = dropdown_obj.getAttribute('data-ind')
+    console.log(dropdown_data[dropdown_ind].selecteditems)
 }
 
 function clickDropdown(box){
