@@ -20,7 +20,8 @@ foreach($courses_file_data as $cd){
         'facilitadorid'=>$cd['facilitadorid'],
         'facilitador'=>"",
         'registrados'=>0,
-        'certificados'=>0
+        'certificados'=>0,
+        'status'=>$cd['status']
     ));
 }
 

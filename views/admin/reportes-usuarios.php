@@ -96,7 +96,7 @@
                                             <td><?php echo $user['correo']?></td>
                                             <td><?php echo $user['ciudad']?></td>
                                             <td><?php echo $user['empresa']?></td>
-                                            <td class="td-boton">
+                                            <td>
                                                 <button onclick="verDetallesUsuario(<?php echo $user['id']?>)">
                                                     <img src="<?php echo $base ?>public/assets/images/button-ver-icon.svg" />
                                                 </button>

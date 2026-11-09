@@ -112,6 +112,26 @@
                                 </div>
                             </div>
 
+                            <br>
+
+                            <p class="text">Duración aproximada del curso</p>
+                            <div class="col-flex">
+                                <div class="col-tiempo">
+                                    <div class="input">
+                                        <input id="tiempo-inp" placeholder="10" min="1" max="100" type="number" maxlength="3" autocomplete="off" name="tiempo" />
+                                        <label>Tiempo (1-100)</label>
+                                    </div>
+                                </div>
+                                <div class="col-tiempo">
+                                    <div class="select">
+                                        <select name="tiempo2" id="tiempo2-sel">
+                                            <option value="minutos" selected>Minutos</option>
+                                            <option value="horas">Horas</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <!--30%-->
                         <div class="col-imagen">

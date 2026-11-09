@@ -48,6 +48,23 @@ if(isset($_GET['action'])){
         }
         
         exit('{"status":"success","data":'.json_encode($course_data).'}');
+    }else if($action=='InitiateCourse'){
+        $courses_ids = array_column($courses_file_data, 'id');
+        $course_data_ind = array_search((int)$_POST['courseid'], $courses_ids);
+
+        if($course_data_ind !== false){
+            $courses_file_data[$course_data_ind]['status'] = 1;
+            $courses_file_txt = json_encode($courses_file_data);
+
+            if(file_put_contents('../../data/db/courses.json',$courses_file_txt)){
+                //devolver el link
+                exit('{"status":"success","data":{}}');
+            }else{
+                exit('{"status":"error","data":"error confirmando el inicio"}');
+            }
+        }else{
+            exit('{"status":"error","data":"no se encontró el curso"}');        
+        }
     }
 }else{
     exit('{"status":"error","data":"action not defined"}');

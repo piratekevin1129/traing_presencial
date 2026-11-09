@@ -119,6 +119,9 @@
 .col-hora{
     width: 100px;
 }
+.col-tiempo{
+    width: 25%;
+}
 
 #calendario-data-options,
 .col-right{

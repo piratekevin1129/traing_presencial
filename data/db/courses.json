@@ -1,10 +1,1 @@
-[{
-    "id":1,
-    "nombre":"Inducción - Energías Renovables (hidráulica- eólica- fotovoltaica)",
-    "img":"thumbnail-1.jpg",
-    "fecha":"12 de Julio de 2026 - 8:00pm",
-    "fechaformat":"2026-07-12 20:00:00",
-    "sedeid":1,
-    "aulaid":1,
-    "facilitadorid":1
-}]
+[{"id":1,"nombre":"Inducci\u00f3n - Energ\u00edas Renovables (hidr\u00e1ulica- e\u00f3lica- fotovoltaica)","img":"thumbnail-1.jpg","fecha":"12 de Julio de 2026 - 8:00pm","fechaformat":"2026-07-12 20:00:00","sedeid":1,"aulaid":1,"facilitadorid":1,"status":1}]

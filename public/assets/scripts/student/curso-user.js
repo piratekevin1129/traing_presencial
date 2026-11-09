@@ -1,43 +1,48 @@
-var active_course_id = -1
-var active_qr_action = ''
-
 function clickConfirmarIngreso(c){
-    active_course_id = c
-    active_qr_action = 'ingreso'
-    confirmarBoton()
-}
-
-function clickConfirmarSalida(c){
-    active_course_id = c
-    active_qr_action = 'salida'
-    confirmarBoton()
-}
-
-function confirmarBoton(){
-    if(active_qr_action=='ingreso'){
-        if(active_course_id!=-1){
-            //poner ingreso en ready
-            getE('confirmar-ingreso-btn-'+active_course_id).className = 'accordion-ingreso-btn ready'
-            //quitar evento del click a ingreso
-            getE('confirmar-ingreso-btn-'+active_course_id).removeAttribute('onclick')
-            getE('confirmar-ingreso-btn-'+active_course_id).disabled = true
-
-            //habilitar clase y click de salida
-            getE('confirmar-salida-btn-'+active_course_id).className = 'accordion-ingreso-btn unlocked'
-            getE('confirmar-salida-btn-'+active_course_id).disabled = false
-        }
-    }else if(active_qr_action=='salida'){
-        if(active_course_id!=-1){
-            //poner salida en ready
-            getE('confirmar-salida-btn-'+active_course_id).className = 'accordion-ingreso-btn ready'
-            //quitar evento del click a salida
-            getE('confirmar-salida-btn-'+active_course_id).removeAttribute('onclick')
-            getE('confirmar-salida-btn-'+active_course_id).disabled = true
-
-            //habilitar clase y click de certificado
-            getE('confirmar-certificado-btn-'+active_course_id).className = 'accordion-ingreso-btn unlocked'
-            getE('confirmar-certificado-btn-'+active_course_id).setAttribute('href','./public/docs/certificado-curso-1.pdf')
-            getE('confirmar-certificado-btn-'+active_course_id).setAttribute('target','_blank')
-        }
+    if(!confirming_entry){
+        //poner ingreso en ready
+        setButtonIngresoLoading()
+        confirming_entry = true
+    
+        $.ajax({
+            method: 'POST',
+            url: base+'api/controllers/student.php?action=confirmEntry',
+            success: function(response){
+                var response_data = JSON.parse(response)
+                if(response_data.status=='success'){
+                    setButtonIngresoReady()
+                    openModalAlert({
+                        status:'success',
+                        title:'Ingreso confirmado',
+                        text:'Hora de ingreso: '+response_data.data.horaentrada
+                    })
+                }else{
+                    openModalAlert({
+                        status:'warning',
+                        title:'¡Algo salió mal!',
+                        text:"Ocurrió un error confirmando el ingreso"
+                    });
+                    setButtonIngresoDefault()
+                }
+                confirming_entry = false
+            },
+            error: function(xhr, status, error) {
+                console.log("Error de servidor");
+                console.log(xhr);
+                openModalAlert({
+                    status:'warning',
+                    title:'¡Algo salió mal!',
+                    text:"No se pudo confirmar el ingreso"
+                });
+                setButtonIngresoDefault()
+                confirming_entry = false
+            }
+        })
     }
 }
+
+
+//habilitar clase y click de certificado
+//getE('confirmar-certificado-btn-'+active_course_id).className = 'accordion-ingreso-btn unlocked'
+//getE('confirmar-certificado-btn-'+active_course_id).setAttribute('href','./public/docs/certificado-curso-1.pdf')
+//getE('confirmar-certificado-btn-'+active_course_id).setAttribute('target','_blank')

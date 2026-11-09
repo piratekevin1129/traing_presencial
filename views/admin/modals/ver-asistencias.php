@@ -29,7 +29,10 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button class="boton-principal" onclick="closeModal()">
+            <button class="boton-normal" onclick="actualizarModal()">
+                Actualizar
+            </button>
+            <button class="boton-principal" onclick="closeModalAsistencias()">
                 Cerrar
             </button>
         </div>

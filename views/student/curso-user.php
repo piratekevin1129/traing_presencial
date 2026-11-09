@@ -12,10 +12,30 @@ if(!$valid_session){
     require('../../data/teachers.php');
     $c = findCourse($_SESSION['course_id']);
 
-    if($c<0){
-        exitPage();
-    }else{
+    if($c>=0){
         $course = $courses[$c];
+
+        foreach($headquarters as $h){
+            if($course['sedeid']==$h['id']){
+                $course['sede'] = $h['nombre'];
+                $course['direccion'] = $h['direccion'];
+                break;
+            }
+        }
+        foreach($rooms as $r){
+            if($course['aulaid']==$r['id']){
+                $course['aula'] = $r['nombre'];
+                break;
+            }
+        }
+        foreach($teachers as $t){
+            if($course['facilitadorid']==$t['id']){
+                $course['facilitador'] = $t['nombre'].' '.$t['apellido'];
+                break;
+            }
+        }
+    }else{
+        exitPage();
     }
 ?>
 
@@ -31,8 +51,9 @@ if(!$valid_session){
     <link href="<?php echo $base ?>public/assets/css/accordion.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo $base ?>public/assets/css/form.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo $base ?>public/assets/css/modal.css" rel="stylesheet" type="text/css" />
-    <link href="<?php echo $base ?>public/assets/css/camara.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>public/assets/css/sweetalert.css" rel="stylesheet" type="text/css" />
     
+    <script src="<?php echo $base?>public/assets/scripts/jquery-4.0.0.min.js"></script>
     <title>Traing Presencial - Cursos</title>
 </head>
 <body>
@@ -42,7 +63,7 @@ if(!$valid_session){
             <div id="app" class="app-closed">
                 <!--contenido aqui ↓↓↓-->
                 <h1 class="main-title">Curso <?php echo $course['nombre'] ?></h1>
-                <div class="app-container">
+                <!--<div class="app-container">-->
                     <div class="accordion-wrap">
                         <div class="accordion-container accordion-container-expanded">
                             <div class="accordion-header" onclick="toggleAccordion(this)">
@@ -67,6 +88,10 @@ if(!$valid_session){
                                                 <p><?php echo $course['sede']?></p>
                                             </div>
                                             <div class="accordion-content-info-col">
+                                                <h4>Aula</h4>
+                                                <p><?php echo $course['aula']?></p>
+                                            </div>
+                                            <div class="accordion-content-info-col">
                                                 <h4>Ubicación</h4>
                                                 <div>
                                                     <div>
@@ -82,9 +107,13 @@ if(!$valid_session){
                                         </div>
                                     </div>
                                     <div class="accordion-content-col2">
-                                        <button id="confirmar-ingreso-btn-<?php echo $course['id'] ?>" type="button" class="accordion-ingreso-btn unlocked" onclick="clickConfirmarIngreso(<?php echo $course['id']?>)">
+                                        <button 
+                                            id="confirmar-ingreso-btn-<?php echo $course['id'] ?>" 
+                                            type="button" 
+                                            class="loading" 
+                                        >
                                             <span>Confirmar Ingreso</span>
-                                            <img src="<?php echo $base ?>public/assets/images/check-icon.svg" />
+                                            <div></div>
                                         </button>
 
                                         <!--<button id="confirmar-salida-btn-<?php echo $course['id'] ?>" type="button" class="accordion-salida-btn locked" onclick="clickConfirmarSalida(<?php echo $course['id']?>)" disabled>
@@ -97,45 +126,93 @@ if(!$valid_session){
                                             <img src="<?php echo $base ?>public/assets/images/check-icon.svg" />
                                         </a>-->
                                     </div>
+                                    <p id="hora-ingreso-txt"></p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                <!--</div>-->
             </div>
         </div>
     </div>
 
+    <!--modales-->
+    <?php include '../../components/sweetalert/sweetalert.php'; ?>
+
     <script src="<?php echo $base ?>public/assets/scripts/accordion.js"></script>
     <script src="<?php echo $base ?>public/assets/scripts/modal.js"></script>
-    <script src="<?php echo $base ?>public/assets/qr/qrCode.min.js"></script>
-    <script src="<?php echo $base ?>public/assets/scripts/qr.js"></script>
-    <script src="<?php echo $base ?>public/assets/scripts/curso-user.js"></script>
+    <script src="<?php echo $base?>public/assets/scripts/sweetalert.js"></script>
+    <script src="<?php echo $base ?>public/assets/scripts/student/curso-user.js"></script>
 
     <script>
-        var cursos_data = []
-        <?php foreach($courses as $course){ ?>
-        cursos_data.push({
-            id:<?php echo $course['id']?>,
-            nombre:"<?php echo $course['nombre']?>",
-            fecha:"<?php echo $course['fecha']?>",
-            sede:"<?php echo $course['sede']?>",
-            ubicacion:"<?php echo $course['ubicacion']?>",
-            facilitador:"<?php echo $course['facilitador']?>",
-            img:"<?php echo $course['img']?>"
-        })
-        <?php } ?>
+        var confirming_entry = true
 
-        function findCourse(id){
-            var ind = -1
-            for(var i = 0;i<cursos_data.length;i++){
-                if(cursos_data[i].id==id){
-                    ind = i
+        window.onload = function(){
+            //verificar el estado de ingreso
+            $.ajax({
+                method: 'POST',
+                url: base+'api/controllers/student.php?action=checkEntry',
+                success: function(response){
+                    var response_data = JSON.parse(response)
+                    if(response_data.status=='success'){
+                        //console.log(response_data.data)
+                        if(response_data.data.status==0){
+                            setButtonIngresoDefault()
+                        }else if(response_data.data.status==1){
+                            setButtonIngresoReady()
+                            getE('hora-ingreso-txt').innerHTML = 'Hora de ingreso: '+response_data.data.horaentrada
+                        }else if(response_data.data.status==2){
+                            setButtonIngresoFinalizado()
+                        }
+                    }else{
+                        setButtonIngresoDefault()
+                        openModalAlert({
+                            status:'warning',
+                            title:'¡Algo salió mal!',
+                            text:"Ocurrió un error verificando el ingreso"
+                        });
+                    }
+                    confirming_entry = false
+                },
+                error: function(xhr, status, error) {
+                    console.log("Error de servidor");
+                    console.log(xhr);
+                    openModalAlert({
+                        status:'warning',
+                        title:'¡Algo salió mal!',
+                        text:"No se pudo verificar el ingreso"
+                    });
+                    confirming_entry = false
                 }
-            }
-            return ind
+            })
         }
 
+        var ingreso_btn = getE('confirmar-ingreso-btn-<?php echo $course['id']?>')
+
+        function setButtonIngresoReady(){
+            ingreso_btn.className = 'ready'
+            ingreso_btn.disabled = true
+            ingreso_btn.innerHTML = '<span>Ingreso confirmado</span><div></div>'
+        }
+
+        function setButtonIngresoDefault(){
+            ingreso_btn.className = 'unlocked'
+            ingreso_btn.setAttribute('onclick','clickConfirmarIngreso(<?php echo $course['id']?>)')
+            ingreso_btn.disabled = false
+            ingreso_btn.innerHTML = '<span>Confirmar ingreso</span><div></div>'
+        }
+
+        function setButtonIngresoLoading(){
+            ingreso_btn.className = 'loading'
+            ingreso_btn.disabled = true
+            ingreso_btn.innerHTML = '<span>Espere</span><div></div>'
+        }
+
+        function setButtonIngresoFinalizado(){
+            ingreso_btn.className = 'ready'
+            ingreso_btn.innerHTML = '<span>Curso finalizado</span><div></div>'
+            ingreso_btn.disabled = true
+        }
     </script>
 </body>
 </html>

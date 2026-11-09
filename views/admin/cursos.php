@@ -10,28 +10,46 @@
 
 //fill extra data for courses
 foreach($courses as $indx => $c){
+    //definir hora
+    /*$fecha_curso = $c['fechaformat'];
+
+    $fecha_curso2 = new DateTime($fecha_curso);
+    $fecha_actual = new DateTime('now', new DateTimeZone('America/Bogota'));
+
+    if ($fecha_curso2 > $fecha_actual) {
+        //ya debió haber iniciado
+        $courses[$indx]['status'] = 1;
+    } else {
+        //aun no es el dia
+        $courses[$indx]['status'] = 0;
+    }*/
+
     foreach($headquarters as $h){
         if($c['sedeid']==$h['id']){
             $courses[$indx]['sede'] = $h['nombre'];
             $courses[$indx]['direccion'] = $h['direccion'];
+            break;
         }
     }
 
     foreach($rooms as $r){
         if($c['aulaid']==$r['id']){
             $courses[$indx]['aula'] = $r['nombre'];
+            break;
         }
     }
 
     foreach($teachers as $t){
         if($c['facilitadorid']==$t['id']){
             $courses[$indx]['facilitador'] = $t['nombre'].' '.$t['apellido'];
+            break;
         }
     }
 
     foreach($courses_users as $cu){
         if($c['id']==$cu['id']){
             $courses[$indx]['registrados'] = count($cu['users']);
+            break;
         }
     }
 }
@@ -78,7 +96,7 @@ foreach($courses as $indx => $c){
                                         <span>Fecha y ubicación</span>
                                         <button></button>
                                     </th>
-                                    <th style="width: 20%;" class="text-center">
+                                    <th style="width: 17%;" class="text-center">
                                         <span>Facilitador</span>
                                         <button></button>
                                     </th>
@@ -88,11 +106,11 @@ foreach($courses as $indx => $c){
                                     <th style="width: 7%;" class="text-center">
                                         <span>Usuarios</span>
                                     </th>
-                                    <th style="width: 9%;" class="text-center">
+                                    <th style="width: 6%;" class="text-center">
                                         <span>Editar</span>
                                     </th>
-                                    <th style="width: 9%;" class="text-center">
-                                        <span>Abrir</span>
+                                    <th style="width: 15%;" class="text-center">
+                                        <span>Iniciar/Finalizar</span>
                                     </th>
                                 </tr>
                             </thead>
@@ -104,6 +122,7 @@ foreach($courses as $indx => $c){
                                     </td>
                                     <td>
                                         <?php 
+
                                         echo $course['fecha'].'<br>';
                                         echo '<span>Sede: </span>'.$course['sede'].'<br>';
                                         echo '<span>Aula: </span>'.$course['aula'].'<br>';
@@ -114,25 +133,33 @@ foreach($courses as $indx => $c){
                                         <?php //echo $course['registrados']?>
                                         <?php echo $course['facilitador']?>
                                     </td>
-                                    <td class="td-boton">
+                                    <td>
                                         <button class="button-qr" onclick="verQRS(<?php echo $course['id']?>)">
                                             <img src="<?php echo $base ?>public/assets/images/button-qr-icon.svg" />
                                         </button>
                                     </td>
-                                    <td class="td-boton">
-                                        <button onclick="verAsistencias(<?php echo $course['id']?>)">
-                                            <img src="<?php echo $base ?>public/assets/images/button-ver-icon.svg" />
+                                    <td>
+                                        <button onclick="verAsistencias(<?php echo $course['id']?>,<?php echo $course['status']?>)">
+                                            <img src="<?php echo $base ?>public/assets/images/button-usuarios-icon.svg" />
                                         </button>
                                     </td>
-                                    <td class="td-boton">
+                                    <td>
                                         <button onclick="editarCurso(<?php echo $course['id']?>)">
                                             <img src="<?php echo $base ?>public/assets/images/button-edit-icon.svg" />
                                         </button>
                                     </td>
-                                    <td class="td-boton">
-                                        <a class="boton-td" href="<?php echo $base ?>public/docs/curso-medio-ambiente.pdf" target="_blank">
+                                    <td>
+                                        <?php if($course['status']==0){?>
+                                        <button class="boton-td2" onclick="iniciarCurso(<?php echo $course['id']?>)">
                                             <img src="<?php echo $base ?>public/assets/images/button-link-icon.svg" />
-                                        </a>
+                                            <span>Iniciar</span>
+                                        </button>
+                                        <?php } else if($course['status']==1){?>
+                                        <button class="boton-td2" onclick="finalizarCurso(<?php echo $course['id']?>)">
+                                            <img src="<?php echo $base ?>public/assets/images/button-link-icon.svg" />
+                                            <span>Finalizar</span>
+                                        </button>
+                                        <?php } ?>
                                     </td>
                                 </tr>
                                 <?php } ?>

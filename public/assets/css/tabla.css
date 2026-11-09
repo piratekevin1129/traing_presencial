@@ -108,6 +108,9 @@
 .traing-tabla tbody td > span{
     font-family: var(--fontbold);
 }
+.traing-tabla tbody tr td:last-child{
+    border-right: none !important;
+}
 
 .traing-tabla tbody td button,
 .boton-td{
@@ -123,6 +126,14 @@
     display: flex;
     align-items: center;
 }
+.boton-td2{
+    gap: 5px;
+    width: auto !important;
+    padding: 0px 10px !important;
+    background-color: var(--cleargray) !important;
+    box-shadow: -1px 1px 3px 1px rgba(0,0,0,0.3);
+}
+
 .traing-tabla tbody td button img,
 .boton-td img{
     width: 18px;
@@ -136,14 +147,18 @@
 .traing-tabla tbody td .button-qr img{
     width: 25px;
 }
+.boton-td2 span{
+    font-family: var(--fontregular);
+    color: var(--text);
+    font-size: 1rem;
+}
 
 .td-checkbox{
     padding: 5px 0px;
 }
-.td-boton{
-    padding: 5px 0px;
-    border-right: none;
-}
+
+/**************/
+
 .td-botones-flex{
     display: flex;
     height: 100%;
@@ -167,6 +182,7 @@
     border-radius: 4px;
     padding: 5px 10px;
     align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 5px;
     margin-left: auto;
@@ -178,8 +194,8 @@
 }
 .table-tag p{
     width: auto;
-    font-family: var(--fontregular);
-    font-size: 0.85rem;
+    font-family: var(--fontmedium);
+    font-size: 0.9rem;
 }
 
 /**************/
@@ -191,13 +207,24 @@
     width: 12px;
     height: 12px;
 }
-.table-tag-gris{
+.table-tag-gris,
+.table-tag-gris2{
     background-color: var(--cleargray);
 }
-.table-tag-gris img{
+.table-tag-gris img,
+.table-tag-gris2 img{
     width: 15px;
     height: 15px;
+}
+.table-tag-gris img{
     animation: animacion-loading 1s infinite linear;
+}
+.table-tag-naranja{
+    background-color: var(--naranja);
+}
+.table-tag-naranja img{
+    width: 12px;
+    height: 12px;
 }
 @keyframes animacion-loading {
     0%{
@@ -212,4 +239,7 @@
 }
 .table-tag-gris p{
     color: var(--text);
+}
+.table-tag-naranja p{
+    color: var(--blanco);
 }

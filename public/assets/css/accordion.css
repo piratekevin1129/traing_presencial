@@ -48,7 +48,14 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    gap: 20px;
+    /*gap: 20px;*/
+}
+.accordion-content > p{
+    font-family: var(--fontregular);
+    color: var(--traing);
+    font-size: 1rem;
+    text-align: right;
+    margin-top: 10px;
 }
 
 .accordion-content-col1,
@@ -140,12 +147,16 @@
     font-family: var(--fontmedium);
     font-size: 1rem;
 }
-.accordion-content-col2 > button img,
-.accordion-content-col2 > a img{
+.accordion-content-col2 > button div,
+.accordion-content-col2 > a div{
     width: 15px;
     height: 15px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }
-.accordion-content-col2 .unlocked{
+.accordion-content-col2 .unlocked,
+.accordion-content-col2 .loading{
     background-color: var(--cleargray);
     color: var(--text);
     cursor: pointer;
@@ -159,14 +170,27 @@
     background-color: var(--grisclaro);
     color: var(--text);
 }
-.accordion-content-col2 .unlocked img,
-.accordion-content-col2 .locked img{
+.accordion-content-col2 .unlocked div,
+.accordion-content-col2 .locked div{
     display: none;
 }
-.accordion-content-col2 .ready img{
+.accordion-content-col2 .ready div{
     display: block;
+    background-image: url(../images/check-icon.svg);
 }
-
+.accordion-content-col2 .loading div{
+    display: block;
+    background-image: url(../images/loading-icon.svg);
+    animation: animacion-loading 1s infinite linear;
+}
+@keyframes animacion-loading {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
 .accordion-content-col2 > .ready:hover,
 .accordion-content-col2 > .unlocked:hover{
     box-shadow: 0px 2px 3px 1px rgba(0,0,0,0.3);
