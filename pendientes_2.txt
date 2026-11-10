@@ -7,6 +7,7 @@ exportar reporte real de todos los cursos
 exportar reporte real de todos los usuarios
 
 
+boton cerrar sesion
 activacion de repetir dias
 guardar la charla con datos reales y enviar correo
 editar curso con datos reales
@@ -18,3 +19,4 @@ editar y eliminar aulas
 ubicacion en el mapa
 login admin
 seccion de contenidos
+validaciones full

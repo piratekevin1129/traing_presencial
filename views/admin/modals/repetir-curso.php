@@ -13,9 +13,9 @@
                         <select name="periodo" id="periodo-sel" onchange="selectRepetirPeriodo(this)">
                             <option value="0">Selecciona una opción</option>
                             <option value="1">Todos los dias</option>
-                            <option value="2">Dos veces a la semana</option>
-                            <option value="3">Una vez a la semana</option>
-                            <option value="4">Cada 8 días</option>
+                            <option value="2">Tres veces a la semana</option>
+                            <option value="3">Dos veces a la semana</option>
+                            <option value="4">Una vez a la semana</option>
                         </select>
                         <label>Seleccione la secuencia para repetir el curso (Mes de <span id="current-mes-txt"></span>)</label>
                     </div>
@@ -33,9 +33,9 @@
                 </div>
     
                 <div id="curso-presencial-opciones-repetir-o2" class="content-hidden">
-                    <!--al seleccionar dos veces a la semana-->
+                    <!--al seleccionar tres veces a la semana-->
                     <div class="col-mid">
-                        <div class="dropdown" id="dropdown-dias-semana-o2" data-limit="2">
+                        <div class="dropdown" id="dropdown-dias-semana-o2" data-limit="3">
                             <div class="dropdown-list">
                                 <div class="dropdown-list-item">
                                     <label class="dropdown-list-radio">
@@ -94,41 +94,84 @@
                         </div>
                     </div>
                 </div>
-    
+
                 <div id="curso-presencial-opciones-repetir-o3" class="content-hidden">
-                    <!--al seleccionar una vez a la semana-->
+                    <!--al seleccionar dos veces a la semana-->
                     <div class="col-mid">
-                        <div class="select">
-                            <select name="periodo-o3" id="periodo-o3-sel"><!--onchange="selectRepetirOpcion3(this)"-->
-                                <option value="0">Selecciona una opción</option>
-                                <option value="1">Los Domingos</option>
-                                <option value="2">Los Lunes</option>
-                                <option value="3">Los Martes</option>
-                                <option value="4">Los Miércoles</option>
-                                <option value="5">Los Jueves</option>
-                                <option value="6">Los Viernes</option>
-                                <option value="7">Los Sábados</option>
-                            </select>
-                            <label>Selecciona el día de la semana</label>
+                        <div class="dropdown" id="dropdown-dias-semana-o3" data-limit="2">
+                            <div class="dropdown-list">
+                                <div class="dropdown-list-item">
+                                    <label class="dropdown-list-radio">
+                                        <p>Domingo</p>
+                                        <input value="0" type="checkbox" name="dias-semana-o3" />
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="dropdown-list-item">
+                                    <label class="dropdown-list-radio">
+                                        <p>Lunes</p>
+                                        <input value="1" type="checkbox" name="dias-semana-o3" />
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="dropdown-list-item">
+                                    <label class="dropdown-list-radio">
+                                        <p>Martes</p>
+                                        <input value="2" type="checkbox" name="dias-semana-o3" />
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="dropdown-list-item">
+                                    <label class="dropdown-list-radio">
+                                        <p>Miércoles</p>
+                                        <input value="3" type="checkbox" name="dias-semana-o3" />
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="dropdown-list-item">
+                                    <label class="dropdown-list-radio">
+                                        <p>Jueves</p>
+                                        <input value="4" type="checkbox" name="dias-semana-o3" />
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="dropdown-list-item">
+                                    <label class="dropdown-list-radio">
+                                        <p>Viernes</p>
+                                        <input value="5" type="checkbox" name="dias-semana-o3" />
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="dropdown-list-item">
+                                    <label class="dropdown-list-radio">
+                                        <p>Sábado</p>
+                                        <input value="6" type="checkbox" name="dias-semana-o3" />
+                                        <span></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="dropdown-box">
+                                <div class="dropdown-text">Seleccionar</div>
+                                <div class="dropdown-arrow"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
     
                 <div id="curso-presencial-opciones-repetir-o4" class="content-hidden">
-                    <!--al seleccionar cada 8 dias-->
+                    <!--al seleccionar una vez a la semana-->
                     <div class="col-mid">
                         <div class="select">
                             <select name="periodo-o4" id="periodo-o4-sel"><!--onchange="selectRepetirOpcion4(this)"-->
-                                <option value="0">Selecciona una opción</option>
-                                <option value="1">Cada Domingo</option>
-                                <option value="2 selected">Cada Lunes</option>
-                                <option value="3">Cada Martes</option>
-                                <option value="4">Cada Miércoles</option>
-                                <option value="5">Cada Jueves</option>
-                                <option value="6">Cada Viernes</option>
-                                <option value="7">Cada Sábado</option>
+                                <option value="-1" selected>Selecciona una opción</option>
+                                <option value="0">Los Domingos</option>
+                                <option value="1">Los Lunes</option>
+                                <option value="2">Los Martes</option>
+                                <option value="3">Los Miércoles</option>
+                                <option value="4">Los Jueves</option>
+                                <option value="5">Los Viernes</option>
+                                <option value="6">Los Sábados</option>
                             </select>
-                            <label>Comenzar desde el dia Lunes</label>
                         </div>
                     </div>
                 </div>

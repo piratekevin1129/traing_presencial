@@ -31,7 +31,7 @@
                         <br>
                         <div class="login-row-container-col2">
                             <div>
-                                <img src="<?php echo $base ?>public/assets/images/login-icon-1.svg" />
+                                <img src="<?php echo $base ?>public/assets/images/login/login-icon-1.svg" />
                             </div>
                             <div>
                                 <h4>Registrar eventos:</h4>
@@ -40,7 +40,7 @@
                         </div>
                         <div class="login-row-container-col2">
                             <div>
-                                <img src="<?php echo $base ?>public/assets/images/login-icon-2.svg" />
+                                <img src="<?php echo $base ?>public/assets/images/login/login-icon-2.svg" />
                             </div>
                             <div>
                                 <h4>Asistencia:</h4>
@@ -49,7 +49,7 @@
                         </div>
                         <div class="login-row-container-col2">
                             <div>
-                                <img src="<?php echo $base ?>public/assets/images/login-icon-3.svg" />
+                                <img src="<?php echo $base ?>public/assets/images/login/login-icon-3.svg" />
                             </div>
                             <div>
                                 <h4>Documentación:</h4>
@@ -58,7 +58,7 @@
                         </div>
                         <div class="login-row-container-col2">
                             <div>
-                                <img src="<?php echo $base ?>public/assets/images/login-icon-4.svg" />
+                                <img src="<?php echo $base ?>public/assets/images/login/login-icon-4.svg" />
                             </div>
                             <div>
                                 <h4>Informes:</h4>

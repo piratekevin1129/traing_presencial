@@ -1,0 +1,203 @@
+#loader{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.3);
+}
+#loader-div{
+    width: 50px;
+    height: 50px;
+}
+#loader-div::after,
+#loader-div::before{
+    content: "";
+    position: absolute;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+}
+.modal-icon{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 0px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-icon div{
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+
+    mask-size: 100% 100%;
+    mask-position: center;
+}
+#sweetalert .success .modal-icon{
+    border: var(--verde) solid 2px;
+}
+#sweetalert .success .modal-icon > div{
+    background-color: var(--verde);
+    mask-image: url(../images/alert/success-icon.svg);
+}
+#sweetalert .warning .modal-icon{
+    border: var(--naranja) solid 2px;
+}
+#sweetalert .warning .modal-icon > div{
+    background-color: var(--naranja);
+    mask-image: url(../images/alert/warning-icon.svg);
+}
+
+/****************************/
+
+#modal-alert-title{
+    font-family: var(--fontbold);
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 20px 0px;
+}
+#sweetalert .success h1{
+    color: var(--verde);
+}
+#sweetalert .warning h1{
+    color: var(--naranja);
+}
+
+#modal-alert-text{
+    font-family: var(--fontregular);
+    font-size: 1rem;
+    color: var(--traing);
+    text-align: center;
+    margin-bottom: 30px;
+}
+#modal-alert-text span{
+    font-family: var(--fontbold);
+}
+
+#modal-alert-btn{
+    position: relative;
+    cursor: pointer;
+    justify-content: center;
+    width: fit-content;
+    padding: 7px 20px;
+    margin: 0px auto;
+    height: auto;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0px 2px 7px -2px rgba(0,0,0,0.5);
+}
+#modal-alert-btn::after{
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 0%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    background-color: rgba(255,255,255,0.3);
+    opacity: 0;
+    transition: width 0.25s, height 0.25s, opacity 0.15s;
+}
+#modal-alert-btn span{
+    font-family: var(--fontmedium);
+    font-size: 1rem;
+    color: var(--blanco);
+}
+#modal-alert-btn:hover::after{
+    width: 200px;
+    height: 200px;
+    opacity: 1;
+}
+
+#sweetalert .success button{
+    background-color: var(--verde);
+}
+#sweetalert .warning button{
+    background-color: var(--naranja);
+}
+
+/**************************/
+
+.sweetalert-off{
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: visibility 0.45s;
+}
+.sweetalert-on{
+    visibility: visible;
+    transition: visibility 0s;
+}
+
+.sweetalert-on #modal-dialog{
+    animation: animacion-alert-on 0.45s 1 forwards,
+                animation-alert-on2 0.45s 1 forwards;
+}
+@keyframes animacion-alert-on{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes animation-alert-on2{
+    0%{
+        transform: scale(0.7);
+        animation-timing-function: ease-in;
+    }
+    50%{
+        transform: scale(1.1);
+        animation-timing-function: ease-out;
+    }
+    75%{
+        transform: scale(0.9);
+        animation-timing-function: ease-in;
+    }
+    87%{
+        transform: scale(1.05);
+        animation-timing-function: ease-out;
+    }
+    93%{
+        transform: scale(0.95);
+        animation-timing-function: ease-in;
+    }
+    96%,100%{
+        transform: scale(1);
+    }
+}
+
+.sweetalert-off #modal-dialog{
+    animation: animacion-alert-off 0.45s 1 forwards,
+                animation-alert-off2 0.45s 1 forwards;
+}
+@keyframes animacion-alert-off{
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+@keyframes animation-alert-off2{
+    0%{
+        transform: scale(1);
+        animation-timing-function: ease-in;
+    }
+    50%{
+        transform: scale(1.1);
+        animation-timing-function: ease-out;
+    }
+    100%{
+        transform: scale(0.7);
+    }
+}

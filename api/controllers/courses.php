@@ -12,6 +12,7 @@ $teachers_file_data = json_decode($teachers_file,true);
 $courses_file = file_get_contents('../../data/db/courses.json');
 $courses_file_data = json_decode($courses_file,true);
 
+$meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 
 if(isset($_GET['action'])){
     $action = $_GET['action'];
@@ -64,6 +65,87 @@ if(isset($_GET['action'])){
             }
         }else{
             exit('{"status":"error","data":"no se encontró el curso"}');        
+        }
+    }else if($action=='saveCourses'){
+        //mirar si trae copias
+        $charlas_data = json_decode($_POST['charlas'],true);
+        $descripcion_curso = $_POST['descripcion'];
+        $tiempo_curso = $_POST['tiempo'];
+        $tiempo2_curso = $_POST['tiempo2'];
+        $encargados_curso = json_decode($_POST['encargados'],true);
+        
+        $initial_id = count($courses_file_data);
+        
+        foreach($charlas_data as $charla_data){
+            $id_curso = ($initial_id+1);
+            $nombre_curso = $_POST['nombre'];
+            $ano = $charla_data['ano'];
+            
+            $mes1 = $charla_data['mes']+1;
+            $mes = $mes1;
+            if($mes1<10){
+                $mes = '0'.$mes1;
+            }
+            
+            $fecha1 = $charla_data['fecha'];
+            $fecha = $fecha1;
+            if($fecha1<10){
+                $fecha = '0'.$fecha1;
+            }
+
+            $minutos1 = $charla_data['minutos'];
+            $minutos = $minutos1;
+            if($minutos1<10){
+                $minutos = '0'.$minutos1;
+            }
+                
+            $hora1 = $charla_data['hora'];
+            $horario = $charla_data['horario'];
+            if($horario=='pm'){
+                $hora1+=12;
+            }
+            $hora = $hora1;
+            if($hora1<10){
+                $hora = '0'.$hora1;
+            }
+
+            $fecha_curso = $fecha.' de '.$meses[$charla_data['mes']].' de '.$ano.' - '.$hora.':'.$minutos.' '.$horario;
+            $fechaformat_curso = $ano.'-'.$mes.'-'.$fecha.' '.$hora.':'.$minutos.':00';
+            $sedeid_curso = $charla_data['sede'];
+            $aulaid_curso = $charla_data['aula'];
+            $facilitadorid_curso = $charla_data['facilitador'];
+
+            if(count($charlas_data)>1){
+                //hay copias
+                $nombre_curso.=' - '.$fecha.' de '.$meses[$charla_data['mes']];
+            }
+
+            array_push($courses_file_data,array(
+                'id'=>$id_curso,
+                'nombre'=>$nombre_curso,
+                'descripcion'=>$descripcion_curso,
+                'img'=>"",
+                'fecha'=>$fecha_curso,
+                'fechaformat'=>$fechaformat_curso,
+                'sedeid'=>$sedeid_curso,
+                'aulaid'=>$aulaid_curso,
+                'facilitadorid'=>$facilitadorid_curso,
+                'status'=>0,
+                'tiempo'=>$tiempo_curso,
+                'tiempo2'=>$tiempo2_curso,
+                'encargados'=>$encargados_curso
+            ));
+
+            $initial_id++;
+        }
+        
+        $courses_file_txt = json_encode($courses_file_data);
+        if(file_put_contents('../../data/db/courses.json',$courses_file_txt)){
+            //devolverle algo
+            //guardar los estudiantes
+            exit('{"status":"success","data":{}}');
+        }else{
+            exit('{"status":"error","data":"error guardando el curso"}');
         }
     }
 }else{

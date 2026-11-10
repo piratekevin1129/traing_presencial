@@ -39,7 +39,7 @@
                 <div class="app-container">
                     <div class="col-mid">
                         <div class="input">
-                            <input placeholder="Nombre del curso" type="text" maxlength="100" autocomplete="off" name="nombre" />
+                            <input id="nombre-inp" placeholder="Nombre del curso" type="text" maxlength="100" autocomplete="off" name="nombre" />
                             <label>Mínimo 3 máximo 100 caracteres</label>
                         </div>
                     </div>
@@ -59,27 +59,13 @@
                             </div>
                             <p class="step-text">Contenidos</p>
                         </div>
-                        <!--<div class="step-item">
-                            <div class="step-line"></div>
-                            <div class="step-item-icon">
-                                <div></div>
-                            </div>
-                            <p class="step-text">Certificado</p>
-                        </div>
-                        <div class="step-item">
-                            <div class="step-line"></div>
-                            <div class="step-item-icon">
-                                <div></div>
-                            </div>
-                            <p class="step-text">Asignación</p>
-                        </div>-->
                     </div>
 
                     <div class="row">
                         <!--70%-->
                         <div class="col-formulario">
                             <div class="textarea">
-                                <textarea placeholder="Descripción del curso" autocomplete="off" name="descripcion"></textarea>
+                                <textarea id="descripcion-inp" placeholder="Descripción del curso" autocomplete="off" name="descripcion"></textarea>
                                 <label>Mínimo 3 máximo 500 caracteres</label>
                             </div>
 
@@ -125,7 +111,8 @@
                                 <div class="col-tiempo">
                                     <div class="select">
                                         <select name="tiempo2" id="tiempo2-sel">
-                                            <option value="minutos" selected>Minutos</option>
+                                            <option value="0" selected>Seleccionar</option>
+                                            <option value="minutos">Minutos</option>
                                             <option value="horas">Horas</option>
                                         </select>
                                     </div>
@@ -136,8 +123,13 @@
                         <!--30%-->
                         <div class="col-imagen">
                             <div class="imagen-curso">
-                                <img src="<?php echo $base ?>public/assets/images/cursos/thumbnail-1.jpg" />
+                                <div class="imagen-curso-default">
+                                    <img src="<?php echo $base?>public/assets/images/button-image-icon.svg" />
+                                </div>
+                                <img class="imagen-curso-img-off" id="imagen-curso-img" src="" />
+                                <input type="file" name="curso-img" accept=".png,.jpeg,.jpg" onchange="updateCourseImage(event)" />
                             </div>
+                            <label>Haz clic sobre la imagen para cambiarla</label>
                         </div>
                     </div>
 
@@ -371,11 +363,9 @@
         window.onload = function(){
             setDropdown()
             setCalendario('curso-presencial-calendario')
-            createCharlas()
+            getE('current-mes-txt').innerHTML = meses[current_mes].m
         }
 
-        var current_mes = new Date().getMonth()
-        getE('current-mes-txt').innerHTML = meses[current_mes].m
 
         function toggleRepetir(inpu){
             if(inpu.checked){
@@ -389,17 +379,61 @@
         function aplicarRepetir(){
             //rellenar como un pavo de navidad
             var periodo = getE('periodo-sel').value
+            var dias_agregar = [];
+            var fecha_i = "";
+            var dia_i = -1;
+
             if(periodo==1){
+                //todos los dias
                 var periodo_o1 = getE('periodo-o1-check').checked
+
+                for(i = (current_day+1);i<=meses[current_mes].n;i++){
+                    //obtener div con dia de la semana
+                    var dia_semana = getE('calendario-date-'+i).getAttribute('data-d')
+                    if(dia_semana==0||dia_semana==6){
+                        if(periodo_o1){
+                            dias_agregar.push({date:i,day:dia_semana})
+                        }
+                    }else{
+                        dias_agregar.push({date:i,day:dia_semana})
+                    }
+                }
             }else if(periodo==2){
-                //var periodo_o2 = 
-                getDropdown('dropdown-dias-semana-o2')
+                //tres dias a la semana
+                var periodo_o2 = getDropdownItems('dropdown-dias-semana-o2')
+                for(i = (current_day+1);i<=meses[current_mes].n;i++){
+                    //obtener div con dia de la semana
+                    var dia_semana = getE('calendario-date-'+i).getAttribute('data-d')
+
+                    if(periodo_o2.indexOf(dia_semana)!=-1){
+                        dias_agregar.push({date:i,day:dia_semana})
+                    }
+                }
             }else if(periodo==3){
-                var periodo_o3 = getE('periodo-o3-sel')
+                //dos dias a la semana
+                var periodo_o3 = getDropdownItems('dropdown-dias-semana-o3')
+                for(i = (current_day+1);i<=meses[current_mes].n;i++){
+                    //obtener div con dia de la semana
+                    var dia_semana = getE('calendario-date-'+i).getAttribute('data-d')
+
+                    if(periodo_o3.indexOf(dia_semana)!=-1){
+                        dias_agregar.push({date:i,day:dia_semana})
+                    }
+                }
             }else if(periodo==4){
-                var periodo_o4 = getE('periodo-o4-sel')
+                //un dia a la semana
+                var periodo_o4 = getE('periodo-o4-sel').value
+                for(i = (current_day+1);i<=meses[current_mes].n;i++){
+                    //obtener div con dia de la semana
+                    var dia_semana = getE('calendario-date-'+i).getAttribute('data-d')
+
+                    if(periodo_o4==dia_semana){
+                        dias_agregar.push({date:i,day:dia_semana})
+                    }
+                }
             }
 
+            createCharlas(dias_agregar)
             getE('curso-presencial-opciones-periodo').className = 'content-visible'
             closeModal()
         }
@@ -413,10 +447,6 @@
             getE('curso-presencial-opciones-repetir-o4').className = 'content-hidden'
             
             getE('curso-presencial-opciones-repetir-o'+selected_value).className = 'content-visible'
-        }
-
-        function guardarCurso(){
-            openModalAlert({status:'success',title:'Curso creado con éxito!',text:'Ya puedes ir a la sección de curso y descargar los códigos QR para la asistencia y finalización'})
         }
         
     </script>

@@ -9,6 +9,7 @@ foreach($courses_file_data as $cd){
     array_push($courses,array(
         'id'=>$cd['id'],
         'nombre'=>$cd['nombre'],
+        'descripcion'=>$cd['descripcion'],
         'img'=>$cd['img'],
         'fecha'=>$cd['fecha'],
         'fechaformat'=>$cd['fechaformat'],
@@ -21,7 +22,10 @@ foreach($courses_file_data as $cd){
         'facilitador'=>"",
         'registrados'=>0,
         'certificados'=>0,
-        'status'=>$cd['status']
+        'status'=>$cd['status'],
+        'tiempo'=>$cd['tiempo'],
+        'tiempo2'=>$cd['tiempo2'],
+        'encargados'=>$cd['encargados']
     ));
 }
 

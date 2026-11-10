@@ -10,21 +10,30 @@ function getCharlaId(id){
     return ind
 }
 
-function createCharlas(){
-    charlas_data.push({
-        id:1,
-        ano:2026,
-        mes:Number(current_mes),
-        fecha:Number(new Date().getDate()),
-        dia:0,
-        hora:10,
-        minutos:30,
-        horario:'am',
-        facilitador:0,
-        sede:0,
-        aula:0,
-        estudiantes:[]
-    })
+function createCharlas(charlas){
+    var hora_modal_val = getE('hora-modal-inp').value
+    var minutos_modal_val = getE('minutos-modal-inp').value
+    var horario_modal_val = getE('horario-modal-sel').value
+    var facilitador_modal_val = getE('facilitador-modal-sel').value
+    var sede_modal_val = getE('sede-modal-sel').value
+    var aula_modal_val = getE('aula-modal-sel').value
+
+    for(i = 0;i<charlas.length;i++){
+        charlas_data.push({
+            id:(i+1),
+            ano:Number(current_year),
+            mes:parseInt(current_mes),
+            fecha:parseInt(charlas[i].date),
+            dia:parseInt(charlas[i].day),
+            hora:parseInt(hora_modal_val),
+            minutos:parseInt(minutos_modal_val),
+            horario:horario_modal_val,
+            facilitador:parseInt(facilitador_modal_val),
+            sede:parseInt(sede_modal_val),
+            aula:parseInt(aula_modal_val),
+            estudiantes:[]
+        })
+    }
     for(i = 0;i<charlas_data.length;i++){
         getE('calendario-date-'+charlas_data[i].fecha).className = 'dia-escogido'
         getE('calendario-date-'+charlas_data[i].fecha).getElementsByClassName('calendario-date-btn2')[0].setAttribute('onclick','verCharla('+charlas_data[i].id+')')
@@ -82,6 +91,8 @@ function verCharla(id){
         getE('horario-sel').value = charlas_data[current_charla].horario
         getE('facilitador-sel').value = charlas_data[current_charla].facilitador
         getE('sede-sel').value = charlas_data[current_charla].sede
+
+        updateAulasMain(getE('sede-sel'))
         getE('aula-sel').value = charlas_data[current_charla].aula
 
         //asignar estudiantes
@@ -150,7 +161,7 @@ function eliminarTodo(){
     getE('reptir-curso-form').reset()
 }
 
-///////////////////////////////////////
+/************************************************/
 
 function updateAulasMain(inpu){
     getE('aula-sel').innerHTML = updateAulas2(inpu.value)
@@ -209,4 +220,60 @@ function matricularUsuario(inpu){
             charlas_data[current_charla].estudiantes.splice(pos_u,1)
         }
     }
+}
+
+function updateCourseImage(event){
+    var file = event.target.files[0];
+
+    if (file) {
+        // 2. Create a temporary local object URL
+        var objectURL = URL.createObjectURL(file);
+
+        // 3. Set it as the source of the image tag and display it
+        getE('imagen-curso-img').src = objectURL;
+        getE('imagen-curso-img').className = 'imagen-curso-img-on'
+    }
+}
+
+/************************************************/
+
+function guardarCurso(btn){
+    btn.disabled = true
+    var nombre_val = getE('nombre-inp').value
+    var descripcion_val = getE('descripcion-inp').value
+    var tiempo_inp = getE('tiempo-inp').value
+    var tiempo2_sel = getE('tiempo2-sel').value
+    var encargados_list = getDropdownItems('dropdown-encargado')
+
+    $.ajax({
+        method: 'POST',
+        url: base+'api/controllers/courses.php?action=saveCourses',
+        data: {
+            nombre:nombre_val,
+            descripcion:descripcion_val,
+            tiempo:tiempo_inp,
+            tiempo2:tiempo2_sel,
+            encargados:JSON.stringify(encargados_list),
+            charlas:JSON.stringify(charlas_data)
+        },
+        success: function(response){
+            var response_data = JSON.parse(response)
+            if(response_data.status=='success'){
+                //openModalAlert({status:'success',title:'Curso creado con éxito!',text:'Ya puedes ir a la sección de curso y descargar los códigos QR para la asistencia y finalización'})
+            }else{
+                openModalAlert({
+                    status:'warning',
+                    title:'Algo salió mal',
+                    text:'No se pudo guardar el curso'
+                })
+            }
+        },
+        error: function(xhr, status, error){
+            openModalAlert({
+                status:'warning',
+                title:'Algo salió mal',
+                text:'Ocurrió un error tratando de guardar el curso'
+            })
+        }
+    })
 }

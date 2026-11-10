@@ -43,6 +43,18 @@ var dias_semana = [{
     full:'Sábado'
 }]
 
+var current_date = new Date()
+var current_mes = current_date.getMonth()
+var current_year = current_date.getFullYear()
+var current_day = current_date.getDate()
+
+var custom_date = new Date(
+    String(current_year+'-'+meses[current_mes].f+'-1')
+)
+var first_day = custom_date.getDay()
+
+
+
 function setCalendario(idname){
     var mes_txt = document.createElement('div')
     mes_txt.className = 'mes-container'
@@ -58,21 +70,22 @@ function setCalendario(idname){
 
     var dias = document.createElement('div')
     dias.className = 'dias-container'
-
-    var current_date = new Date()
-    var custom_date = new Date(
-        String(current_date.getFullYear()+'-'+meses[current_mes].f+'-1')
-    )
-    var first_day = custom_date.getDay()
-    
+    var dia_semana = 0
+   
     //dias vacios
     for(i = 0;i<first_day;i++){
         var dia = document.createElement('div')
         dias.appendChild(dia)
+        dia_semana++
+        if(dia_semana==7){
+            dia_semana = 0
+        }
     }
+    
     for(i = 1;i<=meses[current_mes].n;i++){
         var dia1 = document.createElement('div')
         dia1.id = 'calendario-date-'+i
+        dia1.setAttribute('data-d',dia_semana)
         var h = ''
         h+='<div id="calendario-date-'+i+'-obj"><span>'+i+'</span></div>'
         if(i<current_date.getDate()){
@@ -84,6 +97,11 @@ function setCalendario(idname){
         }
         dia1.innerHTML = h
         dias.appendChild(dia1)
+
+        dia_semana++
+        if(dia_semana==7){
+            dia_semana = 0
+        }
     }
 
     getE(idname).appendChild(mes_txt)

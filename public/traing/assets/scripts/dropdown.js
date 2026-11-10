@@ -28,10 +28,17 @@ function setDropdown(){
     }
 }
 
-function getDropdown(idname){
+function getDropdownItems(idname,len = 'short'){
     var dropdown_obj = getE(idname)
     var dropdown_ind = dropdown_obj.getAttribute('data-ind')
-    console.log(dropdown_data[dropdown_ind].selecteditems)
+    var list = []
+    for(var l = 0;l<dropdown_data[dropdown_ind].selecteditems.length;l++){
+        if(dropdown_data[dropdown_ind].selecteditems[l].state){
+            //list.push({val:dropdown_data[dropdown_ind].selecteditems[l].val})
+            list.push(dropdown_data[dropdown_ind].selecteditems[l].val)
+        }
+    }
+    return list
 }
 
 function clickDropdown(box){

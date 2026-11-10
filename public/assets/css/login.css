@@ -2,7 +2,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-image: url(../images/login-background.png);
+    background-image: url(../images/login/login-background.png);
 
     display: flex;
     justify-content: center;
