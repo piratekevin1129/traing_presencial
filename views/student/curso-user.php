@@ -51,7 +51,7 @@ if(!$valid_session){
     <link href="<?php echo $base ?>public/assets/css/accordion.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo $base ?>public/assets/css/form.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo $base ?>public/assets/css/modal.css" rel="stylesheet" type="text/css" />
-    <link href="<?php echo $base ?>public/assets/css/sweetalert.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
     
     <script src="<?php echo $base?>public/assets/scripts/jquery-4.0.0.min.js"></script>
     <title>Traing Presencial - Cursos</title>
@@ -141,7 +141,6 @@ if(!$valid_session){
 
     <script src="<?php echo $base ?>public/assets/scripts/accordion.js"></script>
     <script src="<?php echo $base ?>public/assets/scripts/modal.js"></script>
-    <script src="<?php echo $base?>public/assets/scripts/sweetalert.js"></script>
     <script src="<?php echo $base ?>public/assets/scripts/student/curso-user.js"></script>
 
     <script>

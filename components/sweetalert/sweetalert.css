@@ -44,14 +44,14 @@
 }
 #sweetalert .success .modal-icon > div{
     background-color: var(--verde);
-    mask-image: url(../images/alert/success-icon.svg);
+    mask-image: url(images/alert/success-icon.svg);
 }
 #sweetalert .warning .modal-icon{
     border: var(--naranja) solid 2px;
 }
 #sweetalert .warning .modal-icon > div{
     background-color: var(--naranja);
-    mask-image: url(../images/alert/warning-icon.svg);
+    mask-image: url(images/alert/warning-icon.svg);
 }
 
 /****************************/

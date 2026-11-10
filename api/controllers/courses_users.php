@@ -77,6 +77,32 @@ if(isset($_GET['action'])){
         }
 
         exit('{"status":"success","data":'.json_encode($courses).'}');
+    }else if($action=='saveCoursesUsers'){
+        $datos = json_decode($_POST['datos'],true);
+
+        foreach($datos as $d){
+            $users = array();
+            foreach($d['users'] as $du){
+                array_push($users,array(
+                    'id'=>$du,
+                    'status'=>0,
+                    'horaentrada'=>"",
+                    'horasalida'=>""
+                ));
+            }
+            array_push($courses_users_file_data,array(
+                'id'=>$d['id'],
+                'users'=>$users
+            ));
+
+            $courses_users_file_txt = json_encode($courses_users_file_data);
+            if(file_put_contents('../../data/db/courses_users.json',$courses_users_file_txt)){
+                //guardar los estudiantes
+                exit('{"status":"success","data":{}}');
+            }else{
+                exit('{"status":"error","data":"error guardando el curso"}');
+            }
+        }
     }
 }else{
     exit('{"status":"error","data":"action not defined"}');

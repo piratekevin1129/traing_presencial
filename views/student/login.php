@@ -8,7 +8,7 @@
 
     <?php include '../../layouts/css.php'; ?>
     <link href="<?php echo $base ?>public/assets/css/login.css" rel="stylesheet" type="text/css" />
-    <link href="<?php echo $base ?>public/assets/css/sweetalert.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
     <script src="<?php echo $base ?>public/assets/scripts/jquery-4.0.0.min.js"></script>
 
     <title>Traing Presencial - Login</title>
@@ -57,7 +57,6 @@
 
     <script src="<?php echo $base?>public/assets/scripts/student/login.js"></script>
     <script src="<?php echo $base?>public/assets/scripts/form.js"></script>
-    <script src="<?php echo $base?>public/assets/scripts/sweetalert.js"></script>
     <script>
         <?php if(!isset($_GET['courseid'])){ ?>
             openModalAlert({

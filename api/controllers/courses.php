@@ -75,6 +75,7 @@ if(isset($_GET['action'])){
         $encargados_curso = json_decode($_POST['encargados'],true);
         
         $initial_id = count($courses_file_data);
+        $ids_collection = array();
         
         foreach($charlas_data as $charla_data){
             $id_curso = ($initial_id+1);
@@ -136,14 +137,14 @@ if(isset($_GET['action'])){
                 'encargados'=>$encargados_curso
             ));
 
+            array_push($ids_collection,$id_curso);
             $initial_id++;
         }
         
         $courses_file_txt = json_encode($courses_file_data);
         if(file_put_contents('../../data/db/courses.json',$courses_file_txt)){
-            //devolverle algo
-            //guardar los estudiantes
-            exit('{"status":"success","data":{}}');
+            //devolverle ids de los cursos para guardar los estudiantes
+            exit('{"status":"success","data":'.json_encode($ids_collection).'}');
         }else{
             exit('{"status":"error","data":"error guardando el curso"}');
         }

@@ -10,7 +10,7 @@
     <link href="<?php echo $base ?>public/assets/css/modal.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo $base ?>public/assets/css/form.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo $base ?>public/assets/css/camara.css" rel="stylesheet" type="text/css" />
-    <link href="<?php echo $base ?>public/assets/css/sweetalert.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
     
     <title>Traing Presencial - Escanear QR</title>
     <style type="text/css">
@@ -42,7 +42,6 @@
     <script src="<?php echo $base ?>public/assets/scripts/modal.js"></script>
     <script src="<?php echo $base ?>public/assets/qr/qrCode.min.js"></script>
     <script src="<?php echo $base ?>public/assets/scripts/student/qr.js"></script>
-    <script src="<?php echo $base ?>public/assets/scripts/sweetalert.js"></script>
 
     <script>
         function confirmarQr(){

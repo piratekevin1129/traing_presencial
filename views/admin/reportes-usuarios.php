@@ -13,7 +13,7 @@
     <link href="<?php echo $base ?>public/assets/css/menu.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo $base ?>public/assets/css/dashboard.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo $base ?>public/assets/css/tabla.css" rel="stylesheet" type="text/css" />
-    <link href="<?php echo $base ?>public/assets/css/sweetalert.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo $base ?>public/assets/css/modal.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo $base ?>public/assets/css/form.css" rel="stylesheet" type="text/css" />
     
@@ -119,7 +119,6 @@
 
     <script src="<?php echo $base ?>public/assets/scripts/form.js"></script>
     <script src="<?php echo $base ?>public/assets/scripts/modal.js"></script>
-    <script src="<?php echo $base ?>public/assets/scripts/sweetalert.js"></script>
     <script src="<?php echo $base ?>public/assets/scripts/admin/reportes-usuarios.js"></script>
     <script>
         var tipos_trabajador = [{

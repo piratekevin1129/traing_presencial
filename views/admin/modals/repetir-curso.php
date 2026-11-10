@@ -210,9 +210,9 @@
                     <div class="select">
                         <select name="facilitador" id="facilitador-modal-sel">
                             <option value="0">Selecciona</option>
-                            <option value="1">Armando Mendoza</option>
-                            <option value="2">Marcela Valencia</option>
-                            <option value="3">Beatriz Pinzón</option>
+                            <?php foreach($teachers as $t){?>
+                            <option value="<?php echo $t['id']?>"><?php echo $t['nombre'].' '.$t['apellido']?></option>
+                            <?php } ?>
                         </select>
                     </div>
                 </div>

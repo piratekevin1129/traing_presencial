@@ -16,16 +16,18 @@
     <link href="<?php echo $base ?>public/assets/css/menu.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo $base ?>public/assets/css/dashboard.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo $base ?>public/assets/css/form.css" rel="stylesheet" type="text/css" />
-    <link href="<?php echo $base ?>public/traing/assets/css/main.css" rel="stylesheet" type="text/css" />
-    <link href="<?php echo $base ?>public/traing/assets/css/presencial.css" rel="stylesheet" type="text/css" />
-    <link href="<?php echo $base ?>public/traing/assets/css/dropdown.css" rel="stylesheet" type="text/css" />
-    <link href="<?php echo $base ?>public/traing/assets/css/switch.css" rel="stylesheet" type="text/css" />
-    <link href="<?php echo $base ?>public/traing/assets/css/calendario.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>public/curso-crear/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>public/curso-crear/css/presencial.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>public/curso-crear/css/dropdown.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>public/curso-crear/css/switch.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>public/curso-crear/css/calendario.css" rel="stylesheet" type="text/css" />
 
     <link href="<?php echo $base ?>public/assets/css/modal.css" rel="stylesheet" type="text/css" />
-    <link href="<?php echo $base ?>public/assets/css/sweetalert.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>components/loader/loader.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo $base ?>public/assets/css/tabla.css" rel="stylesheet" type="text/css" />
 
+    <script src="<?php echo $base ?>public/assets/scripts/jquery-4.0.0.min.js"></script>
     <title>Traing Presencial - Crear curso</title>
 </head>
 <body>
@@ -163,7 +165,7 @@
                                     </div>
 
                                     <button class="calendario-limpiar-btn" type="button" onclick="eliminarTodo()">
-                                        <img src="<?php echo $base ?>public/traing/assets/images/clear-icon.svg" />
+                                        <img src="<?php echo $base ?>public/curso-crear/images/clear-icon.svg" />
                                         <span>Eliminar todo</span>
                                     </button>
                                 </div>
@@ -238,11 +240,11 @@
 
                                         <div id="calendario-data-options" class="calendario-data-option-eliminar">
                                             <button class="calendario-eliminar-btn" type="button" onclick="eliminarCharla()">
-                                                <img src="<?php echo $base ?>public/traing/assets/images/delete-icon.svg" />
+                                                <img src="<?php echo $base ?>public/curso-crear/images/delete-icon.svg" />
                                                 <span>Borrar</span>
                                             </button>
                                             <!--<button class="calendario-guardar-btn" type="button" onclick="guardarCharla()">
-                                                <img src="<?php echo $base ?>public/traing/assets/images/add-icon.svg" />
+                                                <img src="<?php echo $base ?>public/curso-crear/images/add-icon.svg" />
                                                 <span>Agregar</span>
                                             </button>-->
                                         </div>
@@ -321,7 +323,7 @@
                         <div class="hr"></div>
 
                         <div class="col-right">
-                            <button class="boton-principal" onclick="guardarCurso()">
+                            <button class="boton-principal" onclick="guardarCurso(this)">
                                 <span>Guardar curso</span>
                             </button>
                         </div>
@@ -335,12 +337,12 @@
     <!--modales-->
     <?php include './modals/repetir-curso.php'; ?>
     <?php include '../../components/sweetalert/sweetalert.php'; ?>
+    <?php include '../../components/loader/loader.php'; ?>
     
     <script src="<?php echo $base ?>public/assets/scripts/modal.js"></script>
-    <script src="<?php echo $base ?>public/assets/scripts/sweetalert.js"></script>
-    <script src="<?php echo $base ?>public/traing/assets/scripts/dropdown.js"></script>
-    <script src="<?php echo $base ?>public/traing/assets/scripts/calendario.js"></script>
-    <script src="<?php echo $base ?>public/traing/assets/scripts/cursos-crear.js"></script>
+    <script src="<?php echo $base ?>public/curso-crear/scripts/dropdown.js"></script>
+    <script src="<?php echo $base ?>public/curso-crear/scripts/calendario.js"></script>
+    <script src="<?php echo $base ?>public/curso-crear/scripts/cursos-crear.js"></script>
     <script>
         var sedes_data = []
         <?php foreach($headquarters as $headquarter){?>
@@ -433,9 +435,18 @@
                 }
             }
 
-            createCharlas(dias_agregar)
-            getE('curso-presencial-opciones-periodo').className = 'content-visible'
-            closeModal()
+            if(dias_agregar.length==0){
+                openModalAlert({
+                    status:'warning',
+                    title:'No tan rápido!',
+                    text:'Debes escoger una opción para repetir el curso'
+                })
+            }else{
+                createCharlas(dias_agregar)
+                getE('curso-presencial-opciones-periodo').className = 'content-visible'
+                closeModal()
+            }
+
         }
 
         function selectRepetirPeriodo(inpu){

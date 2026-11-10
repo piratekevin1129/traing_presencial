@@ -18,7 +18,7 @@
     <link href="<?php echo $base ?>public/assets/css/form.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo $base ?>public/assets/css/dropdown.css" rel="stylesheet" type="text/css" />
     
-    <link href="<?php echo $base ?>public/assets/css/sweetalert.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
     <script src="<?php echo $base ?>public/assets/scripts/jquery-4.0.0.min.js"></script>
     <title>Traing Presencial - Usuarios</title>
 </head>
@@ -127,7 +127,6 @@
     <?php include '../../components/sweetalert/sweetalert.php'; ?>
 
     <script src="<?php echo $base ?>public/assets/scripts/modal.js"></script>
-    <script src="<?php echo $base ?>public/assets/scripts/sweetalert.js"></script>
     <script src="<?php echo $base ?>public/assets/scripts/form.js"></script>
     <script src="<?php echo $base ?>public/assets/scripts/dropdown.js"></script>
     <script src="<?php echo $base ?>public/assets/scripts/admin/usuarios.js"></script>

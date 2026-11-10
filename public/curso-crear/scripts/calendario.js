@@ -92,8 +92,8 @@ function setCalendario(idname){
             dia1.className = 'dia-bloqueado'
         }else{
             dia1.className = 'dia-normal'
-            h+='<button class="calendario-date-btn1" type="button" onclick="addCharla('+i+')"><img src="'+base+'public/traing/assets/images/add-icon.svg" /></button>'
-            h+='<button class="calendario-date-btn2" type="button"><img src="'+base+'public/traing/assets/images/ver-icon.svg" /></button>'
+            h+='<button class="calendario-date-btn1" type="button" onclick="addCharla('+i+')"><img src="'+base+'public/curso-crear/images/add-icon.svg" /></button>'
+            h+='<button class="calendario-date-btn2" type="button"><img src="'+base+'public/curso-crear/images/ver-icon.svg" /></button>'
         }
         dia1.innerHTML = h
         dias.appendChild(dia1)

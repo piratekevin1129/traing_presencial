@@ -238,7 +238,9 @@ function updateCourseImage(event){
 /************************************************/
 
 function guardarCurso(btn){
-    btn.disabled = true
+    //btn.disabled = true
+    setLoader()
+
     var nombre_val = getE('nombre-inp').value
     var descripcion_val = getE('descripcion-inp').value
     var tiempo_inp = getE('tiempo-inp').value
@@ -260,7 +262,10 @@ function guardarCurso(btn){
             var response_data = JSON.parse(response)
             if(response_data.status=='success'){
                 //openModalAlert({status:'success',title:'Curso creado con éxito!',text:'Ya puedes ir a la sección de curso y descargar los códigos QR para la asistencia y finalización'})
+                //guardar usuarios registrados
+                guardarCurso2(response_data.data)
             }else{
+                unsetLoader()
                 openModalAlert({
                     status:'warning',
                     title:'Algo salió mal',
@@ -269,10 +274,53 @@ function guardarCurso(btn){
             }
         },
         error: function(xhr, status, error){
+            unsetLoader()
             openModalAlert({
                 status:'warning',
                 title:'Algo salió mal',
                 text:'Ocurrió un error tratando de guardar el curso'
+            })
+        }
+    })
+}
+
+function guardarCurso2(ids_collection){
+    var collection = []
+    for(i = 0;i<charlas_data.length;i++){
+        var users = []
+        for(j = 0;j<charlas_data[i].estudiantes.length;j++){
+            users.push(charlas_data[i].estudiantes[j])
+        }
+        collection.push({
+            id:ids_collection[i],
+            users:users
+        })
+    }
+    $.ajax({
+        method: 'POST',
+        url: base+'api/controllers/courses_users.php?action=saveCoursesUsers',
+        data: {
+            datos:JSON.stringify(collection),
+        },
+        success: function(response){
+            var response_data = JSON.parse(response)
+            unsetLoader()
+            if(response_data.status=='success'){
+                openModalAlert({status:'success',title:'Curso creado con éxito!',text:'Ya puedes ir a la sección de curso y descargar los códigos QR para la asistencia y finalización'})
+            }else{
+                openModalAlert({
+                    status:'warning',
+                    title:'Algo salió mal',
+                    text:'No se pudo matricular a los estudiantes'
+                })
+            }
+        },
+        error: function(xhr, status, error){
+            unsetLoader()
+            openModalAlert({
+                status:'warning',
+                title:'Algo salió mal',
+                text:'Ocurrió un error tratando de matricular a los estudiantes'
             })
         }
     })
