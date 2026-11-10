@@ -253,7 +253,7 @@ function guardarCurso(btn){
         data: {
             nombre:nombre_val,
             descripcion:descripcion_val,
-            tiempo:tiempo_inp,
+            tiempo:parseInt(tiempo_inp),
             tiempo2:tiempo2_sel,
             encargados:JSON.stringify(encargados_list),
             charlas:JSON.stringify(charlas_data)

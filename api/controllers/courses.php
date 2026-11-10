@@ -70,7 +70,7 @@ if(isset($_GET['action'])){
         //mirar si trae copias
         $charlas_data = json_decode($_POST['charlas'],true);
         $descripcion_curso = $_POST['descripcion'];
-        $tiempo_curso = $_POST['tiempo'];
+        $tiempo_curso = (int)$_POST['tiempo'];
         $tiempo2_curso = $_POST['tiempo2'];
         $encargados_curso = json_decode($_POST['encargados'],true);
         
@@ -112,9 +112,9 @@ if(isset($_GET['action'])){
 
             $fecha_curso = $fecha.' de '.$meses[$charla_data['mes']].' de '.$ano.' - '.$hora.':'.$minutos.' '.$horario;
             $fechaformat_curso = $ano.'-'.$mes.'-'.$fecha.' '.$hora.':'.$minutos.':00';
-            $sedeid_curso = $charla_data['sede'];
-            $aulaid_curso = $charla_data['aula'];
-            $facilitadorid_curso = $charla_data['facilitador'];
+            $sedeid_curso = (int)$charla_data['sede'];
+            $aulaid_curso = (int)$charla_data['aula'];
+            $facilitadorid_curso = (int)$charla_data['facilitador'];
 
             if(count($charlas_data)>1){
                 //hay copias
