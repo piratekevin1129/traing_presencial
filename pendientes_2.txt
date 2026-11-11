@@ -1,23 +1,22 @@
 https://qrcodecreator.com/
+https://share.google/aimode/bEFbpn1jqX8RiaFdf
 
 reportes reales:
-incluir facilitador en el reporte de cursos
 incluir columna de fechas por separado para poder filtrar
-incluir fecha y hora de ingreso y salida en columna de estudiantes
+
 exportar reporte real individual de cada curso
 exportar reporte real de todos los cursos
 exportar reporte real de todos los usuarios
 
 
 validar que todas las fechas del calendario tengan una hora, un facilitador y una sede
-enviar correo
-editar curso con datos reales
+editar curso 
 cargar listas de excel de facilitadores y usuarios
 editar y eliminar sedes
 editar y eliminar aulas
+validacion login admin
 
 
 ubicacion en el mapa
-login admin
 seccion de contenidos
-validaciones full
+validacion cuando no hay cursos

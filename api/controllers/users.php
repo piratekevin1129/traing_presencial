@@ -42,7 +42,7 @@ if(isset($_GET['action'])){
         ));
 
         $users_file_txt = json_encode($users_file_data);
-        if(file_put_contents('../data/db/users.json',$users_file_txt)){
+        if(file_put_contents('../../data/db/users.json',$users_file_txt)){
             exit('{"status":"success"}');
         }else{
             exit('{"status":"error","data":"error guardando el archivo"}');
@@ -72,7 +72,7 @@ if(isset($_GET['action'])){
         }
 
         $users_file_txt = json_encode($users_file_data);
-        if(file_put_contents('../data/db/users.json',$users_file_txt)){
+        if(file_put_contents('../../data/db/users.json',$users_file_txt)){
             exit('{"status":"success"}');
         }else{
             exit('{"status":"error","data":"error guardando el archivo"}');
@@ -92,7 +92,7 @@ if(isset($_GET['action'])){
         }
 
         $users_file_txt = json_encode($users_file_data);
-        if(file_put_contents('../data/db/users.json',$users_file_txt)){
+        if(file_put_contents('../../data/db/users.json',$users_file_txt)){
             exit('{"status":"success"}');
         }else{
             exit('{"status":"error","data":"error guardando el archivo"}');

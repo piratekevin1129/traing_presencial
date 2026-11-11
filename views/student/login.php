@@ -32,7 +32,8 @@
                             
                             <?php if(isset($_GET['courseid'])){ ?>
                             <input type="hidden" value="<?php echo $_GET['courseid']?>" id="curso-txt" />
-                            <button class="login-row-form-btn1" type="button" onclick="clickIngresar()">
+                            <input type="hidden" value="<?php echo $_GET['courseaction']?>" id="action-txt" />
+                            <button class="login-row-form-btn1" type="button" onclick="clickLogin(<?php echo $_GET['courseaction']?>)">
                                 Ingresar
                             </button>
                             <?php } ?>
@@ -58,11 +59,16 @@
     <script src="<?php echo $base?>public/assets/scripts/student/login.js"></script>
     <script src="<?php echo $base?>public/assets/scripts/form.js"></script>
     <script>
-        <?php if(!isset($_GET['courseid'])){ ?>
+        <?php 
+        if(
+            !isset($_GET['courseid'])||
+            !isset($_GET['courseaction'])
+        ){ 
+        ?>
             openModalAlert({
                 status:'warning',
                 title:'¡Link incorrecto!',
-                text:"Debes escanear el código QR al curso que deseas entrar",
+                text:"Debes ingresar mediante el código QR proporcionado por el facilitador",
                 action: 'cerrarLogin'
             });
         <?php } ?>

@@ -22,7 +22,10 @@ if(isset($_GET['action'])){
     $action = $_GET['action'];
 
     if($action=='login'){
-        if(isset($_POST['courseid'])){
+        if(
+            isset($_POST['courseid'])&&
+            isset($_POST['courseaction'])
+        ){
             //buscar cédula del usuario
             $student_data = array();
             $students_ids = array_column($users_file_data, 'documento');

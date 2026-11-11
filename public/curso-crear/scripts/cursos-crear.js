@@ -342,8 +342,36 @@ function guardarCurso2(ids_collection){
 }
 
 function guardarCurso3(ids_collection){
-    getE('curso_ids').value = ids_collection[0]
-    guardarCurso4()
+    //guardar QR
+    $.ajax({
+        method: 'POST',
+        url: base+'api/controllers/courses.php?action=saveCoursesQR',
+        data:{
+            ids:JSON.stringify(ids_collection)
+        },
+        success: function(response){
+            var response_data = JSON.parse(response)
+            unsetLoader()
+            if(response_data.status=='success'){
+                //guardar imagen
+                getE('curso_ids').value = ids_collection[0]
+                guardarCurso4()
+            }else{
+                openModalAlert({
+                    status:'warning',
+                    title:'Algo salió mal',
+                    text:'No se pudo generar el código QR de los cursos'
+                })
+            }
+        },
+        error: function(xhr, status, error){
+            openModalAlert({
+                status:'warning',
+                title:'Algo salió mal',
+                text:'Ocurrió un error generando el código QR de los cursos'
+            })
+        }
+    })
 }
 
 function guardarCurso4(){

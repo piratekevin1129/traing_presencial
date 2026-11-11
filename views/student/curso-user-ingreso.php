@@ -78,7 +78,7 @@ if(!$valid_session){
                                         <div class="accordion-content-img">
                                             <?php 
                                             $imgurl = '../../public/cursos/'.$course['id'].'/thumbnail.jpg';
-                                            if(file_exists($imgurl)===false){
+                                            if(!file_exists($imgurl)){
                                                 $imgurl = '../../public/cursos/'.$course['id'].'/thumbnail.png';
                                             }
                                             ?>

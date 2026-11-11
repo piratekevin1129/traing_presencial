@@ -7,7 +7,7 @@
             </button>
         </div>
         <div class="modal-body">
-            <p>Información</p>
+            <h6>Información</h6>
             <div class="modal-preview-tabla">                
                 <div class="modal-preview-tabla-container">
                     <table class="modal-preview-table">
@@ -28,8 +28,8 @@
                 </div>
             </div>
             <br>
-            <p>Cursos asignados</p>
-            <div class="modal-preview-tabla">                
+            <h6>Cursos asignados</h6>
+            <div class="modal-preview-tabla">
                 <div class="modal-preview-tabla-container">
                     <table class="modal-preview-table">
                         <thead>
@@ -46,6 +46,7 @@
                     </table>
                 </div>
             </div>
+            <p id="tabla-cursos-none">El usuario no tiene cursos asignados</p>
         </div>
         <div class="modal-footer">
             <button class="boton-principal" onclick="closeModal()">

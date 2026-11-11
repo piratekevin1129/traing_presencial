@@ -163,7 +163,7 @@ function setButtonSalidaLoading(){
 
 function setButtonIngresoDefault(){
     ingreso_btn.className = 'unlocked'
-    ingreso_btn.setAttribute('onclick','clickConfirmarIngreso('+course_id+'')
+    ingreso_btn.setAttribute('onclick','clickConfirmarIngreso('+course_id+')')
     ingreso_btn.disabled = false
     ingreso_btn.innerHTML = '<span>Confirmar ingreso</span><div></div>'
 }

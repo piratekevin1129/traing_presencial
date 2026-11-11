@@ -119,10 +119,15 @@ qrcode.callback = (respuesta) => {
   if (respuesta) {
     //console.log(respuesta);
     //alert("ya detectó algo")
-    console.log(respuesta)
 
     clickCerrarQr()
-    confirmarQr()
+    console.log(respuesta)
+    var respuesta_data = JSON.parse(respuesta)
+    if(respuesta_data.action==0){
+      confirmarQrIngreso(respuesta_data.id)
+    }else if(respuesta_data.action==1){
+      confirmarQrSalida(respuesta_data.id)
+    }
   }
 };
 

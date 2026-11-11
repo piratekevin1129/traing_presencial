@@ -40,12 +40,15 @@
     <?php include '../../components/sweetalert/sweetalert.php'; ?>
 
     <script src="<?php echo $base ?>public/assets/scripts/modal.js"></script>
-    <script src="<?php echo $base ?>public/assets/qr/scripts.min.js"></script>
+    <script src="<?php echo $base ?>public/assets/scripts/qrCode.min.js"></script>
     <script src="<?php echo $base ?>public/assets/scripts/student/qr.js"></script>
 
     <script>
-        function confirmarQr(){
-            location.href = './login-user.php'
+        function confirmarQrIngreso(id){
+            location.href = './login.php?courseid='+id+'&courseaction=0'
+        }
+        function confirmarQrSalida(){
+            location.href = './login.php?courseid='+id+'&courseaction=1'
         }
     </script>
 </body>

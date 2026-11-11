@@ -10,6 +10,9 @@
     background-color: var(--appgray);
     overflow-y: auto;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 
     transition: width 0.5s, left 0.5s;
 }
@@ -39,6 +42,7 @@
     border: var(--cleargray) solid 1px;
     background-color: var(--blanco);
     padding: 22px;
+    flex: 1;
 }
 
 .botones-container{

@@ -95,11 +95,17 @@
     overflow-x: hidden;
     overflow-y: auto;
 }
-.modal-body > p{
+.modal-body > h6{
     font-family: var(--fontmedium);
     font-size: 1rem;
     color: var(--traing);
     margin: 10px 0px;
+}
+.modal-body > p{
+    font-family: var(--fontregular);
+    font-size: 1rem;
+    color: var(--traing);
+    margin: 5px 0px;
 }
 .modal-body > p span{
     font-family: var(--fontbold);
@@ -267,6 +273,7 @@
     font-family: var(--fontsemibold);
     font-size: 1.1rem;
     color: var(--azulclaro);
+    margin-top: 0px;
     margin-bottom: 10px;
 }
 

@@ -199,6 +199,44 @@ if(isset($_GET['action'])){
         } else {
             exit('{"status":"error","data":"no se encontraron los datos para guardar la imagen"}');
         }
+    }else if($action=='saveCoursesQR'){
+        if(isset($_POST['ids'])){
+            $ids_collection = json_decode($_POST['ids'],true);
+
+            require_once '../plugins/qr/phpqrcode/qrlib.php';
+            $errores_qr = array();
+
+            foreach($ids_collection as $id_data){
+                $qr_folder = '../../public/cursos/'.$id_data.'/';
+                if (!file_exists($qr_folder)) {
+                    mkdir($qr_folder, 0777, true);
+                }
+
+                $qr_ingreso = $qr_folder.'ingreso.png';
+                $qr_ingreso_data = '{"id":'.$id_data.',"action":0}';
+                $qr_salida = $qr_folder.'salida.png';
+                $qr_salida_data = '{"id":'.$id_data.',"action":1}';
+
+                // Crear y guardar la imagen
+                // Opciones: L (bajo), M (medio), Q (alto), H (máximo)
+                // Tamaño de cada cuadro del QR (del 1 al 10)
+                // Borde blanco alrededor del QR
+                QRcode::png($qr_ingreso_data, $qr_ingreso, 'M', 6, 2);
+                QRcode::png($qr_salida_data, $qr_salida, 'M', 6, 2);
+
+                if(!file_exists($qr_ingreso)||!file_exists($qr_salida)){
+                    array_push($errores_qr,'Error al guardar el qr del curso: '.$id_data);
+                }
+            }
+            
+            if(count($errores_qr)>0){
+                exit('{"status":"error","data":'.json_encode($errores_qr).'}');
+            }else{
+                exit('{"status":"success","data":""}');
+            }
+        }else{
+            exit('{"status":"error","data":"no se encontraron los ids para generar el qr"}');
+        }
     }else if($action=='getQRByCourse'){
         
     }

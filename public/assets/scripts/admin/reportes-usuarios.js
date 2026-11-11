@@ -33,6 +33,12 @@ function verDetallesUsuario(id_user){
                     h+='</tr>'
                 })
                 getE('tabla-detalles2-tdbody').innerHTML = h
+
+                if(usuarios_decoded.length==0){
+                    getE('tabla-cursos-none').style.display = 'block'
+                }else{
+                    getE('tabla-cursos-none').style.display = 'none'
+                }
             }else{
                 openModalAlert({
                     status:'warning',

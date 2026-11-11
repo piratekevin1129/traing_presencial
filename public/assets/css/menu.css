@@ -2,7 +2,7 @@
     position: fixed;
     width: 250px;
     height: 100%;
-    height: calc(100% - 80px);
+    height: calc(100% - 60px);
     top: 60px;
     background-color: var(--blanco);
     border: var(--cleargray) solid 1px;

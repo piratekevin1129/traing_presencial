@@ -41,6 +41,7 @@
                                     
 .accordion-body{
     overflow: hidden;
+    background-color: var(--blanco);
 }
 .accordion-content{
     padding: 20px;
