@@ -32,7 +32,7 @@
                             
                             <?php if(isset($_GET['courseid'])){ ?>
                             <input type="hidden" value="<?php echo $_GET['courseid']?>" id="curso-txt" />
-                            <button href="curso-user.php" class="login-row-form-btn1" type="button" onclick="clickIngresar()">
+                            <button class="login-row-form-btn1" type="button" onclick="clickIngresar()">
                                 Ingresar
                             </button>
                             <?php } ?>

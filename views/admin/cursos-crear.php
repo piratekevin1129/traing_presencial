@@ -129,7 +129,10 @@
                                     <img src="<?php echo $base?>public/assets/images/button-image-icon.svg" />
                                 </div>
                                 <img class="imagen-curso-img-off" id="imagen-curso-img" src="" />
-                                <input type="file" name="curso-img" accept=".png,.jpeg,.jpg" onchange="updateCourseImage(event)" />
+                                <form id="curso-img-form" enctype="multipart/form-data">
+                                    <input id="imagen-inp" type="file" name="curso-img" accept=".png,.jpeg,.jpg" onchange="updateCourseImage(event)" />
+                                    <input type="hidden" name="curso-ids" id="curso_ids" />
+                                </form>
                             </div>
                             <label>Haz clic sobre la imagen para cambiarla</label>
                         </div>
@@ -323,7 +326,7 @@
                         <div class="hr"></div>
 
                         <div class="col-right">
-                            <button class="boton-principal" onclick="guardarCurso(this)">
+                            <button type="button" class="boton-principal" onclick="guardarCurso(this)">
                                 <span>Guardar curso</span>
                             </button>
                         </div>
@@ -361,12 +364,6 @@
             sedeid:Number(<?php echo $r['sedeid']?>)
         })
         <?php } ?>
-
-        window.onload = function(){
-            setDropdown()
-            setCalendario('curso-presencial-calendario')
-            getE('current-mes-txt').innerHTML = meses[current_mes].m
-        }
 
 
         function toggleRepetir(inpu){

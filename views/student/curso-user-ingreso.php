@@ -76,7 +76,13 @@ if(!$valid_session){
                                 <div class="accordion-content">
                                     <div class="accordion-content-col1">
                                         <div class="accordion-content-img">
-                                            <img src="<?php echo $base ?>public/assets/images/cursos/<?php echo $course['img']?>" />
+                                            <?php 
+                                            $imgurl = '../../public/cursos/'.$course['id'].'/thumbnail.jpg';
+                                            if(file_exists($imgurl)===false){
+                                                $imgurl = '../../public/cursos/'.$course['id'].'/thumbnail.png';
+                                            }
+                                            ?>
+                                            <img src="<?php echo $imgurl ?>" />
                                         </div>
                                         <div class="accordion-content-info">
                                             <div class="accordion-content-info-col">
@@ -107,21 +113,19 @@ if(!$valid_session){
                                         </div>
                                     </div>
                                     <div class="accordion-content-col2">
-                                        <button 
-                                            id="confirmar-ingreso-btn-<?php echo $course['id'] ?>" 
-                                            type="button" 
-                                            class="loading" 
-                                        >
-                                            <span>Confirmar Ingreso</span>
-                                            <div></div>
-                                        </button>
+                                        <!--validar si el curso está abierto-->
+                                        <?php if($course['status']==1){?>
+                                            <button 
+                                                id="confirmar-ingreso-btn-<?php echo $course['id'] ?>" 
+                                                type="button" 
+                                                class="loading" 
+                                            >
+                                                <span>Confirmar Ingreso</span>
+                                                <div></div>
+                                            </button>
+                                        <?php } ?>
 
-                                        <!--<button id="confirmar-salida-btn-<?php echo $course['id'] ?>" type="button" class="accordion-salida-btn locked" onclick="clickConfirmarSalida(<?php echo $course['id']?>)" disabled>
-                                            <span>Confirmar Salida</span>
-                                            <img src="<?php echo $base ?>public/assets/images/check-icon.svg" />
-                                        </button>
-
-                                        <a id="confirmar-certificado-btn-<?php echo $course['id'] ?>" class="accordion-certificado-btn locked" href="#">
+                                        <!--<a id="confirmar-certificado-btn-<?php echo $course['id'] ?>" class="accordion-certificado-btn locked" href="#">
                                             <span>Descargar certificado</span>
                                             <img src="<?php echo $base ?>public/assets/images/check-icon.svg" />
                                         </a>-->
@@ -146,72 +150,35 @@ if(!$valid_session){
     <script>
         var confirming_entry = true
 
+        var course_status = Number(<?php echo $course['status']?>);
+        var course_id = Number(<?php echo $course['id']?>);
+        var ingreso_btn = null;
+        var salida_btn = null;
+        var url_action = ""
+
         window.onload = function(){
-            //verificar el estado de ingreso
-            $.ajax({
-                method: 'POST',
-                url: base+'api/controllers/student.php?action=checkEntry',
-                success: function(response){
-                    var response_data = JSON.parse(response)
-                    if(response_data.status=='success'){
-                        //console.log(response_data.data)
-                        if(response_data.data.status==0){
-                            setButtonIngresoDefault()
-                        }else if(response_data.data.status==1){
-                            setButtonIngresoReady()
-                            getE('hora-ingreso-txt').innerHTML = 'Hora de ingreso: '+response_data.data.horaentrada
-                        }else if(response_data.data.status==2){
-                            setButtonIngresoFinalizado()
-                        }
-                    }else{
-                        setButtonIngresoDefault()
-                        openModalAlert({
-                            status:'warning',
-                            title:'¡Algo salió mal!',
-                            text:"Ocurrió un error verificando el ingreso"
-                        });
-                    }
-                    confirming_entry = false
-                },
-                error: function(xhr, status, error) {
-                    console.log("Error de servidor");
-                    console.log(xhr);
-                    openModalAlert({
-                        status:'warning',
-                        title:'¡Algo salió mal!',
-                        text:"No se pudo verificar el ingreso"
-                    });
-                    confirming_entry = false
-                }
+            
+            <?php if($course['status']==1){?>
+            
+            ingreso_btn = getE('confirmar-ingreso-btn-<?php echo $course['id']?>')
+
+            checkIngresoSalida()
+            
+            <?php } else if($course['status']==0){?>
+            openModalAlert({
+                status:'warning',
+                title:'¡Todavía no!',
+                text:'El curso todavia no ha iniciado, por favor vuelve más tarde'
             })
+            <?php } else if($course['status']==2){?>
+            openModalAlert({
+                status:'warning',
+                title:'¡Curso finalizado!',
+                text:'Debes escanear el nuevo código QR para confirmar la salida'
+            })
+            <?php } ?>
         }
 
-        var ingreso_btn = getE('confirmar-ingreso-btn-<?php echo $course['id']?>')
-
-        function setButtonIngresoReady(){
-            ingreso_btn.className = 'ready'
-            ingreso_btn.disabled = true
-            ingreso_btn.innerHTML = '<span>Ingreso confirmado</span><div></div>'
-        }
-
-        function setButtonIngresoDefault(){
-            ingreso_btn.className = 'unlocked'
-            ingreso_btn.setAttribute('onclick','clickConfirmarIngreso(<?php echo $course['id']?>)')
-            ingreso_btn.disabled = false
-            ingreso_btn.innerHTML = '<span>Confirmar ingreso</span><div></div>'
-        }
-
-        function setButtonIngresoLoading(){
-            ingreso_btn.className = 'loading'
-            ingreso_btn.disabled = true
-            ingreso_btn.innerHTML = '<span>Espere</span><div></div>'
-        }
-
-        function setButtonIngresoFinalizado(){
-            ingreso_btn.className = 'ready'
-            ingreso_btn.innerHTML = '<span>Curso finalizado</span><div></div>'
-            ingreso_btn.disabled = true
-        }
     </script>
 </body>
 </html>

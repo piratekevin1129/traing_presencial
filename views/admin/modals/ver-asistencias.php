@@ -7,7 +7,7 @@
             </button>
         </div>
         <div class="modal-body">
-            <div class="modal-preview-tabla">                
+            <div class="modal-preview-tabla">
                 <div class="modal-preview-tabla-container">
                     <table class="modal-preview-table">
                         <thead>
@@ -27,6 +27,7 @@
                     </table>
                 </div>
             </div>
+            <p id="tabla-asistencia-none">NO hay usuarios registrados en este curso</p>
         </div>
         <div class="modal-footer">
             <button class="boton-normal" onclick="actualizarModal()">

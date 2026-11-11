@@ -17,7 +17,7 @@ function clickIngresar(){
             success: function(response){
                 var response_data = JSON.parse(response)
                 if(response_data.status=='success'){
-                    window.location.href = './curso-user.php';
+                    window.location.href = './curso-user-ingreso.php';
                 }else{
                     openModalAlert({
                         status:'warning',

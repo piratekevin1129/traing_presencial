@@ -58,12 +58,3 @@ function getRadioChecked(form,name){
     }
     return id_selected
 }
-
-function is_empty(value){
-    var value2 = value.trim()
-    if(value2==""){
-        return true
-    }else{
-        return false
-    }
-}

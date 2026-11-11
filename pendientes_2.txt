@@ -1,3 +1,5 @@
+https://qrcodecreator.com/
+
 reportes reales:
 incluir facilitador en el reporte de cursos
 incluir columna de fechas por separado para poder filtrar
@@ -7,9 +9,8 @@ exportar reporte real de todos los cursos
 exportar reporte real de todos los usuarios
 
 
-boton cerrar sesion
-activacion de repetir dias
-guardar la charla con datos reales y enviar correo
+validar que todas las fechas del calendario tengan una hora, un facilitador y una sede
+enviar correo
 editar curso con datos reales
 cargar listas de excel de facilitadores y usuarios
 editar y eliminar sedes

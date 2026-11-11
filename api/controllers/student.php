@@ -59,7 +59,7 @@ if(isset($_GET['action'])){
             exit('{"status":"error","data":"curso no definido"}');
         }
     }else{
-        if($action=='confirmEntry'||$action=='checkEntry'){
+        if($action=='confirmEntry'||$action=='checkStatus'||$action=='confirmExit'){
             $course_id = $_SESSION['course_id'];
             $student_id = $_SESSION['user_id'];
 
@@ -76,13 +76,13 @@ if(isset($_GET['action'])){
                     }
                 }
                 if($courses_users_data_ind>=0){
+                    // Formatear la fecha
+                    $date = new DateTime('now', new DateTimeZone('America/Bogota'));
+                    $fecha = $date->format('Y-m-d');
+                    $fecha2 = $date->format('H:i:s');
+
                     if($action=='confirmEntry'){
                         $courses_users_file_data[$course_users_ind]['users'][$courses_users_data_ind]['status'] = 1;
-                        $date = new DateTime('now', new DateTimeZone('America/Bogota'));
-
-                        // Formatear la fecha
-                        $fecha = $date->format('Y-m-d');
-                        $fecha2 = $date->format('H:i:s');
                         $courses_users_file_data[$course_users_ind]['users'][$courses_users_data_ind]['horaentrada'] = $fecha.' '.$fecha2;
 
                         $courses_users_file_txt = json_encode($courses_users_file_data);
@@ -91,15 +91,30 @@ if(isset($_GET['action'])){
                         }else{
                             exit('{"status":"error","data":"error confirmando el ingreso"}');
                         }
-                    }else if($action=='checkEntry'){
+                    }else if($action=='confirmExit'){
+                        $courses_users_file_data[$course_users_ind]['users'][$courses_users_data_ind]['status'] = 2;
+                        $courses_users_file_data[$course_users_ind]['users'][$courses_users_data_ind]['horasalida'] = $fecha.' '.$fecha2;
+
+                        $courses_users_file_txt = json_encode($courses_users_file_data);
+                        if(file_put_contents('../../data/db/courses_users.json',$courses_users_file_txt)){
+                            exit('{"status":"success","data":{"horasalida":"'.$fecha2.'"}}');
+                        }else{
+                            exit('{"status":"error","data":"error confirmando el ingreso"}');
+                        }
+                    }else if($action=='checkStatus'){
                         $status = $courses_users_file_data[$course_users_ind]['users'][$courses_users_data_ind]['status'];
                         $horaentrada = $courses_users_file_data[$course_users_ind]['users'][$courses_users_data_ind]['horaentrada'];
+                        $horasalida = $courses_users_file_data[$course_users_ind]['users'][$courses_users_data_ind]['horasalida'];
                         $horaentrada2 = '';
                         if(!empty($horaentrada)){
                             $horaentrada2 = explode(" ",$horaentrada)[1];
                         }
+                        $horasalida2 = '';
+                        if(!empty($horasalida)){
+                            $horasalida2 = explode(" ",$horasalida)[1];
+                        }
                         
-                        exit('{"status":"success","data":'.json_encode(array('status'=>$status,'horaentrada'=>$horaentrada2)).'}');
+                        exit('{"status":"success","data":'.json_encode(array('status'=>$status,'horaentrada'=>$horaentrada2,'horasalida'=>$horasalida2)).'}');
                     }
                 }else{
                     exit('{"status":"error","data":"usuario no encontrado '.$courses_users_data_ind.'"}');

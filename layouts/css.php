@@ -8,5 +8,13 @@
     function reloadPage(){
         window.location.reload()
     }
+    function is_empty(value){
+        var value2 = value.trim()
+        if(value2==""){
+            return true
+        }else{
+            return false
+        }
+    }
     var base = "<?php echo $base?>"
 </script>

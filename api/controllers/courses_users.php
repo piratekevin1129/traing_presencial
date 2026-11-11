@@ -99,7 +99,7 @@ if(isset($_GET['action'])){
         $courses_users_file_txt = json_encode($courses_users_file_data);
         if(file_put_contents('../../data/db/courses_users.json',$courses_users_file_txt)){
             //guardar los estudiantes
-            exit('{"status":"success","data":{}}');
+            exit('{"status":"success","data":""}');
         }else{
             exit('{"status":"error","data":"error guardando el curso"}');
         }

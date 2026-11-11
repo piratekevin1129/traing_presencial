@@ -3,6 +3,14 @@ var active_course_status = -1
 
 function verQRS(id_curso){
     //validacion para el id
+    active_course_id = id_curso
+    
+    getE('qr-ingreso-img').src = base+'public/cursos/'+id_curso+'/ingreso.svg'
+    getE('qr-ingreso-link').setAttribute('href',base+'public/cursos/'+id_curso+'/ingreso.svg')
+
+    getE('qr-salida-img').src = base+'public/cursos/'+id_curso+'/salida.svg'
+    getE('qr-salida-link').setAttribute('href',base+'public/cursos/'+id_curso+'/salida.svg')
+    
     openModal(null,'modal-codigos-qr2','Ver códigos QR')
 }
 
@@ -82,6 +90,12 @@ function verAsistencias2(){
                 })
 
                 getE('tabla-asistencia-tdbody').innerHTML = h
+
+                if(usuarios_decoded.length==0){
+                    getE('tabla-asistencia-none').style.display = 'block'
+                }else{
+                    getE('tabla-asistencia-none').style.display = 'none'
+                }
             }else{
                 openModalAlert({
                     status:'warning',
@@ -116,7 +130,7 @@ function iniciarCurso(id_curso){
     openModalAlert({
         status:'success',
         title:'Iniciar curso',
-        text:'Se acaba de abrir el curso. <br><br> para finalizarlo por favor regrese a esta ventana y haz click en <span>Finalizar</span>',
+        text:'Se acaba de abrir el curso para el ingreso.<br><br>Coloque el código QR de ingreso al alcance de los estudiantes.<br><br>Para finalizarlo por favor regrese a esta ventana y haz click en <span>Finalizar</span>',
         action:'iniciarCurso2'
     })
 }
@@ -124,7 +138,7 @@ function iniciarCurso(id_curso){
 function iniciarCurso2(){
     $.ajax({
         method: 'POST',
-        url: base+'api/controllers/courses.php?action=InitiateCourse',
+        url: base+'api/controllers/courses.php?action=initiateCourse',
         data: {
             courseid:active_course_id
         },
@@ -149,6 +163,49 @@ function iniciarCurso2(){
                 title:'¡Algo salió mal!',
                 text:'Ocurrió un error tratando de iniciar el cusro'
             })
+            active_course_id = -1
+        }
+
+    })
+}
+
+function finalizarCurso(id_curso){
+    active_course_id = id_curso
+    openModalAlert({
+        status:'success',
+        title:'Finalizar curso',
+        text:'Se acaba de finalizar el curso.<br><br>Coloque el código QR de salida al alcance de los estudiantes.',
+        action:'finalizarCurso2'
+    })
+}
+
+function finalizarCurso2(){
+    $.ajax({
+        method: 'POST',
+        url: base+'api/controllers/courses.php?action=finishCourse',
+        data: {
+            courseid:active_course_id
+        },
+        success: function(response){
+            var response_data = JSON.parse(response)
+            if(response_data.status=='success'){
+                reloadPage()
+            }else{
+                openModalAlert({
+                    status:'warning',
+                    title:'¡Algo salió mal!',
+                    text:'No se ha podido finalizar el curso'
+                })
+            }
+            active_course_id = -1
+        },
+        error: function(xhr, status, error){
+            openModalAlert({
+                status:'warning',
+                title:'¡Algo salió mal!',
+                text:'Ocurrió un error tratando de finalizar el cusro'
+            })
+            active_course_id = -1
         }
 
     })

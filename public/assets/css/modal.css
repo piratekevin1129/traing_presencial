@@ -7,15 +7,30 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0,0,0,0.3);
+    
 }
 
 .modal-off{
     visibility: hidden;
     pointer-events: none;
+
+    background-color: rgba(0,0,0,0);
+    transition: background-color 0.2s, visibility 0.25s;
 }
+.modal-off .modal-box{
+    transform: scale(0.9);
+    opacity: 0;
+}
+
 .modal-on{
     visibility: visible;
+    background-color: rgba(0,0,0,0.3);
+    transition: background-color 0.2s, visibility 0s;
+}
+
+.modal-on .modal-box{
+    transform: scale(1);
+    opacity: 1;
 }
 
 .modal-box{
@@ -27,6 +42,8 @@
     border-radius: 8px;
     background-color: var(--blanco);
     box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.3);
+
+    transition: transform 0.25s, opacity 0.25s;
 }
 
 #modal-registro-usuarios-masivo .modal-box{
@@ -82,7 +99,10 @@
     font-family: var(--fontmedium);
     font-size: 1rem;
     color: var(--traing);
-    margin-bottom: 10px;
+    margin: 10px 0px;
+}
+.modal-body > p span{
+    font-family: var(--fontbold);
 }
 
 .modal-select-container,

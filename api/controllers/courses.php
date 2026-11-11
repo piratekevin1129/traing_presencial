@@ -49,7 +49,7 @@ if(isset($_GET['action'])){
         }
         
         exit('{"status":"success","data":'.json_encode($course_data).'}');
-    }else if($action=='InitiateCourse'){
+    }else if($action=='initiateCourse'){
         $courses_ids = array_column($courses_file_data, 'id');
         $course_data_ind = array_search((int)$_POST['courseid'], $courses_ids);
 
@@ -59,12 +59,29 @@ if(isset($_GET['action'])){
 
             if(file_put_contents('../../data/db/courses.json',$courses_file_txt)){
                 //devolver el link
-                exit('{"status":"success","data":{}}');
+                exit('{"status":"success","data":""}');
             }else{
                 exit('{"status":"error","data":"error confirmando el inicio"}');
             }
         }else{
-            exit('{"status":"error","data":"no se encontró el curso"}');        
+            exit('{"status":"error","data":"no se encontró el curso"}');
+        }
+    }else if($action=='finishCourse'){
+        $courses_ids = array_column($courses_file_data, 'id');
+        $course_data_ind = array_search((int)$_POST['courseid'], $courses_ids);
+
+        if($course_data_ind !== false){
+            $courses_file_data[$course_data_ind]['status'] = 2;
+            $courses_file_txt = json_encode($courses_file_data);
+
+            if(file_put_contents('../../data/db/courses.json',$courses_file_txt)){
+                //devolver el link
+                exit('{"status":"success","data":""}');
+            }else{
+                exit('{"status":"error","data":"error confirmando la salida"}');
+            }
+        }else{
+            exit('{"status":"error","data":"no se encontró el curso"}');
         }
     }else if($action=='saveCourses'){
         //mirar si trae copias
@@ -73,13 +90,17 @@ if(isset($_GET['action'])){
         $tiempo_curso = (int)$_POST['tiempo'];
         $tiempo2_curso = $_POST['tiempo2'];
         $encargados_curso = json_decode($_POST['encargados'],true);
+        $img = "";
         
         $initial_id = count($courses_file_data);
         $ids_collection = array();
+
+        $img = $initial_id+1;
         
         foreach($charlas_data as $charla_data){
             $id_curso = ($initial_id+1);
             $nombre_curso = $_POST['nombre'];
+            
             $ano = $charla_data['ano'];
             
             $mes1 = $charla_data['mes']+1;
@@ -125,7 +146,7 @@ if(isset($_GET['action'])){
                 'id'=>$id_curso,
                 'nombre'=>$nombre_curso,
                 'descripcion'=>$descripcion_curso,
-                'img'=>"",
+                'img'=>(string)$img,
                 'fecha'=>$fecha_curso,
                 'fechaformat'=>$fechaformat_curso,
                 'sedeid'=>$sedeid_curso,
@@ -148,6 +169,38 @@ if(isset($_GET['action'])){
         }else{
             exit('{"status":"error","data":"error guardando el curso"}');
         }
+    }else if($action=='saveCoursesImage'){
+        if(
+            isset($_FILES['curso-img']) &&
+            $_FILES['curso-img']['error'] === UPLOAD_ERR_OK &&
+            isset($_POST['curso-ids'])
+        ) {
+            //$ids = array_map('trim',explode(",",json_decode($_POST['curso-ids'])));
+            $ids = $_POST['curso-ids'];
+            $img_name = 'thumbnail';
+                        
+            $img_folder = '../../public/cursos/'.$ids.'/';
+
+            if (!file_exists($img_folder)) {
+                mkdir($img_folder, 0777, true);
+            }
+                
+            $img_nombre = $_FILES['curso-img']['name'];
+            $img_ext = pathinfo($img_nombre, PATHINFO_EXTENSION);
+            
+            $img_fullname = $img_name.'.'. $img_ext;
+            $img_final = $img_folder.$img_fullname;
+                
+            if (move_uploaded_file($_FILES['curso-img']['tmp_name'], $img_final)) {
+                exit('{"status":"success","data":""}');
+            } else {
+                exit('{"status":"error","data":"no se pudo guardar la imagen"}');
+            }
+        } else {
+            exit('{"status":"error","data":"no se encontraron los datos para guardar la imagen"}');
+        }
+    }else if($action=='getQRByCourse'){
+        
     }
 }else{
     exit('{"status":"error","data":"action not defined"}');
