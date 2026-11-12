@@ -217,7 +217,7 @@ if(isset($_GET['courseid'])){
                                 <?php }?>
                                 <form id="curso-img-form" enctype="multipart/form-data">
                                     <input id="imagen-inp" type="file" name="curso-img" accept=".png,.jpeg,.jpg" onchange="updateCourseImage(event)" />
-                                    <input type="hidden" name="curso-ids" id="curso_ids" />
+                                    <input type="hidden" name="curso-ids" id="curso_ids" value="<?php echo $course_data['id']?>" />
                                 </form>
                             </div>
                             <label>Haz clic sobre la imagen para cambiarla</label>
@@ -377,8 +377,8 @@ if(isset($_GET['courseid'])){
                         <div class="hr"></div>
 
                         <div class="col-right">
-                            <button type="button" class="boton-principal" onclick="guardarCurso(this)">
-                                <span>Guardar curso</span>
+                            <button type="button" class="boton-principal" onclick="actualizarCurso(this)">
+                                <span>Actualizar curso</span>
                             </button>
                         </div>
                         <!--end-->
@@ -399,7 +399,7 @@ if(isset($_GET['courseid'])){
     <script src="<?php echo $base ?>public/curso-crear/scripts/cursos-editar.js"></script>
     <script>
 
-    <?php if(isset($_GET['courseid'])){ ?>
+    <?php if($c>=0){ ?>
         var sedes_data = []
         <?php foreach($headquarters as $headquarter){?>
         

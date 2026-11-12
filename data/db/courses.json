@@ -1,17 +1,19 @@
 [
     {
         "id": 1,
-        "nombre": "Teletrabajo",
-        "descripcion": "Descripción teletrbajo",
+        "nombre": "Teletrabajo 2",
+        "descripcion": "Descripci\u00f3n teletrbajo 2",
         "img": "1",
-        "fecha": "29 de Noviembre de 2026 - 10:00 am",
-        "fechaformat": "2026-11-29 10:00:00",
+        "fecha": "29 de Noviembre de 2026 - 14:30 pm",
+        "fechaformat": "2026-11-29 14:30:00",
         "sedeid": 1,
-        "aulaid": 1,
-        "facilitadorid": 1,
+        "aulaid": 2,
+        "facilitadorid": 2,
         "status": 0,
-        "tiempo": 2,
-        "tiempo2": "horas",
-        "encargados": [1,2]
+        "tiempo": 30,
+        "tiempo2": "minutos",
+        "encargados": [
+            2
+        ]
     }
 ]

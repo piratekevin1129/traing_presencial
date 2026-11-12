@@ -8,11 +8,12 @@ function createCharlas(){
 
 function verCharla(id){
     current_charla = 0
+    getE('calendario-date-'+charlas_data[current_charla].fecha).className = 'dia-seleccionado'
 }
 
 /************************************************/
 
-function guardarCurso(btn){
+function actualizarCurso(btn){
     //btn.disabled = true
     
     var nombre_val = getE('nombre-inp').value
@@ -20,24 +21,24 @@ function guardarCurso(btn){
     var tiempo_inp = getE('tiempo-inp').value
     var tiempo2_sel = getE('tiempo2-sel').value
     var encargados_list = getDropdownItems('dropdown-encargado')
-    var imagen_val = getE('imagen-inp')
-
+    var curso_ids = getE('curso_ids').value
+    
     if(
         is_empty(nombre_val)||
-        imagen_val.files.length<=0||
         charlas_data.length==0
     ){
         openModalAlert({
             status:'warning',
             title:'Campos sin diligenciar',
-            text:'Por favor asegúrate de diligenciar:<br>• Un nombre<br>• Una imagen<br>•Una fecha mínimo para el curso'
+            text:'Por favor asegúrate de diligenciar:<br>• Un nombre<br>Fecha para el curso'
         })
     }else{
         setLoader()
         $.ajax({
             method: 'POST',
-            url: base+'api/controllers/courses.php?action=saveCourses',
+            url: base+'api/controllers/courses.php?action=updateCourse',
             data: {
+                courseid:curso_ids,
                 nombre:nombre_val,
                 descripcion:descripcion_val,
                 tiempo:parseInt(tiempo_inp),
@@ -49,13 +50,13 @@ function guardarCurso(btn){
                 var response_data = JSON.parse(response)
                 if(response_data.status=='success'){
                     //guardar usuarios registrados
-                    guardarCurso2(response_data.data)
+                    actualizarCurso2()
                 }else{
                     unsetLoader()
                     openModalAlert({
                         status:'warning',
                         title:'Algo salió mal',
-                        text:'No se pudo guardar el curso'
+                        text:'No se pudo actualizar el curso'
                     })
                 }
             },
@@ -64,7 +65,7 @@ function guardarCurso(btn){
                 openModalAlert({
                     status:'warning',
                     title:'Algo salió mal',
-                    text:'Ocurrió un error tratando de guardar el curso'
+                    text:'Ocurrió un error tratando de actualizar el curso'
                 })
             }
         })
@@ -73,21 +74,21 @@ function guardarCurso(btn){
 
 }
 
-function guardarCurso2(ids_collection){
-    var collection = []
-    for(i = 0;i<charlas_data.length;i++){
-        var users = []
-        for(j = 0;j<charlas_data[i].estudiantes.length;j++){
-            users.push(charlas_data[i].estudiantes[j])
-        }
-        collection.push({
-            id:ids_collection[i],
-            users:users
-        })
+function actualizarCurso2(){
+    var curso_ids = getE('curso_ids').value
+    var imagen_val = getE('imagen-inp')
+    var users = []
+    for(j = 0;j<charlas_data[current_charla].estudiantes.length;j++){
+        users.push(charlas_data[current_charla].estudiantes[j])
     }
+    var collection = [{
+        id:curso_ids,
+        users:users
+    }]
+
     $.ajax({
         method: 'POST',
-        url: base+'api/controllers/courses_users.php?action=saveCoursesUsers',
+        url: base+'api/controllers/courses_users.php?action=updateCoursesUsers',
         data: {
             datos:JSON.stringify(collection),
         },
@@ -96,12 +97,16 @@ function guardarCurso2(ids_collection){
             unsetLoader()
             if(response_data.status=='success'){
                 //guardar imagen
-                guardarCurso3(ids_collection)
+                if(imagen_val.files.length<=0){
+                    actualizarFinal()
+                }else{
+                    actualizarCurso3()
+                }
             }else{
                 openModalAlert({
                     status:'warning',
                     title:'Algo salió mal',
-                    text:'No se pudo matricular a los estudiantes'
+                    text:'No se pudo actualizar el registro a los estudiantes'
                 })
             }
         },
@@ -110,46 +115,13 @@ function guardarCurso2(ids_collection){
             openModalAlert({
                 status:'warning',
                 title:'Algo salió mal',
-                text:'Ocurrió un error tratando de matricular a los estudiantes'
+                text:'Ocurrió un error tratando de actualizar el registro de los estudiantes'
             })
         }
     })
 }
 
-function guardarCurso3(ids_collection){
-    //guardar QR
-    $.ajax({
-        method: 'POST',
-        url: base+'api/controllers/courses.php?action=saveCoursesQR',
-        data:{
-            ids:JSON.stringify(ids_collection)
-        },
-        success: function(response){
-            var response_data = JSON.parse(response)
-            unsetLoader()
-            if(response_data.status=='success'){
-                //guardar imagen
-                getE('curso_ids').value = ids_collection[0]
-                guardarCurso4()
-            }else{
-                openModalAlert({
-                    status:'warning',
-                    title:'Algo salió mal',
-                    text:'No se pudo generar el código QR de los cursos'
-                })
-            }
-        },
-        error: function(xhr, status, error){
-            openModalAlert({
-                status:'warning',
-                title:'Algo salió mal',
-                text:'Ocurrió un error generando el código QR de los cursos'
-            })
-        }
-    })
-}
-
-function guardarCurso4(){
+function actualizarCurso3(){
     var datosimagen = new FormData(getE('curso-img-form'));
 
     $.ajax({
@@ -161,12 +133,12 @@ function guardarCurso4(){
         success: function(response) {
             var response_data = JSON.parse(response)
             if(response_data.status=='success'){
-                openModalAlert({status:'success',title:'Curso creado con éxito!',text:'Ya puedes ir a la sección de curso y descargar los códigos QR para la asistencia y finalización'})
+                actualizarFinal()
             }else{
                 openModalAlert({
                     status:'warning',
                     title:'Algo salió mal',
-                    text:'No se pudo guardar la imagen del curso'
+                    text:'No se pudo actualizar la imagen del curso'
                 })
             }
         },
@@ -174,8 +146,16 @@ function guardarCurso4(){
             openModalAlert({
                 status:'warning',
                 title:'Algo salió mal',
-                text:'Ocurrió un error guardando la imagen del curso'
+                text:'Ocurrió un error actualizando la imagen del curso'
             })
         }
     });
+}
+
+function actualizarFinal(){
+    openModalAlert({
+        status:'success',
+        title:'Curso actualizado con éxito!',
+        text:'Ya puedes ir a la sección de curso y descargar los códigos QR para la asistencia y finalización'
+    })
 }

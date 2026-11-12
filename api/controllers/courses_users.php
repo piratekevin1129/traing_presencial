@@ -103,6 +103,41 @@ if(isset($_GET['action'])){
         }else{
             exit('{"status":"error","data":"error guardando el curso"}');
         }
+    }else if($action=='updateCoursesUsers'){
+        $datos = json_decode($_POST['datos'],true);
+
+        if(count($datos)>0){
+            $courses_users_ids = array_column($courses_users_file_data, 'id');
+            $courses_users_ind = array_search((int)$datos[0]['id'], $courses_users_ids);
+
+            if ($courses_users_ind !== false) {
+                $users = array();
+                foreach($datos[0]['users'] as $du){
+                    array_push($users,array(
+                        'id'=>$du,
+                        'status'=>0,
+                        'horaentrada'=>"",
+                        'horasalida'=>""
+                    ));
+                }
+    
+                $courses_users_file_data[$courses_users_ind]['users'] = $users;
+
+                $courses_users_file_txt = json_encode($courses_users_file_data);
+                if(file_put_contents('../../data/db/courses_users.json',$courses_users_file_txt)){
+                    //guardar los estudiantes
+                    exit('{"status":"success","data":""}');
+                }else{
+                    exit('{"status":"error","data":"error actualizando el curso y los usuarios"}');
+                }
+            }else{
+                exit('{"status":"error","data":"No se encontró la tabla de usuarios con este curso"}');
+            }
+        }else{
+            exit('{"status":"error","data":"No cargaron los datos de los usuarios de este curso"}');
+        }
+    }else{
+        exit('{"status":"error","data":"action not loaded"}');
     }
 }else{
     exit('{"status":"error","data":"action not defined"}');

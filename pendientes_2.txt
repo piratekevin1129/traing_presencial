@@ -17,6 +17,7 @@ editar y eliminar aulas
 validacion login admin
 arreglar parte donde se registran los usuarios (dropdwon)
 paginador de usuarios
+actualizar guardado de curso
 
 ubicacion en el mapa
 seccion de contenidos

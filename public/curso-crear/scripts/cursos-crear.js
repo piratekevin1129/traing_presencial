@@ -240,7 +240,7 @@ function guardarCurso2(ids_collection){
             var response_data = JSON.parse(response)
             unsetLoader()
             if(response_data.status=='success'){
-                //guardar imagen
+                //guardar QRS
                 guardarCurso3(ids_collection)
             }else{
                 openModalAlert({

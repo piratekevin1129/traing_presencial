@@ -1,7 +1,49 @@
-function updateCursoFile(inpu){
+
+
+function updateCursoFile(event){
+    var inpu = getE('lista-usuarios-txt')
     updateFileInput(inpu)
-    getE('modal-tabla-preview-tab').className = 'modal-preview-tabla modal-preview-tabla-on'
+
+    // Tomar el primer archivo seleccionado [0]
+    const archivo = event.target.files[0];
+    if (archivo){
+        const lector = new FileReader();
+    
+        lector.onload = function(e) {
+            const datos = new Uint8Array(e.target.result);
+            const libro = XLSX.read(datos, { type: 'array' });
+    
+            // Tomar el nombre de la primera hoja [0]
+            const primeraHoja = libro.SheetNames[0];
+            const hoja = libro.Sheets[primeraHoja];
+
+            // 2. Convertir la hoja a un arreglo de objetos JSON
+            // defval: "" asegura que las celdas vacías aparezcan como texto vacío en vez de omitirse
+            const arregloJSON = XLSX.utils.sheet_to_json(hoja, { defval: "" });
+
+            // Ver el arreglo resultante en la consola del navegador (F12)
+            console.log(arregloJSON);
+            var h = ''
+
+            arregloJSON.forEach((user,indx) =>{
+                h+='<tr>'
+                    h+='<td>'+getTipoTrabajador(user.tipo_trabajador)+'</td>'
+                    h+='<td>'+user.nombre+' '+user.apellido+'</td>'
+                    h+='<td>'+user.documento+'</td>'
+                    h+='<td>'+user.ciudad+'</td>'
+                    h+='<td>'+user.empresa+'</td>'
+                    h+='<td>'+user.correo_electronico+'</td>'
+                h+='</tr>'
+            })
+            getE('tabla-usuarios-tdbody').innerHTML = h
+        };
+    
+        lector.readAsArrayBuffer(archivo);
+        getE('modal-tabla-preview-tab').className = 'modal-preview-tabla modal-preview-tabla-on'
+    }
 }
+
+
 
 function addCursoList(ind,list){
     var course_div = document.createElement('div')

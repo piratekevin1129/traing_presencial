@@ -31,8 +31,7 @@ if(isset($_GET['action'])){
         }else{
             exit('{"status":"error","data":"error guardando el archivo"}');
         }
-    }
-    else if($action=='updateFacilitador'){
+    }else if($action=='updateFacilitador'){
         //buscar indice
         $indx = -1;
         foreach($teachers_file_data as $ind => $td){
@@ -60,8 +59,7 @@ if(isset($_GET['action'])){
         }else{
             exit('{"status":"error","data":"error guardando el archivo"}');
         }
-    }
-    else if($action=='deleteFacilitador'){
+    }else if($action=='deleteFacilitador'){
         //buscar indice
         $indx = -1;
         foreach($teachers_file_data as $ind => $td){

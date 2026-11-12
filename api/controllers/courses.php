@@ -169,6 +169,83 @@ if(isset($_GET['action'])){
         }else{
             exit('{"status":"error","data":"error guardando el curso"}');
         }
+    }else if($action=='updateCourse'){
+        $id_curso = $_POST['courseid'];
+        $nombre_curso = $_POST['nombre'];
+        $descripcion_curso = $_POST['descripcion'];
+        $tiempo_curso = (int)$_POST['tiempo'];
+        $tiempo2_curso = $_POST['tiempo2'];
+        $encargados_curso = json_decode($_POST['encargados'],true);
+        $charlas_data = json_decode($_POST['charlas'],true);
+
+        $charla_data = array();
+        if(count($charlas_data)>0){
+            $charla_data = $charlas_data[0];
+            
+            $ano = $charla_data['ano'];
+            
+            $mes1 = $charla_data['mes']+1;
+            $mes = $mes1;
+            if($mes1<10){
+                $mes = '0'.$mes1;
+            }
+            
+            $fecha1 = $charla_data['fecha'];
+            $fecha = $fecha1;
+            if($fecha1<10){
+                $fecha = '0'.$fecha1;
+            }
+
+            $minutos1 = $charla_data['minutos'];
+            $minutos = $minutos1;
+            if($minutos1<10){
+                $minutos = '0'.$minutos1;
+            }
+                
+            $hora1 = $charla_data['hora'];
+            $horario = $charla_data['horario'];
+            if($horario=='pm'){
+                $hora1+=12;
+            }
+            $hora = $hora1;
+            if($hora1<10){
+                $hora = '0'.$hora1;
+            }
+
+            $fecha_curso = $fecha.' de '.$meses[$charla_data['mes']].' de '.$ano.' - '.$hora.':'.$minutos.' '.$horario;
+            $fechaformat_curso = $ano.'-'.$mes.'-'.$fecha.' '.$hora.':'.$minutos.':00';
+            $sedeid_curso = (int)$charla_data['sede'];
+            $aulaid_curso = (int)$charla_data['aula'];
+            $facilitadorid_curso = (int)$charla_data['facilitador'];
+
+            //buscar ind del curso
+            $courses_ids = array_column($courses_file_data, 'id');
+            $ind = array_search((int)$_POST['courseid'], $courses_ids);
+
+            if($ind !== false){
+                $courses_file_data[$ind]['nombre'] = $nombre_curso;
+                $courses_file_data[$ind]['descripcion'] = $descripcion_curso;
+                $courses_file_data[$ind]['fecha'] = $fecha_curso;
+                $courses_file_data[$ind]['fechaformat'] = $fechaformat_curso;
+                $courses_file_data[$ind]['sedeid'] = $sedeid_curso;
+                $courses_file_data[$ind]['aulaid'] = $aulaid_curso;
+                $courses_file_data[$ind]['facilitadorid'] = $facilitadorid_curso;
+                $courses_file_data[$ind]['tiempo'] = $tiempo_curso;
+                $courses_file_data[$ind]['tiempo2'] = $tiempo2_curso;
+                $courses_file_data[$ind]['encargados'] = $encargados_curso;
+
+                $courses_file_txt = json_encode($courses_file_data);
+                if(file_put_contents('../../data/db/courses.json',$courses_file_txt)){
+                    exit('{"status":"success","data":""}');
+                }else{
+                    exit('{"status":"error","data":"error actualizando el curso"}');
+                }
+            }else{
+                exit('{"status":"error","data":"no se encontró información del curso"}');
+            }
+        }else{
+            exit('{"status":"error","data":"no se encontró datos específicos del curso"}');
+        }
     }else if($action=='saveCoursesImage'){
         if(
             isset($_FILES['curso-img']) &&
@@ -237,8 +314,8 @@ if(isset($_GET['action'])){
         }else{
             exit('{"status":"error","data":"no se encontraron los ids para generar el qr"}');
         }
-    }else if($action=='getQRByCourse'){
-        
+    }else{
+        exit('{"status":"error","data":"action not loaded"}');
     }
 }else{
     exit('{"status":"error","data":"action not defined"}');

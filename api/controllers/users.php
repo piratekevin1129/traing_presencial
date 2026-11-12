@@ -25,8 +25,7 @@ if(isset($_GET['action'])){
         } else {
             exit('{"status":"error","data":"No se encontró información del usuario"}');
         }
-    }
-    else if($action=='saveUser'){
+    }else if($action=='saveUser'){
         $current_id = (int)$users_file_data[count($users_file_data)-1]['id'];
         $new_id = ($current_id+1);
         array_push($users_file_data,array(
@@ -47,8 +46,7 @@ if(isset($_GET['action'])){
         }else{
             exit('{"status":"error","data":"error guardando el archivo"}');
         }
-    }
-    else if($action=='updateUser'){
+    }else if($action=='updateUser'){
         //buscar indice
         $indx = -1;
         foreach($users_file_data as $ind => $ud){
@@ -77,8 +75,7 @@ if(isset($_GET['action'])){
         }else{
             exit('{"status":"error","data":"error guardando el archivo"}');
         }
-    }
-    else if($action=='deleteUser'){
+    }else if($action=='deleteUser'){
         //buscar indice
         $indx = -1;
         foreach($users_file_data as $ind => $ud){

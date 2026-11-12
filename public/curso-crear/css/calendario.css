@@ -37,6 +37,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.dias-semana-container > div{
     border-radius: 4px;
 }
 .dias-semana-container > div > div,
@@ -56,17 +58,22 @@
 /****************/
 
 .dia-normal > div{
-    cursor: pointer;
+    cursor: default;
     background-color: var(--blanco);
 }
+
 .dia-bloqueado > div{
     cursor: not-allowed;
     background-color: var(--blanco);
 }
-.dia-escogido{
+
+.dia-escogido > div{
+    cursor: default;
     background-color: var(--naranja);
 }
-.dia-seleccionado{
+
+.dia-seleccionado > div{
+    cursor: default;
     background-color: var(--azulclaro);
 }
 

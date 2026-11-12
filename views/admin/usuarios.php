@@ -126,6 +126,8 @@
     <?php include './modals/form-usuario.php'; ?>
     <?php include '../../components/sweetalert/sweetalert.php'; ?>
 
+    <!-- use version 0.20.3 -->
+    <script type="text/javascript" src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
     <script src="<?php echo $base ?>public/assets/scripts/modal.js"></script>
     <script src="<?php echo $base ?>public/assets/scripts/form.js"></script>
     <script src="<?php echo $base ?>public/assets/scripts/dropdown.js"></script>
@@ -164,6 +166,23 @@
                 }
             }
             return ind
+        }
+
+        var tipos_trabajador = [{
+            key:'e',value:'Estudiante'
+        },{
+            key:'c',value:'Contratista'
+        }]
+
+        function getTipoTrabajador(key){
+            var valor = ""
+            for(var i = 0;i<tipos_trabajador.length;i++){
+                if(tipos_trabajador[i].key==key){
+                    valor = tipos_trabajador[i].value
+                    break;
+                }
+            }
+            return valor
         }
 
     </script>
