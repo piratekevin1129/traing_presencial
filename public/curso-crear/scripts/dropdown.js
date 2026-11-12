@@ -60,8 +60,6 @@ function clickDropdownItem(d,it,inpu){
     //mirar cantidad checkeados
     var current_limit = 0;
     var l = 0;
-    var ii = -1;
-    var jj = -1;
     var textos = []
 
     for(l = 0;l<dropdown_data[d].selecteditems.length;l++){
@@ -75,7 +73,13 @@ function clickDropdownItem(d,it,inpu){
         texto = textos.join("; ")
     }
     getE(dropdown_data[d].id).getElementsByClassName('dropdown-text')[0].innerHTML = texto
+    limitDropdown(d,current_limit)
+}
 
+function limitDropdown(d,current_limit){
+    var ii = -1;
+    var jj = -1;
+    var l = 0;
     if(current_limit==dropdown_data[d].limit){
         //bloqear todo
         for(l = 0;l<dropdown_data[d].selecteditems.length;l++){
@@ -109,4 +113,34 @@ function clickWindow(event){
             window.removeEventListener('click',clickWindow,true)
         }
     }
+}
+
+function editDropdown(idname,values){
+    var dropdown_obj = getE(idname)
+    var dropdown_ind = dropdown_obj.getAttribute('data-ind')
+    var current_limit = 0;
+    var textos = []
+
+    for(i = 0;i<values.length;i++){
+        for(j = 0;j<dropdown_data[dropdown_ind].selecteditems.length;j++){
+            if(dropdown_data[dropdown_ind].selecteditems[j].val==values[i]){
+                dropdown_data[dropdown_ind].selecteditems[j].state = true
+                var ii = dropdown_data[dropdown_ind].selecteditems[j].i
+                var jj = dropdown_data[dropdown_ind].selecteditems[j].j
+                var item_id = getE('dropdown-list-item-'+ii+'_'+jj)
+                var item_inpu = item_id.getElementsByTagName('input')[0]
+                var item_text = item_id.getElementsByTagName('p')[0]
+                item_inpu.checked = true
+                textos.push(item_text.innerHTML)
+                current_limit++
+            }
+        }
+    }
+
+    var texto = 'Seleccionar'
+    if(textos.length>0){
+        texto = textos.join("; ")
+    }
+    getE(idname).getElementsByClassName('dropdown-text')[0].innerHTML = texto
+    limitDropdown(dropdown_ind,current_limit)
 }

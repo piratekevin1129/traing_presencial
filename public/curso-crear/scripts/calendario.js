@@ -55,7 +55,7 @@ var first_day = custom_date.getDay()
 
 
 
-function setCalendario(idname){
+function setCalendario(idname,events = 'yes'){
     var mes_txt = document.createElement('div')
     mes_txt.className = 'mes-container'
     mes_txt.innerHTML = '<p>'+meses[current_mes].m+'</p>'
@@ -92,8 +92,10 @@ function setCalendario(idname){
             dia1.className = 'dia-bloqueado'
         }else{
             dia1.className = 'dia-normal'
-            h+='<button class="calendario-date-btn1" type="button" onclick="addCharla('+i+')"><img src="'+base+'public/curso-crear/images/add-icon.svg" /></button>'
-            h+='<button class="calendario-date-btn2" type="button"><img src="'+base+'public/curso-crear/images/ver-icon.svg" /></button>'
+            if(events=='yes'){
+                h+='<button class="calendario-date-btn1" type="button" onclick="addCharla('+i+')"><img src="'+base+'public/curso-crear/images/add-icon.svg" /></button>'
+                h+='<button class="calendario-date-btn2" type="button"><img src="'+base+'public/curso-crear/images/ver-icon.svg" /></button>'
+            }
         }
         dia1.innerHTML = h
         dias.appendChild(dia1)

@@ -10,21 +10,11 @@
             
             <div class="modal-qr-col">
                 <div class="modal-qr-row">
-                    <p>Código QR para ingreso</p>
+                    <p id="modal-qr-title">...</p>
                     <div>
-                        <img id="qr-ingreso-img" src="" />
+                        <img id="qr-img" src="" />
                     </div>
-                    <a id="qr-ingreso-link" target="_blank">
-                        <img src="<?php echo $base ?>public/assets/images/button-download2-icon.svg" />
-                        <span>Descargar</span>
-                    </a>
-                </div>
-                <div class="modal-qr-row">
-                    <p>Código QR para salida</p>
-                    <div>
-                        <img id="qr-salida-img" src="" />
-                    </div>
-                    <a id="qr-salida-link" href="" target="_blank">
+                    <a id="qr-link" target="_blank">
                         <img src="<?php echo $base ?>public/assets/images/button-download2-icon.svg" />
                         <span>Descargar</span>
                     </a>

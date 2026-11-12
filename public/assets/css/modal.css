@@ -58,7 +58,6 @@
     width: 720px;
 }
 #modal-codigos-qr .modal-box,
-#modal-codigos-qr2 .modal-box,
 #modal-repetir-curso .modal-box{
     width: 650px;
 }
@@ -434,7 +433,7 @@
     flex-wrap: wrap;
 }
 .modal-qr-row{
-    width: 50%;
+    width: 100%;
     height: auto;
     padding: 20px;
 }

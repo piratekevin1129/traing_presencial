@@ -1,1 +1,17 @@
-[{"id":1,"nombre":"Teletrabajo","descripcion":"","img":"1","fecha":"29 de Noviembre de 2026 - 10:00 am","fechaformat":"2026-11-29 10:00:00","sedeid":1,"aulaid":1,"facilitadorid":1,"status":0,"tiempo":2,"tiempo2":"horas","encargados":[]}]
+[
+    {
+        "id": 1,
+        "nombre": "Teletrabajo",
+        "descripcion": "Descripción teletrbajo",
+        "img": "1",
+        "fecha": "29 de Noviembre de 2026 - 10:00 am",
+        "fechaformat": "2026-11-29 10:00:00",
+        "sedeid": 1,
+        "aulaid": 1,
+        "facilitadorid": 1,
+        "status": 0,
+        "tiempo": 2,
+        "tiempo2": "horas",
+        "encargados": [1,2]
+    }
+]

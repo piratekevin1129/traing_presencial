@@ -221,8 +221,8 @@ if(isset($_GET['action'])){
                 // Opciones: L (bajo), M (medio), Q (alto), H (máximo)
                 // Tamaño de cada cuadro del QR (del 1 al 10)
                 // Borde blanco alrededor del QR
-                QRcode::png($qr_ingreso_data, $qr_ingreso, 'M', 6, 2);
-                QRcode::png($qr_salida_data, $qr_salida, 'M', 6, 2);
+                QRcode::png($qr_ingreso_data, $qr_ingreso, 'M', 7, 2);
+                QRcode::png($qr_salida_data, $qr_salida, 'M', 7, 2);
 
                 if(!file_exists($qr_ingreso)||!file_exists($qr_salida)){
                     array_push($errores_qr,'Error al guardar el qr del curso: '.$id_data);

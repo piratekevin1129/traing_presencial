@@ -15,7 +15,8 @@ cargar listas de excel de facilitadores y usuarios
 editar y eliminar sedes
 editar y eliminar aulas
 validacion login admin
-
+arreglar parte donde se registran los usuarios (dropdwon)
+paginador de usuarios
 
 ubicacion en el mapa
 seccion de contenidos

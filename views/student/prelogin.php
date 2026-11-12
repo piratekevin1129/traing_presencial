@@ -36,7 +36,6 @@
         <span>Escanear código QR</span>
     </button>
     <!--modales-->
-    <?php include './modals/escanear-qrs.php'; ?>
     <?php include '../../components/sweetalert/sweetalert.php'; ?>
 
     <script src="<?php echo $base ?>public/assets/scripts/modal.js"></script>

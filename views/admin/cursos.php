@@ -134,9 +134,19 @@ foreach($courses as $indx => $c){
                                         <?php echo $course['facilitador']?>
                                     </td>
                                     <td>
-                                        <button class="button-qr" onclick="verQRS(<?php echo $course['id']?>)">
+                                        <?php if($course['status']==0){?>
+                                        <button class="button-qr" onclick="verQRDenegado()">
+                                            <img src="<?php echo $base ?>public/assets/images/button-lock-icon.svg" />
+                                        </button>
+                                        <?php } else if($course['status']==1){?>
+                                        <button class="button-qr" onclick="verQRIngreso(<?php echo $course['id']?>)">
                                             <img src="<?php echo $base ?>public/assets/images/button-qr-icon.svg" />
                                         </button>
+                                        <?php } else if($course['status']==2){?>
+                                        <button class="button-qr" onclick="verQRSalida(<?php echo $course['id']?>)">
+                                            <img src="<?php echo $base ?>public/assets/images/button-qr-icon.svg" />
+                                        </button>
+                                        <?php } ?>
                                     </td>
                                     <td>
                                         <button onclick="verAsistencias(<?php echo $course['id']?>,<?php echo $course['status']?>)">
@@ -144,9 +154,15 @@ foreach($courses as $indx => $c){
                                         </button>
                                     </td>
                                     <td>
+                                        <?php if($course['status']==0){?>
                                         <button onclick="editarCurso(<?php echo $course['id']?>)">
                                             <img src="<?php echo $base ?>public/assets/images/button-edit-icon.svg" />
                                         </button>
+                                        <?php } else {?>
+                                        <button>
+                                            <img src="<?php echo $base ?>public/assets/images/button-lock-icon.svg" />
+                                        </button>
+                                        <?php }?>
                                     </td>
                                     <td>
                                         <?php if($course['status']==0){?>
@@ -158,6 +174,11 @@ foreach($courses as $indx => $c){
                                         <button class="boton-td2" onclick="finalizarCurso(<?php echo $course['id']?>)">
                                             <img src="<?php echo $base ?>public/assets/images/button-link-icon.svg" />
                                             <span>Finalizar</span>
+                                        </button>
+                                        <?php } else if($course['status']==2){?>
+                                        <button class="boton-td3">
+                                            <img src="<?php echo $base ?>public/assets/images/check-icon.svg" />
+                                            <span>Finalizado</span>
                                         </button>
                                         <?php } ?>
                                     </td>

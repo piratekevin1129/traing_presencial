@@ -113,9 +113,8 @@
                                 <div class="col-tiempo">
                                     <div class="select">
                                         <select name="tiempo2" id="tiempo2-sel">
-                                            <option value="0" selected>Seleccionar</option>
                                             <option value="minutos">Minutos</option>
-                                            <option value="horas">Horas</option>
+                                            <option value="horas" selected>Horas</option>
                                         </select>
                                     </div>
                                 </div>
@@ -345,6 +344,7 @@
     <script src="<?php echo $base ?>public/assets/scripts/modal.js"></script>
     <script src="<?php echo $base ?>public/curso-crear/scripts/dropdown.js"></script>
     <script src="<?php echo $base ?>public/curso-crear/scripts/calendario.js"></script>
+    <script src="<?php echo $base ?>public/curso-crear/scripts/cursos-form.js"></script>
     <script src="<?php echo $base ?>public/curso-crear/scripts/cursos-crear.js"></script>
     <script>
         var sedes_data = []
@@ -455,6 +455,13 @@
             getE('curso-presencial-opciones-repetir-o4').className = 'content-hidden'
             
             getE('curso-presencial-opciones-repetir-o'+selected_value).className = 'content-visible'
+        }
+
+        window.onload = function(){
+            setDropdown()
+            setCalendario('curso-presencial-calendario')
+            getE('current-mes-txt').innerHTML = meses[current_mes].m
+            
         }
         
     </script>

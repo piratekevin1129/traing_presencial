@@ -1,17 +1,34 @@
 var active_course_id = -1
 var active_course_status = -1
 
-function verQRS(id_curso){
+function verQRIngreso(id_curso){
     //validacion para el id
     active_course_id = id_curso
-    
-    getE('qr-ingreso-img').src = base+'public/cursos/'+id_curso+'/ingreso.svg'
-    getE('qr-ingreso-link').setAttribute('href',base+'public/cursos/'+id_curso+'/ingreso.svg')
 
-    getE('qr-salida-img').src = base+'public/cursos/'+id_curso+'/salida.svg'
-    getE('qr-salida-link').setAttribute('href',base+'public/cursos/'+id_curso+'/salida.svg')
+    getE('modal-qr-title').innerHTML = "Código QR para ingreso"
+    getE('qr-img').src = base+'public/cursos/'+id_curso+'/ingreso.png'
+    getE('qr-link').setAttribute('href',base+'public/cursos/'+id_curso+'/ingreso.png')
     
     openModal(null,'modal-codigos-qr2','Ver códigos QR')
+}
+
+function verQRSalida(id_curso){
+    //validacion para el id
+    active_course_id = id_curso
+
+    getE('modal-qr-title').innerHTML = "Código QR para salida"
+    getE('qr-img').src = base+'public/cursos/'+id_curso+'/salida.png'
+    getE('qr-link').setAttribute('href',base+'public/cursos/'+id_curso+'/salida.png')
+    
+    openModal(null,'modal-codigos-qr2','Ver códigos QR')
+}
+
+function verQRDenegado(){
+    openModalAlert({
+        status:'warning',
+        title:'Debes iniciar el curso',
+        text:'Para compartir el código QR debes hacer click en <span>"Iniciar"</span>'
+    })
 }
 
 function verAsistencias(id_curso, status_curso){
@@ -69,7 +86,7 @@ function verAsistencias2(){
                                 }
                             }else if(active_course_status==2){
                                 if(user.estado==0){
-                                    h+='<div class="table-tag table-tag-gris">'
+                                    h+='<div class="table-tag table-tag-gris2">'
                                         h+='<img src="'+base+'public/assets/images/esperar-icon.svg" />'
                                         h+='<p>No ingresó</p>'
                                     h+='</div>'
@@ -122,7 +139,7 @@ function closeModalAsistencias(){
 }
 
 function editarCurso(id_curso){
-    window.location.href = './cursos-crear.php'
+    window.location.href = './cursos-editar.php?courseid='+id_curso
 }
 
 function iniciarCurso(id_curso){
@@ -130,7 +147,7 @@ function iniciarCurso(id_curso){
     openModalAlert({
         status:'success',
         title:'Iniciar curso',
-        text:'Se acaba de abrir el curso para el ingreso.<br><br>Coloque el código QR de ingreso al alcance de los estudiantes.<br><br>Para finalizarlo por favor regrese a esta ventana y haz click en <span>Finalizar</span>',
+        text:'Se acaba de abrir el curso para el ingreso.<br><br>Ya puedes descargar el código QR de ingreso para los estudiantes.<br><br>Para finalizarlo por favor regrese a esta ventana y haz click en <span>Finalizar</span>',
         action:'iniciarCurso2'
     })
 }
