@@ -139,7 +139,8 @@
         cursos_data.push({
             id:<?php echo $course['id']?>,
             nombre:"<?php echo $course['nombre']?>",
-            img:"<?php echo $course['img']?>"
+            img:"<?php echo $course['img']?>",
+            fecha:"<?php echo $course['fecha']?>"
         })
         <?php } ?>
 

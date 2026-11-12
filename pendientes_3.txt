@@ -2,3 +2,4 @@ correo para notificar el registro (sin matricular)
 correo para notificar el registro al facilitador
 integrar QR
 Integrar subida de excel
+iluminar en previsualizacion los que se van a reemplazar

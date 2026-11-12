@@ -1,4 +1,4 @@
-
+var usuarios_json = []
 
 function updateCursoFile(event){
     var inpu = getE('lista-usuarios-txt')
@@ -19,13 +19,13 @@ function updateCursoFile(event){
 
             // 2. Convertir la hoja a un arreglo de objetos JSON
             // defval: "" asegura que las celdas vacías aparezcan como texto vacío en vez de omitirse
-            const arregloJSON = XLSX.utils.sheet_to_json(hoja, { defval: "" });
+            usuarios_json = XLSX.utils.sheet_to_json(hoja, { defval: "" });
 
             // Ver el arreglo resultante en la consola del navegador (F12)
-            console.log(arregloJSON);
+            //console.log(usuarios_json);
             var h = ''
 
-            arregloJSON.forEach((user,indx) =>{
+            usuarios_json.forEach((user,indx) =>{
                 h+='<tr>'
                     h+='<td>'+getTipoTrabajador(user.tipo_trabajador)+'</td>'
                     h+='<td>'+user.nombre+' '+user.apellido+'</td>'
@@ -43,21 +43,20 @@ function updateCursoFile(event){
     }
 }
 
-
-
 function addCursoList(ind,list){
     var course_div = document.createElement('div')
     course_div.className = 'modal-curso-preview'
     course_div.id = 'modal-curso-preview-'+cursos_data[ind].id+'_'+list
     var h = ''
     h+='<div class="modal-curso-preview-img">'
-        h+='<img src="'+base+'public/assets/images/cursos/'+cursos_data[ind].img+'" />'
+        h+='<img src="'+base+'public/cursos/'+cursos_data[ind].id+'/'+cursos_data[ind].img+'" />'
     h+='</div>'
     h+='<div class="modal-curso-preview-info">'
         h+='<p id="modal-curso-name-txt">'+cursos_data[ind].nombre+'</p>'
         h+='<div>'
-            h+='<button><img src="'+base+'public/assets/images/modal/time-modal-icon.svg" /></button>'
+            //h+='<button><img src="'+base+'public/assets/images/modal/time-modal-icon.svg" /></button>'
             h+='<button><img src="'+base+'public/assets/images/modal/fecha-modal-icon.svg" /></button>'
+            h+='<p>'+cursos_data[ind].fecha+'</p>'
         h+='</div>'
     h+='</div>'
     //h+='<div class="modal-curso-preview-close">'
@@ -208,11 +207,52 @@ function eliminarUsuario(){
     
 }
 
+function guardarUsuariosMasivo(){
+    if(usuarios_json.length>0){
+        $.ajax({
+            url: base+'api/controllers/users.php?action=saveUsers',
+            method: 'POST',
+            data:{
+                users:JSON.stringify(usuarios_json)
+            },
+            success: function(response){
+                var response_data = JSON.parse(response)
+                if(response_data.status=='success'){
+                    openModalAlert({
+                        status:'success',
+                        title:'¡Éxito!',
+                        text:"Se han registrado los usuarios",
+                        action:'reloadPage'
+                    });
+                    closeModalMasivo()
+                }else{
+                    openModalAlert({
+                        status:'warning',
+                        title:'¡Algo salió mal!',
+                        text:"No se pudo registrar los usuarios"
+                    });
+                }
+            },
+            error: function(xhr, status, error) {
+                console.log("Error de servidor");
+                console.log(xhr);
+            }
+        })
+    }else{
+        openModalAlert({
+            status:'warning',
+            title:'Datos incompletos',
+            text:'No se ha cargado la lista de usuarios'
+        })
+    }
+}
+
 function closeModalMasivo(){
     //limpiar
     getE('modal-cursos-preview-2').innerHTML = ''
     cleanDropdown('cursos-dropdown-2')
     resetFileInput('lista-usuarios-txt')
+    usuarios_json = []
     
     getE('modal-tabla-preview-tab').className = 'modal-preview-tabla modal-preview-tabla-off'
     closeModal()

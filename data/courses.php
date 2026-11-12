@@ -6,11 +6,19 @@ $courses_file_data = json_decode($courses_file,true);
 $courses = array();
 
 foreach($courses_file_data as $cd){
+    $imgurl = dirname(__DIR__).'/public/cursos/'.$cd['id'].'/thumbnail.jpg';
+    $img = 'thumbnail.jpg';
+    
+    if(!file_exists($imgurl)){
+        $imgurl = dirname(__DIR__).'/public/cursos/'.$cd['id'].'/thumbnail.png';
+        $img = 'thumbnail.png';
+    }
+
     array_push($courses,array(
         'id'=>$cd['id'],
         'nombre'=>$cd['nombre'],
         'descripcion'=>$cd['descripcion'],
-        'img'=>$cd['img'],
+        'img'=>$img,
         'fecha'=>$cd['fecha'],
         'fechaformat'=>$cd['fechaformat'],
         'sedeid'=>$cd['sedeid'],
@@ -27,7 +35,10 @@ foreach($courses_file_data as $cd){
         'tiempo2'=>$cd['tiempo2'],
         'encargados'=>$cd['encargados']
     ));
+
 }
+
+//print_r($courses);
 
 function findCourse($id){
     global $courses;

@@ -65,7 +65,7 @@
                 <img src="<?php echo $base ?>public/assets/images/button-download-icon.svg" />
                 <span>Descarga de archivo guía en excel</span>
             </a>
-            <button class="boton-principal" onclick="closeModalMasivo()">
+            <button class="boton-principal" onclick="guardarUsuariosMasivo()">
                 Registrar usuarios
             </button>
         </div>
