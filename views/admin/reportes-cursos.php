@@ -16,6 +16,7 @@ foreach($courses as $indx => $c){
             }
             $courses[$indx]['registrados'] = count($cu['users']);
             $courses[$indx]['certificados'] = $certificados;
+            break;
         }
     }
 }
@@ -70,7 +71,7 @@ foreach($courses as $indx => $c){
                         <div class="card-container-header">
                             <p>Cursos creados <span><?php echo count($courses)?></span></p>
                             <div>
-                                <a class="boton-reporte" href="<?php echo $base ?>public/docs/reporte-curso-1.xlsx">
+                                <a class="boton-reporte" href="<?php echo $base ?>api/reporte-cursos.php">
                                     <img src="<?php echo $base ?>public/assets/images/button-excel-icon.svg" />
                                     <span>Exportar reporte</span>
                                 </a>
@@ -108,9 +109,9 @@ foreach($courses as $indx => $c){
                                                 <button onclick="verDetallesCurso(<?php echo $course['id']?>)">
                                                     <img src="<?php echo $base ?>public/assets/images/button-ver-icon.svg" />
                                                 </button>
-                                                <button>
+                                                <a class="boton-td" href="#" target="_blank">
                                                     <img src="<?php echo $base ?>public/assets/images/button-download2-icon.svg" />
-                                                </button>
+                                                </a>
                                             </td>
                                         </tr>
                                         <?php } ?>

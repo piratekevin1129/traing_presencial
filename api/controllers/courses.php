@@ -54,7 +54,11 @@ if(isset($_GET['action'])){
         $course_data_ind = array_search((int)$_POST['courseid'], $courses_ids);
 
         if($course_data_ind !== false){
+            $date = new DateTime('now', new DateTimeZone('America/Bogota'));
+            $hora = $date->format('H:i:s');
+
             $courses_file_data[$course_data_ind]['status'] = 1;
+            $courses_file_data[$course_data_ind]['inicio'] = $hora;
             $courses_file_txt = json_encode($courses_file_data);
 
             if(file_put_contents('../../data/db/courses.json',$courses_file_txt)){
@@ -71,7 +75,11 @@ if(isset($_GET['action'])){
         $course_data_ind = array_search((int)$_POST['courseid'], $courses_ids);
 
         if($course_data_ind !== false){
+            $date = new DateTime('now', new DateTimeZone('America/Bogota'));
+            $hora = $date->format('H:i:s');
+
             $courses_file_data[$course_data_ind]['status'] = 2;
+            $courses_file_data[$course_data_ind]['fin'] = $hora;
             $courses_file_txt = json_encode($courses_file_data);
 
             if(file_put_contents('../../data/db/courses.json',$courses_file_txt)){
@@ -152,6 +160,8 @@ if(isset($_GET['action'])){
                 'sedeid'=>$sedeid_curso,
                 'aulaid'=>$aulaid_curso,
                 'facilitadorid'=>$facilitadorid_curso,
+                'inicio'=>"",
+                'fin'=>"",
                 'status'=>0,
                 'tiempo'=>$tiempo_curso,
                 'tiempo2'=>$tiempo2_curso,

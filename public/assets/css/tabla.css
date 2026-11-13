@@ -126,6 +126,7 @@
     display: flex;
     align-items: center;
 }
+/*boton con texto*/
 .boton-td2{
     gap: 5px;
     width: auto !important;
@@ -133,6 +134,7 @@
     background-color: var(--cleargray) !important;
     box-shadow: -1px 1px 3px 1px rgba(0,0,0,0.3);
 }
+/*boton con texto*/
 .boton-td3{
     gap: 5px;
     width: auto !important;
@@ -179,7 +181,8 @@
     gap: 10px;
 }
 .td-botones-flex .boton-td,
-.td-botones-flex button{
+.td-botones-flex button,
+.td-botones-flex a{
     margin: 0px !important;
 }
 .text-center{

@@ -1,6 +1,11 @@
 https://qrcodecreator.com/
 https://share.google/aimode/bEFbpn1jqX8RiaFdf
 
+mandar un correo con el formato actual al profesor
+terminar excel del reporte extendido
+
+lista de recomendaciones para el profesor
+
 reportes reales:
 incluir columna de fechas por separado para poder filtrar
 
@@ -22,3 +27,15 @@ actualizar guardado de curso
 ubicacion en el mapa
 seccion de contenidos
 validacion cuando no hay cursos
+
+correo para notificar el registro (sin matricular)
+correo para notificar el registro al facilitador
+integrar QR
+Integrar subida de excel
+iluminar en previsualizacion los que se van a reemplazar
+validar que el admin suba el excel de forma correcta
+eliminar usuarios masivamente
+
+
+cuadrar los break en foreach
+cuadrar ind e index

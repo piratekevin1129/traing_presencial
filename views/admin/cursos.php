@@ -10,20 +10,6 @@
 
 //fill extra data for courses
 foreach($courses as $indx => $c){
-    //definir hora
-    /*$fecha_curso = $c['fechaformat'];
-
-    $fecha_curso2 = new DateTime($fecha_curso);
-    $fecha_actual = new DateTime('now', new DateTimeZone('America/Bogota'));
-
-    if ($fecha_curso2 > $fecha_actual) {
-        //ya debió haber iniciado
-        $courses[$indx]['status'] = 1;
-    } else {
-        //aun no es el dia
-        $courses[$indx]['status'] = 0;
-    }*/
-
     foreach($headquarters as $h){
         if($c['sedeid']==$h['id']){
             $courses[$indx]['sede'] = $h['nombre'];
@@ -160,7 +146,7 @@ foreach($courses as $indx => $c){
                                         </button>
                                         <?php } else {?>
                                         <button>
-                                            <img src="<?php echo $base ?>public/assets/images/button-lock-icon.svg" />
+                                            <img src="<?php echo $base ?>public/assets/images/button-lock2-icon.svg" />
                                         </button>
                                         <?php }?>
                                     </td>
