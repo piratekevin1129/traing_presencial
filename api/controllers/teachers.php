@@ -12,7 +12,10 @@ if(isset($_GET['action'])){
     $action = $_GET['action'];
 
     if($action=='saveFacilitador'){
-        $current_id = (int)$teachers_file_data[count($teachers_file_data)-1]['id'];
+        $current_id = 0;
+        if(count($teachers_file_data)>0){
+            $current_id = (int)$teachers_file_data[count($teachers_file_data)-1]['id'];
+        }
         $new_id = ($current_id+1);
         array_push($teachers_file_data,array(
             'id'=>$new_id,

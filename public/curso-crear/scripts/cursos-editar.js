@@ -1,14 +1,16 @@
 function createCharlas(){
+    current_charla = 0
     for(i = 0;i<charlas_data.length;i++){
         getE('calendario-date-'+charlas_data[i].fecha).className = 'dia-escogido'
+
+        for(j = 0;j<charlas_data[i].estudiantes.length;j++){
+            var u_inpu = getE('usuario-check-'+charlas_data[i].estudiantes[j])
+            u_inpu.checked = true
+            //matricularUsuario(u_inpu)
+        }
+
+        getE('calendario-date-'+charlas_data[i].fecha).className = 'dia-seleccionado'
     }
-
-    verCharla(1)
-}
-
-function verCharla(id){
-    current_charla = 0
-    getE('calendario-date-'+charlas_data[current_charla].fecha).className = 'dia-seleccionado'
 }
 
 /************************************************/

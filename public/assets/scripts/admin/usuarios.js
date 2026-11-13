@@ -209,6 +209,7 @@ function eliminarUsuario(){
 
 function guardarUsuariosMasivo(){
     if(usuarios_json.length>0){
+        setLoader()
         $.ajax({
             url: base+'api/controllers/users.php?action=saveUsers',
             method: 'POST',
@@ -218,14 +219,10 @@ function guardarUsuariosMasivo(){
             success: function(response){
                 var response_data = JSON.parse(response)
                 if(response_data.status=='success'){
-                    openModalAlert({
-                        status:'success',
-                        title:'¡Éxito!',
-                        text:"Se han registrado los usuarios",
-                        action:'reloadPage'
-                    });
-                    closeModalMasivo()
+                    //asignar cursos
+                    guardarUsuariosMasivo2(response_data.data)
                 }else{
+                    unsetLoader()
                     openModalAlert({
                         status:'warning',
                         title:'¡Algo salió mal!',
@@ -236,6 +233,7 @@ function guardarUsuariosMasivo(){
             error: function(xhr, status, error) {
                 console.log("Error de servidor");
                 console.log(xhr);
+                unsetLoader()
             }
         })
     }else{
@@ -245,6 +243,64 @@ function guardarUsuariosMasivo(){
             text:'No se ha cargado la lista de usuarios'
         })
     }
+}
+
+function guardarUsuariosMasivo2(ids_collection){
+    var charlas_data = getDropdownData('cursos-dropdown-2')
+    if(charlas_data.length>0){
+        var collection = []
+        for(i = 0;i<charlas_data.length;i++){
+            var users = []
+            for(j = 0;j<ids_collection.length;j++){
+                users.push(ids_collection[j])
+            }
+            collection.push({
+                id:charlas_data[i],
+                users:users
+            })
+        }
+        $.ajax({
+            method: 'POST',
+            url: base+'api/controllers/courses_users.php?action=updateCoursesUsers',
+            data: {
+                datos:JSON.stringify(collection),
+            },
+            success: function(response){
+                var response_data = JSON.parse(response)
+                if(response_data.status=='success'){
+                    guardarUsuariosMasivoFinal()
+                }else{
+                    openModalAlert({
+                        status:'warning',
+                        title:'Algo salió mal',
+                        text:'No se pudo matricular a los estudiantes'
+                    })
+                }
+            },
+            error: function(xhr, status, error){
+                unsetLoader()
+                openModalAlert({
+                    status:'warning',
+                    title:'Algo salió mal',
+                    text:'Ocurrió un error tratando de matricular a los estudiantes'
+                })
+            }
+        })
+    }else{
+        guardarUsuariosMasivoFinal()
+    }
+    
+}
+
+function guardarUsuariosMasivoFinal(){
+    openModalAlert({
+        status:'success',
+        title:'¡Éxito!',
+        text:"Se han registrado los usuarios",
+        action:'reloadPage'
+    });
+    closeModalMasivo()
+    unsetLoader()
 }
 
 function closeModalMasivo(){

@@ -84,7 +84,7 @@ if(isset($_GET['action'])){
             $users = array();
             foreach($d['users'] as $du){
                 array_push($users,array(
-                    'id'=>$du,
+                    'id'=>(int)$du,
                     'status'=>0,
                     'horaentrada'=>"",
                     'horasalida'=>""
@@ -114,7 +114,7 @@ if(isset($_GET['action'])){
                 $users = array();
                 foreach($datos[0]['users'] as $du){
                     array_push($users,array(
-                        'id'=>$du,
+                        'id'=>(int)$du,
                         'status'=>0,
                         'horaentrada'=>"",
                         'horasalida'=>""

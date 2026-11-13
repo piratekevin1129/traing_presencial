@@ -44,9 +44,9 @@ function updateAula(inpu){
 
 function matricularUsuario(inpu){
     var pos_u = -1
-    for(i = 0;i<charlas_data[current_charla].estudiantes.length;i++){
-        if(charlas_data[current_charla].estudiantes[i]==inpu.value){
-            pos_u = i
+    for(var m = 0;m<charlas_data[current_charla].estudiantes.length;m++){
+        if(charlas_data[current_charla].estudiantes[m]==inpu.value){
+            pos_u = m
             break;
         }
     }
@@ -62,6 +62,8 @@ function matricularUsuario(inpu){
             charlas_data[current_charla].estudiantes.splice(pos_u,1)
         }
     }
+
+    console.log(charlas_data[current_charla].estudiantes)
 }
 
 function updateCourseImage(event){

@@ -59,7 +59,11 @@
                     <span>Agrega cursos</span>
                     <div class="modal-dropdown-box">
                         <?php foreach($courses as $c=>$course){?>                            
-                            <div onclick="dropdownClickItem(this,<?php echo $c; ?>,1)" class="" data-img="<?php echo $course['img']?>" data-value="<?php echo $course['id']?>">
+                            <div 
+                                onclick="dropdownClickItem(this,<?php echo $c; ?>,1)" 
+                                class="modal-dropdown-item" 
+                                data-value="<?php echo $course['id']?>"
+                            >
                                 <div></div>
                                 <p><?php echo $course['nombre']?></p>
                             </div>

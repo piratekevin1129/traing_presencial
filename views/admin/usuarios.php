@@ -19,6 +19,7 @@
     <link href="<?php echo $base ?>public/assets/css/dropdown.css" rel="stylesheet" type="text/css" />
     
     <link href="<?php echo $base ?>components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>components/loader/loader.css" rel="stylesheet" type="text/css" />
     <script src="<?php echo $base ?>public/assets/scripts/jquery-4.0.0.min.js"></script>
     <title>Traing Presencial - Usuarios</title>
 </head>
@@ -125,6 +126,7 @@
     <?php include './modals/registrar-usuarios.php'; ?>
     <?php include './modals/form-usuario.php'; ?>
     <?php include '../../components/sweetalert/sweetalert.php'; ?>
+    <?php include '../../components/loader/loader.php'; ?>
 
     <!-- use version 0.20.3 -->
     <script type="text/javascript" src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>

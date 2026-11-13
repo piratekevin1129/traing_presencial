@@ -26,7 +26,10 @@ if(isset($_GET['action'])){
             exit('{"status":"error","data":"No se encontró información del usuario"}');
         }
     }else if($action=='saveUser'){
-        $current_id = (int)$users_file_data[count($users_file_data)-1]['id'];
+        $current_id = 0;
+        if(count($users_file_data)>0){
+            $current_id = (int)$users_file_data[count($users_file_data)-1]['id'];
+        }
         $new_id = ($current_id+1);
         array_push($users_file_data,array(
             'id'=>$new_id,
@@ -52,8 +55,12 @@ if(isset($_GET['action'])){
             //verificar si existe
             $users_docs = array_column($users_file_data, 'documento');
 
-            $current_id = (int)$users_file_data[count($users_file_data)-1]['id'];
+            $current_id = 0;
+            if(count($users_file_data)>0){
+                $current_id = (int)$users_file_data[count($users_file_data)-1]['id'];
+            }
             $new_id = ($current_id+1);
+            $ids_collection = array();
 
             foreach($datos as $d){
                 $users_ind = array_search((string)$d['documento'], $users_docs);
@@ -69,6 +76,7 @@ if(isset($_GET['action'])){
                         'empresa'=>$d['empresa'],
                         'correo'=>$d['correo_electronico']
                     ));
+                    array_push($ids_collection,$new_id);
                     $new_id++;
                 }else{
                     $users_file_data[$users_ind]['tipou'] = $d['tipo_trabajador'];
@@ -79,11 +87,12 @@ if(isset($_GET['action'])){
                     $users_file_data[$users_ind]['ciudad'] = $d['ciudad'];
                     $users_file_data[$users_ind]['empresa'] = $d['empresa'];
                     $users_file_data[$users_ind]['correo_electronico'] = $d['correo_electronico'];
+                    array_push($ids_collection,$users_file_data[$users_ind]['id']);
                 }
             }
             $users_file_txt = json_encode($users_file_data);
             if(file_put_contents('../../data/db/users.json',$users_file_txt)){
-                exit('{"status":"success"}');
+                exit('{"status":"success","data":'.json_encode($ids_collection).'}');
             }else{
                 exit('{"status":"error","data":"error guardando el archivo"}');
             }
