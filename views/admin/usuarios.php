@@ -34,7 +34,7 @@
                 <div class="app-container">
                     <div class="botones-container">
                         <div class="botones-container-row">
-                            <button class="boton-principal" onclick="openModal(this,'modal-formulario-usuario')">
+                            <button class="boton-principal" onclick="agregarUsuario(this)">
                                 <span>Registro individual</span>
                             </button>
                             <button class="boton-upload" onclick="openModal(this,'modal-registro-usuarios-masivo')">

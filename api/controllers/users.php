@@ -25,30 +25,6 @@ if(isset($_GET['action'])){
         } else {
             exit('{"status":"error","data":"No se encontró información del usuario"}');
         }
-    }else if($action=='saveUser'){
-        $current_id = 0;
-        if(count($users_file_data)>0){
-            $current_id = (int)$users_file_data[count($users_file_data)-1]['id'];
-        }
-        $new_id = ($current_id+1);
-        array_push($users_file_data,array(
-            'id'=>$new_id,
-            'tipou'=>$_POST['tipou'],
-            'nombre'=>$_POST['nombre'],
-            'apellido'=>$_POST['apellido'],
-            'tipod'=>$_POST['tipod'],
-            'documento'=>$_POST['documento'],
-            'ciudad'=>$_POST['ciudad'],
-            'empresa'=>$_POST['empresa'],
-            'correo'=>$_POST['correo']
-        ));
-
-        $users_file_txt = json_encode($users_file_data);
-        if(file_put_contents('../../data/db/users.json',$users_file_txt)){
-            exit('{"status":"success"}');
-        }else{
-            exit('{"status":"error","data":"error guardando el archivo"}');
-        }
     }else if($action=='saveUsers'){
         if(isset($_POST['users'])){
             $datos = json_decode($_POST['users'],true);
@@ -82,7 +58,7 @@ if(isset($_GET['action'])){
                     $users_file_data[$users_ind]['tipou'] = $d['tipo_trabajador'];
                     $users_file_data[$users_ind]['nombre'] = $d['nombre'];
                     $users_file_data[$users_ind]['apellido'] = $d['apellido'];
-                    $users_file_data[$users_ind]['tipo_documento'] = $d['tipo_documento'];
+                    $users_file_data[$users_ind]['tipod'] = $d['tipo_documento'];
                     $users_file_data[$users_ind]['documento'] = (string)$d['documento'];
                     $users_file_data[$users_ind]['ciudad'] = $d['ciudad'];
                     $users_file_data[$users_ind]['empresa'] = $d['empresa'];
@@ -99,34 +75,41 @@ if(isset($_GET['action'])){
         }else{
             exit('{"status":"error","data":"no hay datos de los usuarios"}');
         }
-    }else if($action=='updateUser'){
-        //buscar indice
-        $indx = -1;
-        foreach($users_file_data as $ind => $ud){
-            if($ud['id']==$_POST['id']){
-                $indx = $ind;
+    }else if($action=='updateUsers'){
+        if(isset($_POST['users'])){
+            $users_ids = json_decode($_POST['users'],true);
+
+            foreach($users_ids as $u){
+                $indx = -1;
+                foreach($users_file_data as $ind => $ud){
+                    if($ud['id']==$u){
+                        $indx = $ind;
+                        break;
+                    }
+                }
+    
+                if($indx!=-1){
+                    $users_file_data[$indx] = array(
+                        'tipou'=>$u['tipo_trabajador'],
+                        'nombre'=>$u['nombre'],
+                        'apellido'=>$u['apellido'],
+                        'tipod'=>$u['tipo_documento'],
+                        'documento'=>$u['documento'],
+                        'ciudad'=>$u['ciudad'],
+                        'empresa'=>$u['empresa'],
+                        'correo'=>$u['correo_electronico']
+                    );
+                }
             }
-        }
-
-        if($indx!=-1){
-            $users_file_data[$indx] = array(
-                'id'=>$_POST['id'],
-                'tipou'=>$_POST['tipou'],
-                'nombre'=>$_POST['nombre'],
-                'apellido'=>$_POST['apellido'],
-                'tipod'=>$_POST['tipod'],
-                'documento'=>$_POST['documento'],
-                'ciudad'=>$_POST['ciudad'],
-                'empresa'=>$_POST['empresa'],
-                'correo'=>$_POST['correo']
-            );
-        }
-
-        $users_file_txt = json_encode($users_file_data);
-        if(file_put_contents('../../data/db/users.json',$users_file_txt)){
-            exit('{"status":"success"}');
+    
+            $users_file_txt = json_encode($users_file_data);
+            if(file_put_contents('../../data/db/users.json',$users_file_txt)){
+                exit('{"status":"success"}');
+            }else{
+                exit('{"status":"error","data":"error guardando el archivo"}');
+            }
         }else{
-            exit('{"status":"error","data":"error guardando el archivo"}');
+            exit('{"status":"error","data":"no hay datos de los usuarios"}');
         }
     }else if($action=='deleteUser'){
         //buscar indice

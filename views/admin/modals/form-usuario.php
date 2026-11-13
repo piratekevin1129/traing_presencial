@@ -73,7 +73,6 @@
             </div>
 
             <div id="modal-cursos-preview-1" class="modal-cursos-preview">
-                <!--<div class="modal-curso-preview"></div>-->
             </div>
         </div>
         <div class="modal-footer">

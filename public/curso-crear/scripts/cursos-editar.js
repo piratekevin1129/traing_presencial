@@ -90,7 +90,7 @@ function actualizarCurso2(){
 
     $.ajax({
         method: 'POST',
-        url: base+'api/controllers/courses_users.php?action=updateCoursesUsers',
+        url: base+'api/controllers/courses_users.php?action=updateCourseUsers',
         data: {
             datos:JSON.stringify(collection),
         },

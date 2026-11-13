@@ -81,19 +81,43 @@ if(isset($_GET['action'])){
         $datos = json_decode($_POST['datos'],true);
 
         foreach($datos as $d){
-            $users = array();
-            foreach($d['users'] as $du){
-                array_push($users,array(
-                    'id'=>(int)$du,
-                    'status'=>0,
-                    'horaentrada'=>"",
-                    'horasalida'=>""
-                ));
+             //mirar si ya existe el curso, ya que esta funcion la usaran varias vistas
+            $curso_indx = -1;
+            foreach($courses_users_file_data as $cu_ind => $cu){
+                if($cu['id']==$d['id']){
+                    $curso_indx = $cu_ind;
+                    break;
+                }
             }
-            array_push($courses_users_file_data,array(
-                'id'=>$d['id'],
-                'users'=>$users
-            ));
+            
+            $users = array();
+
+            if($curso_indx==-1){
+                foreach($d['users'] as $du){
+                    array_push($users,array(
+                        'id'=>(int)$du,
+                        'status'=>0,
+                        'horaentrada'=>"",
+                        'horasalida'=>""
+                    ));
+                }
+
+                array_push($courses_users_file_data,array(
+                    'id'=>$d['id'],
+                    'users'=>$users
+                ));
+            }else{
+                $users = $courses_users_file_data[$curso_indx]['users'];
+                foreach($d['users'] as $du){
+                    array_push($users,array(
+                        'id'=>(int)$du,
+                        'status'=>0,
+                        'horaentrada'=>"",
+                        'horasalida'=>""
+                    ));
+                }
+                $courses_users_file_data[$curso_indx]['users'] = $users;
+            }
         }
 
         $courses_users_file_txt = json_encode($courses_users_file_data);
@@ -103,11 +127,12 @@ if(isset($_GET['action'])){
         }else{
             exit('{"status":"error","data":"error guardando el curso"}');
         }
-    }else if($action=='updateCoursesUsers'){
+    }else if($action=='updateCourseUsers'){
         $datos = json_decode($_POST['datos'],true);
 
         if(count($datos)>0){
             $courses_users_ids = array_column($courses_users_file_data, 'id');
+
             $courses_users_ind = array_search((int)$datos[0]['id'], $courses_users_ids);
 
             if ($courses_users_ind !== false) {

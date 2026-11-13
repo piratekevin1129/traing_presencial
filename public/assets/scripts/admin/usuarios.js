@@ -72,51 +72,11 @@ function removeCursoList(ind,list){
     getE('modal-cursos-preview-'+list).removeChild(item)
 }
 
-function registrarUsuario(){
-    var action = base+'api/controllers/users.php?action=saveUser';
-    var id = 0;
-    if(editing_usuario){
-        action = base+'api/controllers/users.php?action=updateUser';
-        id = editing_usuario_id;
-    }
-    $.ajax({
-        url: action,
-        method: 'POST',
-        data:{
-            id:id,
-            tipou:getValueSwitch('tipo-trabajador-txt'),
-            nombre:String(getE('nombres-txt').value),
-            apellido:String(getE('apellidos-txt').value),
-            tipod:String(getE('tipo-documento-txt').value),
-            documento:String(getE('numero-documento-txt').value),
-            ciudad:String(getE('ciudad-txt').value),
-            empresa:String(getE('empresa-txt').value),
-            correo:String(getE('correo-txt').value)
-        },
-        success: function(response){
-            var response_data = JSON.parse(response)
-            if(response_data.status=='success'){
-                openModalAlert({
-                    status:'success',
-                    title:'¡Éxito!',
-                    text:"El usuario se ha guardado correctamente",
-                    action:'reloadPage'
-                });
-                
-            }else{
-                console.log(response)
-                openModalAlert({
-                    status:'warning',
-                    title:'¡Algo salió mal!',
-                    text:"No se pudo guardar el usuario"
-                });
-            }
-        },
-        error: function(xhr, status, error) {
-            console.log("Error de servidor");
-            console.log(xhr);
-        }
-    })
+////////////////////////////////////////
+
+function agregarUsuario(btn){
+    getE('cursos-dropdown-1').style.display = 'block'
+    openModal(btn,'modal-formulario-usuario')
 }
 
 var editing_usuario = false;
@@ -149,6 +109,7 @@ function editarUsuario(){
             getE('ciudad-txt').value = user_data.ciudad
             getE('empresa-txt').value = user_data.empresa
 
+            getE('cursos-dropdown-1').style.display = 'none'
             openModal(null,'modal-formulario-usuario','Editar Usuario')
         }else{
             openModalAlert({
@@ -159,6 +120,111 @@ function editarUsuario(){
         }
     }
 }
+
+function registrarUsuario(){
+    var action = base+'api/controllers/users.php?action=saveUsers';
+    var id = 0;
+    if(editing_usuario){
+        action = base+'api/controllers/users.php?action=updateUsers';
+        id = editing_usuario_id;
+    }
+    var usuarios_collection = []
+    usuarios_collection.push({
+        id:id,
+        tipo_trabajador:getValueSwitch('tipo-trabajador-txt'),
+        nombre:String(getE('nombres-txt').value),
+        apellido:String(getE('apellidos-txt').value),
+        tipo_documento:String(getE('tipo-documento-txt').value),
+        documento:String(getE('numero-documento-txt').value),
+        ciudad:String(getE('ciudad-txt').value),
+        empresa:String(getE('empresa-txt').value),
+        correo_electronico:String(getE('correo-txt').value)
+    })
+
+    $.ajax({
+        url: action,
+        method: 'POST',
+        data:{
+            users:JSON.stringify(usuarios_collection)
+        },
+        success: function(response){
+            var response_data = JSON.parse(response)
+            if(response_data.status=='success'){
+                //asignar cursos
+                if(editing_usuario){
+                    registrarUsuarioFinal()
+                }else{
+                    registrarUsuario2(response_data.data)
+                }
+            }else{
+                unsetLoader()
+                openModalAlert({
+                    status:'warning',
+                    title:'¡Algo salió mal!',
+                    text:"No se pudo guardar el usuario"
+                });
+            }
+        },
+        error: function(xhr, status, error) {
+            console.log("Error de servidor");
+            console.log(xhr);
+        }
+    })
+}
+
+function registrarUsuario2(new_id){
+    var charlas_data = getDropdownData('cursos-dropdown-1')
+    if(charlas_data.length>0){
+        var collection = []
+        for(i = 0;i<charlas_data.length;i++){
+            collection.push({
+                id:charlas_data[i],
+                users:new_id
+            })
+        }
+        $.ajax({
+            method: 'POST',
+            url: base+'api/controllers/courses_users.php?action=saveCoursesUsers',
+            data: {
+                datos:JSON.stringify(collection),
+            },
+            success: function(response){
+                var response_data = JSON.parse(response)
+                if(response_data.status=='success'){
+                    registrarUsuarioFinal()
+                }else{
+                    openModalAlert({
+                        status:'warning',
+                        title:'Algo salió mal',
+                        text:'No se pudo matricular al estudiante'
+                    })
+                }
+            },
+            error: function(xhr, status, error){
+                unsetLoader()
+                openModalAlert({
+                    status:'warning',
+                    title:'Algo salió mal',
+                    text:'Ocurrió un error tratando de matricular al estudiante'
+                })
+            }
+        })
+    }else{
+        registrarUsuarioFinal()
+    }
+    
+}
+
+function registrarUsuarioFinal(){
+    openModalAlert({
+        status:'success',
+        title:'¡Éxito!',
+        text:"El usuario se ha guardado correctamente",
+        action:'reloadPage'
+    });
+}
+
+////////////////////////////////////////
 
 function eliminarUsuario(){
     var item_selected = getRadioChecked('tabla-usuarios','usuario')
@@ -206,6 +272,8 @@ function eliminarUsuario(){
     }
     
 }
+
+////////////////////////////////////////
 
 function guardarUsuariosMasivo(){
     if(usuarios_json.length>0){
@@ -261,7 +329,7 @@ function guardarUsuariosMasivo2(ids_collection){
         }
         $.ajax({
             method: 'POST',
-            url: base+'api/controllers/courses_users.php?action=updateCoursesUsers',
+            url: base+'api/controllers/courses_users.php?action=saveCoursesUsers',
             data: {
                 datos:JSON.stringify(collection),
             },
@@ -317,6 +385,7 @@ function closeModalMasivo(){
 function closeModalIndividual(){
     //limpiar
     getE('modal-cursos-preview-1').innerHTML = ''
-    cleanDropdown('cursos-dropdown-1')
+    //cleanDropdown('cursos-dropdown-1')
     closeModal()
+    editing_usuario = false;
 }
