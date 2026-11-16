@@ -109,7 +109,7 @@ foreach($courses as $indx => $c){
                                                 <button onclick="verDetallesCurso(<?php echo $course['id']?>)">
                                                     <img src="<?php echo $base ?>public/assets/images/button-ver-icon.svg" />
                                                 </button>
-                                                <a class="boton-td" href="#" target="_blank">
+                                                <a class="boton-td" href="<?php echo $base ?>api/reporte-curso.php?course_id=<?php echo $course['id']?>" target="_blank">
                                                     <img src="<?php echo $base ?>public/assets/images/button-download2-icon.svg" />
                                                 </a>
                                             </td>

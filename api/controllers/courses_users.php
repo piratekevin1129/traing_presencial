@@ -91,12 +91,15 @@ if(isset($_GET['action'])){
             }
             
             $users = array();
+            $date = new DateTime('now', new DateTimeZone('America/Bogota'));
+            $fecha = $date->format('Y-m-d H:i:s');
 
             if($curso_indx==-1){
                 foreach($d['users'] as $du){
                     array_push($users,array(
                         'id'=>(int)$du,
                         'status'=>0,
+                        'horaregistro'=>$date,
                         'horaentrada'=>"",
                         'horasalida'=>""
                     ));
@@ -112,6 +115,7 @@ if(isset($_GET['action'])){
                     array_push($users,array(
                         'id'=>(int)$du,
                         'status'=>0,
+                        'horaregistro'=>$date,
                         'horaentrada'=>"",
                         'horasalida'=>""
                     ));
@@ -132,15 +136,18 @@ if(isset($_GET['action'])){
 
         if(count($datos)>0){
             $courses_users_ids = array_column($courses_users_file_data, 'id');
-
             $courses_users_ind = array_search((int)$datos[0]['id'], $courses_users_ids);
 
             if ($courses_users_ind !== false) {
                 $users = array();
                 foreach($datos[0]['users'] as $du){
+                    $date = new DateTime('now', new DateTimeZone('America/Bogota'));
+                    $fecha = $date->format('Y-m-d H:i:s');
+
                     array_push($users,array(
                         'id'=>(int)$du,
                         'status'=>0,
+                        'horaregistro'=>$fecha,
                         'horaentrada'=>"",
                         'horasalida'=>""
                     ));
