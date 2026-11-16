@@ -7,9 +7,10 @@
         "tipod": "cc",
         "documento": "1017190921",
         "ciudad": "Medellin",
-        "empresa": "",
+        "empresa": "Vc",
         "correo": "multimedia1@virtualcolors.com",
-        "correo_electronico": "multimedia1@virtualcolors.com"
+        "fecharegistro": "2026-11-16 12:14:00",
+        "status": 0
     },
     {
         "id": 3,
@@ -20,7 +21,9 @@
         "documento": "123",
         "ciudad": "a",
         "empresa": "a",
-        "correo": "a"
+        "correo": "a",
+        "fecharegistro": "2026-11-16 12:14:00",
+        "status": 1
     },
     {
         "id": 4,
@@ -31,7 +34,9 @@
         "documento": "444",
         "ciudad": "as",
         "empresa": "as",
-        "correo": "as"
+        "correo": "as",
+        "fecharegistro": "2026-11-16 12:14:00",
+        "status": 0
     },
     {
         "id": 5,
@@ -42,7 +47,9 @@
         "documento": "555",
         "ciudad": "as",
         "empresa": "as",
-        "correo": "as"
+        "correo": "as",
+        "fecharegistro": "2026-11-16 12:14:00",
+        "status": 0
     },
     {
         "id": 6,
@@ -53,6 +60,8 @@
         "documento": "666",
         "ciudad": "as",
         "empresa": "as",
-        "correo": "as"
+        "correo": "as",
+        "fecharegistro": "2026-11-16 12:14:00",
+        "status": 0
     }
 ]

@@ -1,41 +1,28 @@
 https://qrcodecreator.com/
 https://share.google/aimode/bEFbpn1jqX8RiaFdf
 
+PRIORITARIOS:
+Colocar link al qr
 mandar un correo con el formato actual al profesor
-terminar excel del reporte extendido
-
-lista de recomendaciones para el profesor
-
-reportes reales:
-incluir columna de fechas por separado para poder filtrar
-
-exportar reporte real individual de cada curso
-exportar reporte real de todos los cursos
-exportar reporte real de todos los usuarios
-
-
-validar que todas las fechas del calendario tengan una hora, un facilitador y una sede
-editar curso 
-cargar listas de excel de facilitadores y usuarios
-editar y eliminar sedes
-editar y eliminar aulas
-validacion login admin
-arreglar parte donde se registran los usuarios (dropdwon)
-paginador de usuarios
-actualizar guardado de curso
-
-ubicacion en el mapa
-seccion de contenidos
-validacion cuando no hay cursos
-
 correo para notificar el registro (sin matricular)
 correo para notificar el registro al facilitador
-integrar QR
-Integrar subida de excel
-iluminar en previsualizacion los que se van a reemplazar
+cargar listas de excel de facilitadores
+validacion cuando no hay cursos
+
+NO TAN PRIORITARIOS:
+contenidos funcionales
+validacion login admin
+crear, editar, y eliminar sedes y aulas
+validar que todas las fechas del calendario tengan una hora, un facilitador y una sede
 validar que el admin suba el excel de forma correcta
+paginador de usuarios
+
+
+NO HAY AFÁN:
+fusionar vista de sedes y aulas en una sola
 eliminar usuarios masivamente
-
-
+iluminar en previsualizacion los que se van a reemplazar
 cuadrar los break en foreach
 cuadrar ind e index
+lista de recomendaciones para el profesor
+ubicacion en el mapa

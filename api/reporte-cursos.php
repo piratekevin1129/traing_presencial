@@ -16,7 +16,7 @@ $courses_users_file_data = json_decode($courses_users_file,true);
 
 //////////////////////////////
 
-$filename = "reporte_".date('Y-m-d').".xls";
+$filename = "reporte_cursos_".date('Y-m-d').".xls";
 /*header("Content-Type: application/vnd.ms-excel; charset=utf-8");
 header("Content-Disposition: attachment; filename=\"$filename\"");
 header("Cache-Control: max-age=0");

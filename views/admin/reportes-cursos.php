@@ -71,7 +71,7 @@ foreach($courses as $indx => $c){
                         <div class="card-container-header">
                             <p>Cursos creados <span><?php echo count($courses)?></span></p>
                             <div>
-                                <a class="boton-reporte" href="<?php echo $base ?>api/reporte-cursos.php">
+                                <a class="boton-reporte" href="<?php echo $base ?>api/reporte-cursos.php" target="_blank">
                                     <img src="<?php echo $base ?>public/assets/images/button-excel-icon.svg" />
                                     <span>Exportar reporte</span>
                                 </a>

@@ -145,7 +145,7 @@ foreach($courses as $indx => $c){
                                             <img src="<?php echo $base ?>public/assets/images/button-edit-icon.svg" />
                                         </button>
                                         <?php } else {?>
-                                        <button>
+                                        <button onclick="editarDenegado()">
                                             <img src="<?php echo $base ?>public/assets/images/button-lock2-icon.svg" />
                                         </button>
                                         <?php }?>

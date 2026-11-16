@@ -69,7 +69,8 @@
 }
 .input label,
 .textarea label,
-.select label{
+.select label,
+.file-label{
     display: block;
     padding: 2px 5px;
     font-family: var(--fontregular);
@@ -78,7 +79,8 @@
 }
 .input label span,
 .textarea label span,
-.select label span{
+.select label span,
+.file-label span{
     font-family: var(--fontbold);
 }
 
@@ -175,6 +177,7 @@
     flex-wrap: wrap;
     gap: 15px;
 }
+
 .full{
     display: block;
 }
@@ -260,4 +263,75 @@
     color: var(--traing);
     font-size: 0.75rem;
     text-align: center;
+}
+
+/*********************BODY*****************/
+
+.row-material{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 12px;
+    background-color: var(--whiteblue);
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.col-material{
+    width: 50%;
+    width: calc((100% - (24px + 30px)) / 2);
+}
+
+#contenidos-content .row-material:last-child{
+    margin-bottom: 0px;
+}
+
+.step-container-on{
+    display: block;
+}
+.step-container-off{
+    display: none;
+}
+
+.file{
+    width: 100%;
+    height: 35px;
+    border: var(--cleargray) solid 1px;
+    background-color: var(--blanco);
+    
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 10px;
+}
+.file input{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    opacity: 0;
+}
+.file p{
+    font-family: var(--fontregular);
+    color: var(--traing);
+    font-size: 1rem;
+    width: auto;
+    flex: 1;
+    text-overflow: ellipsis;
+}
+.file div{
+    width: 18px;
+    height: 18px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url(../images/upload-icon.svg);
+}
+
+#contenidos-form{
+    position: relative;
+    width: 100%;
+    margin: 0px;
 }

@@ -15,17 +15,20 @@ $users_file_data = json_decode($users_file,true);
 $users = array();
 
 foreach($users_file_data as $ud){
-    array_push($users,array(
-        'id'=>$ud['id'],
-        'tipou'=>$ud['tipou'],
-        'nombre'=>$ud['nombre'],
-        'apellido'=>$ud['apellido'],
-        'tipod'=>$ud['tipod'],
-        'documento'=>$ud['documento'],
-        'ciudad'=>$ud['ciudad'],
-        'empresa'=>$ud['empresa'],
-        'correo'=>$ud['correo']
-    ));
+    if($ud['status']==0){
+        array_push($users,array(
+            'id'=>$ud['id'],
+            'tipou'=>$ud['tipou'],
+            'nombre'=>$ud['nombre'],
+            'apellido'=>$ud['apellido'],
+            'tipod'=>$ud['tipod'],
+            'documento'=>$ud['documento'],
+            'ciudad'=>$ud['ciudad'],
+            'empresa'=>$ud['empresa'],
+            'correo'=>$ud['correo'],
+            'fecharegistro'=>$ud['fecharegistro']
+        ));
+    }//else if 1 => eliminado
 }
 
 ?>

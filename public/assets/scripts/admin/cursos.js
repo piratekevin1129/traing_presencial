@@ -142,6 +142,14 @@ function editarCurso(id_curso){
     window.location.href = './cursos-editar.php?courseid='+id_curso
 }
 
+function editarDenegado(){
+    openModalAlert({
+        status:'warning',
+        title:'No puedes editar este curso',
+        text:'Un curso <span>iniciado</span> o <span>finalizado</span> no se puede editar'
+    })
+}
+
 function iniciarCurso(id_curso){
     active_course_id = id_curso
     openModalAlert({

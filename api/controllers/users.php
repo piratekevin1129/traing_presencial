@@ -41,6 +41,8 @@ if(isset($_GET['action'])){
             foreach($datos as $d){
                 $users_ind = array_search((string)$d['documento'], $users_docs);
                 if($users_ind===false){
+                    $date = new DateTime('now', new DateTimeZone('America/Bogota'));
+                    $fecha = $date->format('Y-m-d H:i:s');
                     array_push($users_file_data,array(
                         'id'=>$new_id,
                         'tipou'=>$d['tipo_trabajador'],
@@ -50,7 +52,9 @@ if(isset($_GET['action'])){
                         'documento'=>(string)$d['documento'],
                         'ciudad'=>$d['ciudad'],
                         'empresa'=>$d['empresa'],
-                        'correo'=>$d['correo_electronico']
+                        'correo'=>$d['correo_electronico'],
+                        'fecharegistro'=>$fecha,
+                        'status'=>0
                     ));
                     array_push($ids_collection,$new_id);
                     $new_id++;
@@ -63,6 +67,7 @@ if(isset($_GET['action'])){
                     $users_file_data[$users_ind]['ciudad'] = $d['ciudad'];
                     $users_file_data[$users_ind]['empresa'] = $d['empresa'];
                     $users_file_data[$users_ind]['correo_electronico'] = $d['correo_electronico'];
+                    $users_file_data[$users_ind]['status'] = 0;
                     array_push($ids_collection,$users_file_data[$users_ind]['id']);
                 }
             }
@@ -121,7 +126,7 @@ if(isset($_GET['action'])){
         }
 
         if($indx!=-1){
-            array_splice($users_file_data,$indx,1);
+            $users_file_data[$indx]['status'] = 1;
         }
 
         $users_file_txt = json_encode($users_file_data);

@@ -130,14 +130,14 @@ if(isset($_GET['courseid'])){
                     </div>
 
                     <div class="steps-container">
-                        <div class="step-item selected">
+                        <div id="step-container-1" class="step-item selected" onclick="clickContenido(1)">
                             <div class="step-line"></div>
                             <div class="step-item-icon">
                                 <div></div>
                             </div>
                             <p class="step-text">Información básica</p>
                         </div>
-                        <div class="step-item">
+                        <div id="step-container-2" class="step-item" onclick="clickContenido(2)">
                             <div class="step-line"></div>
                             <div class="step-item-icon">
                                 <div></div>
@@ -146,242 +146,282 @@ if(isset($_GET['courseid'])){
                         </div>
                     </div>
 
-                    <div class="row">
-                        <!--70%-->
-                        <div class="col-formulario">
-                            <div class="textarea">
-                                <textarea id="descripcion-inp" placeholder="Descripción del curso" autocomplete="off" name="descripcion"><?php echo $course_data['descripcion']?></textarea>
-                                <label>Mínimo 3 máximo 500 caracteres</label>
+                    <div id="steps-body-container">
+                        <div id="step-body-container-1" class="step-container-on">
+                            <div class="row">
+                                <!--70%-->
+                                <div class="col-formulario">
+                                    <div class="textarea">
+                                        <textarea id="descripcion-inp" placeholder="Descripción del curso" autocomplete="off" name="descripcion"><?php echo $course_data['descripcion']?></textarea>
+                                        <label>Mínimo 3 máximo 500 caracteres</label>
+                                    </div>
+
+                                    <div class="hr"></div>
+                                
+                                    <p class="text">Asigna los responsables encargados de tu curso</p>
+
+                                    <div class="col-mid">
+                                        <div class="dropdown" id="dropdown-encargado" data-limit="-1">
+                                            <div class="dropdown-list">
+                                                <div class="dropdown-list-item">
+                                                    <label class="dropdown-list-radio">
+                                                        <p>Opción 1</p>
+                                                        <input value="1" type="checkbox" name="encargado" />
+                                                        <span></span>
+                                                    </label>
+                                                </div>
+                                                <div class="dropdown-list-item">
+                                                    <label class="dropdown-list-radio">
+                                                        <p>Opción 2</p>
+                                                        <input value="2" type="checkbox" name="encargado" />
+                                                        <span></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="dropdown-box">
+                                                <div class="dropdown-text">Selecciona responsables</div>
+                                                <div class="dropdown-arrow"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <br>
+
+                                    <p class="text">Duración aproximada del curso</p>
+                                    <div class="col-flex">
+                                        <div class="col-tiempo">
+                                            <div class="input">
+                                                <input id="tiempo-inp" placeholder="10" min="1" max="100" type="number" maxlength="3" autocomplete="off" name="tiempo" value="<?php echo $course_data['tiempo']?>" />
+                                                <label>Tiempo (1-100)</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-tiempo">
+                                            <div class="select">
+                                                <select name="tiempo2" id="tiempo2-sel">
+                                                    <option value="minutos">Minutos</option>
+                                                    <option value="horas" selected>Horas</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!--30%-->
+                                <div class="col-imagen">
+                                    <div class="imagen-curso">
+                                        <div class="imagen-curso-default">
+                                            <img src="<?php echo $base?>public/assets/images/button-image-icon.svg" />
+                                        </div>
+                                        <?php if($course_data['img']==""){?>
+                                        <img class="imagen-curso-img-off" id="imagen-curso-img" src="" />
+                                        <?php }else{?>
+                                        <img class="imagen-curso-img-on" id="imagen-curso-img" src="<?php echo $course_data['img']?>" />
+                                        <?php }?>
+                                        <form id="curso-img-form" enctype="multipart/form-data">
+                                            <input id="imagen-inp" type="file" name="curso-img" accept=".png,.jpeg,.jpg" onchange="updateCourseImage(event)" />
+                                            <input type="hidden" name="curso-ids" id="curso_ids" value="<?php echo $course_data['id']?>" />
+                                        </form>
+                                    </div>
+                                    <label>Haz clic sobre la imagen para cambiarla</label>
+                                </div>
                             </div>
 
                             <div class="hr"></div>
-                        
-                            <p class="text">Asigna los responsables encargados de tu curso</p>
 
-                            <div class="col-mid">
-                                <div class="dropdown" id="dropdown-encargado" data-limit="-1">
-                                    <div class="dropdown-list">
-                                        <div class="dropdown-list-item">
-                                            <label class="dropdown-list-radio">
-                                                <p>Opción 1</p>
-                                                <input value="1" type="checkbox" name="encargado" />
-                                                <span></span>
-                                            </label>
+                            <div class="full">
+                                <p class="text">Opciones del curso presencial</p>
+
+                                <div id="curso-presencial-opciones-periodo" class="content-visible">
+                                    <div class="calendario-row">
+                                        <div class="calendario-col">
+                                            <div class="calendario" id="curso-presencial-calendario"></div>
                                         </div>
-                                        <div class="dropdown-list-item">
-                                            <label class="dropdown-list-radio">
-                                                <p>Opción 2</p>
-                                                <input value="2" type="checkbox" name="encargado" />
-                                                <span></span>
-                                            </label>
+                                        
+                                        <div class="calendario-data-on" id="calendario-data">
+                                            <form id="calendario-data-form">
+                                                <p class="text-label">Horario del curso</p>
+                                                <div class="col-flex">
+                                                    <div class="col-hora">
+                                                        <div class="input">
+                                                            <input id="hora-inp" placeholder="10" min="1" max="12" type="number" maxlength="2" autocomplete="off" name="hora" onchange="updateHora(this)" value="<?php echo $course_data['hora']?>" />
+                                                            <label>Hora (1-12)</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-hora">
+                                                        <div class="input">
+                                                            <input id="minutos-inp" placeholder="30" min="0" max="59" type="number" maxlength="2" autocomplete="off" name="minutos" onchange="updateMinutos(this)" value="<?php echo $course_data['minutos']?>" />
+                                                            <label>Minutos (0-59)</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-hora">
+                                                        <div class="select">
+                                                            <select name="horario" id="horario-sel" onchange="updateHorario(this)">
+                                                                <option value="am" selected>A.M</option>
+                                                                <option value="pm">P.M</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <br>
+
+                                                <!---->
+                                                <p class="text-label">Asigna un facilitador</p>
+                                                <div class="col-mid">
+                                                    <div class="select">
+                                                        <select name="facilitador" id="facilitador-sel" onchange="updateFacilitador(this)">
+                                                            <option value="0">Selecciona</option>
+                                                            <?php foreach($teachers as $t){?>
+                                                            <option value="<?php echo $t['id']?>"><?php echo $t['nombre'].' '.$t['apellido']?></option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <br>
+
+                                                <!---->
+                                                <p class="text-label">Selecciona una Sede</p>
+                                                <div class="col-mid">
+                                                    <div class="select">
+                                                        <select name="sede" id="sede-sel" onchange="updateAulasMain(this)">
+                                                            <option value="0" selected>Selecciona</option>
+                                                            <?php foreach($headquarters as $h){?>
+                                                            <option value="<?php echo $h['id']?>"><?php echo $h['nombre']?></option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <br>
+
+                                                <!---->
+                                                <p class="text-label">Selecciona una Aula</p>
+                                                <div class="col-mid">
+                                                    <div class="select">
+                                                        <select name="aula" id="aula-sel" onchange="updateAula(this)">
+                                                            <option value="0">Selecciona</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
+
                                     </div>
-                                    <div class="dropdown-box">
-                                        <div class="dropdown-text">Selecciona responsables</div>
-                                        <div class="dropdown-arrow"></div>
+                                </div>
+
+                                <div id="curso-presencial-usuarios" class="content-visible">
+                                    <p class="text">Registrar estudiantes para la charla</p>
+                                    
+                                    <div class="tabla-container">
+                                        <form class="tabla-form" id="tabla-usuarios-form">
+                                            <table id="tabla-usuarios" class="traing-tabla">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 3%;">
+                                                            <!--input radio-->
+                                                        </th>
+                                                        <th style="width: 12%;">
+                                                            <span>Tipo trabajador</span>
+                                                            <button></button>
+                                                        </th>
+                                                        <th style="width: 12%;">
+                                                            <span>Nombres</span>
+                                                            <button></button>
+                                                        </th>
+                                                        <th style="width: 12%;">
+                                                            <span>Apellido</span>
+                                                            <button></button>
+                                                        </th>
+                                                        <th style="width: 12%;">
+                                                            <span>Documento</span>
+                                                            <button></button>
+                                                        </th>
+                                                        <th style="width: 14%;">
+                                                            <span>Ciudad</span>
+                                                            <button></button>
+                                                        </th>
+                                                        <th style="width: 12%;">
+                                                            <span>Empresa</span>
+                                                            <button></button>
+                                                        </th>
+                                                        <th style="width: 23%;">
+                                                            <span>Correo electrónico</span>
+                                                            <button></button>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php foreach($users as $user){?>
+                                                    <tr id="tabla-usuario-row-<?php echo $user['id']?>">
+                                                        <td class="td-checkbox">
+                                                            <label class="traing-check">
+                                                                <input id="usuario-check-<?php echo $user['id']?>" type="checkbox" name="usuario" value="<?php echo $user['id']?>" autocomplete="off" onchange="matricularUsuario(this)" />
+                                                                <span class="traing-check-box"></span>
+                                                                <span class="traing-check-name"></span>
+                                                            </label>
+                                                        </td>
+                                                        <td><?php echo $tipos_trabajador[$user['tipou']]?></td>
+                                                        <td><?php echo $user['nombre']?></td>
+                                                        <td><?php echo $user['apellido']?></td>
+                                                        <td><?php echo $user['documento']?></td>
+                                                        <td><?php echo $user['ciudad']?></td>
+                                                        <td><?php echo $user['empresa']?></td>
+                                                        <td><?php echo $user['correo']?></td>
+                                                    </tr>
+                                                    <?php } ?>
+                                                </tbody>
+                                            </table>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-
-                            <br>
-
-                            <p class="text">Duración aproximada del curso</p>
-                            <div class="col-flex">
-                                <div class="col-tiempo">
-                                    <div class="input">
-                                        <input id="tiempo-inp" placeholder="10" min="1" max="100" type="number" maxlength="3" autocomplete="off" name="tiempo" value="<?php echo $course_data['tiempo']?>" />
-                                        <label>Tiempo (1-100)</label>
-                                    </div>
-                                </div>
-                                <div class="col-tiempo">
-                                    <div class="select">
-                                        <select name="tiempo2" id="tiempo2-sel">
-                                            <option value="minutos">Minutos</option>
-                                            <option value="horas" selected>Horas</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
-                        <!--30%-->
-                        <div class="col-imagen">
-                            <div class="imagen-curso">
-                                <div class="imagen-curso-default">
-                                    <img src="<?php echo $base?>public/assets/images/button-image-icon.svg" />
-                                </div>
-                                <?php if($course_data['img']==""){?>
-                                <img class="imagen-curso-img-off" id="imagen-curso-img" src="" />
-                                <?php }else{?>
-                                <img class="imagen-curso-img-on" id="imagen-curso-img" src="<?php echo $course_data['img']?>" />
-                                <?php }?>
-                                <form id="curso-img-form" enctype="multipart/form-data">
-                                    <input id="imagen-inp" type="file" name="curso-img" accept=".png,.jpeg,.jpg" onchange="updateCourseImage(event)" />
-                                    <input type="hidden" name="curso-ids" id="curso_ids" value="<?php echo $course_data['id']?>" />
+                        <div id="step-body-container-2" class="step-container-off">
+                            <div class="full">
+                                <p class="text">Material para el curso</p>
+
+                                <button class="contenidos-agregar-btn" type="button" onclick="agregarContenido()">
+                                    <img src="<?php echo $base ?>public/curso-crear/images/add2-icon.svg" />
+                                    <span>Agregar</span>
+                                </button>
+
+                                <form id="contenidos-form" enctype="multipart/form-data">
+                                    <input type="hidden" name="contenidos-ids" id="contenidos_ids" />
+
+                                    <div id="contenidos-content">
+                                        <div class="row-material" id="contenido-content-1">
+                                            <div class="col-material">
+                                                <div class="input">
+                                                    <input id="contenido-inp-1" name="contenido-inp-1" placeholder="Nombre del tema" type="text" maxlength="100" autocomplete="off" />
+                                                    <label>Mínimo 3 máximo 100 caracteres</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-material">
+                                                <div class="file">
+                                                    <input id="material-inp-1" type="file" name="material-inp-1" accept=".png,.jpeg,.jpg,.pdf,.mp4" onchange="updateFileContent(this,event)" />
+                                                    <p>Selecciona un archivo</p>
+                                                    <div></div>
+                                                </div>
+                                                <label class="file-label">Formatos permitidos: Imagen, Video, PDF</label>
+                                            </div>
+                                            <button class="eliminar-contenido-btn" type="button" onclick="eliminarMaterial(1)">
+                                                <img src="<?php echo $base?>public/curso-crear/images/clear2-icon.svg" />
+                                            </button>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
-                            <label>Haz clic sobre la imagen para cambiarla</label>
                         </div>
                     </div>
 
+                    <!--end-->
                     <div class="hr"></div>
 
-                    <div class="full">
-                        <p class="text">Opciones del curso presencial</p>
-
-                        <div id="curso-presencial-opciones-periodo" class="content-visible">
-                            <div class="calendario-row">
-                                <div class="calendario-col">
-                                    <div class="calendario" id="curso-presencial-calendario"></div>
-                                </div>
-                                
-                                <div class="calendario-data-on" id="calendario-data">
-                                    <form id="calendario-data-form">
-                                        <p class="text-label">Horario del curso</p>
-                                        <div class="col-flex">
-                                            <div class="col-hora">
-                                                <div class="input">
-                                                    <input id="hora-inp" placeholder="10" min="1" max="12" type="number" maxlength="2" autocomplete="off" name="hora" onchange="updateHora(this)" value="<?php echo $course_data['hora']?>" />
-                                                    <label>Hora (1-12)</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-hora">
-                                                <div class="input">
-                                                    <input id="minutos-inp" placeholder="30" min="0" max="59" type="number" maxlength="2" autocomplete="off" name="minutos" onchange="updateMinutos(this)" value="<?php echo $course_data['minutos']?>" />
-                                                    <label>Minutos (0-59)</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-hora">
-                                                <div class="select">
-                                                    <select name="horario" id="horario-sel" onchange="updateHorario(this)">
-                                                        <option value="am" selected>A.M</option>
-                                                        <option value="pm">P.M</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <br>
-
-                                        <!---->
-                                        <p class="text-label">Asigna un facilitador</p>
-                                        <div class="col-mid">
-                                            <div class="select">
-                                                <select name="facilitador" id="facilitador-sel" onchange="updateFacilitador(this)">
-                                                    <option value="0">Selecciona</option>
-                                                    <?php foreach($teachers as $t){?>
-                                                    <option value="<?php echo $t['id']?>"><?php echo $t['nombre'].' '.$t['apellido']?></option>
-                                                    <?php } ?>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <br>
-
-                                        <!---->
-                                        <p class="text-label">Selecciona una Sede</p>
-                                        <div class="col-mid">
-                                            <div class="select">
-                                                <select name="sede" id="sede-sel" onchange="updateAulasMain(this)">
-                                                    <option value="0" selected>Selecciona</option>
-                                                    <?php foreach($headquarters as $h){?>
-                                                    <option value="<?php echo $h['id']?>"><?php echo $h['nombre']?></option>
-                                                    <?php } ?>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <br>
-
-                                        <!---->
-                                        <p class="text-label">Selecciona una Aula</p>
-                                        <div class="col-mid">
-                                            <div class="select">
-                                                <select name="aula" id="aula-sel" onchange="updateAula(this)">
-                                                    <option value="0">Selecciona</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div id="curso-presencial-usuarios" class="content-visible">
-                            <p class="text">Registrar estudiantes para la charla</p>
-                            
-                            <div class="tabla-container">
-                                <form class="tabla-form" id="tabla-usuarios-form">
-                                    <table id="tabla-usuarios" class="traing-tabla">
-                                        <thead>
-                                            <tr>
-                                                <th style="width: 3%;">
-                                                    <!--input radio-->
-                                                </th>
-                                                <th style="width: 12%;">
-                                                    <span>Tipo trabajador</span>
-                                                    <button></button>
-                                                </th>
-                                                <th style="width: 12%;">
-                                                    <span>Nombres</span>
-                                                    <button></button>
-                                                </th>
-                                                <th style="width: 12%;">
-                                                    <span>Apellido</span>
-                                                    <button></button>
-                                                </th>
-                                                <th style="width: 12%;">
-                                                    <span>Documento</span>
-                                                    <button></button>
-                                                </th>
-                                                <th style="width: 14%;">
-                                                    <span>Ciudad</span>
-                                                    <button></button>
-                                                </th>
-                                                <th style="width: 12%;">
-                                                    <span>Empresa</span>
-                                                    <button></button>
-                                                </th>
-                                                <th style="width: 23%;">
-                                                    <span>Correo electrónico</span>
-                                                    <button></button>
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php foreach($users as $user){?>
-                                            <tr id="tabla-usuario-row-<?php echo $user['id']?>">
-                                                <td class="td-checkbox">
-                                                    <label class="traing-check">
-                                                        <input id="usuario-check-<?php echo $user['id']?>" type="checkbox" name="usuario" value="<?php echo $user['id']?>" autocomplete="off" onchange="matricularUsuario(this)" />
-                                                        <span class="traing-check-box"></span>
-                                                        <span class="traing-check-name"></span>
-                                                    </label>
-                                                </td>
-                                                <td><?php echo $tipos_trabajador[$user['tipou']]?></td>
-                                                <td><?php echo $user['nombre']?></td>
-                                                <td><?php echo $user['apellido']?></td>
-                                                <td><?php echo $user['documento']?></td>
-                                                <td><?php echo $user['ciudad']?></td>
-                                                <td><?php echo $user['empresa']?></td>
-                                                <td><?php echo $user['correo']?></td>
-                                            </tr>
-                                            <?php } ?>
-                                        </tbody>
-                                    </table>
-                                </form>
-                            </div>
-                        </div>
-
-                        <div class="hr"></div>
-
-                        <div class="col-right">
-                            <button type="button" class="boton-principal" onclick="actualizarCurso(this)">
-                                <span>Actualizar curso</span>
-                            </button>
-                        </div>
-                        <!--end-->
+                    <div class="col-right">
+                        <button type="button" class="boton-principal" onclick="actualizarCurso(this)">
+                            <span>Actualizar curso</span>
+                        </button>
                     </div>
                 </div>
             </div>

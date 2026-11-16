@@ -78,3 +78,94 @@ function updateCourseImage(event){
         getE('imagen-curso-img').className = 'imagen-curso-img-on'
     }
 }
+
+function clickContenido(c){
+    getE('step-container-1').className = 'step-item'
+    getE('step-container-2').className = 'step-item'
+    getE('step-container-'+c).className = 'step-item selected'
+
+    getE('step-body-container-1').className = 'step-container-off'
+    getE('step-body-container-2').className = 'step-container-off'
+
+    getE('step-body-container-'+c).className = 'step-container-on'
+}
+
+var contenidos_data = [{
+    id:1,
+    nombre:"",
+    file:false
+}]
+
+function findContenido(id){
+    var indx = -1
+    for(var c = 0;c<contenidos_data.length;c++){
+        if(contenidos_data[c].id==id){
+            indx = c
+        }
+    }
+    return indx
+}
+
+function agregarContenido(){
+    var div = document.createElement('div')
+    div.className = 'row-material'
+    
+    var new_id = (contenidos_data[contenidos_data.length-1].id)+1
+    div.id = 'contenido-content-'+new_id
+
+    var h = ""
+    h+='<div class="col-material">'
+        h+='<div class="input">'
+            h+='<input id="contenido-inp-'+new_id+'" name="contenido-inp-'+new_id+'" placeholder="Nombre del tema" type="text" maxlength="100" autocomplete="off" />'
+            h+='<label>Mínimo 3 máximo 100 caracteres</label>'
+        h+='</div>'
+    h+='</div>'
+    h+='<div class="col-material">'
+        h+='<div class="file">'
+            h+='<input id="material-inp-'+new_id+'" type="file" name="material-inp-'+new_id+'" accept=".png,.jpeg,.jpg,.pdf,.mp4" onchange="updateFileContent('+new_id+',this,event)" />'
+            h+='<p>Selecciona un archivo</p>'
+            h+='<div></div>'
+        h+='</div>'
+        h+='<label class="file-label">Formatos permitidos: Imagen, Video, PDF</label>'
+    h+='</div>'
+    h+='<button class="eliminar-contenido-btn" type="button" onclick="eliminarMaterial('+new_id+')">'
+        h+='<img src="'+base+'public/curso-crear/images/clear2-icon.svg" />'
+    h+='</button>'
+    
+    div.innerHTML = h
+
+    getE('contenidos-content').appendChild(div)
+    contenidos_data.push({
+        id:new_id,
+        nombre:"",
+        file:false
+    })
+}
+
+function updateFileContent(id,inpu,event){
+    var indx = findContenido(id)
+    if(indx>-1){
+        contenidos_data[indx].file = true
+    }
+    var input_parent = inpu.parentNode
+    var fakepath = inpu.value
+    input_parent.getElementsByTagName('p')[0].innerHTML = fakepath
+}
+
+function eliminarMaterial(id){
+    //mirar si es el ultimo
+    if(contenidos_data.length==1){
+        openModalAlert({
+            status:'warning',
+            title:'No puedes!',
+            text:'Debes dejar al menos 1 contenido'
+        })
+    }else{
+        var indx = findContenido(id)
+        if(indx>-1){
+            contenidos_data.splice(indx,1)
+        }
+    
+        getE('contenidos-content').removeChild(getE('contenido-content-'+id))
+    }
+}

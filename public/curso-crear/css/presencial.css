@@ -60,7 +60,8 @@
 
 .calendario-eliminar-btn,
 .calendario-guardar-btn,
-.calendario-limpiar-btn{
+.calendario-limpiar-btn,
+.contenidos-agregar-btn{
     width: auto;
     height: 35px;
     border-radius: 4px;
@@ -81,9 +82,22 @@
     background-color: var(--cleargray);
     margin-top: 20px;
 }
+.contenidos-agregar-btn{
+    background-color: var(--verde);
+    margin-bottom: 20px;
+}
+.eliminar-contenido-btn{
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    box-shadow: -1px 1px 2px 0px rgba(0, 0, 0, 0.2);
+    background-color: var(--rojo);
+}
 .calendario-eliminar-btn span,
 .calendario-guardar-btn span,
-.calendario-limpiar-btn span{
+.calendario-limpiar-btn span,
+.contenidos-agregar-btn span{
     font-family: var(--fontsemibold);
     font-size: 1rem;
     color: var(--blanco);
@@ -93,13 +107,17 @@
 }
 .calendario-eliminar-btn img,
 .calendario-guardar-btn img,
-.calendario-limpiar-btn img{
+.calendario-limpiar-btn img,
+.contenidos-agregar-btn img,
+.eliminar-contenido-btn img{
     width: 18px;
     height: 18px;
 }
 .calendario-eliminar-btn:hover,
 .calendario-guardar-btn:hover,
-.calendario-limpiar-btn:hover{
+.calendario-limpiar-btn:hover,
+.contenidos-agregar-btn:hover,
+.eliminar-contenido-btn:hover{
     box-shadow: -1px 1px 3px 0px rgba(0,0,0,0.4);
 }
 

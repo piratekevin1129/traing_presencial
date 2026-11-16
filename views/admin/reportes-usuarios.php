@@ -51,7 +51,7 @@
                         <div class="card-container-header">
                             <p>Usuarios registrados <span><?php echo count($users)?></span></p>
                             <div>
-                                <a class="boton-reporte" href="<?php echo $base ?>public/docs/reporte-usuario-1.xlsx">
+                                <a class="boton-reporte" href="<?php echo $base ?>api/reporte-usuarios.php" target="_blank">
                                     <img src="<?php echo $base ?>public/assets/images/button-excel-icon.svg" />
                                     <span>Exportar reporte</span>
                                 </a>
