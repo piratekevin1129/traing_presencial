@@ -238,11 +238,11 @@ function guardarCurso2(ids_collection){
         },
         success: function(response){
             var response_data = JSON.parse(response)
-            unsetLoader()
             if(response_data.status=='success'){
                 //guardar QRS
                 guardarCurso3(ids_collection)
             }else{
+                unsetLoader()
                 openModalAlert({
                     status:'warning',
                     title:'Algo salió mal',
@@ -271,12 +271,12 @@ function guardarCurso3(ids_collection){
         },
         success: function(response){
             var response_data = JSON.parse(response)
-            unsetLoader()
             if(response_data.status=='success'){
                 //guardar imagen
                 getE('curso_ids').value = ids_collection[0]
                 guardarCurso4()
             }else{
+                unsetLoader()
                 openModalAlert({
                     status:'warning',
                     title:'Algo salió mal',
@@ -285,6 +285,7 @@ function guardarCurso3(ids_collection){
             }
         },
         error: function(xhr, status, error){
+            unsetLoader()
             openModalAlert({
                 status:'warning',
                 title:'Algo salió mal',
@@ -306,8 +307,10 @@ function guardarCurso4(){
         success: function(response) {
             var response_data = JSON.parse(response)
             if(response_data.status=='success'){
+                unsetLoader()
                 openModalAlert({status:'success',title:'Curso creado con éxito!',text:'Ya puedes ir a la sección de curso y descargar los códigos QR para la asistencia y finalización'})
             }else{
+                unsetLoader()
                 openModalAlert({
                     status:'warning',
                     title:'Algo salió mal',
@@ -316,6 +319,7 @@ function guardarCurso4(){
             }
         },
         error: function(xhr, status, error) {
+            unsetLoader()
             openModalAlert({
                 status:'warning',
                 title:'Algo salió mal',

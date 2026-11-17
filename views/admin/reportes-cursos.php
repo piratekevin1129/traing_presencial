@@ -78,6 +78,9 @@ foreach($courses as $indx => $c){
                             </div>
                         </div>
                         <div class="card-container-body">
+                            <?php if(count($courses)==0){?>
+                            <p class="text">No hay cursos registrados</p>
+                            <?php } else { ?>
                             <div class="tabla-container">
                                 <table id="tabla-cursos" class="traing-tabla">
                                     <thead>
@@ -118,6 +121,7 @@ foreach($courses as $indx => $c){
                                     </tbody>
                                 </table>
                             </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>

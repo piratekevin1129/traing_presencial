@@ -300,16 +300,18 @@ if(isset($_GET['action'])){
                 }
 
                 $qr_ingreso = $qr_folder.'ingreso.png';
-                $qr_ingreso_data = '{"id":'.$id_data.',"action":0}';
+                $qr_ingreso_data = 'https://dev.traing.co/presencial_v2/views/student/login.php?courseid='.$id_data.'&courseaction=0';
+                //$qr_ingreso_data = '{"id":'.$id_data.',"action":0}';
                 $qr_salida = $qr_folder.'salida.png';
-                $qr_salida_data = '{"id":'.$id_data.',"action":1}';
+                $qr_salida_data = 'https://dev.traing.co/presencial_v2/views/student/login.php?courseid='.$id_data.'&courseaction=1';
+                //$qr_salida_data = '{"id":'.$id_data.',"action":1}';
 
                 // Crear y guardar la imagen
                 // Opciones: L (bajo), M (medio), Q (alto), H (máximo)
                 // Tamaño de cada cuadro del QR (del 1 al 10)
                 // Borde blanco alrededor del QR
-                QRcode::png($qr_ingreso_data, $qr_ingreso, 'M', 7, 2);
-                QRcode::png($qr_salida_data, $qr_salida, 'M', 7, 2);
+                QRcode::png($qr_ingreso_data, $qr_ingreso, 'M', 6, 2);
+                QRcode::png($qr_salida_data, $qr_salida, 'M', 6, 2);
 
                 if(!file_exists($qr_ingreso)||!file_exists($qr_salida)){
                     array_push($errores_qr,'Error al guardar el qr del curso: '.$id_data);

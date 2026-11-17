@@ -96,7 +96,6 @@ function actualizarCurso2(){
         },
         success: function(response){
             var response_data = JSON.parse(response)
-            unsetLoader()
             if(response_data.status=='success'){
                 //guardar imagen
                 if(imagen_val.files.length<=0){
@@ -105,6 +104,7 @@ function actualizarCurso2(){
                     actualizarCurso3()
                 }
             }else{
+                unsetLoader()
                 openModalAlert({
                     status:'warning',
                     title:'Algo salió mal',
@@ -137,6 +137,7 @@ function actualizarCurso3(){
             if(response_data.status=='success'){
                 actualizarFinal()
             }else{
+                unsetLoader()
                 openModalAlert({
                     status:'warning',
                     title:'Algo salió mal',
@@ -145,6 +146,7 @@ function actualizarCurso3(){
             }
         },
         error: function(xhr, status, error) {
+            unsetLoader()
             openModalAlert({
                 status:'warning',
                 title:'Algo salió mal',
@@ -155,6 +157,7 @@ function actualizarCurso3(){
 }
 
 function actualizarFinal(){
+    unsetLoader()
     openModalAlert({
         status:'success',
         title:'Curso actualizado con éxito!',

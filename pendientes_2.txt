@@ -7,7 +7,6 @@ mandar un correo con el formato actual al profesor
 correo para notificar el registro (sin matricular)
 correo para notificar el registro al facilitador
 cargar listas de excel de facilitadores
-validacion cuando no hay cursos
 
 NO TAN PRIORITARIOS:
 contenidos funcionales

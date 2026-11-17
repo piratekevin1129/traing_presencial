@@ -70,6 +70,10 @@ foreach($courses as $indx => $c){
                 <!--contenido aqui ↓↓↓-->
                 <h1 class="main-title">Todos los cursos</h1>
                 <div class="app-container">
+
+                    <?php if(count($courses)==0){?>
+                    <p class="text">No hay cursos registrados</p>
+                    <?php } else { ?>
                     <div class="tabla-container">
                         <table id="tabla-usuarios" class="traing-tabla">
                             <thead>
@@ -173,6 +177,7 @@ foreach($courses as $indx => $c){
                             </tbody>
                         </table>
                     </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>

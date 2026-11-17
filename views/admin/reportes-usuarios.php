@@ -58,6 +58,9 @@
                             </div>
                         </div>
                         <div class="card-container-body">
+                            <?php if(count($users)==0){?>
+                            <p class="text">No hay usuarios registrados</p>
+                            <?php } else{ ?>
                             <div class="tabla-container">
                                 <table id="tabla-cursos" class="traing-tabla">
                                     <thead>
@@ -106,6 +109,7 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
