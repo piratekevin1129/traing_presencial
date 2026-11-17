@@ -56,8 +56,8 @@
     <!--modales-->
     <?php include '../../components/sweetalert/sweetalert.php'; ?>
 
-    <script src="<?php echo $base?>public/assets/scripts/student/login.js"></script>
-    <script src="<?php echo $base?>public/assets/scripts/form.js"></script>
+    <script src="<?php echo $base ?>public/assets/scripts/student/login.js"></script>
+    <script src="<?php echo $base ?>public/assets/scripts/form.js"></script>
     <script>
         <?php 
         if(

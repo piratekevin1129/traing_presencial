@@ -43,12 +43,14 @@
                             </button>
                         </div>
                         <div class="botones-container-row">
+                            <?php if(count($users)>0){?>
                             <button class="boton-normal" onclick="editarUsuario()">
                                 <span>Editar</span>
                             </button>
                             <button class="boton-normal" onclick="eliminarUsuario()">
                                 <span>Eliminar</span>
                             </button>
+                            <?php } ?>
                         </div>
                     </div>
                     <?php if(count($users)==0){?>
@@ -158,7 +160,7 @@
             nombre:"<?php echo $user['nombre']?>",
             apellido:"<?php echo $user['apellido']?>",
             tipod:"<?php echo $user['tipod']?>",
-            documento:<?php echo $user['documento']?>,
+            documento:"<?php echo $user['documento']?>",
             ciudad:"<?php echo $user['ciudad']?>",
             empresa:"<?php echo $user['empresa']?>",
             correo:"<?php echo $user['correo']?>",

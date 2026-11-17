@@ -134,7 +134,7 @@
             nombre:"<?php echo $teacher['nombre']?>",
             apellido:"<?php echo $teacher['apellido']?>",
             tipod:"<?php echo $teacher['tipod']?>",
-            documento:<?php echo $teacher['documento']?>,
+            documento:"<?php echo $teacher['documento']?>",
             ciudad:"<?php echo $teacher['ciudad']?>",
             empresa:"<?php echo $teacher['empresa']?>",
             correo:"<?php echo $teacher['correo']?>"

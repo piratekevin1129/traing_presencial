@@ -58,7 +58,9 @@
     width: 720px;
 }
 #modal-codigos-qr .modal-box,
-#modal-repetir-curso .modal-box{
+#modal-repetir-curso .modal-box,
+modal-formulario-sede .modal-box,
+modal-formulario-aula .modal-box{
     width: 650px;
 }
 

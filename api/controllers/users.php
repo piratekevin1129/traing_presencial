@@ -82,28 +82,27 @@ if(isset($_GET['action'])){
         }
     }else if($action=='updateUsers'){
         if(isset($_POST['users'])){
-            $users_ids = json_decode($_POST['users'],true);
+            $users_data = json_decode($_POST['users'],true);
 
-            foreach($users_ids as $u){
+            foreach($users_data as $u){
                 $indx = -1;
                 foreach($users_file_data as $ind => $ud){
-                    if($ud['id']==$u){
+                    if($ud['id']==$u['id']){
                         $indx = $ind;
                         break;
                     }
                 }
     
                 if($indx!=-1){
-                    $users_file_data[$indx] = array(
-                        'tipou'=>$u['tipo_trabajador'],
-                        'nombre'=>$u['nombre'],
-                        'apellido'=>$u['apellido'],
-                        'tipod'=>$u['tipo_documento'],
-                        'documento'=>$u['documento'],
-                        'ciudad'=>$u['ciudad'],
-                        'empresa'=>$u['empresa'],
-                        'correo'=>$u['correo_electronico']
-                    );
+                    //reemplazar
+                    $users_file_data[$indx]['tipou'] = $u['tipo_trabajador'];
+                    $users_file_data[$indx]['nombre'] = $u['nombre'];
+                    $users_file_data[$indx]['apellido'] = $u['apellido'];
+                    $users_file_data[$indx]['tipod'] = $u['tipo_documento'];
+                    $users_file_data[$indx]['documento'] = $u['documento'];
+                    $users_file_data[$indx]['ciudad'] = $u['ciudad'];
+                    $users_file_data[$indx]['empresa'] = $u['empresa'];
+                    $users_file_data[$indx]['correo'] = $u['correo_electronico'];
                 }
             }
     

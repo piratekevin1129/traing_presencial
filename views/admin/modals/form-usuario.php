@@ -45,7 +45,7 @@
             </div>
             <div class="modal-form-row2">
                 <div class="modal-form-col">
-                    <input id="ciudad-txt" type="text" placeholder="Ciudad" maxlength="100" autocomplete="off" />
+                    <input id="ciudad-txt" type="text" placeholder="Ciudad/Municipio" maxlength="100" autocomplete="off" />
                 </div>
                 <div class="modal-form-col">
                     <input id="empresa-txt" type="text" placeholder="Empresa" maxlength="100" autocomplete="off" />

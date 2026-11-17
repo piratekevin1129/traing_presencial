@@ -2,16 +2,16 @@ https://qrcodecreator.com/
 https://share.google/aimode/bEFbpn1jqX8RiaFdf
 
 PRIORITARIOS:
-Colocar link al qr
 mandar un correo con el formato actual al profesor
 correo para notificar el registro (sin matricular)
 correo para notificar el registro al facilitador
 cargar listas de excel de facilitadores
+poner cargador en todo
 
 NO TAN PRIORITARIOS:
+estilo al modal de confirm
 contenidos funcionales
 validacion login admin
-crear, editar, y eliminar sedes y aulas
 validar que todas las fechas del calendario tengan una hora, un facilitador y una sede
 validar que el admin suba el excel de forma correcta
 paginador de usuarios

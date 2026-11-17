@@ -127,7 +127,7 @@
                                 <div class="col-imagen">
                                     <div class="imagen-curso">
                                         <div class="imagen-curso-default">
-                                            <img src="<?php echo $base?>public/assets/images/button-image-icon.svg" />
+                                            <img src="<?php echo $base ?>public/assets/images/button-image-icon.svg" />
                                         </div>
                                         <img class="imagen-curso-img-off" id="imagen-curso-img" src="" />
                                         <form id="curso-img-form" enctype="multipart/form-data">
@@ -354,7 +354,7 @@
                                                 <label class="file-label">Formatos permitidos: Imagen, Video, PDF</label>
                                             </div>
                                             <button class="eliminar-contenido-btn" type="button" onclick="eliminarMaterial(1)">
-                                                <img src="<?php echo $base?>public/curso-crear/images/clear2-icon.svg" />
+                                                <img src="<?php echo $base ?>public/curso-crear/images/clear2-icon.svg" />
                                             </button>
                                         </div>
                                     </div>
