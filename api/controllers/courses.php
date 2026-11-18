@@ -1,4 +1,5 @@
 <?php
+require('../env.php');
 
 $headquarters_file = file_get_contents('../../data/db/headquarters.json');
 $headquarters_file_data = json_decode($headquarters_file,true);
@@ -61,7 +62,7 @@ if(isset($_GET['action'])){
             $courses_file_data[$course_data_ind]['inicio'] = $hora;
             $courses_file_txt = json_encode($courses_file_data);
 
-            if(file_put_contents('../../data/db/courses.json',$courses_file_txt)){
+            if(file_put_contents($path.'data/db/courses.json',$courses_file_txt)){
                 //devolver el link
                 exit('{"status":"success","data":""}');
             }else{
@@ -82,7 +83,7 @@ if(isset($_GET['action'])){
             $courses_file_data[$course_data_ind]['fin'] = $hora;
             $courses_file_txt = json_encode($courses_file_data);
 
-            if(file_put_contents('../../data/db/courses.json',$courses_file_txt)){
+            if(file_put_contents($path.'data/db/courses.json',$courses_file_txt)){
                 //devolver el link
                 exit('{"status":"success","data":""}');
             }else{
@@ -173,7 +174,7 @@ if(isset($_GET['action'])){
         }
         
         $courses_file_txt = json_encode($courses_file_data);
-        if(file_put_contents('../../data/db/courses.json',$courses_file_txt)){
+        if(file_put_contents($path.'data/db/courses.json',$courses_file_txt)){
             //devolverle ids de los cursos para guardar los estudiantes
             exit('{"status":"success","data":'.json_encode($ids_collection).'}');
         }else{
@@ -245,7 +246,7 @@ if(isset($_GET['action'])){
                 $courses_file_data[$ind]['encargados'] = $encargados_curso;
 
                 $courses_file_txt = json_encode($courses_file_data);
-                if(file_put_contents('../../data/db/courses.json',$courses_file_txt)){
+                if(file_put_contents($path.'data/db/courses.json',$courses_file_txt)){
                     exit('{"status":"success","data":""}');
                 }else{
                     exit('{"status":"error","data":"error actualizando el curso"}');

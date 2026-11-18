@@ -7,6 +7,8 @@ correo para notificar el registro (sin matricular)
 correo para notificar el registro al facilitador
 cargar listas de excel de facilitadores
 poner cargador en todo
+modal de crear aula/facilitador/sede en caliente
+validar sede, aula y facilitador en la creación del curso, cuando se han eliminado
 
 NO TAN PRIORITARIOS:
 estilo al modal de confirm

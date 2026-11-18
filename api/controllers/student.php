@@ -1,4 +1,5 @@
 <?php
+require('../env.php');
 
 session_start();
 
@@ -24,16 +25,20 @@ if(isset($_GET['action'])){
     if($action=='login'){
         if(
             isset($_POST['courseid'])&&
-            isset($_POST['courseaction'])
+            isset($_POST['cedula'])
         ){
+            $cedula = $_POST['cedula'];
+            $curso_id = $_POST['courseid'];
+            //$curso_action = 0;
+
             //buscar cédula del usuario
             $student_data = array();
             $students_ids = array_column($users_file_data, 'documento');
-            $student_ind = array_search((int)$_POST['cedula'], $students_ids);
+            $student_ind = array_search((int)$cedula, $students_ids);
 
             //buscar matriculados del curso
             $courses_users_ids = array_column($courses_users_file_data, 'id');
-            $course_users_ind = array_search((int)$_POST['courseid'], $courses_users_ids);
+            $course_users_ind = array_search((int)$curso_id, $courses_users_ids);
 
             if($student_ind !== false && $course_users_ind !== false) {
                 $student_data = $users_file_data[$student_ind];
@@ -51,10 +56,11 @@ if(isset($_GET['action'])){
                     $_SESSION['user_id'] = $student_data['id'];
                     $_SESSION['name'] = $student_data['nombre']." ".$student_data['apellido'];
                     $_SESSION['document'] = $student_data['documento'];
-                    $_SESSION['course_id'] = $_POST['courseid'];
+                    $_SESSION['course_id'] = $curso_id;
+                    exit('{"status":"success","data":'.json_encode($student_data).'}');
+                }else{
+                    exit('{"status":"error","data":"No se encontró el usuario o no está registrado"}');
                 }
-                
-                exit('{"status":"success","data":'.json_encode($student_data).'}');
             } else {
                 exit('{"status":"error","data":"No se encontró el usuario o no está registrado"}');
             }
@@ -89,7 +95,7 @@ if(isset($_GET['action'])){
                         $courses_users_file_data[$course_users_ind]['users'][$courses_users_data_ind]['horaentrada'] = $fecha.' '.$fecha2;
 
                         $courses_users_file_txt = json_encode($courses_users_file_data);
-                        if(file_put_contents('../../data/db/courses_users.json',$courses_users_file_txt)){
+                        if(file_put_contents($path.'data/db/courses_users.json',$courses_users_file_txt)){
                             exit('{"status":"success","data":{"horaentrada":"'.$fecha2.'"}}');
                         }else{
                             exit('{"status":"error","data":"error confirmando el ingreso"}');
@@ -99,7 +105,7 @@ if(isset($_GET['action'])){
                         $courses_users_file_data[$course_users_ind]['users'][$courses_users_data_ind]['horasalida'] = $fecha.' '.$fecha2;
 
                         $courses_users_file_txt = json_encode($courses_users_file_data);
-                        if(file_put_contents('../../data/db/courses_users.json',$courses_users_file_txt)){
+                        if(file_put_contents($path.'data/db/courses_users.json',$courses_users_file_txt)){
                             exit('{"status":"success","data":{"horasalida":"'.$fecha2.'"}}');
                         }else{
                             exit('{"status":"error","data":"error confirmando el ingreso"}');

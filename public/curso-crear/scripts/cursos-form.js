@@ -63,7 +63,7 @@ function matricularUsuario(inpu){
         }
     }
 
-    console.log(charlas_data[current_charla].estudiantes)
+    //console.log(charlas_data[current_charla].estudiantes)
 }
 
 function updateCourseImage(event){

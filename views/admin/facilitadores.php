@@ -18,6 +18,7 @@
     <link href="<?php echo $base ?>public/assets/css/dropdown.css" rel="stylesheet" type="text/css" />
 
     <link href="<?php echo $base ?>components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $base ?>components/loader/loader.css" rel="stylesheet" type="text/css" />
     <script src="<?php echo $base ?>public/assets/scripts/jquery-4.0.0.min.js"></script>
     <title>Traing Presencial - Facilitadores</title>
 </head>
@@ -32,7 +33,7 @@
                 <div class="app-container">
                     <div class="botones-container">
                         <div class="botones-container-row">
-                            <button class="boton-principal" onclick="openModal(this,'modal-formulario-usuario')">
+                            <button class="boton-principal" onclick="agregarFacilitador(this)">
                                 <span>Registro individual</span>
                             </button>
                             <button class="boton-upload" onclick="openModal(this,'modal-registro-usuarios-masivo')">
@@ -41,16 +42,21 @@
                             </button>
                         </div>
                         <div class="botones-container-row">
-                            <button class="boton-normal" onclick="editarUsuario()">
+                            <?php if(count($teachers)>0){?>
+                            <button class="boton-normal" onclick="editarFacilitador()">
                                 <span>Editar</span>
                             </button>
-                            <button class="boton-normal" onclick="eliminarUsuario()">
+                            <button class="boton-normal" onclick="eliminarFacilitador()">
                                 <span>Eliminar</span>
                             </button>
+                            <?php } ?>
                         </div>
                     </div>
+                    <?php if(count($teachers)==0){?>
+                    <p class="text">No hay facilitadores registrados</p>
+                    <?php } else { ?>
                     <div class="tabla-container">
-                        <table id="tabla-usuarios" class="traing-tabla">
+                        <table id="tabla-facilitadores" class="traing-tabla">
                             <thead>
                                 <tr>
                                     <th style="width: 5%;">
@@ -87,10 +93,10 @@
                             </thead>
                             <tbody>
                                 <?php foreach($teachers as $teacher){?>
-                                <tr id="tabla-usuario-row-<?php echo $teacher['id']?>">
+                                <tr id="tabla-facilitadores-row-<?php echo $teacher['id']?>">
                                     <td class="td-checkbox">
                                         <label class="traing-check">
-                                            <input type="radio" name="usuario" value="<?php echo $teacher['id']?>" autocomplete="off" />
+                                            <input type="radio" name="facilitador" value="<?php echo $teacher['id']?>" autocomplete="off" />
                                             <span class="traing-check-box"></span>
                                             <span class="traing-check-name"></span>
                                         </label>
@@ -111,6 +117,7 @@
                             </tbody>
                         </table>
                     </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
@@ -119,14 +126,16 @@
     <?php include './modals/registrar-facilitadores.php'; ?>
     <?php include './modals/form-facilitador.php'; ?>
     <?php include '../../components/sweetalert/sweetalert.php'; ?>
+    <?php include '../../components/loader/loader.php'; ?>
 
+    <!-- use version 0.20.3 -->
+    <script type="text/javascript" src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
     <script src="<?php echo $base ?>public/assets/scripts/modal.js"></script>
     <script src="<?php echo $base ?>public/assets/scripts/form.js"></script>
     <script src="<?php echo $base ?>public/assets/scripts/dropdown.js"></script>
     <script src="<?php echo $base ?>public/assets/scripts/admin/facilitadores.js"></script>
 
     <script>
-        
         var facilitadores_data = []
         <?php foreach($teachers as $teacher){?>
         facilitadores_data.push({

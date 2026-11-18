@@ -23,19 +23,49 @@ function updateCursoFile(event){
 
             // Ver el arreglo resultante en la consola del navegador (F12)
             //console.log(usuarios_json);
-            var h = ''
-
-            usuarios_json.forEach((user,indx) =>{
-                h+='<tr>'
-                    h+='<td>'+getTipoTrabajador(user.tipo_trabajador)+'</td>'
-                    h+='<td>'+user.nombre+' '+user.apellido+'</td>'
-                    h+='<td>'+user.documento+'</td>'
-                    h+='<td>'+user.ciudad+'</td>'
-                    h+='<td>'+user.empresa+'</td>'
-                    h+='<td>'+user.correo_electronico+'</td>'
-                h+='</tr>'
-            })
-            getE('tabla-usuarios-tdbody').innerHTML = h
+            if(usuarios_json.length>0){
+                console.log(usuarios_json[0].tipo_trabajador)
+                if(
+                    usuarios_json[0].tipo_trabajador!=null&&usuarios_json[0].tipo_trabajador!=undefined&&
+                    usuarios_json[0].tipo_documento!=null&&usuarios_json[0].tipo_documento!=undefined&&
+                    usuarios_json[0].nombre!=null&&usuarios_json[0].nombre!=undefined&&
+                    usuarios_json[0].apellido!=null&&usuarios_json[0].apellido!=undefined&&
+                    usuarios_json[0].documento!=null&&usuarios_json[0].documento!=undefined&&
+                    usuarios_json[0].ciudad!=null&&usuarios_json[0].ciudad!=undefined&&
+                    usuarios_json[0].empresa!=null&&usuarios_json[0].empresa!=undefined&&
+                    usuarios_json[0].correo_electronico!=null&&usuarios_json[0].correo_electronico!=undefined
+                ){
+                    var h = ''
+                    usuarios_json.forEach((user,indx) =>{
+                        h+='<tr>'
+                            h+='<td>'+getTipoTrabajador(user.tipo_trabajador)+'</td>'
+                            h+='<td>'+user.nombre+' '+user.apellido+'</td>'
+                            h+='<td>'+user.documento+'</td>'
+                            h+='<td>'+user.ciudad+'</td>'
+                            h+='<td>'+user.empresa+'</td>'
+                            h+='<td>'+user.correo_electronico+'</td>'
+                        h+='</tr>'
+                    })
+                    getE('tabla-usuarios-tdbody').innerHTML = h
+                }else{
+                    openModalAlert({
+                        status:'warning',
+                        title:'Excel incorrecto',
+                        text:'El excel no está construido de forma correcta<br>Por favor descarga el archivo guía de excel y vuelve a intentarlo'
+                    })
+                    getE('lista-usuarios-form').reset()
+                    getE('lista-usuarios-name').innerHTML = 'Subir archivo excel'
+                }
+            }else{
+                openModalAlert({
+                    status:'warning',
+                    title:'Excel incorrecto',
+                    text:'El archivo excel no contiene ningún dato o está mal construido<br>Por favor descarga el archivo guía de excel y vuelve a intentarlo'
+                })
+                getE('lista-usuarios-form').reset()
+                getE('lista-usuarios-name').innerHTML = 'Subir archivo excel'
+            }
+            
         };
     
         lector.readAsArrayBuffer(archivo);
@@ -141,6 +171,7 @@ function registrarUsuario(){
         correo_electronico:String(getE('correo-txt').value)
     })
 
+    setLoader()
     $.ajax({
         url: action,
         method: 'POST',
@@ -166,6 +197,7 @@ function registrarUsuario(){
             }
         },
         error: function(xhr, status, error) {
+            unsetLoader()
             console.log("Error de servidor");
             console.log(xhr);
         }
@@ -216,6 +248,7 @@ function registrarUsuario2(new_id){
 }
 
 function registrarUsuarioFinal(){
+    unsetLoader()
     openModalAlert({
         status:'success',
         title:'¡Éxito!',
@@ -299,6 +332,7 @@ function guardarUsuariosMasivo(){
                 }
             },
             error: function(xhr, status, error) {
+                unsetLoader()
                 console.log("Error de servidor");
                 console.log(xhr);
                 unsetLoader()
@@ -388,4 +422,5 @@ function closeModalIndividual(){
     //cleanDropdown('cursos-dropdown-1')
     closeModal()
     editing_usuario = false;
+    editing_usuario_id = 0;
 }

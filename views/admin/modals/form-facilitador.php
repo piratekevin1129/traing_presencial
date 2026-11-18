@@ -1,4 +1,4 @@
-<div id="modal-formulario-usuario" class="modal modal-off">
+<div id="modal-formulario-facilitador" class="modal modal-off">
     <div class="modal-box">
         <div class="modal-header">
             <h1>...</h1>

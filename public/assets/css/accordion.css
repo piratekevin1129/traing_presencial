@@ -79,7 +79,7 @@
 .accordion-content-img img{
     width: auto;
     height: 150px;
-    object-fit: contain;
+    object-fit: cover;
     object-position: center;
     box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.4);
     border-radius: 4px;
@@ -221,4 +221,29 @@
 }
 .accordion-container-expanded .accordion-header{
     border-radius: 4px 4px 0px 0px;
+}
+
+@media (max-width: 768px) {
+    .accordion-content-col1{
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
+    .accordion-content-img{
+        width: 100%;
+        height: auto;
+    }
+    .accordion-content-img img{
+        width: 100%;
+        height: auto;
+        max-height: 200px;
+    }
+    .accordion-content-info{
+        width: 100%;
+    }
+    .accordion-content-col2{
+        justify-content: center;
+    }
+    .accordion-content > p{
+        text-align: center;
+    }
 }

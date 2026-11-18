@@ -1,4 +1,5 @@
 <?php
+require('../env.php');
 
 $rooms_file = file_get_contents('../../data/db/rooms.json');
 $rooms_file_data = json_decode($rooms_file,true);
@@ -38,7 +39,7 @@ if(isset($_GET['action'])){
                 }
             }
             $rooms_file_txt = json_encode($rooms_file_data);
-            if(file_put_contents('../../data/db/rooms.json',$rooms_file_txt)){
+            if(file_put_contents($path.'data/db/rooms.json',$rooms_file_txt)){
                 exit('{"status":"success","data":'.json_encode($ids_collection).'}');
             }else{
                 exit('{"status":"error","data":"error guardando el archivo"}');
@@ -67,7 +68,7 @@ if(isset($_GET['action'])){
             }
     
             $rooms_file_txt = json_encode($rooms_file_data);
-            if(file_put_contents('../../data/db/rooms.json',$rooms_file_txt)){
+            if(file_put_contents($path.'data/db/rooms.json',$rooms_file_txt)){
                 exit('{"status":"success"}');
             }else{
                 exit('{"status":"error","data":"error guardando el archivo"}');
@@ -88,7 +89,7 @@ if(isset($_GET['action'])){
             array_splice($rooms_file_data,$indx,1);
             
             $rooms_file_txt = json_encode($rooms_file_data);
-            if(file_put_contents('../../data/db/rooms.json',$rooms_file_txt)){
+            if(file_put_contents($path.'data/db/rooms.json',$rooms_file_txt)){
                 exit('{"status":"success"}');
             }else{
                 exit('{"status":"error","data":"error guardando el archivo de aulas"}');

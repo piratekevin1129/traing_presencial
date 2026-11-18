@@ -1,4 +1,5 @@
 <?php
+require('../env.php');
 
 $tipos_trabajador = array(
     'e'=>'Estudiante',
@@ -66,13 +67,13 @@ if(isset($_GET['action'])){
                     $users_file_data[$users_ind]['documento'] = (string)$d['documento'];
                     $users_file_data[$users_ind]['ciudad'] = $d['ciudad'];
                     $users_file_data[$users_ind]['empresa'] = $d['empresa'];
-                    $users_file_data[$users_ind]['correo_electronico'] = $d['correo_electronico'];
+                    $users_file_data[$users_ind]['correo'] = $d['correo_electronico'];
                     $users_file_data[$users_ind]['status'] = 0;
                     array_push($ids_collection,$users_file_data[$users_ind]['id']);
                 }
             }
             $users_file_txt = json_encode($users_file_data);
-            if(file_put_contents('../../data/db/users.json',$users_file_txt)){
+            if(file_put_contents($path.'data/db/users.json',$users_file_txt)){
                 exit('{"status":"success","data":'.json_encode($ids_collection).'}');
             }else{
                 exit('{"status":"error","data":"error guardando el archivo"}');
@@ -99,7 +100,7 @@ if(isset($_GET['action'])){
                     $users_file_data[$indx]['nombre'] = $u['nombre'];
                     $users_file_data[$indx]['apellido'] = $u['apellido'];
                     $users_file_data[$indx]['tipod'] = $u['tipo_documento'];
-                    $users_file_data[$indx]['documento'] = $u['documento'];
+                    $users_file_data[$indx]['documento'] = (string)$u['documento'];
                     $users_file_data[$indx]['ciudad'] = $u['ciudad'];
                     $users_file_data[$indx]['empresa'] = $u['empresa'];
                     $users_file_data[$indx]['correo'] = $u['correo_electronico'];
@@ -107,7 +108,7 @@ if(isset($_GET['action'])){
             }
     
             $users_file_txt = json_encode($users_file_data);
-            if(file_put_contents('../../data/db/users.json',$users_file_txt)){
+            if(file_put_contents($path.'data/db/users.json',$users_file_txt)){
                 exit('{"status":"success"}');
             }else{
                 exit('{"status":"error","data":"error guardando el archivo"}');
@@ -121,6 +122,7 @@ if(isset($_GET['action'])){
         foreach($users_file_data as $ind => $ud){
             if($ud['id']==$_POST['id']){
                 $indx = $ind;
+                break;
             }
         }
 
@@ -129,7 +131,7 @@ if(isset($_GET['action'])){
         }
 
         $users_file_txt = json_encode($users_file_data);
-        if(file_put_contents('../../data/db/users.json',$users_file_txt)){
+        if(file_put_contents($path.'data/db/users.json',$users_file_txt)){
             exit('{"status":"success"}');
         }else{
             exit('{"status":"error","data":"error guardando el archivo"}');

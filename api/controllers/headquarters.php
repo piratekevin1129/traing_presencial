@@ -1,4 +1,5 @@
 <?php
+require('../env.php');
 
 $headquarters_file = file_get_contents('../../data/db/headquarters.json');
 $headquarters_file_data = json_decode($headquarters_file,true);
@@ -43,7 +44,7 @@ if(isset($_GET['action'])){
                 }
             }
             $headquarters_file_txt = json_encode($headquarters_file_data);
-            if(file_put_contents('../../data/db/headquarters.json',$headquarters_file_txt)){
+            if(file_put_contents($path.'data/db/headquarters.json',$headquarters_file_txt)){
                 exit('{"status":"success","data":'.json_encode($ids_collection).'}');
             }else{
                 exit('{"status":"error","data":"error guardando el archivo"}');
@@ -73,7 +74,7 @@ if(isset($_GET['action'])){
             }
     
             $headquarters_file_txt = json_encode($headquarters_file_data);
-            if(file_put_contents('../../data/db/headquarters.json',$headquarters_file_txt)){
+            if(file_put_contents($path.'data/db/headquarters.json',$headquarters_file_txt)){
                 exit('{"status":"success"}');
             }else{
                 exit('{"status":"error","data":"error guardando el archivo"}');
@@ -109,14 +110,14 @@ if(isset($_GET['action'])){
                 $continue_sedes = true;
             }else{
                 $rooms_file_txt = json_encode($rooms_file_data);
-                if(file_put_contents('../../data/db/rooms.json',$rooms_file_txt)){
+                if(file_put_contents($path.'data/db/rooms.json',$rooms_file_txt)){
                     $continue_sedes = true;
                 }
             }
 
             if($continue_sedes){
                 $headquarters_file_txt = json_encode($headquarters_file_data);
-                if(file_put_contents('../../data/db/headquarters.json',$headquarters_file_txt)){
+                if(file_put_contents($path.'data/db/headquarters.json',$headquarters_file_txt)){
                     exit('{"status":"success"}');
                 }else{
                     exit('{"status":"error","data":"error guardando el archivo de sedes"}');

@@ -131,7 +131,7 @@ if(!$valid_session){
                                             <img src="<?php echo $base ?>public/assets/images/check-icon.svg" />
                                         </a>-->
                                     </div>
-                                    <p id="hora-salida-txt"></p>
+                                    <p id="hora-accion-txt"></p>
                                 </div>
                             </div>
                         </div>

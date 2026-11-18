@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_GET['action'])){
+/*if(isset($_GET['action'])){
     $action = $_GET['action'];
 
     if($action=='mailUsers'){
@@ -8,19 +8,18 @@ if(isset($_GET['action'])){
     }
 }else{
     exit('{"status":"error","data":"action not defined"}');
-}
+}*/
 
 
 // Tus datos de configuración
-$apiKey = 'TU_API_KEY'; // O puedes usar getenv('SENDGRID_API_KEY')
-$fromEmail = 'tu-correo@tudominio.com';
-$fromName = 'Tu Nombre o Empresa';
-$toEmail = 'destinatario@correo.com';
-$toName = 'Nombre del Destinatario';
+$apiKey = '';
+$fromEmail = 'notificaciones@traing.co';
+$fromName = 'Notificaciones traing';
+$toEmail = 'keevinn1@outlook.com';
+$toName = 'Usuari@';
 
-$subject = 'Correo de prueba con cURL y SendGrid';
-$plainTextContent = 'Hola, este es un correo de prueba enviado usando cURL en PHP.';
-$htmlContent = '<strong>Hola,</strong> este es un correo de prueba enviado usando la API de SendGrid con <em>cURL</em> en PHP.';
+$subject = 'Registro en DEV.TRAING PRESENCIAL';
+$htmlContent = '<strong>Hola,</strong> Usted ha sido registrado en TRAING.';
 
 // Construir el cuerpo de la petición en formato JSON según la documentación de SendGrid
 $data = [
@@ -40,10 +39,10 @@ $data = [
     ],
     "subject" => $subject,
     "content" => [
-        [
+        /*[
             "type" => "text/plain",
             "value" => $plainTextContent
-        ],
+        ],*/
         [
             "type" => "text/html",
             "value" => $htmlContent
@@ -75,14 +74,13 @@ curl_close($ch);
 
 // Manejar la respuesta
 if ($curlError) {
-    echo "Error de cURL: " . $curlError;
+    exit('{"status":"error","data":"'.$curlError.'"}');
 } else {
     // SendGrid responde con códigos 200 al 299 en caso de éxito (típicamente 202 Accepted)
     if ($httpCode >= 200 && $httpCode < 300) {
-        echo "¡Correo enviado con éxito! Código HTTP: " . $httpCode;
+        exit('{"status":"success","data":"'.$httpCode.'"}');
     } else {
-        echo "Error al enviar el correo. Código HTTP: " . $httpCode . "<br>";
-        echo "Respuesta de la API: " . $response;
+        exit('{"status":"error","data":{"http":"'.$httpCode.'","response":"'.$response.'"}}');
     }
 }
 

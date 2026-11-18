@@ -9,10 +9,10 @@
         <div class="modal-body">            
             <div class="modal-input-container">
                 <div class="modal-input">
-                    <form>
-                        <input id="lista-usuarios-txt" type="file" name="archivo" onchange="updateCursoFile(this)" accept=".xlsx"  />
+                    <form id="lista-facilitadores-form">
+                        <input id="lista-facilitadores-txt" type="file" name="archivo" onchange="updateCursoFile(event)" accept=".xlsx"  />
                     </form>
-                    <p>Subir archivo excel</p>
+                    <p id="lista-facilitadores-name">Subir archivo excel</p>
                     <img src="<?php echo $base ?>public/assets/images/button-upload-icon.svg" />
                 </div>
             </div>
@@ -32,28 +32,8 @@
                                 <th style="width: 22%;">Correo</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>Jefferson Gutierrez</td>
-                                <td>123456789</td>
-                                <td>Neiva</td>
-                                <td>Isagen</td>
-                                <td>jeffersongutierres@gmail.com</td>
-                            </tr>
-                            <tr>
-                                <td>Angie Yepes</td>
-                                <td>987654321</td>
-                                <td>Ibagué</td>
-                                <td>Isagen</td>
-                                <td>angieyepes@gmail.com</td>
-                            </tr>
-                            <tr>
-                                <td>Diego Benitez</td>
-                                <td>111234567</td>
-                                <td>Cartagena</td>
-                                <td>Isagen</td>
-                                <td>diegobenitez@gmail.com</td>
-                            </tr>
+                        <tbody id="tabla-facilitadores-tbody">
+                            <!---->
                         </tbody>
                     </table>
                 </div>
@@ -64,7 +44,7 @@
                 <img src="<?php echo $base ?>public/assets/images/button-download-icon.svg" />
                 <span>Descarga de archivo guía en excel</span>
             </a>
-            <button class="boton-principal" onclick="closeModalMasivo()">
+            <button class="boton-principal" onclick="guardarFacilitadoresMasivo()">
                 Registrar facilitadores
             </button>
         </div>

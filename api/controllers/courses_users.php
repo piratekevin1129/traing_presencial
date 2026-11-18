@@ -1,4 +1,5 @@
 <?php
+require('../env.php');
 
 $tipos_trabajador = array(
     'e'=>'Estudiante',
@@ -99,7 +100,7 @@ if(isset($_GET['action'])){
                     array_push($users,array(
                         'id'=>(int)$du,
                         'status'=>0,
-                        'horaregistro'=>$date,
+                        'horaregistro'=>$fecha,
                         'horaentrada'=>"",
                         'horasalida'=>""
                     ));
@@ -115,7 +116,7 @@ if(isset($_GET['action'])){
                     array_push($users,array(
                         'id'=>(int)$du,
                         'status'=>0,
-                        'horaregistro'=>$date,
+                        'horaregistro'=>$fecha,
                         'horaentrada'=>"",
                         'horasalida'=>""
                     ));
@@ -125,7 +126,7 @@ if(isset($_GET['action'])){
         }
 
         $courses_users_file_txt = json_encode($courses_users_file_data);
-        if(file_put_contents('../../data/db/courses_users.json',$courses_users_file_txt)){
+        if(file_put_contents($path.'data/db/courses_users.json',$courses_users_file_txt)){
             //guardar los estudiantes
             exit('{"status":"success","data":""}');
         }else{
@@ -156,7 +157,7 @@ if(isset($_GET['action'])){
                 $courses_users_file_data[$courses_users_ind]['users'] = $users;
 
                 $courses_users_file_txt = json_encode($courses_users_file_data);
-                if(file_put_contents('../../data/db/courses_users.json',$courses_users_file_txt)){
+                if(file_put_contents($path.'data/db/courses_users.json',$courses_users_file_txt)){
                     //guardar los estudiantes
                     exit('{"status":"success","data":""}');
                 }else{

@@ -16,6 +16,7 @@ function clickConfirmarIngreso(c){
                         title:'Ingreso confirmado',
                         text:'Hora de ingreso: '+response_data.data.horaentrada
                     })
+                    getE('hora-accion-txt').innerHTML = 'Hora de ingreso: '+response_data.data.horaentrada
                 }else{
                     openModalAlert({
                         status:'warning',
@@ -59,6 +60,7 @@ function clickConfirmarSalida(c){
                         title:'Salida confirmada',
                         text:'Hora de salida: '+response_data.data.horasalida
                     })
+                    getE('hora-accion-txt').innerHTML = 'Hora de salida: '+response_data.data.horasalida
                 }else{
                     openModalAlert({
                         status:'warning',
@@ -97,22 +99,22 @@ function checkIngresoSalida(){
                 if(response_data.data.status==0){
                     //usuario sin ingresar
                     setButtonIngresoDefault()
-                    getE('hora-ingreso-txt').innerHTML = 'Hora de ingreso: ...'
+                    getE('hora-accion-txt').innerHTML = 'Hora de ingreso: ...'
                 }else if(response_data.data.status==1){
                     //usuario ya confirmó ingreso
                     if(course_status==1){
                         //pero el curso aun no acaba
                         setButtonIngresoReady()
-                        getE('hora-ingreso-txt').innerHTML = 'Hora de ingreso: '+response_data.data.horaentrada
+                        getE('hora-accion-txt').innerHTML = 'Hora de ingreso: '+response_data.data.horaentrada
                     }else if(course_status==2){
                         //el curso ya acabó, puede finalizar
                         setButtonSalidaDefault()
-                        getE('hora-salida-txt').innerHTML = 'Hora de salida: ...'
+                        getE('hora-accion-txt').innerHTML = 'Hora de salida: ...'
                     }
                 }else if(response_data.data.status==2){
                     //el usuario ya confirmó salida
                     setButtonSalidaFinalizado()
-                    getE('hora-salida-txt').innerHTML = 'Hora de salida: '+response_data.data.horasalida
+                    getE('hora-accion-txt').innerHTML = 'Hora de salida: '+response_data.data.horasalida
                 }
             }else{
                 //los botones se quedan cargando

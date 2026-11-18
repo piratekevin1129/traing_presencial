@@ -33,10 +33,10 @@
             
             <div class="modal-input-container">
                 <div class="modal-input">
-                    <form>
+                    <form id="lista-usuarios-form">
                         <input id="lista-usuarios-txt" type="file" name="archivo" onchange="updateCursoFile(event)" accept=".xlsx"  />
                     </form>
-                    <p>Subir archivo excel</p>
+                    <p id="lista-usuarios-name">Subir archivo excel</p>
                     <img src="<?php echo $base ?>public/assets/images/button-upload-icon.svg" />
                 </div>
             </div>
