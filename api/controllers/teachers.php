@@ -117,7 +117,7 @@ if(isset($_GET['action'])){
             exit('{"status":"error","data":"error guardando el archivo"}');
         }
     }else{
-        exit('{"status":"error","data":"action not found"}');    
+        exit('{"status":"error","data":"action not found"}');
     }
 }else{
     exit('{"status":"error","data":"action not defined"}');

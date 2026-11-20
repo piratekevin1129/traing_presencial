@@ -1,1 +1,9 @@
-[{"id":1,"nombre":"Sede Medell\u00edn","departamento":"Antioquia","ciudad":"Medell\u00edn","direccion":"calle 45 b san julian"},{"id":2,"nombre":"Sede Poblado","departamento":"Antioquia","ciudad":"Medell\u00edn","direccion":"calle 10 al frente de las empanadas"}]
+[
+    {
+        "id": 1,
+        "nombre": "Sede 1",
+        "departamento": "Antioquia",
+        "ciudad": "Medell\u00edn",
+        "direccion": "cra 54a 14"
+    }
+]

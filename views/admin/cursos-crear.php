@@ -108,13 +108,13 @@
                                     <div class="col-flex">
                                         <div class="col-tiempo">
                                             <div class="input">
-                                                <input id="tiempo-inp" placeholder="10" min="1" max="100" type="number" maxlength="3" autocomplete="off" name="tiempo" />
-                                                <label>Tiempo (1-100)</label>
+                                                <input id="tiempo-inp" placeholder="10" min="1" max="100" type="number" maxlength="3" autocomplete="off" name="tiempo" value="2" />
+                                                <label id="tiempo-lab">Tiempo (1-12)</label>
                                             </div>
                                         </div>
                                         <div class="col-tiempo">
                                             <div class="select">
-                                                <select name="tiempo2" id="tiempo2-sel">
+                                                <select name="tiempo2" id="tiempo2-sel" onchange="changeDuracion()">
                                                     <option value="minutos">Minutos</option>
                                                     <option value="horas" selected>Horas</option>
                                                 </select>
@@ -147,7 +147,7 @@
                                 <div class="switch" id="repetir-curso-switch">
                                     <label class="switch-radio">
                                         <p>Repetir curso</p>
-                                        <input id="repetir-curso-check" onchange="toggleRepetir(this)" value="0" type="checkbox" name="repetircurso" />
+                                        <input id="repetir-curso-check" onchange="toggleRepetir()" value="0" type="checkbox" name="repetircurso" />
                                         <span></span>
                                     </label>
                                 </div>
@@ -321,7 +321,11 @@
                                                 </tbody>
                                             </table>
                                         </form>
+                                        <?php if(count($users)==0){?>
+                                        <p class="text">No hay usuarios registrados</p>
+                                        <?php } ?>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -367,7 +371,8 @@
                     <div class="hr"></div>
 
                     <div class="col-right">
-                        <button type="button" class="boton-principal" onclick="guardarCurso(this)">
+                        <!--<button type="button" class="boton-principal" onclick="guardarCurso(this)">-->
+                        <button type="button" class="boton-principal" onclick="enviarCorreoFacilitadores()">
                             <span>Guardar curso</span>
                         </button>
                     </div>
@@ -391,22 +396,56 @@
         <?php foreach($headquarters as $headquarter){?>
         
         sedes_data.push({
-            id:<?php echo $headquarter['id']?>,
-            nombre:"<?php echo $headquarter['nombre']?>"
+            id:Number(<?php echo $headquarter['id']?>),
+            nombre:"<?php echo $headquarter['nombre']?>",
+            departamento:"<?php echo $headquarter['departamento']?>",
+            ciudad:"<?php echo $headquarter['ciudad']?>",
+            direccion:"<?php echo $headquarter['direccion']?>"
         })
         <?php } ?>
         
         var aulas_data = []
         <?php foreach($rooms as $r){ ?>
         aulas_data.push({
-            id:<?php echo $r['id']?>,
+            id:Number(<?php echo $r['id']?>),
             nombre:"<?php echo $r['nombre']?>",
+            extra:"<?php echo $r['extra']?>",
             sedeid:Number(<?php echo $r['sedeid']?>)
         })
         <?php } ?>
 
+        function findSede(idsede){
+            var s_ind = -1;
+            for(var s = 0;s<sedes_data.length;s++){
+                if(idsede==sedes_data[s].id){
+                    s_ind = s
+                    break;
+                }
+            }
+            return s_ind;
+        }
 
-        function toggleRepetir(inpu){
+        function findAula(idaula){
+            var a_ind = -1;
+            for(var a = 0;a<aulas_data.length;a++){
+                if(idaula==aulas_data[a].id){
+                    a_ind = a
+                    break;
+                }
+            }
+            return a_ind;
+        }
+
+        function changeDuracion(sel){
+            if(sel.value=='horas'){
+                getE('tiempo-lab').innerHTML = 'Tiempo (1-12)'
+            }else{
+                getE('tiempo-lab').innerHTML = 'Tiempo (0-59)'
+            }
+        }
+
+        function toggleRepetir(){
+            var inpu = getE('repetir-curso-check')
             if(inpu.checked){
                 //autodestruir
                 inpu.disabled = true
@@ -421,6 +460,7 @@
             var dias_agregar = [];
             var fecha_i = "";
             var dia_i = -1;
+            var dia_semana = -1;
 
             if(periodo==1){
                 //todos los dias
@@ -428,7 +468,7 @@
 
                 for(i = (current_day+1);i<=meses[current_mes].n;i++){
                     //obtener div con dia de la semana
-                    var dia_semana = getE('calendario-date-'+i).getAttribute('data-d')
+                    dia_semana = Number(getE('calendario-date-'+i).getAttribute('data-d'))
                     if(dia_semana==0||dia_semana==6){
                         if(periodo_o1){
                             dias_agregar.push({date:i,day:dia_semana})
@@ -442,7 +482,7 @@
                 var periodo_o2 = getDropdownItems('dropdown-dias-semana-o2')
                 for(i = (current_day+1);i<=meses[current_mes].n;i++){
                     //obtener div con dia de la semana
-                    var dia_semana = getE('calendario-date-'+i).getAttribute('data-d')
+                    dia_semana = Number(getE('calendario-date-'+i).getAttribute('data-d'))
 
                     if(periodo_o2.indexOf(dia_semana)!=-1){
                         dias_agregar.push({date:i,day:dia_semana})
@@ -451,9 +491,10 @@
             }else if(periodo==3){
                 //dos dias a la semana
                 var periodo_o3 = getDropdownItems('dropdown-dias-semana-o3')
+                console.log(periodo_o3)
                 for(i = (current_day+1);i<=meses[current_mes].n;i++){
                     //obtener div con dia de la semana
-                    var dia_semana = getE('calendario-date-'+i).getAttribute('data-d')
+                    dia_semana = Number(getE('calendario-date-'+i).getAttribute('data-d'))
 
                     if(periodo_o3.indexOf(dia_semana)!=-1){
                         dias_agregar.push({date:i,day:dia_semana})
@@ -464,7 +505,7 @@
                 var periodo_o4 = getE('periodo-o4-sel').value
                 for(i = (current_day+1);i<=meses[current_mes].n;i++){
                     //obtener div con dia de la semana
-                    var dia_semana = getE('calendario-date-'+i).getAttribute('data-d')
+                    dia_semana = Number(getE('calendario-date-'+i).getAttribute('data-d'))
 
                     if(periodo_o4==dia_semana){
                         dias_agregar.push({date:i,day:dia_semana})
@@ -495,6 +536,13 @@
             getE('curso-presencial-opciones-repetir-o4').className = 'content-hidden'
             
             getE('curso-presencial-opciones-repetir-o'+selected_value).className = 'content-visible'
+        }
+
+        function cancelarRepetir(){
+            getE('repetir-curso-check').disabled = false
+            getE('repetir-curso-check').checked = false
+            getE('repetir-curso-switch').className = 'switch'
+            closeModal()
         }
 
         window.onload = function(){

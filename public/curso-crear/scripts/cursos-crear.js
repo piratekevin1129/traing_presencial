@@ -19,6 +19,7 @@ function createCharlas(charlas){
     for(i = 0;i<charlas.length;i++){
         charlas_data.push({
             id:(i+1),
+            id_curso:0,
             ano:Number(current_year),
             mes:parseInt(current_mes),
             fecha:parseInt(charlas[i].date),
@@ -52,7 +53,8 @@ function addCharla(dd){
     ).getDate()
     charlas_data.push({
         id:id,
-        ano:2026,
+        id_curso:0,
+        ano:Number(current_year),
         mes:current_mes,
         fecha:dd,
         dia:dia_semana,
@@ -327,4 +329,129 @@ function guardarCurso4(){
             })
         }
     });
+}
+
+var facilitadores_charla = []
+
+function enviarCorreoFacilitadores(){
+    for(i = 0;i<charlas_data.length;i++){
+        var f_id = charlas_data[i].facilitador
+        var f_ind = -1
+
+        var sede_ind = findSede(charlas_data[i].sede)
+        var aula_ind = findAula(charlas_data[i].aula)
+        var sede_data = []
+        var aula_data = []
+        var dir = {sede:0,aula:0}
+        var dat = {a:0,m:0,d:0,h:0,i:0,s:"00"}
+        var det = {a:0,m:0,d:0,h:0,i:0,s:"00"}
+
+        if(sede_ind==-1||aula_ind==-1){
+            sede_data = sedes_data[sede_ind]
+            aula_data = aulas_data[aula_ind]
+            dir.sede = sede_data.id
+            dir.aula = aula_data.id
+        }
+        var ano = charlas_data[i].ano
+        dat.a = String(ano)
+
+        var mes = (Number(charlas_data[i].mes)+1)
+        var m = String(mes)
+        if(mes<10){
+            m = String('0'+mes)
+        }
+        dat.m = m
+
+        var dia = charlas_data[i].fecha
+        var d = String(dia)
+        if(dia<10){
+            d = String('0'+dia)
+        }
+        dat.d = d
+        
+        var hora = charlas_data[i].hora
+        if(charlas_data[i].horario=='pm'){
+            hora+=12
+        }
+        var h = String(hora)
+        if(hora<10){
+            h = String('0'+hora)
+        }
+        dat.h = h
+
+        var minuto = charlas_data[i].minutos
+        var mm = String(minuto)
+        if(minuto<10){
+            mm = String('0'+minuto)
+        }
+        dat.i = mm
+
+        //chanchullo feo
+        var fecha_fin = new Date(String(ano+"-"+m+"-"+d+" "+h+":"+mm+":00"))
+        if(getE('tiempo2-sel').value=='horas'){
+            fecha_fin.setHours(fecha_fin.getHours() + Number(getE('tiempo-inp').value))
+        }else{
+            fecha_fin.setMinutes(fecha_fin.getMinutes() + Number(getE('tiempo-inp').value))
+        }
+        det.a = String(fecha_fin.getFullYear())
+        var mes2 = Number(fecha_fin.getMonth()+1)
+        if(mes2<10){
+            det.m = String('0'+mes2)
+        }else{
+            det.m = String(mes2)
+        }
+        var dia2 = fecha_fin.getDate()
+        if(dia2<10){
+            det.d = String('0'+dia2)
+        }else{
+            det.d = String(dia2)
+        }
+        var hora2 = fecha_fin.getHours()
+        if(hora2<10){
+            det.h = String('0'+hora2)
+        }else{
+            det.h = String(hora2)
+        }
+        var minuto2 = fecha_fin.getMinutes()
+        if(minuto2<10){
+            det.i = String('0'+minuto2)
+        }else{
+            det.i = String(minuto2)
+        }
+
+        for(j = 0;j<facilitadores_charla.length;j++){
+            if(facilitadores_charla[j].f==f_id){
+                f_ind = j
+                break;
+            }
+        }
+
+        if(f_ind==-1){
+            //agregar
+            facilitadores_charla.push({
+                f:f_id,
+                t:String(getE('nombre-inp').value),
+                ch:[{
+                    dir:dir,
+                    dat:dat,
+                    det:det
+                }]
+            })
+        }else{
+            facilitadores_charla[f_ind].ch.push({
+                dir:dir,
+                dat:dat,
+                det:det
+            })
+        }
+    }
+
+    $.ajax({
+        method: 'POST',
+        action: base+'api/controllers/mail.php?action=agendarFacilitador',
+        data:{
+            datos:JSON.stringify(facilitadores_charla)
+        },
+    })
+    //console.log(facilitadores_charla)
 }

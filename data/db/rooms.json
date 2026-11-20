@@ -1,1 +1,8 @@
-[]
+[
+    {
+        "id": 1,
+        "nombre": "Aula 1",
+        "extra": "piso 7 al lado del ascensor",
+        "sedeid": 1
+    }
+]

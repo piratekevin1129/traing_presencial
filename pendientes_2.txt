@@ -5,10 +5,10 @@ PRIORITARIOS:
 mandar un correo con el formato actual al profesor
 correo para notificar el registro (sin matricular)
 correo para notificar el registro al facilitador
-cargar listas de excel de facilitadores
 poner cargador en todo
 modal de crear aula/facilitador/sede en caliente
 validar sede, aula y facilitador en la creación del curso, cuando se han eliminado
+validar duracion del curso que si sea entre 1 y 12 y 0 y 59
 
 NO TAN PRIORITARIOS:
 estilo al modal de confirm

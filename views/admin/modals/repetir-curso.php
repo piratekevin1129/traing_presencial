@@ -246,7 +246,7 @@
             </form>
         </div>
         <div class="modal-footer">
-            <button class="boton-cancelar" onclick="closeModal()">
+            <button class="boton-cancelar" onclick="cancelarRepetir()">
                 Cerrar
             </button>
             <button class="boton-principal" onclick="aplicarRepetir()">
